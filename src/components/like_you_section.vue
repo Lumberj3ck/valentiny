@@ -1,20 +1,19 @@
 <script>
 import control_bar from './control_bar.vue'
+import custom_input from './custom_input.vue'
 
 export default {
   data() {
     return {
-      tittle: 'Your tittle',
-      secondary_text: 'Type your text',
-      sub_text: 'Type your text',
       background_color: '',
       text_color: '',
-      is_render: true
+      is_render: true,
     }
   },
 
   components: {
-    control_bar
+    control_bar,
+    custom_input
   },
   computed:{
     primary_color(){
@@ -47,7 +46,6 @@ export default {
 <control_bar @bg_color_reset="onColor_reset" @toggle-render="onToggleRender" @bg_color_picked="onBgColor_picked" @text_color_picked="onText_color_picked"></control_bar>
   <div v-if="is_render">
     <section class="relative pb-20">
-      <!-- <div class="px-4" style="background-color: var(--section-primary-color)"> -->
       <div class="px-4 bg_violet" :style="primary_color ? primary_color : ''">
         <div class="container mx-auto items-center flex flex-wrap">
           <div
@@ -58,12 +56,13 @@ export default {
           </div>
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div class="md:pr-12 mb-8">
-              <input
+              <!-- <input
                 class="text-3xl font-semibold text-section-color bg_violet w-full"
                 :style="primary_color ? primary_color : ''"
                 type="text"
                 v-model="tittle"
-              />
+              /> -->
+              <custom_input :primary_color="primary_color" custom_class='text-section-color text-3xl font-semibold '></custom_input>
               <ul class="list-none mt-6">
                 <li class="py-2">
                   <div class="flex items-center">
@@ -75,12 +74,7 @@ export default {
                       </span>
                     </div>
                     <div>
-                      <input
-                        class="text-section-color bg_violet text-lg" 
-                        :style="primary_color ? primary_color : ''"
-                        type="text"
-                        v-model="secondary_text"
-                      />
+                        <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
                     </div>
                   </div>
                 </li>
@@ -94,12 +88,13 @@ export default {
                       </span>
                     </div>
                     <div>
-                      <input
+                      <!-- <input
                         class="text-section-color bg_violet w-full text-lg"
                         :style="primary_color"
                         type="text"
                         v-model="sub_text"
-                      />
+                      /> -->
+                     <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
                     </div>
                   </div>
                 </li>
@@ -128,12 +123,7 @@ export default {
                     </div>
                     <div>
                       <!-- <h4 class="text-section-color">Almost started to like your movie taste</h4> -->
-                      <input
-                        class="text-section-color bg_violet text-lg"
-                        :style="primary_color"
-                        type="text"
-                        value="Almost started to like your movie taste"
-                      />
+                     <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
                     </div>
                   </div>
                 </li>
@@ -159,5 +149,8 @@ export default {
 }
 w-full{
     width: 100%;
+}
+.select_prevent{
+    user-select: none; 
 }
 </style>
