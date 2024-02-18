@@ -56,12 +56,6 @@ export default {
           </div>
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div class="md:pr-12 mb-8">
-              <!-- <input
-                class="text-3xl font-semibold text-section-color bg_violet w-full"
-                :style="primary_color ? primary_color : ''"
-                type="text"
-                v-model="tittle"
-              /> -->
               <custom_input :primary_color="primary_color" custom_class='text-section-color text-3xl font-semibold '></custom_input>
               <ul class="list-none mt-6">
                 <li class="py-2">
@@ -88,12 +82,6 @@ export default {
                       </span>
                     </div>
                     <div>
-                      <!-- <input
-                        class="text-section-color bg_violet w-full text-lg"
-                        :style="primary_color"
-                        type="text"
-                        v-model="sub_text"
-                      /> -->
                      <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
                     </div>
                   </div>

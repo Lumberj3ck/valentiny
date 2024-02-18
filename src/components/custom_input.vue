@@ -37,7 +37,7 @@ export default{
     :class="custom_class"
     class="w-full select_prevent bg_inherit"
     :style="primary_color ? primary_color : ''"
-    >{{ input_value }}</div>  
+    >{{ input_value ? input_value : 'Placeholder' }}</div>  
     <input
     v-else
     @focusout="toggleEditMode"
