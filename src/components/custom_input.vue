@@ -3,12 +3,13 @@ const focus = {
 mounted: (el) => el.focus()
 }
 
-const resize = {
-    mounted: (el) => el.style.height = `${el.scrollHeight}px`
+function set_height(el) {
+    el.style.height = `${el.scrollHeight}px`
 }
-// const resize = {
-//     mounted: (el) => alert('asdf') 
-// }
+
+const resize = {
+    mounted: (el) => set_height(el)
+}
 
 export default{
     props:{
@@ -33,7 +34,7 @@ export default{
     },
     resize(event){
         var el = event.target
-        el.style.height = `${el.scrollHeight}px`
+        set_height(el)
     }
     }
 }
@@ -54,6 +55,7 @@ export default{
     type="text"
     v-model="input_value"
     class="w-full bg_inherit"
+    ref="text_area"
     :style="primary_color"
     v-resize
     ></textarea>
