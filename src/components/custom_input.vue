@@ -3,10 +3,16 @@ const focus = {
 mounted: (el) => el.focus()
 }
 
+const resize = {
+    mounted: (el) => el.style.height = `${el.scrollHeight}px`
+}
+// const resize = {
+//     mounted: (el) => alert('asdf') 
+// }
+
 export default{
     props:{
         primary_color: Object,
-        custom_class: String,
         default_input_value: String,
         text_area: Boolean 
     },
@@ -18,7 +24,9 @@ export default{
     },
   directives:{
     focus,
+    resize
   },
+
   methods: {
     toggleEditMode(){
         this.edit = !this.edit
@@ -33,11 +41,9 @@ export default{
 
 
 <template>
-    <!-- @dblclick="onDoubleClick" -->
     <div v-if="!edit"
     @click="toggleEditMode"
     class="w-full select_prevent bg_inherit"
-    :class="custom_class"
     :style="primary_color"
     >{{ input_value ? input_value : 'Placeholder' }}</div>  
     <textarea
@@ -47,9 +53,9 @@ export default{
     @focusout="toggleEditMode"
     type="text"
     v-model="input_value"
-    class="w-full bg_inherit auto_height"
-    :class="custom_class"
+    class="w-full bg_inherit"
     :style="primary_color"
+    v-resize
     ></textarea>
     <input
     v-else
@@ -58,7 +64,6 @@ export default{
     type="text"
     v-model="input_value"
     class="w-full bg_inherit"
-    :class="custom_class"
     :style="primary_color"
     />
 </template>
@@ -66,8 +71,5 @@ export default{
 <style>
 .bg_inherit{
     background-color: inherit;
-}
-.auto_height{
-    height: auto;
 }
 </style>
