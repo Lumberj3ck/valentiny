@@ -4,4 +4,4 @@
 c1: #540D59
 c2: #05E1DD
 
-Fix bug when deleteting all from input div is not showing
+- [x] Fix bug when deleteting all from input div is not showing 

@@ -45,8 +45,8 @@ export default {
 <template>
 <control_bar @bg_color_reset="onColor_reset" @toggle-render="onToggleRender" @bg_color_picked="onBgColor_picked" @text_color_picked="onText_color_picked"></control_bar>
   <div v-if="is_render">
-    <section class="relative pb-20">
-      <div class="px-4 bg_violet" :style="primary_color ? primary_color : ''">
+    <section class="relative">
+      <div class="px-4 bg_violet" :style="primary_color">
         <div class="container mx-auto items-center flex flex-wrap">
           <div
             class="w-full md:w-4/12 ml-auto mr-auto px-4"
@@ -56,7 +56,7 @@ export default {
           </div>
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div class="md:pr-12 mb-8">
-              <custom_input :primary_color="primary_color" custom_class='text-section-color text-3xl font-semibold '></custom_input>
+              <custom_input text_area :primary_color="primary_color" custom_class='text-section-color text-3xl font-semibold' default_input_value="I love you so much that:"></custom_input>
               <ul class="list-none mt-6">
                 <li class="py-2">
                   <div class="flex items-center">
@@ -68,7 +68,7 @@ export default {
                       </span>
                     </div>
                     <div>
-                        <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
+                        <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg ' default_input_value="Can show you my google history"></custom_input>
                     </div>
                   </div>
                 </li>
@@ -82,7 +82,7 @@ export default {
                       </span>
                     </div>
                     <div>
-                     <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
+                     <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg ' default_input_value="Can resist to eat last pizza slice"></custom_input>
                     </div>
                   </div>
                 </li>
@@ -111,7 +111,7 @@ export default {
                     </div>
                     <div>
                       <!-- <h4 class="text-section-color">Almost started to like your movie taste</h4> -->
-                     <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg '></custom_input>
+                     <custom_input :primary_color="primary_color" custom_class='text-section-color text-lg ' default_input_value="Almost started to like your movie taste"></custom_input>
                     </div>
                   </div>
                 </li>

@@ -1,12 +1,12 @@
 <script>
 import like_you_section from './components/like_you_section.vue';
-import another_section from './components/another_section.vue';
+import love_potion_recipe from './components/love_potion_recipe.vue';
 
 export default{
   components: {
     like_you_section,
-    another_section,
-  },
+    love_potion_recipe,
+},
 
   data() {
     return {
@@ -19,5 +19,5 @@ export default{
 
 <template>
   <like_you_section></like_you_section>
-  <another_section></another_section>
+  <love_potion_recipe></love_potion_recipe>
 </template>

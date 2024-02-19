@@ -4,27 +4,29 @@ mounted: (el) => el.focus()
 }
 
 export default{
-    data(){
-        return {
-            input_value: "Type your text",
-            edit: false,
-        }
-    },
     props:{
         primary_color: Object,
-        custom_class: String 
+        custom_class: String,
+        default_input_value: String,
+        text_area: Boolean 
+    },
+    data(){
+        return {
+            input_value: this.default_input_value,
+            edit: false,
+        }
     },
   directives:{
     focus,
   },
   methods: {
-    onDoubleClick(){
-        this.edit = !this.edit
-        // this.$refs.text_input.focus()
-    },
     toggleEditMode(){
         this.edit = !this.edit
     },
+    resize(event){
+        var el = event.target
+        el.style.height = `${el.scrollHeight}px`
+    }
     }
 }
 </script>
@@ -33,26 +35,39 @@ export default{
 <template>
     <!-- @dblclick="onDoubleClick" -->
     <div v-if="!edit"
-    @click="onDoubleClick"
-    :class="custom_class"
+    @click="toggleEditMode"
     class="w-full select_prevent bg_inherit"
-    :style="primary_color ? primary_color : ''"
-    >{{ input_value ? input_value : 'Placeholder' }}</div>  
-    <input
-    v-else
-    @focusout="toggleEditMode"
     :class="custom_class"
-    class="w-full bg_inherit"
-    :style="primary_color ? primary_color : ''"
+    :style="primary_color"
+    >{{ input_value ? input_value : 'Placeholder' }}</div>  
+    <textarea
+    v-else-if="edit && text_area"
+    v-focus
+    @input="resize"
+    @focusout="toggleEditMode"
     type="text"
     v-model="input_value"
-    ref="text_input"
+    class="w-full bg_inherit auto_height"
+    :class="custom_class"
+    :style="primary_color"
+    ></textarea>
+    <input
+    v-else
     v-focus
+    @focusout="toggleEditMode"
+    type="text"
+    v-model="input_value"
+    class="w-full bg_inherit"
+    :class="custom_class"
+    :style="primary_color"
     />
 </template>
 
 <style>
 .bg_inherit{
     background-color: inherit;
+}
+.auto_height{
+    height: auto;
 }
 </style>
