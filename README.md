@@ -29,10 +29,10 @@ To use this project, follow these direct commands:
    npm run dev
    ```
 
-6. ** For production **
-  ```
+6. **For production **
+   ```
     npm run build
-  ```
+   ```
 
 ## Contribution
 Contributions to this project are welcome and encouraged. If you have ideas for improvements, new features, or bug fixes, feel free to submit a pull request. Here are some ways you can contribute:
