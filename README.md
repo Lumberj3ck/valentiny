@@ -1,7 +1,7 @@
 # Valentine Postcard Vue Project
 
 ## Description
-This project is a customizable Valentine postcard created with Vue.js framework. Originally crafted as a surprise for my girlfriend on Valentine's Day, it started as a small index.html postcard landing. 
+This project is a customizable Valentine postcard created with Vue.js framework. Originally crafted as a surprise for my girlfriend on Valentine's Day, it started as a [small index.html](https://github.com/Lumberj3ck/valentine_postcard) postcard landing. 
 ## Motivation
 Suddenly, when I first build landing postcard, I realized its potential to bring joy to others, prompting me to make it customizable for everyone to create their own unique postcards. The motivation behind this project to give people the ability to make their own customisable postcards.
 
