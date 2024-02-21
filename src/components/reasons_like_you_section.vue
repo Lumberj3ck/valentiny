@@ -15,33 +15,11 @@ export default {
       resetColors
     };
   },
-  data() {
-    return {
-      // background_color: '',
-      // text_color: '',
-      // is_render: true,
-    }
-  },
   emits: ['move_up', 'move_down'],
   components: {
     control_bar,
     custom_input
   },
-
-  // computed:{
-  //   primary_color(){
-  //     return {
-  //       'background-color': this.background_color,
-  //       'color': this.text_color
-  //     }
-  //   }
-  // },
-  // methods:{
-  //   onColor_reset(){
-  //       this.background_color = ''
-  //       this.text_color = ''
-  //   },
-  // }
 }
 </script>
 

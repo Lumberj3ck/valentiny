@@ -1,14 +1,19 @@
 <script>
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
+import useControlBar from '../js/control_bar.js'
 
 export default {
-  data() {
+    setup() {
+    const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+
     return {
-      background_color: '',
-      text_color: '',
-      is_render: true,
-    }
+      background_color,
+      text_color,
+      is_render,
+      primary_color,
+      resetColors
+    };
   },
 
   emits: ['move_down', 'move_up'],
@@ -17,26 +22,11 @@ export default {
     control_bar,
     custom_input
   },
-  computed: {
-    primary_color() {
-      return {
-        "background-color": this.background_color,
-        "color": this.text_color
-      }
-    }
-  },
-
-  methods: {
-    onColor_reset() {
-      this.background_color = ''
-      this.text_color = ''
-    },
-  }
 }
 </script>
 
 <template>
-  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="onColor_reset"
+  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
   <section v-if="is_render" class="relative">
