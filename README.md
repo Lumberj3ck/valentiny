@@ -9,11 +9,11 @@ Suddenly, when I first build landing postcard, I realized its potential to bring
 To use this project, follow these direct commands:
 1. **Clone Repository:**
    ```
-   git clone https://github.com/Lumberj3ck/postcard_vue/
+   git clone https://github.com/Lumberj3ck/valentiny
    ```
 2. **Navigate to Project Directory:**
    ```
-   cd postcard_vue
+   cd valentiny
    ```
 
 3. **Install Dependencies:**
