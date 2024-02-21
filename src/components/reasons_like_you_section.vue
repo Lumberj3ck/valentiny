@@ -37,16 +37,16 @@ export default {
                   />
                 </svg>
               </div>
-              <h3 class="text-3xl mb-2 font-semibold leading-normal">
+              <h3 class="text-3xl mb-2 font-semibold leading-normal text-black">
                 What I like in you
               </h3>
-              <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+              <p class="text-lg font-light leading-relaxed mt-4 mb-4 ">
               <ol class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                <li>1 Name</li>
-                <li>2 Good cooking</li>
-                <li>3 Favorite girl</li>
-                <li>4 Cute sunn</li>
-                <li>5 And couple other things)</li>
+                <li class="font-light">1 Name</li>
+                <li class="font-light">2 Good cooking</li>
+                <li class="font-light">3 Favorite girl</li>
+                <li class="font-light">4 Cute sunn</li>
+                <li class="font-light">5 And couple other things)</li>
               </ol>
               </p>
             </div>

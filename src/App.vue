@@ -1,13 +1,13 @@
 <script>
 import like_you_section from './components/like_you_section.vue'
 import love_potion_section from './components/love_potion_section.vue'
-import new_section from './components/new_section.vue'
+import reasons_like_you_section from './components/reasons_like_you_section.vue'
 
 export default {
   components: {
     like_you_section,
     love_potion_section,
-    new_section
+    reasons_like_you_section
   },
 
   data() {
@@ -16,7 +16,7 @@ export default {
       components: [
         { name: 'like_you_section', index: 1 },
         { name: 'love_potion_section', index: 2 },
-        { name: 'new_section', index: 3 }
+        { name: 'reasons_like_you_section', index: 3 }
       ]
     }
   },
@@ -59,7 +59,7 @@ export default {
     </div>
 
     <div :style="{ 'grid-row': components[2].index }">
-      <new_section @move_up="move(-1, 'new_section')" @move_down="move(1, 'new_section')"></new_section>
+      <reasons_like_you_section @move_up="move(-1, 'reasons_like_you_section')" @move_down="move(1, 'reasons_like_you_section')"></reasons_like_you_section>
     </div>
   </div>
 </template>
