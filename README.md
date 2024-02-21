@@ -29,7 +29,7 @@ To use this project, follow these direct commands:
    npm run dev
    ```
 
-6. **For production **
+6. **For production:**
    ```
     npm run build
    ```
