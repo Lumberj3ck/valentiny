@@ -58,6 +58,7 @@ export default{
     ref="text_area"
     :style="primary_color"
     v-resize
+    id="custom_input"
     ></textarea>
     <input
     v-else
@@ -67,6 +68,7 @@ export default{
     v-model="input_value"
     class="w-full bg_inherit"
     :style="primary_color"
+    id="custom_input"
     />
 </template>
 

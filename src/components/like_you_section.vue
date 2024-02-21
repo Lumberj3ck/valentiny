@@ -11,6 +11,8 @@ export default {
     }
   },
 
+  emits: ['move_down', 'move_up'],
+
   components: {
     control_bar,
     custom_input
@@ -37,15 +39,15 @@ export default {
     },
     onText_color_picked(value){
       this.text_color = value
-    }
+    },
   }
 }
 </script>
 
 <template>
-<control_bar @bg_color_reset="onColor_reset" @toggle-render="onToggleRender" @bg_color_picked="onBgColor_picked" @text_color_picked="onText_color_picked"></control_bar>
-  <div v-if="is_render">
-    <section class="relative">
+<!-- <control_bar @bg_color_reset="onColor_reset" @toggle-render="onToggleRender" @bg_color_picked="onBgColor_picked" @text_color_picked="onText_color_picked"></control_bar> -->
+<control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="onColor_reset" @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value" @text_color_picked="(value) => text_color = value"></control_bar>
+    <section v-if="is_render" class="relative">
       <div class="px-4 bg_violet" :style="primary_color">
         <div class="container mx-auto items-center flex flex-wrap">
           <div
@@ -121,7 +123,6 @@ export default {
         </div>
       </div>
     </section>
-  </div>
 </template>
 
 <style>
