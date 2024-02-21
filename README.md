@@ -1,4 +1,4 @@
-# Valentine Postcard Vue Project
+# Valentiny
 
 ## Description
 This project is a customizable Valentine postcard created with Vue.js framework. Originally crafted as a surprise for my girlfriend on Valentine's Day, it started as a [small index.html](https://github.com/Lumberj3ck/valentine_postcard) postcard landing. 
