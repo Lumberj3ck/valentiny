@@ -17,10 +17,14 @@ function make_links_relative($){
     });
 }
 
-function mutate_html(){
+function instantiate_dom(){
     var dom = document.documentElement.innerHTML;
     const $ = cheerio.load(dom);
+    return $
+}
 
+function mutate_html(){
+    var $ = instantiate_dom()
     remove_redudant_ui($)
     make_links_relative($)
 
@@ -62,7 +66,7 @@ function download_archive(zip){
         });
 }
 
-export default async function get_page() {
+async function get_page() {
     const relativeResources = get_resource_links()
     var $ = mutate_html()
 
@@ -74,3 +78,4 @@ export default async function get_page() {
     download_archive(zip)
 }
 
+export {get_page, remove_redudant_ui, instantiate_dom}
