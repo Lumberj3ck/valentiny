@@ -1,6 +1,6 @@
 <script>
 import main_section from './components/main_section.vue'
-import get_page from './js/page_download.js'
+import {get_page, remove_redudant_ui, instantiate_dom} from './js/page_download.js'
 // import VueHtml2pdf from 'vue-html2pdf'
 import html2pdf from 'html2pdf.js'
 
@@ -11,20 +11,22 @@ export default {
   },
 
   methods: {
-    get_hm() {
+    get_html() {
       get_page()
     },
     generateReport() {
       this.$refs.html2Pdf.generatePdf()
     },
     exportToPDF() {
+      var $ = instantiate_dom()
+      remove_redudant_ui($)
+
       html2pdf().set({
         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
       });
 
-      html2pdf(document.getElementById("app"), {
-        margin: 1,
-        filename: "i-was-html.pdf",
+      html2pdf($.html(), {
+        filename: "Postcard.pdf",
         paginateElementsByHeight: '1400px'
       });
     },
@@ -35,8 +37,8 @@ export default {
 
 <template>
   <div id="get_html">
-  <button @click="exportToPDF">Export to pdf</button>
-  <button @click="get_hm">Get html</button>
+  <button style="margin-right: 20px;" @click="exportToPDF">Export to pdf</button>
+  <button @click="get_html">Get html</button>
 </div>
   <main_section></main_section>
   <!-- <VueHtml2pdf :show-layout="false" :float-layout="true" :enable-download="true" :preview-modal="true"
