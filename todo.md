@@ -9,6 +9,7 @@ c2: #05E1DD
 - [ ] Ability for user to change images somehow xD
 - [ ] Change font size
 - [ ] test downloading page on mobile
+- [ ] pdf download 
 
 
 
