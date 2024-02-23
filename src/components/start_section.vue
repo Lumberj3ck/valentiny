@@ -77,6 +77,6 @@ export default {
 
 <style>
 .banner{
-    background-image: url('./src/assets/imgs/banner.jpg')
+    background-image: url('@/assets/imgs/banner.jpg')
 }
 </style>
