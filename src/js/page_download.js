@@ -67,11 +67,9 @@ export default async function get_page() {
     var $ = mutate_html()
 
 
-
     const baseUrl = window.location.origin;
     const fullRelativeUrls = make_full_links(relativeResources, baseUrl)
 
-    console.log(fullRelativeUrls)
     var zip = await get_resourses(fullRelativeUrls, $, baseUrl)
     download_archive(zip)
 }
