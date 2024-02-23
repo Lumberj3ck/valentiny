@@ -5,6 +5,10 @@ c1: #540D59
 c2: #05E1DD
 
 - [x] Fix bug when deleteting all from input div is not showing 
+- [ ] make control bar buetiful
+- [ ] Ability for user to change images somehow xD
+- [ ] Change font size
+
 
 
 ## How to add new section 
@@ -13,6 +17,7 @@ c2: #05E1DD
 2. Import composable control bar
 3. Add control bar component
 4. Change every text field with a custom input component
+5. Add primary_color computed style 
 5. Import new component
 6. Add new object into main_section components reactive list
 7. Add div the same as for other sections
