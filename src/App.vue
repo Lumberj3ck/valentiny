@@ -2,6 +2,7 @@
 import like_you_section from './components/like_you_section.vue'
 import love_potion_section from './components/love_potion_section.vue'
 import reasons_like_you_section from './components/reasons_like_you_section.vue'
+import get_html from './js/page_download.js'
 
 export default {
   components: {
@@ -20,7 +21,13 @@ export default {
       ]
     }
   },
+  mounted() {
+      // get_html()
+  },
   methods: {
+    get_hm(){
+      get_html()
+    },
     move(direction, name) {
       let comp_index = this.components.findIndex(component => component.name === name)
 
@@ -49,6 +56,7 @@ export default {
   <love_potion_recipe></love_potion_recipe>
 </draggable> -->
 <template>
+  <button @click="get_hm" id="get_html">Get html</button>
   <div class="custom_container">
     <div :style="{ 'grid-row': components[0].index }">
       <like_you_section @move_up="move(-1, 'like_you_section')" @move_down="move(1, 'like_you_section')"></like_you_section>

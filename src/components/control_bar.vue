@@ -7,7 +7,7 @@ export default{
 
 
 <template>
-<div class="flex space_around  bg_white text_black">
+<div class="flex space_around  bg_white text_black control_bar">
     <div class="flex col_25">
   <button @click="$emit('toggle-render')" class="button_simple">Toggle Render</button>
   <button @click="$emit('bg_color_reset')" class="button_simple">Reset</button>
