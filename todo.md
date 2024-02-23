@@ -8,6 +8,7 @@ c2: #05E1DD
 - [ ] make control bar buetiful
 - [ ] Ability for user to change images somehow xD
 - [ ] Change font size
+- [ ] test downloading page on mobile
 
 
 
