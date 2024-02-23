@@ -59,7 +59,6 @@ export default {
       <reasons_like_you_section @move_up="move(-1, 'reasons_like_you_section')" @move_down="move(1, 'reasons_like_you_section')"></reasons_like_you_section>
     </div>
   </div>
-
 </template>
 
 
