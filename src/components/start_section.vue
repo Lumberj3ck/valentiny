@@ -37,8 +37,8 @@ export default {
         @text_color_picked="(value) => text_color = value"></control_bar>
     <div v-if="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
-                <!-- style="background-image: url('./src/assets/imgs/banner.jpg')"> -->
-            <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain banner">
+            <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
+                style="background-image: url('@/assets/imgs/banner.jpg')">
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </div>
 
@@ -63,13 +63,6 @@ export default {
                     </div>
                 </div>
             </div>
-            <!-- div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-                style="height: 70px">
-                <svg class="absolute overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-                    version="1.1" viewBox="0 0 2560 100" x="0" y="0" style="bottom: -1px">
-                    <polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
-                </svg>
-            </div> -->
         </div>
     </div>
 </template>
