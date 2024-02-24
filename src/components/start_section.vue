@@ -17,6 +17,11 @@ export default {
         };
     },
     emits: ['move_up', 'move_down'],
+    data(){
+        return {
+            banner1: banner
+        }
+    },
     components: {
         control_bar,
         custom_input
@@ -39,7 +44,7 @@ export default {
     <div v-if="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
-                :style="{'background-image': `url(${banner})`}">
+                :style="{'background-image': `url(${banner1})`}">
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </div>
 
