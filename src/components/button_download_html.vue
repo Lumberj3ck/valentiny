@@ -41,7 +41,7 @@ export default {
 
 <template>
     <div @click="get_html" :class="{ 'wobble-ver-right': animate }"
-        class="text-2xl fixed bottom-2 right-2 min-[540px]:bottom-6 min-[540px]:right-6 z-10 text-black cursor-pointer rounded-full flex justify-center items-center w-11 h-11 w bg-[#eec249] md:w-14 md:h-14 md:text-3xl">
+        class="text-2xl fixed bottom-2 right-2 min-[540px]:bottom-6 min-[540px]:right-6 z-10 text-black cursor-pointer rounded-full flex justify-center items-center w-11 h-11 w bg-[#eec249] md:w-14 md:h-14 md:text-3xl system_ui">
         <i class="fa-solid fa-download"></i>
     </div>
 </template>

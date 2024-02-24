@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver';
 
 function remove_redudant_ui(html) {
     html('.control_bar').remove();
+    html('.system_ui').remove();
     html('script').remove();
     html('#get_html').remove();
 }
