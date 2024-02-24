@@ -2,7 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
-// import banner from '@/assets/imgs/banner.jpg'
+import banner from '@/assets/imgs/banner.jpg'
 
 export default {
     setup() {
@@ -39,8 +39,7 @@ export default {
     <div v-if="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
-                style="background-image: url('../assets/imgs/banner.jpg')">
-            >
+                :style="{backgroundImage: `url(${banner})`}">
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </div>
 
