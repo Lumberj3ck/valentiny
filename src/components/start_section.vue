@@ -39,7 +39,7 @@ export default {
     <div v-if="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
-                :style="{backgroundImage: `url(${banner})`}">
+                :style="{'background-image': `url(${banner})`}">
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </div>
 
@@ -70,7 +70,4 @@ export default {
 
 
 <style>
-.banner{
-    background-image: url('@/assets/imgs/banner.jpg')
-}
 </style>
