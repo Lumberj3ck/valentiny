@@ -54,7 +54,6 @@ function get_resource_links() {
 
 function make_full_links(relativeResources, baseUrl) {
     const fullRelativeUrls = relativeResources.map(url => { return url.startsWith('@') ? baseUrl + url.slice(1) :baseUrl + url});
-    console.log(fullRelativeUrls)
     return fullRelativeUrls
 }
 
