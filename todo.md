@@ -13,6 +13,33 @@ c2: #05E1DD
 
 
 
+## How to add ability to choose files 
+```js
+<img :src="image_url" class='rounded-full' alt="" ref="img">
+<input type="file" @change="handleFileUpload" class="image_input">
+
+import image_path from '@/assets/imgs/love_potion.png'
+  data(){
+    return {
+      image_url:image_path
+    }
+  },
+  methods:{
+    handleFileUpload(event){
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.image_url  = reader.result;
+          var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+          // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
+          this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input_love_potion.${file_type}`)
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+```
+
 ## How to add new section 
 
 1. Create new section file

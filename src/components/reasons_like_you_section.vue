@@ -2,6 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
+import doner_image from '@/assets/imgs/doner.jpg'
 
 export default {
     setup() {
@@ -15,11 +16,31 @@ export default {
       resetColors
     };
   },
+  data(){
+    return {
+      image_url: doner_image 
+    }
+  },
   emits: ['move_up', 'move_down'],
   components: {
     control_bar,
     custom_input
   },
+  methods:{
+    handleFileUpload(event){
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.image_url  = reader.result;
+          var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+          // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
+          this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input.${file_type}`)
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
 }
 </script>
 
@@ -57,9 +78,11 @@ export default {
           </p>
         </div>
         <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+          <input type="file" @change="handleFileUpload" class="image_input">
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600"
             style="background-color: var(--card-primary-color)">
-            <img alt="..." src="../assets/imgs/doner.jpg" class="w-full align-middle rounded-t-lg" />
+            <!-- <img alt="..." src="../assets/imgs/doner.jpg" class="w-full align-middle rounded-t-lg" /> -->
+            <img alt="..." :src="image_url" class="w-full align-middle rounded-t-lg" data-verbose-path="" ref="img"/>
             <blockquote class="relative p-8 mb-4">
               <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
                 class="absolute left-0 w-full block" style="height: 95px; top: -94px">

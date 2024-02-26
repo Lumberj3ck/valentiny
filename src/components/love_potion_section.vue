@@ -2,6 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
+import image_path from '@/assets/imgs/love_potion.png'
 
 
 export default{
@@ -15,6 +16,26 @@ export default{
       primary_color,
       resetColors
     };
+  },
+  data(){
+    return {
+      image_url:image_path
+    }
+  },
+  methods:{
+    handleFileUpload(event){
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.image_url  = reader.result;
+          var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+          // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
+          this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input_love_potion.${file_type}`)
+        };
+        reader.readAsDataURL(file);
+      }
+    }
   },
   components: {
     control_bar,
@@ -30,8 +51,9 @@ export default{
     @text_color_picked="(value) => text_color = value"></control_bar>
 <section v-if='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
   <div class="container mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
+    <input type="file" @change="handleFileUpload" class="image_input">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
-        <img src="../assets/imgs/love_potion.png" class='rounded-full' alt="">
+        <img :src="image_url" class='rounded-full' alt="" ref="img">
     </div>
     <div>
     <div class="flex flex-wrap text-center justify-center xl:justify-normal">

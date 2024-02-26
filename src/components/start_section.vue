@@ -41,7 +41,7 @@ export default {
     <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
         @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
         @text_color_picked="(value) => text_color = value"></control_bar>
-    <div v-if="is_render">
+    <section v-if="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
                 :style="{'background-image': `url(${banner1})`}">
@@ -70,7 +70,7 @@ export default {
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 
