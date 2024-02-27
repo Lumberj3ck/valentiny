@@ -1197,6 +1197,10 @@ video {
     width: 50%;
   }
 
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
   .md\:justify-around {
     justify-content: space-around;
   }
