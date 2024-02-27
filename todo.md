@@ -6,10 +6,10 @@ c2: #05E1DD
 
 - [x] Fix bug when deleteting all from input div is not showing 
 - [x] make control bar buetiful
-- [ ] Ability for user to change images somehow xD
+- [x] Ability for user to change images somehow xD
 - [ ] Change font size
 - [ ] test downloading page on mobile
-- [ ] pdf download 
+<!-- - [ ] pdf download  -->
 
 Better textarea and input
 Guide pages for users how to upload how to use this website eg
