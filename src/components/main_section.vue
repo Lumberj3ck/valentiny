@@ -54,7 +54,7 @@ export default {
 
 
 <template>
-  <div class="flex justify-start sm:justify-center m-3 system_u">
+  <div class="flex justify-start sm:justify-center m-3 system_ui">
   <div class="flex gap-5 flex-col rounded-lg border-black border-2 p-2 w-5/6 md:flex-row">
     <div class="flex">
     <h1 class="font-semibold mr-2">Photo Mode:</h1>
