@@ -11,6 +11,8 @@ c2: #05E1DD
 - [ ] test downloading page on mobile
 - [ ] pdf download 
 
+Better textarea and input
+Guide pages for users how to upload how to use this website eg
 
 
 ## How to add ability to choose files 

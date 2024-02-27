@@ -2,6 +2,8 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
+import heart_img from '@/assets/imgs/heart_img.png'
+
 
 export default {
     setup() {
@@ -22,18 +24,40 @@ export default {
     control_bar,
     custom_input
   },
+  data(){
+    return {
+      image_url: heart_img 
+    }
+  },
+  methods:{
+    handleFileUpload(event){
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.image_url  = reader.result;
+          var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+          // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
+          this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input.${file_type}`)
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
 }
 </script>
 
 <template>
-  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
+  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
   <section v-if="is_render" class="relative">
     <div class="px-4 bg_violet" :style="primary_color">
       <div class="container mx-auto items-center flex flex-wrap">
+        <!-- <input type="file" @change="handleFileUpload" class="image_input"> -->
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
-          <img alt="..." class="max-w-full rounded-lg" src="../assets/imgs/heart_img.png" />
+          <!-- <img alt="..." class="max-w-full rounded-lg" src="../assets/imgs/heart_img.png" /> -->
+          <img :src="image_url" class='rounded-full' alt="" ref="img">
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12 mb-8">

@@ -45,7 +45,7 @@ export default {
 </script>
 
 <template>
-  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
+  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
   <section v-if="is_render" class="py-10 bg-white" :style="primary_color">
@@ -78,7 +78,6 @@ export default {
           </p>
         </div>
         <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-          <input type="file" @change="handleFileUpload" class="image_input">
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600"
             style="background-color: var(--card-primary-color)">
             <!-- <img alt="..." src="../assets/imgs/doner.jpg" class="w-full align-middle rounded-t-lg" /> -->
