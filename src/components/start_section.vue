@@ -2,7 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
-import banner from '@/assets/imgs/banner.jpg'
+import default_image_path from '@/assets/imgs/banner.jpg'
 
 export default {
     setup() {
@@ -19,10 +19,14 @@ export default {
     emits: ['move_up', 'move_down'],
     data(){
         return {
-            image_url: banner
+            image_url: default_image_path 
         }
     },
     methods:{
+    reset_both(){
+      this.resetColors()
+      this.image_url = default_image_path 
+    },
         handleFileUpload(event){
         // const file = event.files[0]
         const file = event.target.files[0];
@@ -33,7 +37,7 @@ export default {
             this.image_url  = reader.result;
             var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
             // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
-            this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input_love_potion.${file_type}`)
+            this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input_start_section.${file_type}`)
             };
             reader.readAsDataURL(file);
         }
@@ -55,7 +59,7 @@ export default {
 
 
 <template >
-    <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
+    <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
         @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
         @text_color_picked="(value) => text_color = value"></control_bar>
     <section v-if="is_render">

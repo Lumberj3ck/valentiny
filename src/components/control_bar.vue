@@ -1,4 +1,9 @@
 <script>
+import { faFileImage, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 export default {
     emits: [
         'move_down',
@@ -9,37 +14,41 @@ export default {
         'text_color_picked',
         'file_selected'
     ],
+    components:{
+        FontAwesomeIcon
+    },
     data() {
         return {
-            cities: [
-                { name: 'Las_vega', code: 'asd' },
-                { name: 'Berlin', code: 'nasdf' },
-                { name: 'London', code: 'asd' }
-            ]
+            faImageUpload: faFileImage,
+            faArrowDown: faArrowDown, 
+            faArrowUp: faArrowUp,
+            faPowerOff: faPowerOff 
         }
     }
 }
 </script>
 
 <template>
-    <div class="flex bg_white text_black control_bar justify-start gap-4 ml-3 my-1 sm:justify-center md:justify-around">
-        <div class="flex items-center gap-4 md:gap-10">
+    <div class="flex bg_white text_black control_bar justify-start gap-4 mx-2 my-1 sm:justify-center md:justify-around">
+        <div class="flex items-center gap-4 md:gap-5">
             <!-- <button @click="$emit('toggle-render')" class="button_simple">Toggle Render</button> -->
-            <i @click="$emit('toggle-render')" class="fas fa-power-off control_item"></i>
-            <button @click="$emit('bg_color_reset')" class="button_simple">Reset</button>
+            <!-- <i @click="$emit('toggle-render')" class="fas fa-power-off control_item"></i> -->
+            <FontAwesomeIcon @click="$emit('toggle-render')" :icon="faPowerOff" class="control_item"></FontAwesomeIcon>
+            <button @click="$emit('bg_color_reset')" class="button_simple w-20 h-9 md:w-24 md:h-10 flex items-center justify-center">Reset</button>
         </div>
         <div class="flex items-center gap-4 md:gap-10">
-            <i @click="$emit('move_down')" class="fa-solid fa-arrow-down control_item"></i>
-            <i @click="$emit('move_up')" class="fa-solid fa-arrow-up control_item"></i>
+            <!-- <i @click="$emit('move_down')" class="fa-solid fa-arrow-down control_item"></i> -->
+            <!-- <i @click="$emit('move_up')" class="fa-solid fa-arrow-up control_item"></i> -->
+            <FontAwesomeIcon @click="$emit('move_down')" :icon="faArrowDown" class="control_item"></FontAwesomeIcon>
+            <FontAwesomeIcon @click="$emit('move_up')" :icon="faArrowUp" class="control_item"></FontAwesomeIcon>
         </div>
-        <div class="flex items-center gap-4 md:gap-10">
-            <input type="color" @input="$emit('bg_color_picked', $event.target.value)" class="custom_input" />
-            <input type="color" @input="$emit('text_color_picked', $event.target.value)" class="custom_input" />
-        </div>
-        <div class="flex items-center">
-            <div class="bg-black w-24 h-10 flex items-center justify-center rounded-xl" @click="$refs.file_input.click()">
+        <div class="flex items-center gap-4 md:gap-5">
+            <input type="color" @input="$emit('bg_color_picked', $event.target.value)" class="custom_input"/>
+            <input type="color" @input="$emit('text_color_picked', $event.target.value)" class="custom_input"/>
+            <div class="bg-black w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
+                <FontAwesomeIcon :icon="faImageUpload" class="text-[#eec249] mr-2 font-bold"/>
                 <span class="font-semibold text-[#eec249]">Choose</span>
-                <input type="file" ref="file_input" class="hidden" @change="$emit('file_selected', $event)">
+                <input type="file" ref="file_input" class="hidden" @change="$emit('file_selected', $event)" accept="image/*">
             </div>
         </div>
     </div>
@@ -51,8 +60,6 @@ export default {
     --color: #ffde81;
     font-family: inherit;
     display: inline-block;
-    width: 5em;
-    height: 2.6em;
     line-height: 2.5em;
     overflow: hidden;
     cursor: pointer;
@@ -116,9 +123,9 @@ export default {
     cursor: pointer;
 }
 
-.arrow:hover {
+/* .arrow:hover {
     color: green;
-}
+} */
 
 /* .arrow:hover{
     color: var(--button_background)
@@ -139,20 +146,14 @@ export default {
 
 .custom_input::-webkit-color-swatch {
     border-radius: 7px;
-    border: none;
+    border: 1px solid black;
     cursor: pointer;
 }
 
 .custom_input::-moz-color-swatch {
     border-radius: 7px;
-    border: none;
-}
-
-/* .button_simple {
     border: 1px solid black;
-    border-radius: 10px;
-    padding: 4px;
-} */
+}
 
 .bg_white {
     background-color: white;

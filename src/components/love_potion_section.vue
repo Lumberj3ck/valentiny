@@ -2,7 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
-import image_path from '@/assets/imgs/love_potion.png'
+import default_image_path from '@/assets/imgs/love_potion.png'
 
 
 export default{
@@ -14,15 +14,19 @@ export default{
       text_color,
       is_render,
       primary_color,
-      resetColors
+      resetColors,
     };
   },
   data(){
     return {
-      image_url:image_path
+      image_url:default_image_path
     }
   },
   methods:{
+    reset_both(){
+      this.resetColors()
+      this.image_url = default_image_path 
+    },
     handleFileUpload(event){
       const file = event.target.files[0];
       if (file) {
@@ -46,7 +50,7 @@ export default{
 </script>
 
 <template>
-  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
+  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
 <section v-if='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
