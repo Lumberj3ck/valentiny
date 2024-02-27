@@ -30,13 +30,13 @@ export default {
 
 <template>
     <div class="flex bg_white text_black control_bar justify-start sm:gap-5 my-1 sm:justify-center md:justify-around ">
-        <div class="flex items-center  sm:gap-5 mx-1">
+        <div class="flex items-center  sm:gap-5 mx-1 gap-1">
             <!-- <button @click="$emit('toggle-render')" class="button_simple">Toggle Render</button> -->
             <!-- <i @click="$emit('toggle-render')" class="fas fa-power-off control_item"></i> -->
             <FontAwesomeIcon @click="$emit('toggle-render')" :icon="faPowerOff" class="control_item"></FontAwesomeIcon>
             <button @click="$emit('bg_color_reset')" class="button_simple w-20 h-9 md:w-24 md:h-10 flex items-center justify-center">Reset</button>
         </div>
-        <div class="flex items-center sm:gap-5 mx-1">
+        <div class="flex items-center sm:gap-5 mx-1 gap-1">
             <!-- <i @click="$emit('move_down')" class="fa-solid fa-arrow-down control_item"></i> -->
             <!-- <i @click="$emit('move_up')" class="fa-solid fa-arrow-up control_item"></i> -->
             <FontAwesomeIcon @click="$emit('move_down')" :icon="faArrowDown" class="control_item"></FontAwesomeIcon>
