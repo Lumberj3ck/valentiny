@@ -28,9 +28,7 @@ export default {
       this.image_url = default_image_path 
     },
         handleFileUpload(event){
-        // const file = event.files[0]
         const file = event.target.files[0];
-        // console.log(event.target.files)
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {

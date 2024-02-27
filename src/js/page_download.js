@@ -103,7 +103,6 @@ async function get_resourses(fullRelativeUrls, dom) {
     var zip = JSZip()
     zip.file('index.html', dom.html())
     await Promise.all(fullRelativeUrls.map(async url => {
-        console.log(url)
         const response = await fetch(url.url);
         const blob = await response.blob();
         // var relativePath = url.replace(`${baseUrl}/`, '');
