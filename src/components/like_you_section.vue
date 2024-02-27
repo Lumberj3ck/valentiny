@@ -61,9 +61,7 @@ export default {
   <section v-if="is_render" class="relative">
     <div class="px-4 bg_violet" :style="primary_color">
       <div class="container mx-auto items-center flex flex-wrap">
-        <!-- <input type="file" @change="handleFileUpload" class="image_input"> -->
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
-          <!-- <img alt="..." class="max-w-full rounded-lg" src="../assets/imgs/heart_img.png" /> -->
           <img :src="image_url" class='rounded-full' alt="" ref="img">
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -76,7 +74,7 @@ export default {
                   <div>
                     <span
                       class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                      <i class="fab fa-google"></i>
+                      <i class="fas fa-crown"></i>
                     </span>
                   </div>
                   <div>
@@ -90,7 +88,7 @@ export default {
                   <div>
                     <span
                       class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                      <i class="fab fa-google"></i>
+                      <i class="fas fa-compass"></i>
                     </span>
                   </div>
                   <div>
@@ -113,7 +111,6 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <!-- <h4 class="text-section-color">Almost started to like your movie taste</h4> -->
                     <custom_input :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Almost started to like your movie taste"></custom_input>
                   </div>
