@@ -52,10 +52,10 @@ export default{
     v-focus
     @input="resize"
     @focusout="toggleEditMode"
-    type="text"
+    @keyup.enter="$refs.textAreaRef.blur()"
+    ref="textAreaRef"
     v-model="input_value"
-    class="w-full bg_inherit"
-    ref="text_area"
+    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
     :style="primary_color"
     v-resize
     id="custom_input"
@@ -65,8 +65,10 @@ export default{
     v-focus
     @focusout="toggleEditMode"
     type="text"
+    @keyup.enter="$refs.textInputRef.blur()"
+    ref="textInputRef"
     v-model="input_value"
-    class="w-full bg_inherit"
+    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10"
     :style="primary_color"
     id="custom_input"
     />

@@ -2,7 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
-import heart_img from '@/assets/imgs/heart_img.png'
+import default_image_path from '@/assets/imgs/heart_img.png'
 
 
 export default {
@@ -26,10 +26,14 @@ export default {
   },
   data(){
     return {
-      image_url: heart_img 
+      image_url: default_image_path 
     }
   },
   methods:{
+    reset_both(){
+      this.resetColors()
+      this.image_url = default_image_path 
+    },
     handleFileUpload(event){
       const file = event.target.files[0];
       if (file) {
@@ -48,7 +52,7 @@ export default {
 </script>
 
 <template>
-  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
+  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
   <section v-if="is_render" class="relative">
