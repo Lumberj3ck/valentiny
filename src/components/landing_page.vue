@@ -1,7 +1,3 @@
-<script>
-</script>
-
-
 <template>
     <div class="md:absolute md:top-1/4 lg:top-[15%] xl:top-[5%] w-full">
     <div class=" flex flex-col md:flex-row-reverse ">
@@ -19,13 +15,13 @@
                     </p>
                 </div>
                 <p class="text-lg md:text-xl lg:text-2xl">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus in libero risus
-                    semper habitant arcu eget. Et integer facilisi eget.
+                    Express your love with heartfelt messages on Special Day! Share your feelings, memories, and dreams with your special someone. 
                 </p>
                 <div>
                 <router-link to="/page_editor"
-                    class="w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-7 py-4 font-semibold text-lg md:text-xl lg:text-2xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60">Make
-                    my own!</router-link>
+                    class="w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 hover:border-2 hover:border-black">
+                    Design my own!
+                </router-link>
                 </div>
             </div>
         </div>
