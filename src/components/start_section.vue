@@ -19,8 +19,25 @@ export default {
     emits: ['move_up', 'move_down'],
     data(){
         return {
-            banner1: banner
+            image_url: banner
         }
+    },
+    methods:{
+        handleFileUpload(event){
+        // const file = event.files[0]
+        const file = event.target.files[0];
+        // console.log(event.target.files)
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+            this.image_url  = reader.result;
+            var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+            // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
+            this.$refs.img.setAttribute("data-verbose-path",`assets/imgs/user_input_love_potion.${file_type}`)
+            };
+            reader.readAsDataURL(file);
+        }
+    }
     },
     components: {
         control_bar,
@@ -38,16 +55,15 @@ export default {
 
 
 <template >
-    <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
+    <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="resetColors"
         @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
         @text_color_picked="(value) => text_color = value"></control_bar>
     <section v-if="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
-                :style="{'background-image': `url(${banner1})`}">
+                :style="{'background-image': `url(${image_url})`}" ref="img">
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </div>
-
             <div class="container relative mx-auto">
                 <div class="items-center flex flex-wrap">
                     <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">

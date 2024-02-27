@@ -47,27 +47,37 @@ function make_full_link(path, baseUrl){
     return path.startsWith('@') || path.startsWith('.') ? baseUrl + path.slice(1) : baseUrl + path 
 }
 
-function get_css_url_resourses(resources, baseUrl) {
+function push_url(element, url, resources){
+    const baseUrl = window.location.origin;
+    const full_url = make_full_link(url, baseUrl)
+    // resources.push({url: full_url, verbose_url: url});
+    url.startsWith('data:') ? resources.push({url: url, verbose_url:element.getAttribute('data-verbose-path')}) : resources.push({url: full_url, verbose_url: url})
+}
+
+function get_css_url_resourses(resources) {
     const elementsWithBackgroundImage = document.querySelectorAll('[style*="background-image"]');
     elementsWithBackgroundImage.forEach(element => {
         const styleAttributeValue = element.getAttribute('style');
         const url = styleAttributeValue.match(/url\(['"]?([^'"]+)['"]?\)/)[1];
-        const full_url = make_full_link(url, baseUrl)
-        resources.push({url: full_url, verbose_url: url});
+        // const full_url = make_full_link(url, baseUrl)
+        // // resources.push({url: full_url, verbose_url: url});
+        // url.startsWith('data:') ? resources.push({url: url, verbose_url:element.getAttribute('data-verbose-path')}) : resources.push({url: full_url, verbose_url: url})
+        push_url(element, url, resources)
     });
 }
 
-function get_resource_links(baseUrl) {
+function get_resource_links() {
     const resources = [];
     document.querySelectorAll('img, link').forEach(element => {
         const url = element.getAttribute('src') || element.getAttribute('href');
         if (url && !url.startsWith('http')) {
             // var full_url = url.startsWith('@') || url.startsWith('.') ? baseUrl + url.slice(1) : baseUrl + url
-            var full_url = make_full_link(url, baseUrl)
-            url.startsWith('data:') ? resources.push({url: url, verbose_url:element.getAttribute('data-verbose-path')}) : resources.push({url: full_url, verbose_url: url})
+            // var full_url = make_full_link(url, baseUrl)
+            // url.startsWith('data:') ? resources.push({url: url, verbose_url:element.getAttribute('data-verbose-path')}) : resources.push({url: full_url, verbose_url: url})
+            push_url(element, url, resources)
         }
     });
-    get_css_url_resourses(resources, baseUrl)
+    get_css_url_resourses(resources)
     return resources 
 }
 
@@ -113,8 +123,8 @@ function download_archive(zip) {
 }
 
 async function get_page() {
-    const baseUrl = window.location.origin;
-    const resourse_links = get_resource_links(baseUrl)
+    // const baseUrl = window.location.origin;
+    const resourse_links = get_resource_links()
     var $ = mutate_html()
 
 
