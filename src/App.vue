@@ -1,10 +1,10 @@
 <script>
-import main_section from './components/main_section.vue'
+// import main_section from './components/main_section.vue'
 
 export default {
-  components: {
-    main_section,
-  },
+  // components: {
+  //   main_section,
+  // },
   data() {
     return {
     }
@@ -13,5 +13,6 @@ export default {
 </script>
 
 <template>
-  <main_section></main_section>
+  <!-- <main_section></main_section> -->
+  <router-view></router-view>
 </template>
