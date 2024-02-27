@@ -3,6 +3,7 @@ import { faFileImage, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 
 export default {
     emits: [
@@ -22,7 +23,8 @@ export default {
             faImageUpload: faFileImage,
             faArrowDown: faArrowDown, 
             faArrowUp: faArrowUp,
-            faPowerOff: faPowerOff 
+            faPowerOff: faPowerOff, 
+            faTrash: faTrashAlt 
         }
     }
 }
@@ -30,19 +32,20 @@ export default {
 
 <template>
     <div class="flex bg_white text_black control_bar justify-start sm:gap-5 my-1 sm:justify-center md:justify-around ">
-        <div class="flex items-center  sm:gap-5 mx-1 gap-1">
+        <div class="flex items-center  sm:gap-5 mx-1 gap-2">
             <!-- <button @click="$emit('toggle-render')" class="button_simple">Toggle Render</button> -->
             <!-- <i @click="$emit('toggle-render')" class="fas fa-power-off control_item"></i> -->
             <FontAwesomeIcon @click="$emit('toggle-render')" :icon="faPowerOff" class="control_item"></FontAwesomeIcon>
-            <button @click="$emit('bg_color_reset')" class="button_simple w-20 h-9 md:w-24 md:h-10 flex items-center justify-center">Reset</button>
+            <!-- <button @click="$emit('bg_color_reset')" class="button_simple w-20 h-9 md:w-24 md:h-10 flex items-center justify-center">Reset</button> -->
+            <FontAwesomeIcon @click="$emit('bg_color_reset')" :icon="faTrash" class="control_item"></FontAwesomeIcon>
         </div>
-        <div class="flex items-center sm:gap-5 mx-1 gap-1">
+        <div class="flex items-center sm:gap-5 mx-1 gap-2">
             <!-- <i @click="$emit('move_down')" class="fa-solid fa-arrow-down control_item"></i> -->
             <!-- <i @click="$emit('move_up')" class="fa-solid fa-arrow-up control_item"></i> -->
             <FontAwesomeIcon @click="$emit('move_down')" :icon="faArrowDown" class="control_item"></FontAwesomeIcon>
             <FontAwesomeIcon @click="$emit('move_up')" :icon="faArrowUp" class="control_item"></FontAwesomeIcon>
         </div>
-        <div class="flex items-center sm:gap-5 mx-1">
+        <div class="flex items-center sm:gap-5 mx-1 gap-1">
             <input type="color" @input="$emit('bg_color_picked', $event.target.value)" class="custom_input"/>
             <input type="color" @input="$emit('text_color_picked', $event.target.value)" class="custom_input"/>
             <div class="bg-black w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
