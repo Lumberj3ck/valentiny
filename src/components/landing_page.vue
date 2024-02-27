@@ -1,176 +1,42 @@
+<script>
+</script>
+
+
 <template>
-    <div class="container">
-
-        <div class="contents">
-
-            <div class="text-wrapper">
-                <p class="upper-text">Listen to yourself Follow your heart</p>
-                <p class="bottom-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus in libero risus
-                    semper habitant arcu eget. Et integer facilisi eget.</p>
-            </div>
-
-            <div class="button-div">
-                <!-- <button class="button">Download the App</button> -->
-                <router-link to="/page_editor" class="button">Start customizing page</router-link>
+    <div class="md:absolute md:top-1/4 lg:top-[15%] xl:top-[5%] w-full">
+    <div class=" flex flex-col md:flex-row-reverse ">
+        <div class="flex justify-center md:w-5/6 lg:w-full">
+            <img src="../assets/imgs/composition.jpg" alt="composition" class="w-11/12 min-[600px]:w-3/4 lg:w-9/12">
+        </div>
+        <div class="flex justify-center md:w-[65%] xl:w-3/4 items-center">
+            <div class="flex flex-col w-5/6 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem]">
+                <div class="mb-3 lg:mb-10">
+                    <p class="font-bold text-2xl sm:text-3xl md:text-5xl tracking-wide ">
+                        Listen to yourself.
+                    </p>
+                    <p class="font-bold text-2xl sm:text-3xl md:text-5xl ">
+                        Follow your heart
+                    </p>
+                </div>
+                <p class="text-lg md:text-xl lg:text-2xl">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus in libero risus
+                    semper habitant arcu eget. Et integer facilisi eget.
+                </p>
+                <div>
+                <router-link to="/page_editor"
+                    class="w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-7 py-4 font-semibold text-lg md:text-xl lg:text-2xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60">Make
+                    my own!</router-link>
+                </div>
             </div>
         </div>
-
-        <img src="../assets/imgs/composition.jpg">
+    </div>
     </div>
 </template>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-.poppins-bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+body {
+  font-family: 'Poppins', sans-serif;
 }
-
-body,
-html {
-    margin: 0;
-    height: 100%;
-}
-
-img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-}
-
-.container {
-    height: 100%;
-    display: flex;
-
-    align-items: center;
-}
-
-.contents {
-    display: flex;
-    flex-direction: column;
-
-    max-width: 5000px;
-    width: 100%;
-}
-
-.text-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    height: auto;
-    width: 100%;
-    margin: 0;
-    margin-bottom: 5%;
-
-    color: #2C1001;
-}
-
-.upper-text {
-    font-family: "Poppins", sans-serif;
-    font-size: 64px;
-    font-weight: 700;
-    line-height: 1.25;
-
-    margin: 0;
-    width: 90%;
-
-}
-
-.bottom-text {
-    font-family: "Poppins", sans-serif;
-    font-size: 24px;
-    font-weight: 300;
-
-    margin: 0;
-    margin-top: 5%;
-    width: 87%;
-
-    text-align: start;
-}
-
-.button {
-    background-color: #FFDE81;
-    color: #2C1001;
-
-    margin: 0;
-    margin-left: 5%;
-    width: 265px;
-    height: 78px;
-    border-radius: 36px;
-    border: 0;
-
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-}
-
-.button-div {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-}
-
-
-@media (min-width: 1700px) {
-    .text-wrapper {
-        width: 70%;
-    }
-}
-
-
-@media (max-width: 1440px) {
-    img {
-        width: 60%;
-    }
-}
-
-@media (max-width: 1232px) {
-    .upper-text {
-        font-size: 48px;
-    }
-
-    img {
-        width: 60%;
-    }
-}
-
-@media (max-width: 1024px) {
-    img {
-        width: 50%;
-    }
-
-    .upper-text {
-        font-size: 42px;
-    }
-
-    .bottom-text {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    img {
-        order: -1;
-        width: 80%;
-    }
-
-    .text-wrapper {
-        width: 70%;
-    }
-
-    .upper-text {
-        font-size: 48px;
-        margin-left: 3%;
-    }
-
-    .contents {
-        margin-left: 5%;
-    }
-
-}</style>
+</style>
