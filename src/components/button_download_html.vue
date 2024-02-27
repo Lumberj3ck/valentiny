@@ -1,6 +1,7 @@
 <script>
 import { get_page } from '@/js/page_download'
-// import html2pdf from 'html2pdf.js'
+import * as htmlToImage from 'html-to-image';
+// import { instantiate_dom, remove_redudant_ui } from '@/js/page_download';
 
 export default {
     data() {
@@ -16,22 +17,19 @@ export default {
         get_html() {
             get_page()
         },
-        // generateReport() {
-        //     this.$refs.html2Pdf.generatePdf()
-        // },
-        // exportToPDF() {
-        //     var $ = instantiate_dom()
-        //     remove_redudant_ui($)
-
-        //     html2pdf().set({
-        //         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-        //     });
-
-        //     html2pdf($.html(), {
-        //         filename: "Postcard.pdf",
-        //         paginateElementsByHeight: '1400px'
-        //     });
-        // },
+        generateReport() {
+            function filter(node){
+                // console.log(node)
+                return (node.classList ? !node.classList.contains( 'control_bar') && !node.classList.contains('system_ui') : true)
+            }
+            htmlToImage.toJpeg(document.querySelector('#app'), { quality: 0.95, filter: filter })
+                .then(function (dataUrl) {
+                    var link = document.createElement('a');
+                    link.download = 'valentine-postcard.jpeg';
+                    link.href = dataUrl;
+                    link.click();
+                });
+        }
 
     }
 }
@@ -40,9 +38,10 @@ export default {
 
 
 <template>
-    <div @click="get_html" :class="{ 'wobble-ver-right': animate }"
-        class="text-2xl fixed bottom-2 right-2 min-[540px]:bottom-6 min-[540px]:right-6 z-10 text-black cursor-pointer rounded-full flex justify-center items-center w-11 h-11 w bg-[#eec249] md:w-14 md:h-14 md:text-3xl system_ui">
-        <i class="fa-solid fa-download"></i>
+    <div :class="{ 'wobble-ver-right': animate }"
+        class="text-2xl fixed bottom-2 right-2 min-[540px]:bottom-6 min-[540px]:right-6 z-10 text-black cursor-pointer  flex justify-center items-center w-21 h-11 w bg-[#eec249] md:w-14 md:h-14 md:text-3xl system_ui">
+        <i @click="get_html" class="fa-solid fa-download"></i>
+        <button @click="generateReport" class="system_ui">Get image</button>
     </div>
 </template>
 
@@ -124,4 +123,5 @@ export default {
         -webkit-transform: translateY(-6px) rotate(1.2deg);
         transform: translateY(-6px) rotate(1.2deg);
     }
-}</style>
+}
+</style>
