@@ -9,13 +9,13 @@ const routes = [
         path: '/', 
         // name: 'Home', 
         // component: LandingPage, 
-        component: LandingPage1, 
+        component: LandingPage, 
     },
     {
         path: '/1/', 
         // name: 'Home', 
         // component: LandingPage, 
-        component: LandingPage, 
+        component: LandingPage1, 
     },
     {
         path: '/page_editor/', 
