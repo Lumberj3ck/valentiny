@@ -22,6 +22,9 @@ export default{
       image_url:default_image_path
     }
   },
+  props:{
+    photoMode: Boolean
+  },
   methods:{
     reset_both(){
       this.resetColors()
@@ -50,7 +53,7 @@ export default{
 </script>
 
 <template>
-  <control_bar @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+  <control_bar v-show="!photoMode" @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
 <section v-if='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">

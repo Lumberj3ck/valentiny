@@ -3,6 +3,7 @@ import like_you_section from './like_you_section.vue'
 import love_potion_section from './love_potion_section.vue'
 import reasons_like_you_section from './reasons_like_you_section.vue'
 import start_section from './start_section.vue'
+import download_button from './button_download_html.vue'
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
     love_potion_section,
     reasons_like_you_section,
     start_section,
+    download_button
   },
 
   data() {
@@ -20,7 +22,7 @@ export default {
         { name: 'love_potion_section', index: 3 },
         { name: 'reasons_like_you_section', index: 4 },
       ],
-      moving_component: {name: null, direction: null}
+      moving_component: {name: null, direction: null},
     }
   },
   methods: {
@@ -51,13 +53,15 @@ export default {
 
 
 <template>
+  <!-- <input type="checkbox" v-model="photoMode"> -->
+  <download_button ></download_button>
   <div class="custom_container">
     <div v-for="component in components" :key="component.name"
       :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
       :style="{ 'grid-row': component.index }"
       @animationend="moving_component = {name: null, direction: null}"
       >
-      <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)" />
+      <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)"/>
     </div>
   </div>
 </template>

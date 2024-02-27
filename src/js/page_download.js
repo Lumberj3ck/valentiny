@@ -7,7 +7,7 @@ function remove_redudant_ui(html) {
     html('.system_ui').remove();
     html('script').remove();
     html('#get_html').remove();
-    html('.image_input').remove();
+    // html('.image_input').remove();
 }
 
 function make_links_relative($) {
