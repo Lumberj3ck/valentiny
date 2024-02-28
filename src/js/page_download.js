@@ -1,14 +1,6 @@
-// import * as cheerio from 'cheerio';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
-// function remove_redudant_ui(html) {
-//     html('.control_bar').remove();
-//     html('.system_ui').remove();
-//     html('script').remove();
-//     html('#get_html').remove();
-//     // html('.image_input').remove();
-// }
 
 const baseUrl = window.location.origin;
 function removeRedundantUI(document) {
@@ -33,27 +25,6 @@ function removeRedundantUI(document) {
     }
 }
 
-
-
-
-// function make_links_relative($) {
-//     $('img').each((index, el) => {
-//         var src = $(el).attr('src')
-//         if (!src.startsWith('data:')) {
-//             $(el).attr('src', `.${src}`)
-//         }
-//         else{
-//             // var file_type = src.match('data:/([a-zA-Z]+);') 
-//             // var data_img_name = `./src/assets/imgs/user_input_${index}.${file_type}`
-//             $(el).attr('src', $(el).attr('data-verbose-path'))
-//         }
-//     });
-//     $('link').each((index, el) => {
-//         if (!$(el).attr('href').startsWith('http')) {
-//             $(el).attr('href', `.${$(el).attr('href')}`);
-//         }
-//     });
-// }
 function is_url_relative(url){
     return url.startsWith('http') ? false : true
 }
@@ -93,14 +64,17 @@ function instantiate_dom_node() {
     return dom_node
 }
 
-function make_new_url_path(css_property) {
+function make_new_url_path(css_property, element) {
     const url_regex = /url\(['"]?([^'"]+)['"]?\)/
     var url = css_property.match(url_regex)[1]
     if (url.startsWith('http')) {
         url = url.replace(baseUrl, '.')
     }
+    else if (url.startsWith('data:')){
+        url = element.getAttribute('data-verbose-path') 
+    }
     else {
-        return css_property
+        url = '.' + url 
     }
     return css_property.replace(url_regex, `url(${url})`)
 }
@@ -109,7 +83,7 @@ function mutate_css_links(node) {
     const elementsWithBackgroundImage = node.querySelectorAll('[style*="background-image"]');
     elementsWithBackgroundImage.forEach(element => {
         const styleAttributeValue = element.getAttribute('style');
-        var mutated_style = make_new_url_path(styleAttributeValue, baseUrl)
+        var mutated_style = make_new_url_path(styleAttributeValue, element)
         element.setAttribute('style', mutated_style)
     });
 }
