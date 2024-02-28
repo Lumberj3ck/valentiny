@@ -23,7 +23,8 @@ export default{
     </label>
     </div>
     <download_button></download_button>
-    <router-link to="user-guide/" class="font-semibold text-base">Guide</router-link>
+    <router-link to="user-guide/" class="font-semibold text-base" style="text-underline-offset: 1px;
+    text-decoration: underline;">Guide</router-link>
   </div>
 </div>
 </template>
