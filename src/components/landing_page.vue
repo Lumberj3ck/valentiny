@@ -14,8 +14,8 @@
                         Follow your heart
                     </p>
                 </div>
-                <p class="text-lg md:text-xl lg:text-2xl">
-                    Express your love with heartfelt messages on Special Day! Share your feelings, memories, and dreams with your special someone. 
+                <p class="text-lg md:text-xl">
+                    Express your love with heartfelt messages on Special Day! Share your feelings, memories in your postcard. 
                 </p>
                 <div>
                 <router-link to="/page_editor"
