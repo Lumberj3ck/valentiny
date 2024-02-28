@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MainSection from '@/components/main_section.vue'
 import LandingPage from '@/components/landing_page.vue'
-import LandingPage1 from '@/components/landing_page1.vue'
+import FeaturesGuide from '@/components/features_guide.vue'
 
 
 const routes = [
@@ -12,13 +12,13 @@ const routes = [
         component: LandingPage, 
     },
     {
-        path: '/1/', 
+        path: '/user-guide/', 
         // name: 'Home', 
         // component: LandingPage, 
-        component: LandingPage1, 
+        component: FeaturesGuide, 
     },
     {
-        path: '/page_editor/', 
+        path: '/page-editor/', 
         component: MainSection, 
     },
 ]
