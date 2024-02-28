@@ -18,7 +18,7 @@
                     Express your love with heartfelt messages on Special Day! Share your feelings, memories in your postcard. 
                 </p>
                 <div>
-                <router-link to="/page_editor"
+                <router-link to="/page-editor"
                     class="w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 hover:border-2 hover:border-black">
                     Design my own!
                 </router-link>

@@ -3,7 +3,7 @@ import like_you_section from './like_you_section.vue'
 import love_potion_section from './love_potion_section.vue'
 import reasons_like_you_section from './reasons_like_you_section.vue'
 import start_section from './start_section.vue'
-import download_button from './button_download_html.vue'
+import navigation_bar from './navigation_bar.vue'
 
 export default {
   components: {
@@ -11,7 +11,7 @@ export default {
     love_potion_section,
     reasons_like_you_section,
     start_section,
-    download_button
+    navigation_bar
   },
 
   data() {
@@ -52,22 +52,8 @@ export default {
 }
 </script>
 
-
 <template>
-  <div class="flex justify-start sm:justify-center m-3 system_ui">
-  <div class="flex gap-5 flex-col rounded-lg border-black border-2 p-2 w-5/6 md:flex-row">
-    <div class="flex">
-    <h1 class="font-semibold mr-2">Photo Mode:</h1>
-    <label class="toggle-switch">
-      <input type="checkbox" v-model="photoMode">
-      <div class="toggle-switch-background">
-        <div class="toggle-switch-handle"></div>
-      </div>
-    </label>
-    </div>
-    <download_button></download_button>
-  </div>
-</div>
+<navigation_bar @photomode_toggle="photoMode = !photoMode"></navigation_bar>
   <div class="custom_container">
     <div v-for="component in components" :key="component.name"
       :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
