@@ -797,10 +797,6 @@ video {
   max-width: 15rem;
 }
 
-.max-w-full {
-  max-width: 100%;
-}
-
 .max-w-sm {
   max-width: 24rem;
 }
@@ -1202,6 +1198,22 @@ video {
   .min-\[540px\]\:ml-\[-50px\] {
     margin-left: -50px;
   }
+
+  .min-\[540px\]\:w-8\/12 {
+    width: 66.666667%;
+  }
+
+  .min-\[540px\]\:w-9\/12 {
+    width: 75%;
+  }
+
+  .min-\[540px\]\:w-3\/12 {
+    width: 25%;
+  }
+
+  .min-\[540px\]\:w-3\/4 {
+    width: 75%;
+  }
 }
 
 @media (min-width: 600px) {
@@ -1392,11 +1404,6 @@ video {
 
   .lg\:pt-24 {
     padding-top: 6rem;
-  }
-
-  .lg\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
   }
 
   .lg\:text-xl {
