@@ -87,7 +87,6 @@ export default {
         <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600"
             style="background-color: var(--card-primary-color)">
-            <!-- <img alt="..." src="../assets/imgs/doner.jpg" class="w-full align-middle rounded-t-lg" /> -->
             <img alt="..." :src="image_url" class="w-full align-middle rounded-t-lg" data-verbose-path="" ref="img"/>
             <blockquote class="relative p-8 mb-4">
               <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
