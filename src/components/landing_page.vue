@@ -2,7 +2,7 @@
     <div class="md:absolute md:top-1/4 lg:top-[15%] xl:top-[5%] w-full">
     <div class=" flex flex-col md:flex-row-reverse ">
         <div class="flex justify-center md:w-5/6 lg:w-full">
-            <img src="../assets/imgs/composition.jpg" alt="composition" class="w-11/12 min-[600px]:w-3/4 lg:w-9/12">
+            <img src="../assets/imgs/composition.jpg" alt="composition" class="w-11/12 min-[540px]:w-3/4 lg:w-9/12">
         </div>
         <div class="flex justify-center md:w-[65%] xl:w-3/4 items-center">
             <div class="flex flex-col w-5/6 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem]">
