@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="mb-4">
-        <h1 class="text-2xl md:text-3xl text-[#ffbb00] font-bold">Welcome to website launch guide!</h1>
+        <h1 class="text-2xl md:text-3xl text-[#ffbb00] font-bold">Website launch guide</h1>
         <p style="color: black">After downloading .zip file of your website you need to complete following steps:</p>
         </div>
         <ol>
