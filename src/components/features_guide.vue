@@ -12,37 +12,40 @@
 
 <template>
     <div class="container">
-        <h1 class="font-bold">Welcome to the Page Editor!</h1>
+        <h1 class="font-bold">Welcome to the Page Editor guide!</h1>
+        <div class="text-black">
+            If you have questions on how to upload your page check <router-link class="text-[#09abeb]" to="/website-upload">this</router-link> article out!
+        </div>
         <p class="text-black">When you first load the page editor, you'll have several options for customizing your
             template:</p>
         <ol >
-            <li><strong class="text-yellow">Edit Text:</strong>
+            <li class="mb-4"><strong class="text-yellow">Edit Text:</strong>
                 <div class="text-black">Click on any text block to start editing it. Simply click on the text you want to
                     modify, and start typing.</div>
             </li>
 
-            <li><strong class="text-yellow">Choose Template Picture:</strong>
+            <li class="mb-4"><strong class="text-yellow">Choose Template Picture:</strong>
                 <div class="text-black">Click on the <strong>"Choose"</strong> button to select a template picture for
                     your postcard. Browse and choose the one that best fits your message and style.</div>
             </li>
 
-            <li><strong class="text-yellow">Color Pickers:</strong>
+            <li class="mb-4"><strong class="text-yellow">Color Pickers:</strong>
                 <div class="text-black"> Use the color pickers to customize the background color and text color of your
                     postcard. Click on the color picker icons to open the color selection panel, and choose your desired
                     colors.</div>
             </li>
 
-            <li><strong class="text-yellow">Rearrange Blocks:</strong>
+            <li class="mb-4"><strong class="text-yellow">Rearrange Blocks:</strong>
                 <div class="text-black">Click on the arrows to rearrange the blocks inside your postcard.</div>
             </li>
 
-            <li><strong class="text-yellow">Reset Button:</strong>
+            <li class="mb-4"><strong class="text-yellow">Reset Button:</strong>
                 <div class="text-black">Use the <strong>"Reset"</strong> button to reset any changes you've made to the
                     picked colors and image. Clicking this button will revert the background color, text color, and template
                     picture back to their original settings.</div>
             </li>
 
-            <li><strong class="text-yellow">Turn Off Button:</strong>
+            <li class="mb-4"><strong class="text-yellow">Turn Off Button:</strong>
                 <div class="text-black">Toggle the <strong>"Reset"</strong> button to hide or disable the current block.
                     This allows you to temporarily remove a block from your postcard without deleting it entirely.</div>
             </li>
@@ -91,9 +94,9 @@ ul {
     margin-bottom: 15px;
 }
 
-li {
+/* li {
     margin-bottom: 5px;
-}
+} */
 
 strong {
     font-weight: bold;
