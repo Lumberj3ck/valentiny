@@ -2,7 +2,7 @@
 import control_bar from './control_bar.vue'
 import custom_input from './custom_input.vue'
 import useControlBar from '../js/control_bar.js'
-import default_image_path from '@/assets/imgs/banner.jpg'
+import default_image_path from '../assets/imgs/banner.jpg'
 
 export default {
     setup() {

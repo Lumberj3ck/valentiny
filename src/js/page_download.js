@@ -81,23 +81,6 @@ function get_resource_links() {
     return resources 
 }
 
-// function make_full_links(relativeResources, baseUrl) {
-//     const fullRelativeUrls = relativeResources.map(el => {
-//         // return url.startsWith('@') ? baseUrl + url.slice(1) :baseUrl + url
-//         if (el.url.startsWith('@') || el.url.startsWith('.')) {
-//             return baseUrl + el.url.slice(1)
-//         }
-//         else if (el.url.startsWith('data:')) {
-//             return el.url
-//         }
-//         else {
-//             return baseUrl + el.url
-//         }
-
-//     });
-//     console.log(fullRelativeUrls)
-//     return fullRelativeUrls
-// }
 
 async function get_resourses(fullRelativeUrls, dom) {
     var zip = JSZip()
