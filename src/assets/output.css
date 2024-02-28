@@ -685,6 +685,10 @@ video {
   margin-top: 1.5rem;
 }
 
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -1126,6 +1130,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
 .opacity-\[0\.5\] {
   opacity: 0.5;
 }
@@ -1259,6 +1268,10 @@ video {
     margin-top: 1.75rem;
   }
 
+  .md\:mb-2 {
+    margin-bottom: 0.5rem;
+  }
+
   .md\:h-10 {
     height: 2.5rem;
   }
@@ -1342,6 +1355,10 @@ video {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .md\:tracking-wide {
+    letter-spacing: 0.025em;
   }
 }
 
