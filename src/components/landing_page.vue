@@ -6,15 +6,15 @@
         </div>
         <div class="flex justify-center md:w-[65%] xl:w-3/4 items-center">
             <div class="flex flex-col w-5/6 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem]">
-                <div class="mb-3 lg:mb-10">
-                    <p class="font-bold text-2xl sm:text-3xl md:text-5xl tracking-wide ">
+                <div class="mb-4 lg:mb-10">
+                    <p class="font-bold text-2xl sm:text-3xl md:text-5xl mb-1 md:tracking-wide md:mb-2">
                         Listen to yourself.
                     </p>
-                    <p class="font-bold text-2xl sm:text-3xl md:text-5xl ">
+                    <p class="font-bold text-2xl sm:text-3xl md:text-5xl md:tracking-wide">
                         Follow your heart
                     </p>
                 </div>
-                <p class="text-lg md:text-xl">
+                <p class="text-lg md:text-xl text-gray-600">
                     Express your love with heartfelt messages on Special Day! Share your feelings, memories in your postcard. 
                 </p>
                 <div>
