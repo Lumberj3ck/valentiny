@@ -29,21 +29,36 @@ function is_url_relative(url){
     return url.startsWith('http') ? false : true
 }
 
-function makeLinksRelative(document) {
+function set_verbose_path_as_src(el, src, attr_name){
+        if (src && !src.startsWith('data:')) {
+            el.setAttribute(attr_name, `.${src}`);
+        } else {
+            const verbosePath = el.getAttribute('data-verbose-path');
+            if (verbosePath) {
+                el.setAttribute(attr_name, verbosePath);
+            }
+        }
+}
+
+function set_resourse_path(document) {
     const images = document.querySelectorAll('img');
     images.forEach((el, index) => {
         const src = el.getAttribute('src');
         if (!is_url_relative(src)){
             return
         }
-        if (src && !src.startsWith('data:')) {
-            el.setAttribute('src', `.${src}`);
-        } else {
-            const verbosePath = el.getAttribute('data-verbose-path');
-            if (verbosePath) {
-                el.setAttribute('src', verbosePath);
-            }
-        }
+        set_verbose_path_as_src(el, src, 'src')
+        // if (!is_url_relative(src)){
+        //     return
+        // }
+        // if (src && !src.startsWith('data:')) {
+        //     el.setAttribute('src', `.${src}`);
+        // } else {
+        //     const verbosePath = el.getAttribute('data-verbose-path');
+        //     if (verbosePath) {
+        //         el.setAttribute('src', verbosePath);
+        //     }
+        // }
     });
 
     const links = document.querySelectorAll('link');
@@ -52,9 +67,16 @@ function makeLinksRelative(document) {
         if (!is_url_relative(href)){
             return
         }
-        if (href && !href.startsWith('http')) {
-            el.setAttribute('href', `.${href}`);
-        }
+        set_verbose_path_as_src(el, href, 'href')
+        // if (href && !href.startsWith('data:')) {
+        //     el.setAttribute('href', `.${href}`);
+        // }
+        // else{
+        //     const verbosePath = el.getAttribute('data-verbose-path');
+        //     if (verbosePath) {
+        //         el.setAttribute('src', verbosePath);
+        //     }
+        // }
     });
 }
 
@@ -92,7 +114,7 @@ function mutate_css_links(node) {
 function mutate_html() {
     var dom = instantiate_dom_node()
     removeRedundantUI(dom)
-    makeLinksRelative(dom)
+    set_resourse_path(dom)
     mutate_css_links(dom)
 
     return dom
@@ -129,20 +151,33 @@ function get_css_url_resourses(resources) {
     });
 }
 
+function filter_foreign_and_push(url, element, resources){
+    if (url.startsWith(baseUrl)) {
+        push_url(element, url, resources)
+    }
+    else if (url.startsWith('http')) {
+        return;
+    }
+    else {
+        push_url(element, url, resources)
+    }
+}
+
 function get_resource_links() {
     const resources = [];
     document.querySelectorAll('img, link').forEach(element => {
         const url = element.getAttribute('src') || element.getAttribute('href');
         if (url) {
-            if (url.startsWith(baseUrl)) {
-                push_url(element, url, resources)
-            }
-            else if (url.startsWith('http')) {
-                return;
-            }
-            else {
-                push_url(element, url, resources)
-            }
+            // if (url.startsWith(baseUrl)) {
+            //     push_url(element, url, resources)
+            // }
+            // else if (url.startsWith('http')) {
+            //     return;
+            // }
+            // else {
+            //     push_url(element, url, resources)
+            // }
+            filter_foreign_and_push(url, element, resources)
         }
     });
     get_css_url_resourses(resources)
