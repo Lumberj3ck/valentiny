@@ -92,7 +92,7 @@ function mutate_css_links(node) {
 
 function remove_crossorigin_attribute(node){
     // remove in sake of better user experience
-    node.querySelectorAll('link[rel="stylesheet"]').forEach((el) => el.removeAttribute('crossorigin'))
+    node.querySelectorAll('link[rel="stylesheet"][href]:not([href^="http"]').forEach((el) => el.removeAttribute('crossorigin'))
 }
 
 
