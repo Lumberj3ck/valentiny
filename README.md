@@ -1,4 +1,4 @@
-# Valentiny
+# [Valentiny](https://www.my-valentine-postcard.site/)
 
 ## Description
 This project is a customizable Valentine postcard created with Vue.js framework. Originally crafted as a surprise for my girlfriend on Valentine's Day, it started as a [small index.html](https://github.com/Lumberj3ck/valentine_postcard) postcard landing. 
@@ -33,9 +33,9 @@ To use this project, follow these direct commands:
    ```
     npm run build
    ```
-## [Project Features](https://postcard-vue.vercel.app/user-guide/)
+## [Project Features](https://www.my-valentine-postcard.site/user-guide/)
 
-## [How to upload page guide](https://postcard-vue.vercel.app/website-upload)
+## [How to upload page guide](https://www.my-valentine-postcard.site/website-upload)
 
 ## Contribution
 Contributions to this project are welcome and encouraged. If you have ideas for improvements, new features, or bug fixes, feel free to submit a pull request. Here are some ways you can contribute:
