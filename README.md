@@ -33,6 +33,9 @@ To use this project, follow these direct commands:
    ```
     npm run build
    ```
+## [Project Features](https://postcard-vue.vercel.app/user-guide/)
+
+## [How to upload page guide](https://postcard-vue.vercel.app/website-upload)
 
 ## Contribution
 Contributions to this project are welcome and encouraged. If you have ideas for improvements, new features, or bug fixes, feel free to submit a pull request. Here are some ways you can contribute:
