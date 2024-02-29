@@ -48,17 +48,6 @@ function set_resourse_path(document) {
             return
         }
         set_verbose_path_as_src(el, src, 'src')
-        // if (!is_url_relative(src)){
-        //     return
-        // }
-        // if (src && !src.startsWith('data:')) {
-        //     el.setAttribute('src', `.${src}`);
-        // } else {
-        //     const verbosePath = el.getAttribute('data-verbose-path');
-        //     if (verbosePath) {
-        //         el.setAttribute('src', verbosePath);
-        //     }
-        // }
     });
 
     const links = document.querySelectorAll('link');
@@ -68,15 +57,6 @@ function set_resourse_path(document) {
             return
         }
         set_verbose_path_as_src(el, href, 'href')
-        // if (href && !href.startsWith('data:')) {
-        //     el.setAttribute('href', `.${href}`);
-        // }
-        // else{
-        //     const verbosePath = el.getAttribute('data-verbose-path');
-        //     if (verbosePath) {
-        //         el.setAttribute('src', verbosePath);
-        //     }
-        // }
     });
 }
 
@@ -110,12 +90,18 @@ function mutate_css_links(node) {
     });
 }
 
+function remove_crossorigin_attribute(node){
+    // remove in sake of better user experience
+    node.querySelectorAll('link[rel="stylesheet"]').forEach((el) => el.removeAttribute('crossorigin'))
+}
+
 
 function mutate_html() {
     var dom = instantiate_dom_node()
     removeRedundantUI(dom)
     set_resourse_path(dom)
     mutate_css_links(dom)
+    remove_crossorigin_attribute(dom)
 
     return dom
 }
@@ -168,15 +154,6 @@ function get_resource_links() {
     document.querySelectorAll('img, link').forEach(element => {
         const url = element.getAttribute('src') || element.getAttribute('href');
         if (url) {
-            // if (url.startsWith(baseUrl)) {
-            //     push_url(element, url, resources)
-            // }
-            // else if (url.startsWith('http')) {
-            //     return;
-            // }
-            // else {
-            //     push_url(element, url, resources)
-            // }
             filter_foreign_and_push(url, element, resources)
         }
     });
