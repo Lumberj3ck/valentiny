@@ -7,12 +7,10 @@ c2: #05E1DD
 - [x] Fix bug when deleteting all from input div is not showing 
 - [x] make control bar buetiful
 - [x] Ability for user to change images somehow xD
+- [x] test downloading page on mobile
+- [x] Better textarea and input
+- [x] Guide pages for users how to upload how to use this website eg
 - [ ] Change font size
-- [ ] test downloading page on mobile
-<!-- - [ ] pdf download  -->
-
-Better textarea and input
-Guide pages for users how to upload how to use this website eg
 
 
 ## How to add ability to choose files 
@@ -52,6 +50,9 @@ import image_path from '@/assets/imgs/love_potion.png'
 5. Import new component
 6. Add new object into main_section components reactive list
 7. Add div the same as for other sections
+8. Add image path (if it's  present inside section)
+9. Add the function for handling file upload
+10. Change the name for image path inside handle upload
 
 
 1. Readme for users

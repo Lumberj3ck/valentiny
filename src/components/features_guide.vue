@@ -7,7 +7,6 @@
 //         document.querySelector('body').style.backgroundColor = 'inherit'
 //     }
 // }
-
 </script>
 
 <template>
