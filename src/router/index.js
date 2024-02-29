@@ -8,14 +8,10 @@ import WebsiteUploadGuide from '@/components/website_upload_guide.vue'
 const routes = [
     {
         path: '/', 
-        // name: 'Home', 
-        // component: LandingPage, 
         component: LandingPage, 
     },
     {
         path: '/user-guide/', 
-        // name: 'Home', 
-        // component: LandingPage, 
         component: FeaturesGuide, 
     },
     {

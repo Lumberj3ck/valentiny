@@ -48,7 +48,7 @@ export default {
 
 
 <style>
-.wobble-ver-right {
+/* .wobble-ver-right {
     -webkit-animation: wobble-ver-right 1.3s both;
     animation: wobble-ver-right 1.5s both infinite;
     animation-delay: 2s;
@@ -124,5 +124,5 @@ export default {
         -webkit-transform: translateY(-6px) rotate(1.2deg);
         transform: translateY(-6px) rotate(1.2deg);
     }
-}
+} */
 </style>
