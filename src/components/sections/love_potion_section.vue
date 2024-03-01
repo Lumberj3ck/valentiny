@@ -63,7 +63,7 @@ export default{
   <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
         <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img">
-        <!-- <custom_image_input :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></custom_image_input> -->
+        <!-- <custom_image_input image_tag custom_class="rounded-full aspect-square object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></custom_image_input> -->
     </div>
     <div>
     <div class="flex flex-wrap text-center justify-center xl:justify-normal">

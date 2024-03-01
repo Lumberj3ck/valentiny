@@ -51,7 +51,7 @@ export default {
             <div class="button_bg w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
                 <FontAwesomeIcon :icon="faImageUpload" class="mr-2 font-bold text-secondary-color"/>
                 <span class="font-semibold text-secondary-color">Choose</span>
-                <input type="file" ref="file_input" class="hidden" @change="$emit('file_selected', $event)" accept="image/*">
+                <input type="file" ref="file_input" class="hidden" @change="$emit('file_selected', $event)" accept="image/*" @click="$refs.file_input.value = null">
             </div>
         </div>
     </div>
