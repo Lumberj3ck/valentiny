@@ -48,11 +48,11 @@ export default {
         <div class="flex items-center sm:gap-5 mx-1 gap-1">
             <input type="color" @input="$emit('bg_color_picked', $event.target.value)" class="custom_input"/>
             <input type="color" @input="$emit('text_color_picked', $event.target.value)" class="custom_input"/>
-            <div class="button_bg w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
+            <!-- <div class="button_bg w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
                 <FontAwesomeIcon :icon="faImageUpload" class="mr-2 font-bold text-secondary-color"/>
                 <span class="font-semibold text-secondary-color">Choose</span>
                 <input type="file" ref="file_input" class="hidden" @change="$emit('file_selected', $event)" accept="image/*" @click="$refs.file_input.value = null">
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

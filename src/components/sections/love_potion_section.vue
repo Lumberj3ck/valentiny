@@ -3,7 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import useControlBar from '@/js/control_bar.js'
 import default_image_path from '@/assets/imgs/love_potion.png'
-// import custom_image_input from '@/components/utils/image_input.vue'
+import image_input from '@/components/utils/image_input.vue'
 
 
 export default{
@@ -49,7 +49,7 @@ export default{
   components: {
     control_bar,
     custom_input,
-    // custom_image_input
+    image_input 
   },
   emits:['move_up', 'move_down'],
 }
@@ -62,8 +62,8 @@ export default{
 <section v-show='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
   <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
-        <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img">
-        <!-- <custom_image_input image_tag custom_class="rounded-full aspect-square object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></custom_image_input> -->
+        <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img"> -->
+        <image_input image_tag custom_class="rounded-full aspect-square object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
     </div>
     <div>
     <div class="flex flex-wrap text-center justify-center xl:justify-normal">

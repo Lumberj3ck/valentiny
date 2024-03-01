@@ -1,4 +1,7 @@
 <script>
+import { faPencil } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 export default {
     props: {
         image_url: String,
@@ -8,8 +11,12 @@ export default {
     },
     data() {
         return {
-            user_custom_img: null
+            user_custom_img: null,
+            faPencil: faPencil
         }
+    },
+    components:{
+        FontAwesomeIcon
     },
     watch: {
         reset_img(newValue, oldValue) {
@@ -48,14 +55,36 @@ export default {
 
 <template>
     <template v-if="image_tag">
-    <img @click="$refs.file_input.click()" :src="displayedImage"
+        <div class="image_cont">
+        <img @click="$refs.file_input.click()" :src="displayedImage"
         :class="custom_class" ref="img"/>
-        <input type="file" ref="file_input" class="hidden" @change="handleFileUpload" @click="$refs.file_input.value = null" accept="image/*" />
-    </template>
-    <template v-else>
-        <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
-            :style="{'background-image': `url(${displayedImage})`}" ref="img">
-            <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
+        <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui" :icon="faPencil"></FontAwesomeIcon>
         </div>
     </template>
+    <template v-else>
+        <div :class="custom_class"
+            :style="{'background-image': `url(${displayedImage})`}" ref="img">
+            <slot name="background_overlay"></slot>
+            <!-- <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span> -->
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui" :icon="faPencil"></FontAwesomeIcon>
+        </div>
+    </template>
+        <input type="file" ref="file_input" class="hidden" @change="handleFileUpload" @click="$refs.file_input.value = null" accept="image/*" />
 </template>
+
+
+<style>
+.image_cont{
+    position: relative;
+    display: inline-block;
+}
+.edit-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  cursor: pointer;
+  color: var(--soft-red-color)
+}
+</style>
