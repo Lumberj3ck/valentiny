@@ -3,7 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import useControlBar from '@/js/control_bar.js'
 import default_image_path from '@/assets/imgs/love_potion.png'
-// import image_input from '@/components/utils/image_input.vue'
+// import custom_image_input from '@/components/utils/image_input.vue'
 
 
 export default{
@@ -20,7 +20,8 @@ export default{
   },
   data(){
     return {
-      image_url:default_image_path
+      image_url:default_image_path,
+      reset_img: false
     }
   },
   props:{
@@ -29,7 +30,8 @@ export default{
   methods:{
     reset_both(){
       this.resetColors()
-      this.image_url = default_image_path 
+      // this.image_url = default_image_path 
+      this.reset_img = true
     },
     handleFileUpload(event){
       const file = event.target.files[0];
@@ -46,7 +48,8 @@ export default{
   },
   components: {
     control_bar,
-    custom_input
+    custom_input,
+    // custom_image_input
   },
   emits:['move_up', 'move_down'],
 }
@@ -56,10 +59,11 @@ export default{
   <control_bar v-show="!photoMode" @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
-<section v-if='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
+<section v-show='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
   <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
         <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img">
+        <!-- <custom_image_input :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></custom_image_input> -->
     </div>
     <div>
     <div class="flex flex-wrap text-center justify-center xl:justify-normal">
