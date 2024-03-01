@@ -3,6 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import useControlBar from '@/js/control_bar.js'
 import default_image_path from '@/assets/imgs/love_potion.png'
+// import image_input from '@/components/utils/image_input.vue'
 
 
 export default{
