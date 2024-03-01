@@ -19,7 +19,7 @@
                 </p>
                 <div>
                 <router-link to="/page-editor"
-                    class="w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 hover:border-2 hover:border-black">
+                    class="button_bg_color w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 landing_button">
                     Design my own!
                 </router-link>
                 </div>
@@ -32,7 +32,20 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+.landing_button{
+    outline: none;
+}
+.landing_button:hover{
+    outline: 2px solid var(--primary-attention-color);
+}
+
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+.button_bg_color{
+    background-color: var(--land-button-yellow);
+}
+
+
 </style>

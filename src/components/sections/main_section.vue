@@ -3,7 +3,7 @@ import like_you_section from './like_you_section.vue'
 import love_potion_section from './love_potion_section.vue'
 import reasons_like_you_section from './reasons_like_you_section.vue'
 import start_section from './start_section.vue'
-import navigation_bar from './navigation_bar.vue'
+import navigation_bar from '@/components/utils/navigation_bar.vue'
 
 export default {
   components: {
@@ -66,74 +66,6 @@ export default {
 
 
 <style>
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.toggle-switch input[type="checkbox"] {
-  display: none;
-}
-
-.toggle-switch-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000000;
-  border-radius: 20px;
-  box-shadow: inset 0 0 0 2px #ccc;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.toggle-switch-handle {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 20px;
-  height: 20px;
-  background-color: #eec249;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
-}
-
-.toggle-switch::before {
-  content: "";
-  position: absolute;
-  top: -25px;
-  right: -35px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #aaa;
-  text-shadow: 1px 1px #fff;
-  transition: color 0.3s ease-in-out;
-}
-
-.toggle-switch input[type="checkbox"]:checked+.toggle-switch-handle {
-  transform: translateX(45px);
-  box-shadow: 0 2px 5px rgb(255, 255, 255), 0 0 0 3px #05c46b;
-}
-
-.toggle-switch input[type="checkbox"]:checked+.toggle-switch-background {
-  background-color: #eec249;
-  box-shadow: inset 0 0 0 2px #ffffff;
-}
-
-.toggle-switch input[type="checkbox"]:checked+.toggle-switch:before {
-  content: "On";
-  color: #05c46b;
-  right: -15px;
-}
-
-.toggle-switch input[type="checkbox"]:checked+.toggle-switch-background .toggle-switch-handle {
-  transform: translateX(30px);
-  background-color: black;
-}
 
 .custom_container {
   display: grid;
