@@ -64,3 +64,14 @@ Rearange sections using arrows
 Reset by clicking on button
 Customise and click on download button to simple get the index.html 
 Then either edit by yourself or just public on vercel
+
+
+## Bugs
+when togglind render state is reseting 
+So how to fix 
+toggle via v-show
+but on page download
+
+remove by selector and then parse all the links and then only the nremove all ui
+
+when choose one photo after reset you can't choose the same 
