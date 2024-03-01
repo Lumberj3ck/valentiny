@@ -62,7 +62,7 @@ export default{
   width: 20px;
   height: 20px;
   /* background-color: #eec249; */
-  background-color: var(--guide-secondary-color);
+  background-color: var(--warm-yellow-color);
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
@@ -87,7 +87,7 @@ export default{
 
 .toggle-switch input[type="checkbox"]:checked+.toggle-switch-background {
   /* background-color: #eec249; */
-  background-color: var(--guide-secondary-color);
+  background-color: var(--warm-yellow-color);
   box-shadow: inset 0 0 0 2px #ffffff;
 }
 

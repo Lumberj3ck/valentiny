@@ -49,8 +49,8 @@ export default {
             <input type="color" @input="$emit('bg_color_picked', $event.target.value)" class="custom_input"/>
             <input type="color" @input="$emit('text_color_picked', $event.target.value)" class="custom_input"/>
             <div class="bg-black w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
-                <FontAwesomeIcon :icon="faImageUpload" class="text-[#eec249] mr-2 font-bold"/>
-                <span class="font-semibold text-[#eec249]">Choose</span>
+                <FontAwesomeIcon :icon="faImageUpload" class="mr-2 font-bold text-secondary-color"/>
+                <span class="font-semibold text-secondary-color">Choose</span>
                 <input type="file" ref="file_input" class="hidden" @change="$emit('file_selected', $event)" accept="image/*">
             </div>
         </div>
@@ -59,30 +59,8 @@ export default {
 
 
 <style>
-.button_simple {
-    --color: #ffde81;
-    font-family: inherit;
-    display: inline-block;
-    line-height: 2.5em;
-    overflow: hidden;
-    cursor: pointer;
-    /* margin: 20px; */
-    font-size: 17px;
-    z-index: 1;
-    color: black;
-    border: 2px solid black;
-    border-radius: 6px;
-    position: relative;
-}
-
-.button_simple::before {
-    position: absolute;
-    content: '';
-    background: var(--color);
-    width: 150px;
-    height: 200px;
-    z-index: -1;
-    border-radius: 50%;
+.text-secondary-color{
+    color: var(--warm-yellow-color)
 }
 
 .control_item {
@@ -92,7 +70,8 @@ export default {
 }
 
 .control_item:hover {
-    color: #ffde81;
+    /* color: #ffde81; */
+    color: var(--warm-yellow-color);
 }
 
 @media (min-width: 640px) {

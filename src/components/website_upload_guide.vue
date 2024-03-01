@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="mb-4">
-        <h1 class="text-2xl md:text-3xl text-[#ffbb00] font-bold">Website launch guide</h1>
+        <h1 class="text-xl md:text-3xl font-bold">Website launch guide</h1>
         <p style="color: black">After downloading .zip file of your website you need to complete following steps:</p>
         </div>
         <ol>
@@ -12,8 +12,8 @@
             </li>
             <li class="mb-4">
                 <strong class="text-lg">Prepare Your GitHub Account:</strong>
-                <div class="bullet-point">If you haven't already, sign up for a <a href="https://github.com"
-                        style="color: #09abeb">GitHub</a> account. GitHub is a platform for hosting your code
+                <div class="bullet-point">If you haven't already, sign up for a <a href="https://github.com" class="link"
+                        >GitHub</a> account. GitHub is a platform for hosting your code
                     repositories.
                 </div>
             </li>
@@ -30,7 +30,7 @@
                     directly. This prevents potential issues that may arise from uploading an entire folder at once. Use
                     drag & drop if not all the files were uploaded
                     <!-- <img src="./images/quick-setup.png" style="width:100%;"> -->
-                    Here click on <a style="color: rgb(9, 171, 235)"><u>uploading an existing file</u></a> link and upload
+                    Here click on <a class="link"><u>uploading an existing file</u></a> link and upload
                     your files
                 </div>
             </li>
@@ -63,14 +63,8 @@
 
 
 <style scoped>
-body {
-    background-color: #242424;
-}
-
-
-img {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.link{
+    color: var(--guide-link-color)
 }
 
 .container {
@@ -81,7 +75,7 @@ img {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: white;
-    color: #ffbb00;
+    color: var(--warm-yellow-color);
 }
 
 .bullet-point {
