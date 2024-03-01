@@ -56,7 +56,7 @@ export default{
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
 <section v-if='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
-  <div class="container mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
+  <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
         <img :src="image_url" class='rounded-full' alt="" ref="img">
     </div>
