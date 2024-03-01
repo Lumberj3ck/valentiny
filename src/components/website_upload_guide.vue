@@ -66,7 +66,9 @@
 .link{
     color: var(--guide-link-color)
 }
-
+.link:hover{
+    color: var(--soft-red-color)
+}
 .container {
     max-width: 900px;
     margin: 0 auto;
@@ -75,11 +77,13 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: white;
-    color: var(--warm-yellow-color);
+    /* background-color: var(--landing-background-color); */
+    /* color: var(--warm-yellow-color); */
+    color: var(--soft-red-color);
 }
 
 .bullet-point {
-    color: black;
+    color: var(--soft-blue-color);
     margin-top: 5px;
     font-size: 16px
 }</style>

@@ -12,9 +12,9 @@ export default{
 
 <template>
   <div class="flex justify-start sm:justify-center m-3 system_ui">
-  <div class="flex gap-5 flex-col rounded-lg border-black border-2 p-2 w-5/6 md:flex-row">
+  <div class="flex gap-5 flex-col rounded-lg nav_border p-2 w-5/6 md:flex-row">
     <div class="flex">
-    <h1 class="font-semibold mr-2">Photo Mode:</h1>
+    <h1 class="font-semibold mr-2 nav_text">Photo Mode:</h1>
     <label class="toggle-switch">
       <input type="checkbox"  @change="$emit('photomode_toggle', $event.target.value)">
       <div class="toggle-switch-background">
@@ -23,7 +23,7 @@ export default{
     </label>
     </div>
     <download_button></download_button>
-    <router-link to="user-guide/" class="font-semibold text-base" style="text-underline-offset: 1px;
+    <router-link to="user-guide/" class="nav_text nav_link font-semibold text-base" style="text-underline-offset: 1px;
     text-decoration: underline;">Guide</router-link>
   </div>
 </div>
@@ -31,6 +31,15 @@ export default{
 
 
 <style>
+.nav_link:hover{
+  color: var(--soft-red-color)
+}
+.nav_text{
+  color:var(--soft-blue-color)
+}
+.nav_border{
+  border: 2px solid var(--soft-blue-color);
+}
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -49,7 +58,8 @@ export default{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--primary-attention-color);
+  /* background-color: var(--primary-attention-color); */
+  background-color: var(--soft-blue-color);
   border-radius: 20px;
   box-shadow: inset 0 0 0 2px #ccc;
   transition: background-color 0.3s ease-in-out;
@@ -62,7 +72,8 @@ export default{
   width: 20px;
   height: 20px;
   /* background-color: #eec249; */
-  background-color: var(--warm-yellow-color);
+  /* background-color: var(--warm-yellow-color); */
+  background-color: var(--soft-red-color);
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out;
@@ -82,13 +93,14 @@ export default{
 
 .toggle-switch input[type="checkbox"]:checked+.toggle-switch-handle {
   transform: translateX(45px);
-  box-shadow: 0 2px 5px rgb(255, 255, 255), 0 0 0 3px #05c46b;
+  box-shadow: 0 2px 5px rgb(44, 98, 168), 0 0 0 3px #05c46b;
 }
 
 .toggle-switch input[type="checkbox"]:checked+.toggle-switch-background {
   /* background-color: #eec249; */
-  background-color: var(--warm-yellow-color);
-  box-shadow: inset 0 0 0 2px #ffffff;
+  /* background-color: var(--warm-yellow-color); */
+  background-color: var(--soft-red-color);
+  box-shadow: inset 0 0 0 2px #1c5081;
 }
 
 .toggle-switch input[type="checkbox"]:checked+.toggle-switch:before {
@@ -100,6 +112,7 @@ export default{
 .toggle-switch input[type="checkbox"]:checked+.toggle-switch-background .toggle-switch-handle {
   transform: translateX(30px);
   /* background-color: black; */
-  background-color: var(--primary-attention-color);
+  /* background-color: var(--primary-attention-color); */
+  background-color: var(--soft-blue-color);
 }
 </style>
