@@ -57,7 +57,7 @@
     color: var(--guide-link-color);
 }
 .text-secondary{
-    color: var(--guide-secondary-color); 
+    color: var(--warm-yellow-color); 
     font-weight: bold;
 }
 .container {
