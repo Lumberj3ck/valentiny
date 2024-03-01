@@ -25,26 +25,26 @@ function removeRedundantUI(document) {
     }
 }
 
-function is_url_relative(url){
+function is_url_relative(url) {
     return url.startsWith('http') ? false : true
 }
 
-function set_verbose_path_as_src(el, src, attr_name){
-        if (src && !src.startsWith('data:')) {
-            el.setAttribute(attr_name, `.${src}`);
-        } else {
-            const verbosePath = el.getAttribute('data-verbose-path');
-            if (verbosePath) {
-                el.setAttribute(attr_name, verbosePath);
-            }
+function set_verbose_path_as_src(el, src, attr_name) {
+    if (src && !src.startsWith('data:')) {
+        el.setAttribute(attr_name, `.${src}`);
+    } else {
+        const verbosePath = el.getAttribute('data-verbose-path');
+        if (verbosePath) {
+            el.setAttribute(attr_name, verbosePath);
         }
+    }
 }
 
 function set_resourse_path(document) {
     const images = document.querySelectorAll('img');
     images.forEach((el, index) => {
         const src = el.getAttribute('src');
-        if (!is_url_relative(src)){
+        if (!is_url_relative(src)) {
             return
         }
         set_verbose_path_as_src(el, src, 'src')
@@ -53,7 +53,7 @@ function set_resourse_path(document) {
     const links = document.querySelectorAll('link');
     links.forEach((el) => {
         const href = el.getAttribute('href');
-        if (!is_url_relative(href)){
+        if (!is_url_relative(href)) {
             return
         }
         set_verbose_path_as_src(el, href, 'href')
@@ -72,11 +72,11 @@ function make_new_url_path(css_property, element) {
     if (url.startsWith('http')) {
         url = url.replace(baseUrl, '.')
     }
-    else if (url.startsWith('data:')){
-        url = element.getAttribute('data-verbose-path') 
+    else if (url.startsWith('data:')) {
+        url = element.getAttribute('data-verbose-path')
     }
     else {
-        url = '.' + url 
+        url = '.' + url
     }
     return css_property.replace(url_regex, `url(${url})`)
 }
@@ -90,14 +90,13 @@ function mutate_css_links(node) {
     });
 }
 
-function remove_crossorigin_attribute(node){
+function remove_crossorigin_attribute(node) {
     // remove in sake of better user experience
     node.querySelectorAll('link[rel="stylesheet"][href]:not([href^="http"]').forEach((el) => el.removeAttribute('crossorigin'))
 }
 
 
-function mutate_html() {
-    var dom = instantiate_dom_node()
+function mutate_html(dom) {
     removeRedundantUI(dom)
     set_resourse_path(dom)
     mutate_css_links(dom)
@@ -115,13 +114,13 @@ function make_full_link(path, baseUrl) {
 
 function push_url(element, url, resources) {
     const baseUrl = window.location.origin;
-    if (url.startsWith('data:')){
+    if (url.startsWith('data:')) {
         resources.push({ url: url, verbose_url: element.getAttribute('data-verbose-path') })
     }
-    else if (url.startsWith('http')){
+    else if (url.startsWith('http')) {
         resources.push({ url: url, verbose_url: url.replace(baseUrl + '/', '') })
     }
-    else{
+    else {
         const full_url = make_full_link(url, baseUrl)
         resources.push({ url: full_url, verbose_url: url })
     }
@@ -137,7 +136,7 @@ function get_css_url_resourses(resources) {
     });
 }
 
-function filter_foreign_and_push(url, element, resources){
+function filter_foreign_and_push(url, element, resources) {
     if (url.startsWith(baseUrl)) {
         push_url(element, url, resources)
     }
@@ -149,9 +148,9 @@ function filter_foreign_and_push(url, element, resources){
     }
 }
 
-function get_resource_links() {
+function get_resource_links(node) {
     const resources = [];
-    document.querySelectorAll('img, link').forEach(element => {
+    node.querySelectorAll('img, link').forEach(element => {
         const url = element.getAttribute('src') || element.getAttribute('href');
         if (url) {
             filter_foreign_and_push(url, element, resources)
@@ -180,9 +179,20 @@ function download_archive(zip) {
         });
 }
 
+function remove_hidden_elements(dom) {
+    const hiddenElements = dom.querySelectorAll('[style*="display: none;"]');
+
+    hiddenElements.forEach(element => {
+        element.remove();
+    });
+}
+
 async function get_page() {
-    const resourse_links = get_resource_links()
-    var node = mutate_html()
+    var dom = instantiate_dom_node()
+    remove_hidden_elements(dom)
+
+    const resourse_links = get_resource_links(dom)
+    var node = mutate_html(dom)
     var zip = await get_resourses(resourse_links, node.outerHTML)
     download_archive(zip)
 }
