@@ -1,7 +1,7 @@
 <script>
-import control_bar from './control_bar.vue'
-import custom_input from './custom_input.vue'
-import useControlBar from '../js/control_bar.js'
+import control_bar from '@/components/utils/control_bar.vue'
+import custom_input from '@/components/utils/custom_input.vue'
+import useControlBar from '@/js/control_bar.js'
 import doner_image from '@/assets/imgs/doner.jpg'
 
 export default {

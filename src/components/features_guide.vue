@@ -11,40 +11,40 @@
 
 <template>
     <div class="container">
-        <h1 class="font-bold">Welcome to the Page Editor guide!</h1>
-        <div class="text-black">
-            If you have questions on how to upload your page check <router-link class="text-[#09abeb]" to="/website-upload">this</router-link> article out!
+        <h1 class="header font-bold text-secondary">Welcome to the Page Editor guide!</h1>
+        <div class="text-black mb-2">
+            If you have questions upon how to upload your page check <router-link class="link_color" to="/website-upload">this</router-link> article out!
         </div>
-        <p class="text-black">When you first load the page editor, you'll have several options for customizing your
+        <p class="mb-3 text-black">When you first load the page editor, you'll have several options for customizing your
             template:</p>
         <ol >
-            <li class="mb-4"><strong class="text-yellow">Edit Text:</strong>
+            <li class="mb-4"><strong class="text-secondary">Edit Text:</strong>
                 <div class="text-black">Click on any text block to start editing it. Simply click on the text you want to
                     modify, and start typing.</div>
             </li>
 
-            <li class="mb-4"><strong class="text-yellow">Choose Template Picture:</strong>
+            <li class="mb-4"><strong class="text-secondary">Choose Template Picture:</strong>
                 <div class="text-black">Click on the <strong>"Choose"</strong> button to select a template picture for
                     your postcard. Browse and choose the one that best fits your message and style.</div>
             </li>
 
-            <li class="mb-4"><strong class="text-yellow">Color Pickers:</strong>
+            <li class="mb-4"><strong class="text-secondary">Color Pickers:</strong>
                 <div class="text-black"> Use the color pickers to customize the background color and text color of your
                     postcard. Click on the color picker icons to open the color selection panel, and choose your desired
                     colors.</div>
             </li>
 
-            <li class="mb-4"><strong class="text-yellow">Rearrange Blocks:</strong>
+            <li class="mb-4"><strong class="text-secondary">Rearrange Blocks:</strong>
                 <div class="text-black">Click on the arrows to rearrange the blocks inside your postcard.</div>
             </li>
 
-            <li class="mb-4"><strong class="text-yellow">Reset Button:</strong>
+            <li class="mb-4"><strong class="text-secondary">Reset Button:</strong>
                 <div class="text-black">Use the <strong>"Reset"</strong> button to reset any changes you've made to the
                     picked colors and image. Clicking this button will revert the background color, text color, and template
                     picture back to their original settings.</div>
             </li>
 
-            <li class="mb-4"><strong class="text-yellow">Turn Off Button:</strong>
+            <li class="mb-4"><strong class="text-secondary">Turn Off Button:</strong>
                 <div class="text-black">Toggle the <strong>"Reset"</strong> button to hide or disable the current block.
                     This allows you to temporarily remove a block from your postcard without deleting it entirely.</div>
             </li>
@@ -53,11 +53,12 @@
 </template>
 
 <style scoped>
-:root{
-   --secondary-yellow: #eec249; 
+.link_color{
+    color: var(--guide-link-color);
 }
-.text-yellow{
-    color: #ffbb00; 
+.text-secondary{
+    color: var(--guide-secondary-color); 
+    font-weight: bold;
 }
 .container {
     max-width: 900px;
@@ -67,51 +68,12 @@
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: white;
-    /* background-color: #1f1010; */
-    color: #ffbb00; 
 }
-/* .test_class{
-    color : var(--secondary-yellow)
-} */
 
-h1 {
+.header {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
 
-p {
-    margin-bottom: 15px;
-}
-
-ul {
-    list-style-type: decimal;
-    margin-bottom: 15px;
-}
-
-/* li {
-    margin-bottom: 5px;
-} */
-
-strong {
-    font-weight: bold;
-}
-
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.button:hover {
-    background-color: #0056b3;
-}
 </style>
