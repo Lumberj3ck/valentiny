@@ -3,6 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import useControlBar from '@/js/control_bar.js'
 import default_image_path from '@/assets/imgs/heart_img.png'
+import image_input from '../utils/image_input.vue'
 
 
 export default {
@@ -22,11 +23,13 @@ export default {
 
   components: {
     control_bar,
-    custom_input
+    custom_input,
+    image_input
   },
   data(){
     return {
-      image_url: default_image_path 
+      image_url: default_image_path,
+      reset_img: false
     }
   },
   props:{
@@ -35,20 +38,21 @@ export default {
   methods:{
     reset_both(){
       this.resetColors()
-      this.image_url = default_image_path 
+      // this.image_url = default_image_path 
+      this.reset_img = true
     },
-    handleFileUpload(event){
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.image_url  = reader.result;
-          var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
-          this.$refs.img.setAttribute("data-verbose-path",`./assets/imgs/user_input_like_you_section.${file_type}`)
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+    // handleFileUpload(event){
+    //   const file = event.target.files[0];
+    //   if (file) {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //       this.image_url  = reader.result;
+    //       var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+    //       this.$refs.img.setAttribute("data-verbose-path",`./assets/imgs/user_input_like_you_section.${file_type}`)
+    //     };
+    //     reader.readAsDataURL(file);
+    //   }
+    // }
   }
 }
 </script>
@@ -61,8 +65,8 @@ export default {
     <div class="px-4 bg_violet" :style="primary_color">
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
-          <!-- <img :src="image_url" class='rounded-full' alt="" ref="img"> -->
-          <img :src="image_url" class='rounded-full aspect-square object-cover' ref="img">
+          <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' ref="img"> -->
+        <image_input image_tag custom_class="rounded-full aspect-square object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12 mb-8">

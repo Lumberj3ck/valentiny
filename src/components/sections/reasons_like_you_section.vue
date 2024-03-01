@@ -3,6 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import useControlBar from '@/js/control_bar.js'
 import doner_image from '@/assets/imgs/doner.jpg'
+import image_input from '../utils/image_input.vue'
 
 export default {
     setup() {
@@ -18,7 +19,8 @@ export default {
   },
   data(){
     return {
-      image_url: doner_image 
+      image_url: doner_image,
+      reset_img: false
     }
   },
   props:{
@@ -27,12 +29,14 @@ export default {
   emits: ['move_up', 'move_down'],
   components: {
     control_bar,
-    custom_input
+    custom_input,
+    image_input
   },
   methods:{
     reset_both(){
       this.resetColors()
-      this.image_url = doner_image
+      // this.image_url = doner_image
+      this.reset_img = true
     },
     handleFileUpload(event){
       const file = event.target.files[0];
@@ -86,7 +90,8 @@ export default {
         <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600"
             style="background-color: var(--card-primary-color)">
-            <img alt="..." :src="image_url" class="w-full align-middle rounded-t-lg" data-verbose-path="" ref="img"/>
+            <!-- <img alt="..." :src="image_url" class="w-full align-middle rounded-t-lg" data-verbose-path="" ref="img"/> -->
+            <image_input image_tag custom_class="w-full align-middle rounded-t-lg" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
             <blockquote class="relative p-8 mb-4">
               <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
                 class="absolute left-0 w-full block" style="height: 95px; top: -94px">
