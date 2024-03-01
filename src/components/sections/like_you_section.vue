@@ -61,7 +61,8 @@ export default {
     <div class="px-4 bg_violet" :style="primary_color">
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
-          <img :src="image_url" class='rounded-full' alt="" ref="img">
+          <!-- <img :src="image_url" class='rounded-full' alt="" ref="img"> -->
+          <img :src="image_url" class='rounded-full aspect-square object-cover' ref="img">
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12 mb-8">
