@@ -33,18 +33,18 @@ export default{
       // this.image_url = default_image_path 
       this.reset_img = true
     },
-    handleFileUpload(event){
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.image_url  = reader.result;
-          var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
-          this.$refs.img.setAttribute("data-verbose-path",`./assets/imgs/user_input_love_potion.${file_type}`)
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+    // handleFileUpload(event){
+    //   const file = event.target.files[0];
+    //   if (file) {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //       this.image_url  = reader.result;
+    //       var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
+    //       this.$refs.img.setAttribute("data-verbose-path",`./assets/imgs/user_input_love_potion.${file_type}`)
+    //     };
+    //     reader.readAsDataURL(file);
+    //   }
+    // }
   },
   components: {
     control_bar,

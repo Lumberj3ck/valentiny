@@ -614,6 +614,10 @@ video {
   margin: 0.75rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -633,8 +637,16 @@ video {
   margin-bottom: 0.25rem;
 }
 
+.mb-12 {
+  margin-bottom: 3rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-24 {
+  margin-bottom: 6rem;
 }
 
 .mb-3 {
@@ -805,8 +817,16 @@ video {
   max-width: 95%;
 }
 
+.max-w-full {
+  max-width: 100%;
+}
+
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-\[120px\] {
+  max-width: 120px;
 }
 
 .flex-grow {
@@ -871,10 +891,6 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 
 .break-words {
@@ -989,6 +1005,11 @@ video {
   padding-right: 1rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1017,12 +1038,24 @@ video {
   padding-bottom: 8rem;
 }
 
+.pb-48 {
+  padding-bottom: 12rem;
+}
+
 .pt-16 {
   padding-top: 4rem;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
 .pt-3 {
   padding-top: 0.75rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .text-center {
@@ -1357,6 +1390,10 @@ video {
 @media (min-width: 1024px) {
   .lg\:top-\[15\%\] {
     top: 15%;
+  }
+
+  .lg\:mb-0 {
+    margin-bottom: 0px;
   }
 
   .lg\:mb-10 {
