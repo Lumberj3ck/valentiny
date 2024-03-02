@@ -54,7 +54,7 @@ export default {
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
           <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' ref="img"> -->
-        <image_input image_tag custom_class="rounded-full aspect-square object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
+        <image_input image_tag custom_class="rounded-full square_aspect_ratio object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12 mb-8">
@@ -135,5 +135,23 @@ w-full {
 
 .select_prevent {
   user-select: none;
+}
+
+.square_aspect_ratio {
+    aspect-ratio: 1 / 1;
+
+    @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      float: left;
+      padding-top: 100%;
+      content: "";
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
 }
 </style>

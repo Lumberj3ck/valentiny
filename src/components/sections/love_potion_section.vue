@@ -51,7 +51,7 @@ export default{
   <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
         <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img"> -->
-        <image_input image_tag custom_class="rounded-full aspect-square object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
+        <image_input image_tag custom_class="rounded-full object-cover square_aspect_ratio" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
     </div>
     <div>
     <div class="flex flex-wrap text-center justify-center xl:justify-normal">
@@ -113,3 +113,24 @@ export default{
     </div>
 </section>
 </template>
+
+
+<style>
+.square_aspect_ratio {
+    aspect-ratio: 1 / 1;
+
+    @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      float: left;
+      padding-top: 100%;
+      content: "";
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}
+</style>
