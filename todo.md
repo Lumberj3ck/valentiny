@@ -44,6 +44,7 @@ import image_path from '@/assets/imgs/love_potion.png'
 
 1. Create new section file
 2. Import composable control bar
+3. Add v-show on main tag
 3. Add control bar component
 4. Change every text field with a custom input component
 5. Add primary_color computed style 

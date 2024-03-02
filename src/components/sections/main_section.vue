@@ -3,6 +3,7 @@ import like_you_section from './like_you_section.vue'
 import love_potion_section from './love_potion_section.vue'
 import reasons_like_you_section from './reasons_like_you_section.vue'
 import start_section from './start_section.vue'
+import favorite_artists from './favorite_artists.vue'
 import navigation_bar from '@/components/utils/navigation_bar.vue'
 
 export default {
@@ -11,7 +12,8 @@ export default {
     love_potion_section,
     reasons_like_you_section,
     start_section,
-    navigation_bar
+    navigation_bar,
+    favorite_artists
   },
 
   data() {
@@ -21,6 +23,7 @@ export default {
         { name: 'like_you_section', index: 2 },
         { name: 'love_potion_section', index: 3 },
         { name: 'reasons_like_you_section', index: 4 },
+        { name: 'favorite_artists', index: 5 },
       ],
       moving_component: { name: null, direction: null },
       photoMode: false
