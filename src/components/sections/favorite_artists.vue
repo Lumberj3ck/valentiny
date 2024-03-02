@@ -31,9 +31,9 @@ export default{
       fourth_image: fourth_image
     }
   },
-  props:{
-    photoMode: Boolean
-  },
+  // props:{
+  //   photoMode: Boolean
+  // },
   components: {
     control_bar,
     custom_input,
@@ -52,7 +52,7 @@ export default{
 
 
 <template>
-  <control_bar v-show="!photoMode" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+  <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
       <section v-show="is_render" class="pt-20 pb-48" :style="primary_color">
@@ -76,7 +76,7 @@ export default{
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px"
                 /> -->
-                <image_input image_tag custom_class=" aspect-square object-cover  shadow-lg rounded-full max-w-full  max-w-[120px]" class="flex justify-center w-full " :image_url="first_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
+                <image_input image_tag custom_class=" aspect-square object-cover  shadow-lg rounded-full max-w-[120px]" class="flex justify-center w-full " :image_url="first_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
                 <div class="pt-6 text-center">
                 <!-- <a href="https://open.spotify.com/track/6nvXTYOmS7ES6BWuRASHHL?si=275973b766014376"> -->
                   <!-- <h5 class="text-xl font-bold">Name of the song</h5> -->
@@ -92,7 +92,7 @@ export default{
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px"
                 /> -->
-                <image_input image_tag custom_class=" aspect-square object-cover shadow-lg rounded-full max-w-full  max-w-[120px]" class="flex justify-center w-full " :image_url="second_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
+                <image_input image_tag custom_class=" aspect-square object-cover shadow-lg rounded-full max-w-[120px]" class="flex justify-center w-full " :image_url="second_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
                 <div class="pt-6 text-center">
                 <!-- <a href="https://open.spotify.com/track/6FqdGFRX5mrP5rxcXrXcPN?si=13529534d55a4df1"> -->
                   <!-- <h5 class="text-xl font-bold">Name of the song</h5> -->
@@ -109,7 +109,7 @@ export default{
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px"
                 /> -->
-                <image_input image_tag custom_class=" aspect-square object-cover shadow-lg rounded-full max-w-full  max-w-[120px]" class="flex justify-center w-full " :image_url="third_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
+                <image_input image_tag custom_class=" aspect-square object-cover shadow-lg rounded-full max-w-[120px]" class="flex justify-center w-full " :image_url="third_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
                 <div class="pt-6 text-center">
                 <!-- <a href="https://open.spotify.com/track/61nzEAmKgzWRL5vFuwwd3B?si=447ccd47200149a9"> -->
                   <!-- <h5 class="text-xl font-bold">Name of the song</h5> -->
@@ -127,7 +127,7 @@ export default{
                   class="shadow-lg rounded-full max-w-full mx-auto"
                   style="max-width: 120px"
                 /> -->
-                <image_input image_tag  custom_class="aspect-square object-cover shadow-lg rounded-full max-w-full  max-w-[120px]" class="flex justify-center w-full " :image_url="fourth_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
+                <image_input image_tag  custom_class="aspect-square object-cover shadow-lg rounded-full max-w-[120px]" class="flex justify-center w-full " :image_url="fourth_image" :reset_img="reset_img" @update:reset="reset_img = false"></image_input>
                 <div class="pt-6 text-center">
                   <!-- <a href="https://open.spotify.com/track/2iE7cNEx0NGkuNPXXQwFmU?si=414719306c8947d6"> -->
                   <!-- <h5 class="text-xl font-bold">Name of the song</h5> -->

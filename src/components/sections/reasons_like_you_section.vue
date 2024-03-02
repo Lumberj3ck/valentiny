@@ -23,9 +23,9 @@ export default {
       reset_img: false
     }
   },
-  props:{
-    photoMode: Boolean
-  },
+  // props:{
+  //   photoMode: Boolean
+  // },
   emits: ['move_up', 'move_down'],
   components: {
     control_bar,
@@ -38,24 +38,12 @@ export default {
       // this.image_url = doner_image
       this.reset_img = true
     },
-    // handleFileUpload(event){
-    //   const file = event.target.files[0];
-    //   if (file) {
-    //     const reader = new FileReader();
-    //     reader.onload = () => {
-    //       this.image_url  = reader.result;
-    //       var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
-    //       this.$refs.img.setAttribute("data-verbose-path",`./assets/imgs/user_input_reasons_section.${file_type}`)
-    //     };
-    //     reader.readAsDataURL(file);
-    //   }
-    // }
   }
 }
 </script>
 
 <template>
-  <control_bar v-show="!photoMode"  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
   <section v-show="is_render" class="py-10 bg-white" :style="primary_color">

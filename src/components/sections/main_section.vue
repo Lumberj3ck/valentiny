@@ -53,8 +53,8 @@ export default {
     togglePhotoMode(){
       this.photoMode = !this.photoMode
       document.querySelectorAll('.system_ui_pen').forEach((el) => el.style.display = this.photoMode ? 'none': null)
+      document.querySelectorAll('.control_bar').forEach((el) => el.style.display = this.photoMode ? 'none': null)
     }
-
   },
 }
 </script>
@@ -66,7 +66,7 @@ export default {
       :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
       :style="{ 'grid-row': component.index }" @animationend="moving_component = { name: null, direction: null }">
       <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)"
-        :photoMode="photoMode" />
+        />
     </div>
   </div>
 </template>
