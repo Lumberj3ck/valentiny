@@ -13,7 +13,7 @@ export default {
         'bg_color_reset',
         'bg_color_picked',
         'text_color_picked',
-        'file_selected'
+        // 'file_selected'
     ],
     components:{
         FontAwesomeIcon

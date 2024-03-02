@@ -68,9 +68,8 @@ export default {
 <template>
     <template v-if="image_tag">
         <div class="image_cont">
-            <img @click="$refs.file_input.click()" :src="displayedImage" :class="custom_class" ref="img" />
-            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui" :icon="faPencil">
-            </FontAwesomeIcon>
+            <img @click="$refs.file_input.click()" :src="displayedImage" :class="custom_class" ref="img"/>
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPencil"></FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />
         </div>
@@ -79,7 +78,7 @@ export default {
         <div :class="custom_class" :style="{ 'background-image': `url(${displayedImage})` }" ref="img">
             <slot name="background_overlay"></slot>
             <!-- <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span> -->
-            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui" :icon="faPencil">
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPencil">
             </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />

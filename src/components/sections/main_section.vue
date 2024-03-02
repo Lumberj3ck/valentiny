@@ -49,6 +49,10 @@ export default {
         this.components[comp_index].index += direction
         this.moving_component = { name: name, direction: direction }
       }
+    },
+    togglePhotoMode(){
+      this.photoMode = !this.photoMode
+      document.querySelectorAll('.system_ui_pen').forEach((el) => el.style.display = this.photoMode ? 'none': null)
     }
 
   },
@@ -56,7 +60,7 @@ export default {
 </script>
 
 <template>
-<navigation_bar @photomode_toggle="photoMode = !photoMode"></navigation_bar>
+<navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
   <div class="custom_container">
     <div v-for="component in components" :key="component.name"
       :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
