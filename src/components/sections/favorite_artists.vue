@@ -52,7 +52,7 @@ export default{
 
 
 <template>
-  <control_bar v-show="!photoMode" @file_selected="handleFileUpload($event)" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+  <control_bar v-show="!photoMode" @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
       <section v-show="is_render" class="pt-20 pb-48" :style="primary_color">
