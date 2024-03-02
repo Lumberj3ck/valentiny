@@ -3,12 +3,21 @@ const focus = {
 mounted: (el) => el.focus()
 }
 
-function set_height(el) {
-    el.style.height = `${el.scrollHeight}px`
+
+// const resize = {
+//     mounted: (el) => set_height(el)
+// }
+
+function set_height(el, wrapperWidth) {
+  el.style.height = `${el.scrollHeight}px`;
+//   el.style.width = `${wrapperWidth}px`;
 }
 
-const resize = {
-    mounted: (el) => set_height(el)
+const resize= {
+  mounted: function(el, binding) {
+    const wrapperWidth = binding.value
+    set_height(el, wrapperWidth);
+  }
 }
 
 export default{
@@ -46,6 +55,7 @@ export default{
     @click="toggleEditMode"
     class="w-full select_prevent bg_inherit"
     :style="primary_color"
+    ref="text_wrapper"
     >{{ input_value ? input_value : 'Placeholder' }}</div>  
     <textarea
     v-else-if="edit && text_area"
@@ -57,7 +67,7 @@ export default{
     v-model="input_value"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
     :style="primary_color"
-    v-resize
+    v-resize="$refs.text_wrapper.clientWidth"
     id="custom_input"
     ></textarea>
     <input

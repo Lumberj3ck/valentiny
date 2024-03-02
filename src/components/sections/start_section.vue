@@ -18,9 +18,9 @@ export default {
             resetColors
         };
     },
-    props:{
-        photoMode: Boolean
-    },
+    // props:{
+    //     photoMode: Boolean
+    // },
     emits: ['move_up', 'move_down'],    
     data(){
         return {
@@ -31,21 +31,8 @@ export default {
     methods:{
     reset_both(){
       this.resetColors()
-    //   this.image_url = default_image_path 
         this.reset_img = true
     },
-    //     handleFileUpload(event){
-    //     const file = event.target.files[0];
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.onload = () => {
-    //         this.image_url  = reader.result;
-    //         var file_type = this.image_url.match('data:image/([a-zA-Z]+);')[1]
-    //         this.$refs.img.setAttribute("data-verbose-path",`./assets/imgs/user_input_start_section.${file_type}`)
-    //         };
-    //         reader.readAsDataURL(file);
-    //     }
-    // }
     },
     components: {
         control_bar,
@@ -64,7 +51,7 @@ export default {
 
 
 <template >
-    <control_bar v-show="!photoMode"  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+    <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
         @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
         @text_color_picked="(value) => text_color = value"></control_bar>
     <section v-show="is_render">
@@ -81,7 +68,7 @@ export default {
             <div class="container relative mx-auto flex justify-center">
                 <div class="items-center flex flex-wrap">
                     <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-                        <div class="md:pr-12 text-[#f9d0d7]">
+                        <div class="md:pr-12 text-[#f9d0d7] md:min-w-[480px]">
                             <custom_input :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl'
                                 default_input_value="Congratulations!"></custom_input>
                             <!-- <h1 class="font-semibold text-5xl">
