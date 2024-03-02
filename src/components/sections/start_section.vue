@@ -67,7 +67,7 @@ export default {
         </image_input>
             <div class="container relative mx-auto flex justify-center">
                 <div class="items-center flex flex-wrap">
-                    <div class="w-full px-4 ml-auto mr-auto text-center max-w-[83%]">
+                    <div class="w-full px-4 ml-auto mr-auto text-center max-w-[56%]">
                         <div class="md:pr-12 text-[#f9d0d7] md:min-w-[480px]">
                             <custom_input :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl'
                                 default_input_value="Congratulations!"></custom_input>
