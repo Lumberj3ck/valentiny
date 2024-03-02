@@ -136,22 +136,4 @@ w-full {
 .select_prevent {
   user-select: none;
 }
-
-.square_aspect_ratio {
-    aspect-ratio: 1 / 1;
-
-    @supports not (aspect-ratio: 1 / 1) {
-    &::before {
-      float: left;
-      padding-top: 100%;
-      content: "";
-    }
-
-    &::after {
-      display: block;
-      content: "";
-      clear: both;
-    }
-  }
-}
 </style>

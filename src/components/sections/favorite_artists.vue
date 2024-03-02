@@ -29,12 +29,12 @@ export default {
       second_image: second_image,
       third_image: third_image,
       fourth_image: fourth_image,
-      items:[
-        {name: 'Name of the sond', image: first_image},
-        {name: 'Name of the sond', image: second_image},
-        {name: 'Name of the sond', image: third_image},
-        {name: 'Name of the sond', image: fourth_image},
-    ]
+      items: [
+        { name: 'Name of the sond', image: first_image },
+        { name: 'Name of the sond', image: second_image },
+        { name: 'Name of the sond', image: third_image },
+        { name: 'Name of the sond', image: fourth_image },
+      ]
     }
   },
   // props:{
@@ -81,9 +81,11 @@ export default {
         <div v-for="(item, index) in items" :key="index" class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
           <div class="px-6">
             <image_input image_tag :image_url="item.image" :reset_img="reset_img" @update:reset="reset_img = false"
-              custom_class="square_aspect_ratio object-cover shadow-lg rounded-full max-w-[120px]" class="flex justify-center w-full"></image_input>
+              custom_class="square_aspect_ratio object-cover shadow-lg rounded-full max-w-[120px]"
+              class="aspect_ratio_box flex justify-center w-full"></image_input>
             <div class="pt-6 text-center">
-              <custom_input :primary_color="primary_color" class="text-xl font-bold" :default_input_value="item.name"> </custom_input>
+              <custom_input :primary_color="primary_color" class="text-xl font-bold" :default_input_value="item.name">
+              </custom_input>
             </div>
           </div>
         </div>
@@ -93,23 +95,3 @@ export default {
 
 </template>
 
-
-<style>
-.square_aspect_ratio {
-    aspect-ratio: 1 / 1;
-
-    @supports not (aspect-ratio: 1 / 1) {
-    &::before {
-      float: left;
-      padding-top: 100%;
-      content: "";
-    }
-
-    &::after {
-      display: block;
-      content: "";
-      clear: both;
-    }
-  }
-}
-</style>

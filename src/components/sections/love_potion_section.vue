@@ -118,19 +118,16 @@ export default{
 <style>
 .square_aspect_ratio {
     aspect-ratio: 1 / 1;
+}
+.square_aspect_ratio::before {
+  float: left;
+  padding-top: 100%;
+  content: "";
+}
 
-    @supports not (aspect-ratio: 1 / 1) {
-    &::before {
-      float: left;
-      padding-top: 100%;
-      content: "";
-    }
-
-    &::after {
-      display: block;
-      content: "";
-      clear: both;
-    }
-  }
+.square_aspect_ratio::after {
+  display: block;
+  content: "";
+  clear: both;
 }
 </style>
