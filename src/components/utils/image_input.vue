@@ -1,6 +1,6 @@
 <script>
-import { faPencil } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 
 export default {
     props: {
@@ -12,7 +12,7 @@ export default {
     data() {
         return {
             user_custom_img: null,
-            faPencil: faPencil
+            faPen: faPen
         }
     },
     components: {
@@ -69,7 +69,7 @@ export default {
     <template v-if="image_tag">
         <div class="image_cont">
             <img @click="$refs.file_input.click()" :src="displayedImage" :class="custom_class" ref="img"/>
-            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPencil"></FontAwesomeIcon>
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen"></FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />
         </div>
@@ -78,7 +78,7 @@ export default {
         <div :class="custom_class" :style="{ 'background-image': `url(${displayedImage})` }" ref="img">
             <slot name="background_overlay"></slot>
             <!-- <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span> -->
-            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPencil">
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen">
             </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />
@@ -103,4 +103,9 @@ export default {
     /* Adjust size as needed */
     cursor: pointer;
     color: var(--soft-red-color)
-}</style>
+}
+.edit-icon:hover{
+    color: var(--soft-blue-color)
+}
+
+</style>
