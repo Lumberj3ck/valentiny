@@ -3,26 +3,17 @@ import { saveAs } from 'file-saver';
 
 
 const baseUrl = window.location.origin;
-function removeRedundantUI(document) {
-    const controlBars = document.querySelectorAll('.control_bar');
-    controlBars.forEach((el) => {
-        el.parentNode.removeChild(el);
-    });
 
-    const systemUIs = document.querySelectorAll('.system_ui');
-    systemUIs.forEach((el) => {
-        el.parentNode.removeChild(el);
-    });
+function removeElementsBySelector(dom_node, selector) {
+  const elements = dom_node.querySelectorAll(selector);
+  elements.forEach((el) => {
+    el.parentNode.removeChild(el);
+  });
+}
 
-    const scripts = document.querySelectorAll('script');
-    scripts.forEach((el) => {
-        el.parentNode.removeChild(el);
-    });
-
-    const getHtml = document.querySelector('#get_html');
-    if (getHtml) {
-        getHtml.parentNode.removeChild(getHtml);
-    }
+function removeRedundantUI(dom_node) {
+    const ui_selectors = ['.control_bar', '.system_ui', '.system_ui_pen', 'script']
+    ui_selectors.forEach(item => removeElementsBySelector(dom_node, item))
 }
 
 function is_url_relative(url) {
