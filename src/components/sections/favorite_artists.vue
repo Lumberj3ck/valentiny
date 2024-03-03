@@ -25,10 +25,10 @@ export default {
     return {
       //   image_url:default_image_path,
       reset_img: false,
-      first_image: first_image,
-      second_image: second_image,
-      third_image: third_image,
-      fourth_image: fourth_image,
+      // first_image: first_image,
+      // second_image: second_image,
+      // third_image: third_image,
+      // fourth_image: fourth_image,
       items: [
         { name: 'Name of the sond', image: first_image },
         { name: 'Name of the sond', image: second_image },
@@ -92,6 +92,5 @@ export default {
       </div>
     </div>
   </section>
-
 </template>
 
