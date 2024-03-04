@@ -68,10 +68,11 @@ export default{
   </div>
     <div class="flex flex-wrap mt-12 justify-center">
       <div class="w-full lg:w-3/12 px-4 text-center">
-        <div
+        <div :style="{'background-color': background_color}"
+          style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
           class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
         >
-          <i class="fas fa-flask"></i>
+          <i :style="{'color': text_color}" class="fas fa-flask"></i>
         </div>
         <!-- <h6 class="text-xl mt-5 font-semibold text-white">
           Step 1
@@ -83,10 +84,11 @@ export default{
         </p> -->
       </div>
       <div class="w-full lg:w-3/12 px-4 text-center">
-        <div
+        <div :style="{'background-color': background_color}"
+          style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
           class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
         >
-          <i class="fas fa-candy-cane"></i>
+          <i :style="{'color': text_color}" class="fas fa-candy-cane"></i>
         </div>
         <!-- <h5 class="text-xl mt-5 font-semibold text-white">
           Step 2
@@ -98,10 +100,11 @@ export default{
         </p> -->
       </div>
       <div class="w-full lg:w-3/12 px-4 text-center">
-        <div
+        <div :style="{'background-color': background_color}"
+          style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
           class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center"
         >
-          <i class="fas fa-thumbs-up"></i>
+          <i :style="{'color': text_color}" class="fas fa-thumbs-up"></i>
         </div>
         <!-- <h5 class="text-xl mt-5 font-semibold text-white">Шаг 3</h5> -->
         <custom_input :photoMode="photoMode" :primary_color="primary_color" class='text-xl mt-5 font-semibold text-white' default_input_value="Step 3"></custom_input>
