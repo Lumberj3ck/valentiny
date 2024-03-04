@@ -24,7 +24,8 @@ export default{
     props:{
         primary_color: Object,
         default_input_value: String,
-        text_area: Boolean 
+        text_area: Boolean,
+        photoMode: Boolean 
     },
     data(){
         return {
@@ -39,7 +40,9 @@ export default{
 
   methods: {
     toggleEditMode(){
-        this.edit = !this.edit
+        if (!this.photoMode){
+          this.edit = !this.edit
+        }
     },
     resize(event){
         var el = event.target

@@ -8,6 +8,7 @@ export default {
         reset_img: Boolean,
         image_tag: Boolean,
         custom_class: String,
+        photoMode: Boolean
     },
     data() {
         return {
@@ -55,6 +56,11 @@ export default {
                 }
                 reader.readAsDataURL(file)
             }
+        },
+        handleImageClick(){
+            if (!this.photoMode){
+                this.$refs.file_input.click()
+            }
         }
     },
     computed: {
@@ -68,7 +74,7 @@ export default {
 <template>
     <template v-if="image_tag">
         <div class="image_cont">
-            <img @click="$refs.file_input.click()" :src="displayedImage" :class="custom_class" ref="img"/>
+            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img"/>
             <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen"></FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />

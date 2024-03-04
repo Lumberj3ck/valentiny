@@ -18,9 +18,9 @@ export default {
             resetColors
         };
     },
-    // props:{
-    //     photoMode: Boolean
-    // },
+    props:{
+        photoMode: Boolean
+    },
     emits: ['move_up', 'move_down'],    
     data(){
         return {
@@ -61,7 +61,7 @@ export default {
                 :style="{'background-image': `url(${image_url})`}" ref="img">
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </div> -->
-        <image_input custom_class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img">
+        <image_input :photoMode="photoMode" custom_class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img">
             <template v-slot:background_overlay>
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </template>
@@ -70,12 +70,12 @@ export default {
                 <div class="items-center flex flex-wrap">
                     <div class="w-full px-4 ml-auto mr-auto text-center md:max-w-[56%]  min-[540px]:max-w-[75%]">
                         <div class="md:pr-12 text-[#f9d0d7] md:min-w-[480px]">
-                            <custom_input :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl'
+                            <custom_input :photoMode="photoMode" :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl'
                                 default_input_value="Congratulations!"></custom_input>
                             <!-- <h1 class="font-semibold text-5xl">
                                 Congratulations!
                             </h1> -->
-                            <custom_input text_area :primary_color="primary_text_color" class='mt-4 text-lg'
+                            <custom_input :photoMode="photoMode" text_area :primary_color="primary_text_color" class='mt-4 text-lg'
                                 default_input_value="Today is Valentine's Day, and I don't want to pressure you, but you should already plan how you confess your love to me ">
                             </custom_input>
                             <!-- <p class="mt-4 text-lg">

@@ -32,9 +32,9 @@ export default {
       reset_img: false
     }
   },
-  // props:{
-  //   photoMode: Boolean
-  // },
+  props:{
+    photoMode: Boolean
+  },
   methods:{
     reset_both(){
       this.resetColors()
@@ -54,11 +54,11 @@ export default {
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
           <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' ref="img"> -->
-        <image_input image_tag custom_class="rounded-full square_aspect_ratio object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
+        <image_input :photoMode="photoMode"  image_tag custom_class="rounded-full square_aspect_ratio object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12 mb-8">
-            <custom_input text_area :primary_color="primary_color" class='text-section-color text-3xl font-semibold'
+            <custom_input :photoMode="photoMode" text_area :primary_color="primary_color" class='text-section-color text-3xl font-semibold'
               default_input_value="I love you so much that:"></custom_input>
             <ul class="list-none mt-6">
               <li class="py-2">
@@ -70,7 +70,7 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <custom_input :primary_color="primary_color" class='text-section-color text-lg '
+                    <custom_input :photoMode="photoMode" :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Can show you my google history"></custom_input>
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <custom_input :primary_color="primary_color" class='text-section-color text-lg '
+                    <custom_input  :photoMode="photoMode" :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Can resist to eat last pizza slice"></custom_input>
                   </div>
                 </div>
@@ -103,7 +103,7 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <custom_input :primary_color="primary_color" class='text-section-color text-lg '
+                    <custom_input :photoMode="photoMode"   :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Almost started to like your movie taste"></custom_input>
                   </div>
                 </div>
