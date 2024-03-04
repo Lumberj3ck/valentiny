@@ -23,9 +23,9 @@ export default {
       reset_img: false
     }
   },
-  // props:{
-  //   photoMode: Boolean
-  // },
+  props:{
+    photoMode: Boolean
+  },
   emits: ['move_up', 'move_down'],
   components: {
     control_bar,
@@ -58,19 +58,19 @@ export default {
                 d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
             </svg>
           </div>
-          <custom_input :primary_color="primary_color" class='text-3xl mb-2 font-semibold leading-normal text-black'
+          <custom_input :photoMode="photoMode" :primary_color="primary_color" class='text-3xl mb-2 font-semibold leading-normal text-black'
             default_input_value="What I like in you"></custom_input>
           <p class="text-lg font-light leading-relaxed mt-4 mb-4 ">
           <ol class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-            <custom_input :primary_color="primary_color" class='font-light'
+            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="1 Name"></custom_input>
-            <custom_input :primary_color="primary_color" class='font-light'
+            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="2 Good cooking"></custom_input>
-            <custom_input :primary_color="primary_color" class='font-light'
+            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="3 Favorite girl"></custom_input>
-            <custom_input :primary_color="primary_color" class='font-light'
+            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="4 Cute sunn"></custom_input>
-            <custom_input :primary_color="primary_color" class='font-light'
+            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="5 And couple other things)"></custom_input>
           </ol>
           </p>
@@ -79,16 +79,16 @@ export default {
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600"
             style="background-color: var(--card-primary-color)">
             <!-- <img alt="..." :src="image_url" class="w-full align-middle rounded-t-lg" data-verbose-path="" ref="img"/> -->
-            <image_input image_tag custom_class="w-full align-middle rounded-t-lg" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
+            <image_input :photoMode="photoMode" image_tag custom_class="w-full align-middle rounded-t-lg" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
             <blockquote class="relative p-8 mb-4">
               <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
                 class="absolute left-0 w-full block" style="height: 95px; top: -94px">
                 <polygon points="-30,95 583,95 583,65" class="text-pink-600 fill-current"
                   style="color: var(--card-primary-color)"></polygon>
               </svg>
-            <custom_input style="color: var(--card-secondary-color)" class='text-xl font-bold text-white'
+            <custom_input :photoMode="photoMode" style="color: var(--card-secondary-color)" class='text-xl font-bold text-white'
               default_input_value="Buys doner for me"></custom_input>
-            <custom_input text_area style="color: var(--card-secondary-color)" class='text-md font-light mt-2 text-white'
+            <custom_input :photoMode="photoMode" text_area style="color: var(--card-secondary-color)" class='text-md font-light mt-2 text-white'
               default_input_value="Did you know that in a recent study, scientists proved that guys whose girls buy doners are 50% happier?"></custom_input>
             </blockquote>
           </div>
