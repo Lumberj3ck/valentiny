@@ -50,30 +50,46 @@ export default {
         this.moving_component = { name: name, direction: direction }
       }
     },
-    togglePhotoMode(){
+    togglePhotoMode() {
       this.photoMode = !this.photoMode
-      document.querySelectorAll('.system_ui_pen').forEach((el) => el.style.display = this.photoMode ? 'none': null)
-      document.querySelectorAll('.control_bar').forEach((el) => el.style.display = this.photoMode ? 'none': null)
+      document.querySelectorAll('.system_ui_pen').forEach((el) => el.style.display = this.photoMode ? 'none' : null)
+      document.querySelectorAll('.control_bar').forEach((el) => el.style.display = this.photoMode ? 'none' : null)
     }
   },
 }
 </script>
 
 <template>
-<navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
-  <div class="custom_container">
-    <div v-for="component in components" :key="component.name"
-      :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
-      :style="{ 'grid-row': component.index }" @animationend="moving_component = { name: null, direction: null }">
-      <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)" :photoMode="photoMode"
-        />
+    <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
+    <div class="custom_container">
+      <div v-for="component in components" :key="component.name"
+        :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
+        :style="{ 'grid-row': component.index }" @animationend="moving_component = { name: null, direction: null }">
+        <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)"
+          :photoMode="photoMode" />
+      </div>
     </div>
-  </div>
 </template>
 
 
 <style>
+.custom_container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
 
+.first-div {
+  grid-row: 1;
+}
+
+.second-div {
+  grid-row: 2;
+}
+
+.slide-in-bck-bottom {
+  -webkit-animation: slide-in-bck-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-in-bck-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 .custom_container {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -151,4 +167,5 @@ export default {
     transform: translateZ(0) translateY(0);
     opacity: 1;
   }
-}</style>
+}
+</style>

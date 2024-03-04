@@ -55,6 +55,7 @@ export default {
         @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
         @text_color_picked="(value) => text_color = value">
     </control_bar>
+    <Transition>
     <section v-show="is_render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <!-- <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
@@ -89,8 +90,6 @@ export default {
             </div>
         </div>
     </section>
+</Transition>
 </template>
 
-
-<style>
-</style>
