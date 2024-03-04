@@ -1,4 +1,5 @@
 import './assets/base.css'
+import './assets/main.css'
 import './assets/output.css'
 
 import { createApp } from 'vue/dist/vue.esm-bundler.js'

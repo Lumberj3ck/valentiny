@@ -46,6 +46,7 @@ export default {
   <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
+    <Transition>
   <section v-show="is_render" class="py-10 bg-white" :style="primary_color">
     <div class="container mx-auto px-4">
       <!-- cards -->
@@ -96,4 +97,5 @@ export default {
       </div>
     </div>
   </section>
+</Transition>
 </template>

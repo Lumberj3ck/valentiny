@@ -47,6 +47,7 @@ export default{
   <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
+<Transition>
 <section v-show='is_render' class="pb-20 relative block bg-gray-900" :style="primary_color">
   <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
     <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
@@ -115,6 +116,7 @@ export default{
       </div>
     </div>
 </section>
+</Transition>
 </template>
 
 

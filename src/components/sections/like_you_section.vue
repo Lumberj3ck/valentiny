@@ -49,11 +49,11 @@ export default {
   <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
     @text_color_picked="(value) => text_color = value"></control_bar>
+<Transition>
   <section v-show="is_render" class="relative">
     <div class="px-4 bg_violet" :style="primary_color">
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
-          <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' ref="img"> -->
         <image_input :photoMode="photoMode"  image_tag custom_class="rounded-full square_aspect_ratio object-cover" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -98,7 +98,6 @@ export default {
               <li class="py-2">
                 <div class="flex items-center">
                   <div>
-                    
                     <span
                       class="shadow-lg text-xs font-semibold inline-block py-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
                       :style="{'background-color': background_color}"
@@ -124,6 +123,7 @@ export default {
       </div>
     </div>
   </section>
+</Transition>
 </template>
 
 <style>
