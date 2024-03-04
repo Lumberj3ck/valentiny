@@ -1,16 +1,17 @@
 <template>
-  <router-view v-slot="{Component}">
-    <transition>
+  <!-- <router-view v-slot="{Component}">
+    <transition name="editor">
       <component :is="Component" />
     </transition>
-  </router-view>
+  </router-view> -->
+  <router-view></router-view>
 </template>
 
 
 <style>
 /* .editor-enter-active{
-  -webkit-animation: puff-out-center 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) reverse;
-  animation: puff-out-center 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) reverse;
+  -webkit-animation: puff-out-center 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) reverse;
+  animation: puff-out-center 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000) reverse;
 }
 .editor-leave-active{
   -webkit-animation: puff-out-center 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
