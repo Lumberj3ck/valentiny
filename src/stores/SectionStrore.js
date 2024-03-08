@@ -7,9 +7,8 @@ export const useSectionStore = defineStore('section_store',
                 start_section: {
                     background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs:
                     {
-                        1: { content: 'some text' },
-                        2: { content: 'some text' },
-                        3: { content: 'some text' }
+                        1: { content: null},
+                        2: { content: null},
                     }
                 },
                 reasons_like_you_section: {
@@ -53,7 +52,7 @@ export const useSectionStore = defineStore('section_store',
             setColor(sectionName, color){
                 this.sections[sectionName].text_color = color 
             },
-            setInputDate(sectionName, input_id, data){
+            setInputData(sectionName, input_id, data){
                 this.sections[sectionName].text_inputs[input_id].content = data
             }
         },
