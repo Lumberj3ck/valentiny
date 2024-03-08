@@ -20,10 +20,10 @@ export default {
     return {
       components: [
         { name: 'start_section', index: 1 },
-        { name: 'like_you_section', index: 2 },
-        { name: 'love_potion_section', index: 3 },
+        // { name: 'like_you_section', index: 2 },
+        //name: 'love_potion_section', index: 3 },
         { name: 'reasons_like_you_section', index: 4 },
-        { name: 'favorite_artists', index: 5 },
+        // { name: 'favorite_artists', index: 5 },
       ],
       moving_component: { name: null, direction: null },
       photoMode: false

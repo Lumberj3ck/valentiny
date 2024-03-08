@@ -77,19 +77,19 @@ export default {
                 d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
             </svg>
           </div>
-          <custom_input :photoMode="photoMode" :primary_color="primary_color" class='text-3xl mb-2 font-semibold leading-normal text-black'
+          <custom_input :name="`${section_name}:1`" :photoMode="photoMode" :primary_color="primary_color" class='text-3xl mb-2 font-semibold leading-normal text-black'
             default_input_value="What I like in you"></custom_input>
           <p class="text-lg font-light leading-relaxed mt-4 mb-4 ">
           <ol class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-            <custom_input  :photoMode="photoMode" :primary_color="primary_color" class='font-light'
+            <custom_input :name="`${section_name}:2`" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="1 Name"></custom_input>
-            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
+            <custom_input :name="`${section_name}:3`" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="2 Good cooking"></custom_input>
-            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
+            <custom_input :name="`${section_name}:4`" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="3 Favorite girl"></custom_input>
-            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
+            <custom_input :name="`${section_name}:5`" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="4 Cute sunn"></custom_input>
-            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
+            <custom_input :name="`${section_name}:6`" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="5 And couple other things)"></custom_input>
           </ol>
           </p>
@@ -105,9 +105,9 @@ export default {
                 <polygon points="-30,95 583,95 583,65" class="text-pink-600 fill-current"
                   style="color: var(--card-primary-color)"></polygon>
               </svg>
-            <custom_input :photoMode="photoMode" style="color: var(--card-secondary-color)" class='text-xl font-bold text-white'
+            <custom_input  :name="`${section_name}:7`" :photoMode="photoMode" style="color: var(--card-secondary-color)" class='text-xl font-bold text-white'
               default_input_value="Buys doner for me"></custom_input>
-            <custom_input :photoMode="photoMode" text_area style="color: var(--card-secondary-color)" class='text-md font-light mt-2 text-white'
+            <custom_input :name="`${section_name}:8`" :photoMode="photoMode" text_area style="color: var(--card-secondary-color)" class='text-md font-light mt-2 text-white'
               default_input_value="Did you know that in a recent study, scientists proved that guys whose girls buy doners are 50% happier?"></custom_input>
             </blockquote>
           </div>
