@@ -12,22 +12,29 @@ c2: #05E1DD
 - [x] Guide pages for users how to upload how to use this website eg
 - [ ] Change font size
 
-sections: {
-    'start_section': {background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-    {
-        'start_section_header_input': {content: 'some text'},
-        'start_section_paragraph_input': {content: 'some text'},
-        'start_section_paragraph_2_input': {content: 'some text'}
-    } 
-    },
-    'reasons_like_section': {background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-    {
-        'reasons_header_input': {content: 'some text'},
-        'reasons_paragraph_input': {content: 'some text'},
-        'reasons_paragraph_2_input': {content: 'some text'}
-    } 
-    }
+{
+    "sections": [
+        {
+            "start_section": {
+                "background_color": "#somecolor",
+                "text_color": "#somecolor",
+                "image_input": "image_path",
+                "text_inputs": {
+                    "start_section_header_input": {
+                        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, corrupti, illum ipsum sint aliquid dignissimos dicta adlias dolore obcaecati totam? Possimus harum animi quas ullam iure beatae, ipsa vitae, alias eos a libero enim earum?"
+                    },
+                    "start_section_paragraph_input": {
+                        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, corrupti, illum ipsum sint aliquid dignissimos dictaossimus harum animi quas ullam iure beatae, ipsa vitae, alias eos a libero enim earum?"
+                    },
+                    "start_section_paragraph_2_input": {
+                        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, corrupti, illum ipsum sint aliquid dignissimos dicta adipisci modi nostrum repudiandae reiciendis, obcaecati sed dolores non unde neque explicabo officia ex eum! ?"
+                    }
+                }
+            }
+        }
+    ]
 }
+
 
 
 

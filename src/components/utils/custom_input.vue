@@ -1,4 +1,6 @@
 <script>
+import { useSectionStore } from '@/stores/SectionStrore';
+
 const focus = {
 mounted: (el) => el.focus()
 }
@@ -25,8 +27,18 @@ export default{
         primary_color: Object,
         default_input_value: String,
         text_area: Boolean,
-        photoMode: Boolean 
+        photoMode: Boolean,
+        name: String
     },
+
+    setup(){
+        const sectionStore = useSectionStore()
+
+        return {
+            sectionStore
+        };
+    },
+
     data(){
         return {
             input_value: this.default_input_value,
@@ -37,7 +49,17 @@ export default{
     focus,
     resize
   },
-
+  mounted(){
+    if (this.name){
+      const parts = this.name.split(':')
+      const section_name = parts[0]
+      const text_input_id = parts[1]
+      const text_input_store_value = this.sectionStore.getInputData(section_name, text_input_id)
+      if (!text_input_store_value) {
+        this.sectionStore.setInputData(section_name, text_input_id, this.default_input_value)
+      }
+    }
+  },
   methods: {
     toggleEditMode(){
         if (!this.photoMode){

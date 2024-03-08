@@ -65,8 +65,7 @@ export default {
       <div v-for="component in components" :key="component.name"
         :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
         :style="{ 'grid-row': component.index }" @animationend="moving_component = { name: null, direction: null }">
-        <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)"
-          :photoMode="photoMode" />
+        <component :name="component.name" :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)" :photoMode="photoMode" />
       </div>
     </div>
 </template>
