@@ -1,21 +1,24 @@
 <script>
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
-import useControlBar from '@/js/control_bar.js'
+// import useControlBar from '@/js/control_bar.js'
+import { useSectionStore } from '@/stores/SectionStrore'
 import default_image_path from '@/assets/imgs/love_potion.png'
 import image_input from '@/components/utils/image_input.vue'
 
 
 export default{
     setup() {
-    const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+    const sectionStore = useSectionStore()
+    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
 
     return {
-      background_color,
-      text_color,
-      is_render,
-      primary_color,
-      resetColors,
+      // background_color,
+      // text_color,
+      // is_render,
+      // primary_color,
+      // resetColors,
+      sectionStore
     };
   },
   data(){
@@ -25,7 +28,8 @@ export default{
     }
   },
   props:{
-    photoMode: Boolean
+    photoMode: Boolean,
+    section_name: String
   },
   methods:{
     reset_both(){
