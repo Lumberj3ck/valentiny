@@ -1,7 +1,7 @@
 <script>
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
-import useControlBar from '@/js/control_bar.js'
+// import useControlBar from '@/js/control_bar.js'
 import default_image_path from '@/assets/imgs/banner.jpg'
 import image_input from '@/components/utils/image_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
@@ -9,21 +9,21 @@ import { useSectionStore } from '@/stores/SectionStrore'
 
 export default {
     setup() {
-        const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+        // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
         const sectionStore = useSectionStore()
 
         return {
-            background_color,
-            text_color,
-            is_render,
+            // background_color,
+            // text_color,
+            // is_render,
             // primary_color,
-            resetColors,
+            // resetColors,
             sectionStore
         };
     },
     props:{
         photoMode: Boolean,
-        name: String
+        section_name: String
     },
     emits: ['move_up', 'move_down'],    
     data(){
@@ -34,7 +34,7 @@ export default {
     },
     methods:{
     reset_both(){
-      this.resetColors()
+        this.sectionStore.resetColors(this.section_name)
         this.reset_img = true
     },
     },
@@ -46,14 +46,14 @@ export default {
     computed: {
         primary_text_color() {
             return {
-                'color': this.sectionStore.getTextColor(this.name)
+                'color': this.sectionStore.getTextColor(this.section_name)
             }
         },
         primary_color(){
-            return this.sectionStore.getColors(this.name)
+            return this.sectionStore.getColors(this.section_name)
         },
-        startSectionHeader(){
-            return this.sectionStore.sections.start_section.text_inputs.start_section_header_input.content
+        render(){
+            return this.sectionStore.sections[this.section_name].render
         }
     }
 }
@@ -62,11 +62,11 @@ export default {
 
 <template>
     <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
-        @toggle-render="is_render = !is_render" @bg_color_picked="(value) => sectionStore.setBgColor(name, value)"
-        @text_color_picked="(value) => sectionStore.setColor(name, value)">
+        @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
+        @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
     </control_bar>
     <Transition>
-    <section v-show="is_render">
+    <section v-show="render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
             <!-- <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
                 :style="{'background-image': `url(${image_url})`}" ref="img">
@@ -81,10 +81,10 @@ export default {
                 <div class="items-center flex flex-wrap">
                     <div class="w-full px-4 ml-auto mr-auto text-center md:max-w-[56%]  min-[540px]:max-w-[75%]">
                         <div class="md:pr-12 text-[#f9d0d7] md:min-w-[480px]">
-                            <custom_input :name="`${name}:1`" :photoMode="photoMode" :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl'
+                            <custom_input :name="`${section_name}:1`" :photoMode="photoMode" :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl'
                                 default_input_value="Congratulations!"></custom_input>
                             <!-- <h1 class="font-semibold text-5xl">{{ sectionStore.sections['start_section'].background_color }}</h1> -->
-                            <custom_input :name="`${name}:2`" :photoMode="photoMode" text_area :primary_color="primary_text_color" class='mt-4 text-lg'
+                            <custom_input :name="`${section_name}:2`" :photoMode="photoMode" text_area :primary_color="primary_text_color" class='mt-4 text-lg'
                                 default_input_value="Today is Valentine's Day, and I don't want to pressure you, but you should already plan how you confess your love to me ">
                             </custom_input>
                             <!-- <p class="mt-4 text-lg">

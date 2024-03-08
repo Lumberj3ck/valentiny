@@ -5,14 +5,14 @@ export const useSectionStore = defineStore('section_store',
         state: () => ({
             sections: {
                 start_section: {
-                    background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs:
+                    background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
                     }
                 },
                 reasons_like_you_section: {
-                    background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs:
+                    background_color: '#somecolor', text_color: '#somecolor', render: true,image_input: 'image_path', text_inputs:
                     {
                         1: { content: 'some text' },
                         2: { content: 'some text' },
@@ -20,7 +20,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 like_you_section: {
-                    background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs:
+                    background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: 'some text' },
                         2: { content: 'some text' },
@@ -28,7 +28,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 love_potion_section: {
-                    background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs:
+                    background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: 'some text' },
                         2: { content: 'some text' },
@@ -36,7 +36,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 favorite_artists: {
-                    background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs:
+                    background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: 'some text' },
                         2: { content: 'some text' },
@@ -46,6 +46,13 @@ export const useSectionStore = defineStore('section_store',
             }
         }),
         actions:{
+            toggleRendering(sectionName){
+                this.sections[sectionName].render = !this.sections[sectionName].render
+            },
+            resetColors(sectionName){
+                this.sections[sectionName].background_color = null 
+                this.sections[sectionName].text_color = null
+            },
             setBgColor(sectionName, background_color){
                 this.sections[sectionName].background_color = background_color
             },
