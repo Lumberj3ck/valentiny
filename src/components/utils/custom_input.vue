@@ -70,8 +70,8 @@ export default{
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
     :style="primary_color"
     v-resize
-    id="custom_input"
-    ></textarea>
+    id="custom_input">
+    </textarea>
     <input
     v-else
     v-focus
