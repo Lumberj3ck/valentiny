@@ -41,7 +41,8 @@ export default{
 
     data(){
         return {
-            input_value: this.default_input_value,
+            section_name: 'start_section',
+            input_id: 1,
             edit: false,
         }
     },
@@ -52,13 +53,18 @@ export default{
   mounted(){
     if (this.name){
       const parts = this.name.split(':')
-      const section_name = parts[0]
-      const text_input_id = parts[1]
-      const text_input_store_value = this.sectionStore.getInputData(section_name, text_input_id)
+      this.section_name = parts[0]
+      this.input_id = parts[1]
+      const text_input_store_value = this.sectionStore.getInputData(this.section_name, this.input_id)
       if (!text_input_store_value) {
-        this.sectionStore.setInputData(section_name, text_input_id, this.default_input_value)
+        this.sectionStore.setInputData(this.section_name, this.input_id, this.default_input_value)
       }
     }
+  },
+  computed:{
+    text_value(){
+      return this.sectionStore.getInputData(this.section_name, this.input_id) ? this.sectionStore.getInputData(this.section_name, this.input_id) : 'Placeholder' 
+    },
   },
   methods: {
     toggleEditMode(){
@@ -80,7 +86,7 @@ export default{
     @click="toggleEditMode"
     class="w-full select_prevent bg_inherit"
     :style="primary_color"
-    >{{ input_value ? input_value : 'Placeholder' }}</div>  
+    >{{ text_value }}</div>  
     <textarea
     v-else-if="edit && text_area"
     v-focus
@@ -88,7 +94,7 @@ export default{
     @focusout="toggleEditMode"
     @keyup.enter="$refs.textAreaRef.blur()"
     ref="textAreaRef"
-    v-model="input_value"
+    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
     :style="primary_color"
     v-resize
@@ -101,7 +107,7 @@ export default{
     type="text"
     @keyup.enter="$refs.textInputRef.blur()"
     ref="textInputRef"
-    v-model="input_value"
+    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10"
     :style="primary_color"
     id="custom_input"
