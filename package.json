@@ -20,6 +20,7 @@
     "file-saver": "^2.0.5",
     "html-to-image": "^1.11.11",
     "jszip": "^3.10.1",
+    "pinia": "^2.1.7",
     "primevue": "^3.49.1",
     "vue": "^3.4.15",
     "vue-router": "^4.3.0"
