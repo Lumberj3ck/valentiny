@@ -1,20 +1,23 @@
 <script>
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
-import useControlBar from '@/js/control_bar.js'
+// import useControlBar from '@/js/control_bar.js'
+import { useSectionStore } from '@/stores/SectionStrore'
 import doner_image from '@/assets/imgs/doner.jpg'
 import image_input from '../utils/image_input.vue'
 
 export default {
     setup() {
-    const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+        const sectionStore = useSectionStore()
 
     return {
-      background_color,
-      text_color,
-      is_render,
-      primary_color,
-      resetColors
+      sectionStore
+      // background_color,
+      // text_color,
+      // is_render,
+      // primary_color,
+      // resetColors
     };
   },
   data(){
@@ -24,7 +27,8 @@ export default {
     }
   },
   props:{
-    photoMode: Boolean
+    photoMode: Boolean,
+    section_name: String
   },
   emits: ['move_up', 'move_down'],
   components: {
@@ -34,20 +38,34 @@ export default {
   },
   methods:{
     reset_both(){
-      this.resetColors()
+      // this.resetColors()
       // this.image_url = doner_image
+      this.sectionStore.resetColors(this.section_name)
       this.reset_img = true
     },
+
+  },
+  computed:{
+        primary_color(){
+            return this.sectionStore.getColors(this.section_name)
+        },
+        render(){
+            return this.sectionStore.sections[this.section_name].render
+        }
   }
 }
 </script>
 
 <template>
-  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
-    @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
-    @text_color_picked="(value) => text_color = value"></control_bar>
+  <!-- <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+    @toggle-render="sectionStore.toggleRendering(name)" @bg_color_picked="(value) => background_color = value"
+    @text_color_picked="(value) => text_color = value"></control_bar> -->
+    <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+        @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
+        @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
+    </control_bar>
     <Transition>
-  <section v-show="is_render" class="py-10 bg-white" :style="primary_color">
+  <section v-show="render" class="py-10 bg-white" :style="primary_color">
     <div class="container mx-auto px-4">
       <!-- cards -->
       <div class="flex flex-wrap items-center">
@@ -63,7 +81,7 @@ export default {
             default_input_value="What I like in you"></custom_input>
           <p class="text-lg font-light leading-relaxed mt-4 mb-4 ">
           <ol class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
+            <custom_input  :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="1 Name"></custom_input>
             <custom_input :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="2 Good cooking"></custom_input>
