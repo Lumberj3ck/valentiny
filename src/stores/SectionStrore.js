@@ -6,14 +6,14 @@ export const useSectionStore = defineStore('section_store',
         state: () => ({
             sections: {
                 start_section: {
-                    background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
+                    index:1, background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
                     }
                 },
                 reasons_like_you_section: {
-                    background_color: '#somecolor', text_color: '#somecolor', render: true,image_input: 'image_path', text_inputs:
+                    index:2, background_color: '#somecolor', text_color: '#somecolor', render: true,image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
@@ -50,9 +50,12 @@ export const useSectionStore = defineStore('section_store',
                 favorite_artists: {
                     background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
-                        1: { content: 'some text' },
-                        2: { content: 'some text' },
-                        3: { content: 'some text' }
+                        1: { content: null},
+                        2: { content: null},
+                        3: { content: null},
+                        4: { content: null},
+                        5: { content: null},
+                        6: { content: null}
                     }
                 }
             }
