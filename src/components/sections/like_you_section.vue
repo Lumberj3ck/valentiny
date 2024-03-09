@@ -1,21 +1,24 @@
 <script>
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
-import useControlBar from '@/js/control_bar.js'
+// import useControlBar from '@/js/control_bar.js'
 import default_image_path from '@/assets/imgs/heart_img.png'
 import image_input from '../utils/image_input.vue'
+import { useSectionStore } from '@/stores/SectionStrore'
 
 
 export default {
     setup() {
-    const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+    const sectionStore = useSectionStore()
+    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
 
     return {
-      background_color,
-      text_color,
-      is_render,
-      primary_color,
-      resetColors
+      sectionStore
+      // background_color,
+      // text_color,
+      // is_render,
+      // primary_color,
+      // resetColors
     };
   },
 
@@ -33,24 +36,38 @@ export default {
     }
   },
   props:{
-    photoMode: Boolean
+    photoMode: Boolean,
+    section_name: String
   },
   methods:{
     reset_both(){
-      this.resetColors()
+      // this.resetColors()
       // this.image_url = default_image_path 
+      this.sectionStore.resetColors(this.section_name)
       this.reset_img = true
+    },
+  },
+  computed:{
+    primary_color() {
+      return this.sectionStore.getColors(this.section_name)
+    },
+    render() {
+      return this.sectionStore.sections[this.section_name].render
     },
   }
 }
 </script>
 
 <template>
-  <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+  <!-- <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
     @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
-    @text_color_picked="(value) => text_color = value"></control_bar>
+    @text_color_picked="(value) => text_color = value"></control_bar> -->
+    <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+        @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
+        @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
+    </control_bar>
 <Transition>
-  <section v-show="is_render" class="relative">
+  <section v-show="render" class="relative">
     <div class="px-4 bg_violet" :style="primary_color">
       <div class="container mx-auto items-center flex flex-wrap">
         <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
@@ -58,7 +75,7 @@ export default {
         </div>
         <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
           <div class="md:pr-12 mb-8">
-            <custom_input :photoMode="photoMode" text_area :primary_color="primary_color" class='text-section-color text-3xl font-semibold'
+            <custom_input :name="`${section_name}:1`" :photoMode="photoMode" text_area :primary_color="primary_color" class='text-section-color text-3xl font-semibold'
               default_input_value="I love you so much that:"></custom_input>
             <ul class="list-none mt-6">
               <li class="py-2">
@@ -74,7 +91,7 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <custom_input :photoMode="photoMode" :primary_color="primary_color" class='text-section-color text-lg '
+                    <custom_input :name="`${section_name}:2`" :photoMode="photoMode" :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Can show you my google history"></custom_input>
                   </div>
                 </div>
@@ -90,7 +107,7 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <custom_input  :photoMode="photoMode" :primary_color="primary_color" class='text-section-color text-lg '
+                    <custom_input  :name="`${section_name}:3`" :photoMode="photoMode" :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Can resist to eat last pizza slice"></custom_input>
                   </div>
                 </div>
@@ -112,7 +129,7 @@ export default {
                     </span>
                   </div>
                   <div>
-                    <custom_input :photoMode="photoMode"   :primary_color="primary_color" class='text-section-color text-lg '
+                    <custom_input :name="`${section_name}:4`" :photoMode="photoMode"   :primary_color="primary_color" class='text-section-color text-lg '
                       default_input_value="Almost started to like your movie taste"></custom_input>
                   </div>
                 </div>
