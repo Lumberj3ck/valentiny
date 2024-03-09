@@ -23,7 +23,7 @@ export default {
         { name: 'like_you_section', index: 2 },
         { name: 'love_potion_section', index: 3 },
         { name: 'reasons_like_you_section', index: 4 },
-        // { name: 'favorite_artists', index: 5 },
+        { name: 'favorite_artists', index: 5 },
       ],
       moving_component: { name: null, direction: null },
       photoMode: false
@@ -46,6 +46,7 @@ export default {
             comp.index -= direction
           }
         })
+
         this.components[comp_index].index += direction
         this.moving_component = { name: name, direction: direction }
       }

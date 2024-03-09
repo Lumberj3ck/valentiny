@@ -28,15 +28,16 @@ export default {
     return {
       reset_img: false,
       items: [
-        { name: 'Name of the song', image: first_image },
-        { name: 'Name of the song', image: second_image },
-        { name: 'Name of the song', image: third_image },
-        { name: 'Name of the song', image: fourth_image },
+        { name: 'Name of the song', image: first_image, id:3},
+        { name: 'Name of the song', image: second_image, id:4},
+        { name: 'Name of the song', image: third_image, id:5},
+        { name: 'Name of the song', image: fourth_image, id:6},
       ]
     }
   },
   props: {
-    photoMode: Boolean
+    photoMode: Boolean,
+    section_name: String
   },
   components: {
     control_bar,
@@ -46,9 +47,18 @@ export default {
   emits: ['move_up', 'move_down'],
   methods: {
     reset_both() {
-      this.resetColors()
+      // this.resetColors()
+      this.sectionStore.resetColors(this.section_name)
       this.reset_img = true
     }
+  },
+  computed: {
+    primary_color() {
+      return this.sectionStore.getColors(this.section_name)
+    },
+    render() {
+      return this.sectionStore.sections[this.section_name].render
+    },
   }
 }
 
@@ -56,17 +66,18 @@ export default {
 
 
 <template>
-  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
-    @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
-    @text_color_picked="(value) => text_color = value"></control_bar>
+    <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+        @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
+        @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
+    </control_bar>
   <Transition>
-    <section v-show="is_render" class="pt-20 pb-48" :style="primary_color">
+    <section v-show="render" class="pt-20 pb-48" :style="primary_color">
       <div class="container mx-auto px-4">
         <div class="flex flex-wrap justify-center text-center mb-24">
           <div class="w-full lg:w-6/12 px-4">
-            <custom_input :photoMode="photoMode" :primary_color="primary_color" class='text-4xl font-semibold'
+            <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_color" class='text-4xl font-semibold'
               default_input_value="Music associated with you"></custom_input>
-            <custom_input :photoMode="photoMode" text_area :primary_color="primary_color"
+            <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode" text_area :primary_color="primary_color"
               class='text-lg leading-relaxed m-4 text-gray-600'
               default_input_value="Melodies that I can listen to and remember you, they are filled with a special mood">
             </custom_input>
@@ -78,9 +89,10 @@ export default {
               <image_input :photoMode="photoMode" image_tag :image_url="item.image" :reset_img="reset_img"
                 @update:reset="reset_img = false"
                 custom_class="square_aspect_ratio object-cover shadow-lg rounded-full max-w-[120px]"
-                class="aspect_ratio_box flex justify-center w-full"></image_input>
+                class="aspect_ratio_box flex justify-center w-full">
+              </image_input>
               <div class="pt-6 text-center">
-                <custom_input :photoMode="photoMode" :primary_color="primary_color" class="text-xl font-bold"
+                <custom_input :section_name="section_name" :input_id="item.id" :photoMode="photoMode" :primary_color="primary_color" class="text-xl font-bold"
                   :default_input_value="item.name">
                 </custom_input>
               </div>
