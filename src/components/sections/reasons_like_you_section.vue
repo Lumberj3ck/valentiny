@@ -8,16 +8,10 @@ import image_input from '../utils/image_input.vue'
 
 export default {
     setup() {
-    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
         const sectionStore = useSectionStore()
 
     return {
       sectionStore
-      // background_color,
-      // text_color,
-      // is_render,
-      // primary_color,
-      // resetColors
     };
   },
   data(){
@@ -38,8 +32,6 @@ export default {
   },
   methods:{
     reset_both(){
-      // this.resetColors()
-      // this.image_url = doner_image
       this.sectionStore.resetColors(this.section_name)
       this.reset_img = true
     },

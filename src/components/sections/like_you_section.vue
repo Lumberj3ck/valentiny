@@ -10,15 +10,9 @@ import { useSectionStore } from '@/stores/SectionStrore'
 export default {
     setup() {
     const sectionStore = useSectionStore()
-    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
 
     return {
       sectionStore
-      // background_color,
-      // text_color,
-      // is_render,
-      // primary_color,
-      // resetColors
     };
   },
 
@@ -41,8 +35,6 @@ export default {
   },
   methods:{
     reset_both(){
-      // this.resetColors()
-      // this.image_url = default_image_path 
       this.sectionStore.resetColors(this.section_name)
       this.reset_img = true
     },
