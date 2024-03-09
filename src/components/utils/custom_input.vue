@@ -51,7 +51,6 @@ export default {
   },
   mounted() {
     if (this.section_name) {
-      console.log(this.input_id)
       const text_input_store_value = this.sectionStore.getInputData(this.section_name, this.input_id)
       if (!text_input_store_value) {
         this.sectionStore.setInputData(this.section_name, this.input_id, this.default_input_value)
