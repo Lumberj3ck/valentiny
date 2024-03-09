@@ -28,7 +28,8 @@ export default {
     default_input_value: String,
     text_area: Boolean,
     photoMode: Boolean,
-    name: String
+    section_name: String,
+    input_id: Number
   },
 
   setup() {
@@ -41,8 +42,6 @@ export default {
 
   data() {
     return {
-      section_name: 'start_section',
-      input_id: 1,
       edit: false,
     }
   },
@@ -51,10 +50,8 @@ export default {
     resize
   },
   mounted() {
-    if (this.name) {
-      const parts = this.name.split(':')
-      this.section_name = parts[0]
-      this.input_id = parts[1]
+    if (this.section_name) {
+      console.log(this.input_id)
       const text_input_store_value = this.sectionStore.getInputData(this.section_name, this.input_id)
       if (!text_input_store_value) {
         this.sectionStore.setInputData(this.section_name, this.input_id, this.default_input_value)
@@ -62,8 +59,11 @@ export default {
     }
   },
   computed: {
+    text_input_data() {
+      return this.sectionStore.getInputData(this.section_name, this.input_id)
+    },
     text_value() {
-      return this.sectionStore.getInputData(this.section_name, this.input_id) ? this.sectionStore.getInputData(this.section_name, this.input_id) : 'Placeholder'
+      return this.text_input_data ? this.text_input_data : 'Placeholder'
     },
   },
   methods: {
@@ -75,7 +75,7 @@ export default {
     resize(event) {
       var el = event.target
       set_height(el)
-    }
+    },
   }
 }
 </script>
@@ -90,7 +90,8 @@ export default {
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
     :style="primary_color" v-resize id="custom_input"></textarea>
   <input v-else v-focus @focusout="toggleEditMode" type="text" @keyup.enter="$refs.textInputRef.blur()"
-    ref="textInputRef" v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
+    ref="textInputRef"     
+    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10"
     :style="primary_color" id="custom_input" />
 </template>
