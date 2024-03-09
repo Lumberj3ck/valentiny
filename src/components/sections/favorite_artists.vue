@@ -1,7 +1,6 @@
 <script>
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
-// import useControlBar from '@/js/control_bar.js'
 import image_input from '@/components/utils/image_input.vue'
 import first_image from '@/assets/imgs/hiro_album_cover.jpg'
 import second_image from '@/assets/imgs/kaspisky_gruz_album_cover.jpg'
@@ -11,16 +10,10 @@ import { useSectionStore } from '@/stores/SectionStrore'
 
 export default {
   setup() {
-    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
     const sectionStore = useSectionStore()
 
     return {
       sectionStore
-      // background_color,
-      // text_color,
-      // is_render,
-      // primary_color,
-      // resetColors,
     };
   },
 
@@ -47,7 +40,6 @@ export default {
   emits: ['move_up', 'move_down'],
   methods: {
     reset_both() {
-      // this.resetColors()
       this.sectionStore.resetColors(this.section_name)
       this.reset_img = true
     }

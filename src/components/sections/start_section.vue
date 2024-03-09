@@ -9,15 +9,9 @@ import { useSectionStore } from '@/stores/SectionStrore'
 
 export default {
     setup() {
-        // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
         const sectionStore = useSectionStore()
 
         return {
-            // background_color,
-            // text_color,
-            // is_render,
-            // primary_color,
-            // resetColors,
             sectionStore
         };
     },
@@ -68,10 +62,6 @@ export default {
     <Transition>
     <section v-show="render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
-            <!-- <div class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain"
-                :style="{'background-image': `url(${image_url})`}" ref="img">
-                <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
-            </div> -->
         <image_input :photoMode="photoMode" custom_class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img">
             <template v-slot:background_overlay>
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>

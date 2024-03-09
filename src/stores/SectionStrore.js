@@ -1,19 +1,18 @@
 import { defineStore } from "pinia";
-// import { markRaw } from "vue";
 
 export const useSectionStore = defineStore('section_store',
     {
         state: () => ({
             sections: {
                 start_section: {
-                    index:1, background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
+                    index:1, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
                     }
                 },
                 reasons_like_you_section: {
-                    index:2, background_color: '#somecolor', text_color: '#somecolor', render: true,image_input: 'image_path', text_inputs:
+                    index:2, background_color: null, text_color: null, render: true,image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
@@ -26,7 +25,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 like_you_section: {
-                    index:3, background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
+                    index:3, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null },
                         2: { content: null },
@@ -35,7 +34,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 love_potion_section: {
-                    index:4, background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
+                    index:4, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
@@ -48,7 +47,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 favorite_artists: {
-                    index:5, background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
+                    index:5, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null},
                         2: { content: null},
