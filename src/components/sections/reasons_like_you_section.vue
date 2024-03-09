@@ -51,7 +51,7 @@ export default {
         },
         render(){
             return this.sectionStore.sections[this.section_name].render
-        }
+        },
   }
 }
 </script>

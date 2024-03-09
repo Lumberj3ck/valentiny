@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+// import { markRaw } from "vue";
 
 export const useSectionStore = defineStore('section_store',
     {
@@ -27,10 +28,10 @@ export const useSectionStore = defineStore('section_store',
                 like_you_section: {
                     background_color: '#somecolor', text_color: '#somecolor', render: true, image_input: 'image_path', text_inputs:
                     {
-                        1: { content: 'some text' },
-                        2: { content: 'some text' },
-                        3: { content: 'some text' },
-                        4: { content: 'some text' }
+                        1: { content: null },
+                        2: { content: null },
+                        3: { content: null },
+                        4: { content: null }
                     }
                 },
                 love_potion_section: {

@@ -1,23 +1,26 @@
 <script>
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
-import useControlBar from '@/js/control_bar.js'
+// import useControlBar from '@/js/control_bar.js'
 import image_input from '@/components/utils/image_input.vue'
 import first_image from '@/assets/imgs/hiro_album_cover.jpg'
 import second_image from '@/assets/imgs/kaspisky_gruz_album_cover.jpg'
 import third_image from '@/assets/imgs/magic_city_album_cover.jpg'
 import fourth_image from '@/assets/imgs/scryptonit_album_cover.png'
+import { useSectionStore } from '@/stores/SectionStrore'
 
 export default {
   setup() {
-    const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+    // const { background_color, text_color, is_render, primary_color, resetColors } = useControlBar();
+    const sectionStore = useSectionStore()
 
     return {
-      background_color,
-      text_color,
-      is_render,
-      primary_color,
-      resetColors,
+      sectionStore
+      // background_color,
+      // text_color,
+      // is_render,
+      // primary_color,
+      // resetColors,
     };
   },
 
@@ -25,10 +28,10 @@ export default {
     return {
       reset_img: false,
       items: [
-        { name: 'Name of the sond', image: first_image },
-        { name: 'Name of the sond', image: second_image },
-        { name: 'Name of the sond', image: third_image },
-        { name: 'Name of the sond', image: fourth_image },
+        { name: 'Name of the song', image: first_image },
+        { name: 'Name of the song', image: second_image },
+        { name: 'Name of the song', image: third_image },
+        { name: 'Name of the song', image: fourth_image },
       ]
     }
   },
