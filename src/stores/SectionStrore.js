@@ -5,27 +5,27 @@ export const useSectionStore = defineStore('section_store',
         state: () => ({
             sections: {
                 start_section: {
-                    index:1, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
+                    index: 1, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
-                        1: { content: null},
-                        2: { content: null},
+                        1: { content: null },
+                        2: { content: null },
                     }
                 },
                 reasons_like_you_section: {
-                    index:2, background_color: null, text_color: null, render: true,image_input: 'image_path', text_inputs:
+                    index: 2, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
-                        1: { content: null},
-                        2: { content: null},
-                        3: { content: null},
-                        4: { content: null},
-                        5: { content: null},
-                        6: { content: null},
-                        7: { content: null},
-                        8: { content: null},
+                        1: { content: null },
+                        2: { content: null },
+                        3: { content: null },
+                        4: { content: null },
+                        5: { content: null },
+                        6: { content: null },
+                        7: { content: null },
+                        8: { content: null },
                     }
                 },
                 like_you_section: {
-                    index:3, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
+                    index: 3, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
                         1: { content: null },
                         2: { content: null },
@@ -34,46 +34,46 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 love_potion_section: {
-                    index:4, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
+                    index: 4, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
-                        1: { content: null},
-                        2: { content: null},
-                        3: { content: null},
-                        4: { content: null},
-                        5: { content: null},
-                        6: { content: null},
-                        7: { content: null},
-                        8: { content: null}
+                        1: { content: null },
+                        2: { content: null },
+                        3: { content: null },
+                        4: { content: null },
+                        5: { content: null },
+                        6: { content: null },
+                        7: { content: null },
+                        8: { content: null }
                     }
                 },
                 favorite_artists: {
-                    index:5, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
+                    index: 5, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
                     {
-                        1: { content: null},
-                        2: { content: null},
-                        3: { content: null},
-                        4: { content: null},
-                        5: { content: null},
-                        6: { content: null}
+                        1: { content: null },
+                        2: { content: null },
+                        3: { content: null },
+                        4: { content: null },
+                        5: { content: null },
+                        6: { content: null }
                     }
                 }
             }
         }),
-        actions:{
-            toggleRendering(sectionName){
+        actions: {
+            toggleRendering(sectionName) {
                 this.sections[sectionName].render = !this.sections[sectionName].render
             },
-            resetColors(sectionName){
-                this.sections[sectionName].background_color = null 
+            resetColors(sectionName) {
+                this.sections[sectionName].background_color = null
                 this.sections[sectionName].text_color = null
             },
-            setBgColor(sectionName, background_color){
+            setBgColor(sectionName, background_color) {
                 this.sections[sectionName].background_color = background_color
             },
-            setColor(sectionName, color){
-                this.sections[sectionName].text_color = color 
+            setColor(sectionName, color) {
+                this.sections[sectionName].text_color = color
             },
-            setInputData(sectionName, input_id, data){
+            setInputData(sectionName, input_id, data) {
                 this.sections[sectionName].text_inputs[input_id].content = data
             }
         },

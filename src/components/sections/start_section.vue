@@ -23,12 +23,16 @@ export default {
     data(){
         return {
             image_url: default_image_path,
-            reset_img: false
+            reset_img: false,
+            background_color: '',
+            text_color: '',
         }
     },
     methods:{
     reset_both(){
         this.sectionStore.resetColors(this.section_name)
+        this.background_color = ''
+        this.text_color = ''
         this.reset_img = true
     },
     },
@@ -40,11 +44,16 @@ export default {
     computed: {
         primary_text_color() {
             return {
-                'color': this.sectionStore.getTextColor(this.section_name)
+                // 'color': this.sectionStore.getTextColor(this.section_name)
+                'color': this.text_color
             }
         },
         primary_color(){
-            return this.sectionStore.getColors(this.section_name)
+            // return this.sectionStore.getColors(this.section_name)
+            return {
+                'background-color': this.background_color,
+                'color':  this.text_color
+            }
         },
         render(){
             return this.sectionStore.sections[this.section_name].render
@@ -55,9 +64,13 @@ export default {
 
 
 <template>
+<!-- => sectionStore.setColor(section_name, value)" -->
     <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
-        @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
-        @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
+        @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => background_color = value"
+        @text_color_picked="(value) => text_color = value"
+        @text_color_change="(value) => sectionStore.setColor(section_name, value)"
+        @bg_color_change="(value) => sectionStore.setBgColor(section_name, value)"
+        >
     </control_bar>
     <Transition>
     <section v-show="render">

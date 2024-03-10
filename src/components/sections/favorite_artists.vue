@@ -20,6 +20,8 @@ export default {
   data() {
     return {
       reset_img: false,
+      background_color: '',
+      text_color:'',
       items: [
         { name: 'Name of the song', image: first_image, id:3},
         { name: 'Name of the song', image: second_image, id:4},
@@ -41,12 +43,18 @@ export default {
   methods: {
     reset_both() {
       this.sectionStore.resetColors(this.section_name)
+      this.background_color = ''
+      this.text_color = ''
       this.reset_img = true
     }
   },
   computed: {
     primary_color() {
-      return this.sectionStore.getColors(this.section_name)
+      // return this.sectionStore.getColors(this.section_name)
+      return {
+        'background-color': this.background_color,
+        'color': this.text_color
+      }
     },
     render() {
       return this.sectionStore.sections[this.section_name].render
@@ -58,10 +66,16 @@ export default {
 
 
 <template>
-    <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+    <!-- <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
         @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
         @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
-    </control_bar>
+    </control_bar> -->
+  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+    @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => background_color = value"
+    @text_color_picked="(value) => text_color = value"
+    @text_color_change="(value) => sectionStore.setColor(section_name, value)"
+    @bg_color_change="(value) => sectionStore.setBgColor(section_name, value)">
+  </control_bar>
   <Transition>
     <section v-show="render" class="pt-20 pb-48" :style="primary_color">
       <div class="container mx-auto px-4">
