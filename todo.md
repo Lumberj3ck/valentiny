@@ -11,6 +11,7 @@ c2: #05E1DD
 - [x] Better textarea and input
 - [x] Guide pages for users how to upload how to use this website eg
 - [ ] Change font size
+- [ ] Fix bugs on text input small amounts of text especially check love potion section
 
 {
     "sections": [

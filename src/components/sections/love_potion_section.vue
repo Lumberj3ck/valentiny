@@ -18,7 +18,9 @@ export default {
   data() {
     return {
       image_url: default_image_path,
-      reset_img: false
+      reset_img: false,
+      background_color: '',
+      text_color: ''
     }
   },
   props: {
@@ -28,22 +30,28 @@ export default {
   methods: {
     reset_both() {
       this.sectionStore.resetColors(this.section_name)
+      this.background_color = ''
+      this.text_color = ''
       this.reset_img = true
     },
   },
   computed: {
     primary_color() {
-      return this.sectionStore.getColors(this.section_name)
+      // return this.sectionStore.getColors(this.section_name)
+      return {
+        'background-color': this.background_color,
+        'color': this.text_color
+      }
     },
     render() {
       return this.sectionStore.sections[this.section_name].render
     },
-    background_color(){
-      return this.sectionStore.getBgColor(this.section_name)
-    },
-    text_color(){
-      return this.sectionStore.getTextColor(this.section_name)
-    }
+    // background_color(){
+    //   return this.sectionStore.getBgColor(this.section_name)
+    // },
+    // text_color(){
+    //   return this.sectionStore.getTextColor(this.section_name)
+    // }
   },
   components: {
     control_bar,
@@ -55,13 +63,16 @@ export default {
 </script>
 
 <template>
-    <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+    <!-- <control_bar  @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
         @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => sectionStore.setBgColor(section_name, value)"
         @text_color_picked="(value) => sectionStore.setColor(section_name, value)">
-    </control_bar>
-  <!-- <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
-    @toggle-render="is_render = !is_render" @bg_color_picked="(value) => background_color = value"
-    @text_color_picked="(value) => text_color = value"></control_bar> -->
+    </control_bar> -->
+  <control_bar @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
+    @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => background_color = value"
+    @text_color_picked="(value) => text_color = value"
+    @text_color_change="(value) => sectionStore.setColor(section_name, value)"
+    @bg_color_change="(value) => sectionStore.setBgColor(section_name, value)">
+  </control_bar>
   <Transition>
     <section v-show='render' class="pb-20 relative block bg-gray-900" :style="primary_color">
       <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
