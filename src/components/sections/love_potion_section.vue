@@ -53,6 +53,10 @@ export default {
     //   return this.sectionStore.getTextColor(this.section_name)
     // }
   },
+    mounted(){
+        this.text_color = this.sectionStore.getTextColor(this.section_name)
+        this.background_color = this.sectionStore.getBgColor(this.section_name)
+    },
   components: {
     control_bar,
     custom_input,

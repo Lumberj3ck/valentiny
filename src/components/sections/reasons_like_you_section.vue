@@ -42,6 +42,10 @@ export default {
     },
 
   },
+  mounted(){
+      this.text_color = this.sectionStore.getTextColor(this.section_name)
+      this.background_color = this.sectionStore.getBgColor(this.section_name)
+  },
   computed:{
         primary_color(){
             // return this.sectionStore.getColors(this.section_name)

@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useSectionStore = defineStore('section_store',
     {
         state: () => ({
+            saved: false,
             sections: {
                 start_section: {
                     index: 1, background_color: null, text_color: null, render: true, image_input: 'image_path', text_inputs:
@@ -75,6 +76,13 @@ export const useSectionStore = defineStore('section_store',
             },
             setInputData(sectionName, input_id, data) {
                 this.sections[sectionName].text_inputs[input_id].content = data
+            },
+            updateSectionState(sections_data) {
+                // this.sections = sections_data;
+                // console.log(sections_data, this.sections)
+                for (const section_name in sections_data) {
+                    this.sections[section_name] = sections_data[section_name];
+                }
             }
         },
         getters: {

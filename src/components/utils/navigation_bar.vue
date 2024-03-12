@@ -1,45 +1,93 @@
 <script>
 import download_button from '@/components/utils/button_download_html.vue'
+import { useSectionStore } from '@/stores/SectionStrore'
+import { transformData } from '@/js/transform_data'
+import { initial_save_sections, save_sections } from '@/js/api'
 
-export default{
-    emits:['photomode_toggle'],
+export default {
+  setup() {
+    const sectionStore = useSectionStore()
 
-    components:{
-        download_button
-    }        
+    return {
+      sectionStore
+    };
+  },
+  emits: ['photomode_toggle'],
+
+  components: {
+    download_button
+  },
+  methods: {
+    async save() {
+      if (!this.sectionStore.sections) {
+        return
+      }
+      const rearanged_data = transformData(this.sectionStore.sections)
+      if (!this.sectionStore.saved) {
+        const response = await initial_save_sections(rearanged_data)
+        if (response.ok) {
+          alert('Data saved successfuly')
+          this.sectionStore.saved = true
+          const user_data = await response.json()
+          this.sectionStore.updateSectionState(user_data)
+          // const sections_data = await get_user_sections(rearanged_data)
+          // if (sections_data.ok) {
+          // }
+        }
+        else {
+          alert('Error!')
+        }
+      }
+      else{
+          console.log(rearanged_data)
+          alert('Updating data!')
+          const response = await save_sections(rearanged_data)
+          if (response.ok){
+            alert('Data updated successfuly')
+          }
+      }
+    }
+
+  }
 }
 </script>
 
 <template>
   <div class="flex justify-start sm:justify-center m-3 system_ui">
-  <div class="flex gap-5 flex-col rounded-lg nav_border p-2 w-5/6 md:flex-row">
-    <div class="flex">
-    <h1 class="font-semibold mr-2 nav_text">Photo Mode:</h1>
-    <label class="toggle-switch">
-      <input type="checkbox"  @change="$emit('photomode_toggle', $event.target.value)">
-      <div class="toggle-switch-background">
-        <div class="toggle-switch-handle"></div>
+    <div class="flex gap-5 flex-col rounded-lg nav_border p-2 w-5/6 md:flex-row">
+      <div class="flex">
+        <h1 class="font-semibold mr-2 nav_text">Photo Mode:</h1>
+        <label class="toggle-switch">
+          <input type="checkbox" @change="$emit('photomode_toggle', $event.target.value)">
+          <div class="toggle-switch-background">
+            <div class="toggle-switch-handle"></div>
+          </div>
+        </label>
       </div>
-    </label>
+      <download_button></download_button>
+      <router-link to="user-guide/" class="nav_text nav_link font-semibold text-base"
+        style="text-underline-offset: 1px; text-decoration: underline;">
+        Guide
+      </router-link>
+      <button class="nav_text font-semibold" @click="save">Save</button>
     </div>
-    <download_button></download_button>
-    <router-link to="user-guide/" class="nav_text nav_link font-semibold text-base" style="text-underline-offset: 1px;
-    text-decoration: underline;">Guide</router-link>
   </div>
-</div>
 </template>
 
 
 <style>
-.nav_link:hover{
+.nav_link:hover {
   color: var(--soft-red-color)
 }
-.nav_text{
-  color:var(--soft-blue-color)
+
+.nav_text {
+  color: var(--soft-blue-color)
 }
-.nav_border{
+
+.nav_border {
   border: 2px solid var(--soft-blue-color);
 }
+
 .toggle-switch {
   position: relative;
   display: inline-block;
