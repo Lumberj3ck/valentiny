@@ -6,6 +6,8 @@ import start_section from './start_section.vue'
 import favorite_artists from './favorite_artists.vue'
 import navigation_bar from '@/components/utils/navigation_bar.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
+import { get_user_sections } from '@/js/api'
+import loading_spinner from '../utils/loading_spinner.vue'
 
 export default {
   components: {
@@ -14,19 +16,22 @@ export default {
     reasons_like_you_section,
     start_section,
     navigation_bar,
-    favorite_artists
+    favorite_artists,
+    loading_spinner
   },
-  setup(){
+  setup() {
     const components = useSectionStore()
+
     return {
-     components 
+      components
     }
   },
 
   data() {
     return {
       moving_component: { name: null, direction: null },
-      photoMode: false
+      photoMode: false,
+      loaded: false
     }
   },
   methods: {
@@ -60,16 +65,32 @@ export default {
       document.querySelectorAll('.control_bar').forEach((el) => el.style.display = this.photoMode ? 'none' : null)
     }
   },
+  async created() {
+    const user_token = localStorage.getItem('access-token')
+    if (user_token) {
+      const response = await get_user_sections()
+      if (response.ok) {
+        const user_data = await response.json()
+        this.components.updateSectionState(user_data)
+
+        if (Object.keys(user_data).length !== 0 && !user_data.constructor !== Object) {
+          this.components.saved = true;
+        }
+      }
+    }
+    this.loaded = true
+  }
 }
 </script>
 
 <template>
   <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
   <div class="custom_container">
+    <loading_spinner v-if="!loaded"></loading_spinner>
     <div v-for="[component, section] in Object.entries(components.sections)" :key="component"
       :class="{ 'slide-in-bck-top': (moving_component.name == component) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component) && (moving_component.direction == -1) }"
       :style="{ 'grid-row': section.index }" @animationend="moving_component = { name: null, direction: null }">
-      <component :section_name="component" :is="component" @move_up="move(-1, component)"
+      <component v-if="loaded" :section_name="component" :is="component" @move_up="move(-1, component)"
         @move_down="move(1, component)" :photoMode="photoMode" />
     </div>
   </div>

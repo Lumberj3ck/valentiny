@@ -41,6 +41,10 @@ export default {
         custom_input,
         image_input
     },
+    mounted(){
+        this.text_color = this.sectionStore.getTextColor(this.section_name)
+        this.background_color = this.sectionStore.getBgColor(this.section_name)
+    },
     computed: {
         primary_text_color() {
             return {
@@ -80,7 +84,7 @@ export default {
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </template>
         </image_input>
-            <div class="container relative mx-auto flex justify-center">
+            <div class="container relative mx-auto">
                 <div class="items-center flex flex-wrap">
                     <div class="w-full px-4 ml-auto mr-auto text-center md:max-w-[56%]  min-[540px]:max-w-[75%]">
                         <div class="md:pr-12 text-[#f9d0d7] md:min-w-[480px]">
