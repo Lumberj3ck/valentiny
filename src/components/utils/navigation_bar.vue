@@ -17,6 +17,11 @@ export default {
   components: {
     download_button
   },
+  data(){
+    return {
+      user_authenticated: localStorage.getItem('access-token')
+    }
+  },
   methods: {
     async save() {
       if (!this.sectionStore.sections) {
@@ -47,6 +52,10 @@ export default {
             alert('Data updated successfuly')
           }
       }
+    },
+    logout(){
+      localStorage.removeItem('access-token')
+      this.$router.go(0);
     }
 
   }
@@ -70,15 +79,16 @@ export default {
         style="text-underline-offset: 1px; text-decoration: underline;">
         Guide
       </router-link>
-      <router-link to="register/" class="nav_text nav_link font-semibold text-base"
+      <router-link v-if="!user_authenticated" to="register/" class="nav_text nav_link font-semibold text-base"
         style="text-underline-offset: 1px; text-decoration: underline;">
         Register 
       </router-link>
-      <router-link to="login/" class="nav_text nav_link font-semibold text-base"
+      <router-link v-if="!user_authenticated" to="login/" class="nav_text nav_link font-semibold text-base"
         style="text-underline-offset: 1px; text-decoration: underline;">
         Login 
       </router-link>
-      <button class="nav_text font-semibold" @click="save">Save</button>
+      <button v-if="user_authenticated" class="nav_text font-semibold" @click="save">Save</button>
+      <button v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</button>
     </div>
   </div>
 </template>

@@ -6,7 +6,7 @@ async function login_user(username, password){
         username: username,
         password: password
     }
-  return await fetch(`${api_url}/login`, {
+  return fetch(`${api_url}/login`, {
     method: 'POST',
     headers: { 
     'Content-Type': 'application/json',
@@ -14,6 +14,14 @@ async function login_user(username, password){
     },
     body: JSON.stringify(data)
   })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(errorData => {
+        throw new Error(`${errorData.detail}`);
+      });
+    }
+    return response.json();
+  });
 }
 
 async function get_user_sections(){
