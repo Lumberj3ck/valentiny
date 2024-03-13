@@ -24,6 +24,11 @@ export default {
         bg_color_value: String,
         text_color_value: String
     },
+    // watch:{
+    //     bg_color_value(){
+    //         alert(this.bg_color_value)
+    //     }
+    // },
     data() {
         return {
             faImageUpload: faFileImage,
@@ -54,9 +59,9 @@ export default {
             <FontAwesomeIcon @click="$emit('move_up')" :icon="faArrowUp" class="control_item"></FontAwesomeIcon>
         </div>
         <div class="flex items-center sm:gap-5 mx-1 gap-1">
-            <input :value="bg_color_value" type="color" @change="$emit('bg_color_change', $event.target.value)"
+            <input :value="bg_color_value ? bg_color_value:  '#000000'" type="color" @change="$emit('bg_color_change', $event.target.value)"
                 @input="$emit('bg_color_picked', $event.target.value)" class="custom_input" />
-            <input :value="text_color_value" type="color" @change="$emit('text_color_change', $event.target.value)"
+            <input :value="text_color_value ? text_color_value : '#000000'" type="color" @change="$emit('text_color_change', $event.target.value)"
                 @input="$emit('text_color_picked', $event.target.value)" class="custom_input" />
             <!-- <div class="button_bg w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
                 <FontAwesomeIcon :icon="faImageUpload" class="mr-2 font-bold text-secondary-color"/>

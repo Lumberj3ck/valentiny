@@ -17,64 +17,27 @@ c2: #05E1DD
 - [ ] Draw some errors which you will get from the api
 - [ ] Test for every use case
 - [ ] Save state inside of local storage without clicking on button save
-
-
-Bug:
-User changes the color:
-but somehow color didn't change inside of pinia store
-user tries again the same color but color didn't change so it won't trigger 
-the change event 
-Somewhy it don't work with black color
-When person loads the data the inputs they are in default state the data sets some color but 
-color inputs are already in black color so when person choose black it don't trigger 
-so the color sets to black but change event didn't trigger
-
-Use case:
-User without registration and login click on save button
-
-{
-    "sections": [
-        {
-            "start_section": {
-                "background_color": "#somecolor",
-                "text_color": "#somecolor",
-                "image_input": "image_path",
-                "text_inputs": {
-                    "start_section_header_input": {
-                        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, corrupti, illum ipsum sint aliquid dignissimos dicta adlias dolore obcaecati totam? Possimus harum animi quas ullam iure beatae, ipsa vitae, alias eos a libero enim earum?"
-                    },
-                    "start_section_paragraph_input": {
-                        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, corrupti, illum ipsum sint aliquid dignissimos dictaossimus harum animi quas ullam iure beatae, ipsa vitae, alias eos a libero enim earum?"
-                    },
-                    "start_section_paragraph_2_input": {
-                        "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, corrupti, illum ipsum sint aliquid dignissimos dicta adipisci modi nostrum repudiandae reiciendis, obcaecati sed dolores non unde neque explicabo officia ex eum! ?"
-                    }
-                }
-            }
-        }
-    ]
-}
+- [ ] Set default color picked 
 
 
 
+User save different cases:
+- [x] User without registration and login click on save butto
 
-data:
-{
-sections: [
-        {name: 'start_section', background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-        [
-            {name:'start_section_header_input', content: 'some text'},
-            {name:'start_section_paragraph_input', content: 'some text'}
-        ]
-        },
-        {name: 'reasons_like_you', background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-        [
-            {name:'reasons_header_input', content: 'some text'},
-            {name:'reasons_paragraph_input', content: 'some text'},
-        ]
-        }
-    ]
-}
+- [x] User made some changes to the template and wants register and then save
+It's working because of pinia store 
+<----->
+
+- [x] User register and then push some changes
+
+- [x] User logged in and want to retrieve some state 
+
+- [x] User made changes to template and tries to login 
+
+- [x] User registered saved and logins in 
+
+- [x] Check how it will work when user saved and then download the page
+
 
 
 ## How to add new section 
@@ -101,3 +64,8 @@ Then either edit by yourself or just public on vercel
 
 
 ## Bugs
+1. User changes the color: but somehow color didn't change inside of pinia store
+user tries again the same color but color didn't change so it won't trigger the change event 
+Somewhy it don't work with black color When person loads the data the inputs they are in default state the data sets some color but 
+color inputs are already in black color so when person choose black it don't trigger 
+so the color sets to black but change event didn't trigger
