@@ -24,6 +24,7 @@ export default {
       }
       const rearanged_data = transformData(this.sectionStore.sections)
       if (!this.sectionStore.saved) {
+        alert('First initial save')
         const response = await initial_save_sections(rearanged_data)
         if (response.ok) {
           alert('Data saved successfuly')
@@ -68,6 +69,14 @@ export default {
       <router-link to="user-guide/" class="nav_text nav_link font-semibold text-base"
         style="text-underline-offset: 1px; text-decoration: underline;">
         Guide
+      </router-link>
+      <router-link to="register/" class="nav_text nav_link font-semibold text-base"
+        style="text-underline-offset: 1px; text-decoration: underline;">
+        Register 
+      </router-link>
+      <router-link to="login/" class="nav_text nav_link font-semibold text-base"
+        style="text-underline-offset: 1px; text-decoration: underline;">
+        Login 
       </router-link>
       <button class="nav_text font-semibold" @click="save">Save</button>
     </div>
