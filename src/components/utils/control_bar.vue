@@ -17,23 +17,29 @@ export default {
         'text_color_change'
         // 'file_selected'
     ],
-    components:{
+    components: {
         FontAwesomeIcon
+    },
+    props:{
+        bg_color_value: String,
+        text_color_value: String
     },
     data() {
         return {
             faImageUpload: faFileImage,
-            faArrowDown: faArrowDown, 
+            faArrowDown: faArrowDown,
             faArrowUp: faArrowUp,
-            faPowerOff: faPowerOff, 
-            faTrash: faTrashAlt 
+            faPowerOff: faPowerOff,
+            faTrash: faTrashAlt,
+            color_input_default: '#000000'
         }
     }
 }
 </script>
 
 <template>
-    <div class="flex text_black control_bar justify-start sm:gap-5 my-1 sm:justify-center md:justify-around max-w-[95%] mx-auto md:max-w-[80%]">
+    <div
+        class="flex text_black control_bar justify-start sm:gap-5 my-1 sm:justify-center md:justify-around max-w-[95%] mx-auto md:max-w-[80%]">
         <div class="flex items-center  sm:gap-5 mx-1 gap-2 grow">
             <!-- <button @click="$emit('toggle-render')" class="button_simple">Toggle Render</button> -->
             <!-- <i @click="$emit('toggle-render')" class="fas fa-power-off control_item"></i> -->
@@ -48,8 +54,10 @@ export default {
             <FontAwesomeIcon @click="$emit('move_up')" :icon="faArrowUp" class="control_item"></FontAwesomeIcon>
         </div>
         <div class="flex items-center sm:gap-5 mx-1 gap-1">
-            <input type="color" @change="$emit('bg_color_change', $event.target.value)"  @input="$emit('bg_color_picked', $event.target.value)" class="custom_input"/>
-            <input type="color" @change="$emit('text_color_change', $event.target.value)" @input="$emit('text_color_picked', $event.target.value)" class="custom_input"/>
+            <input :value="bg_color_value" type="color" @change="$emit('bg_color_change', $event.target.value)"
+                @input="$emit('bg_color_picked', $event.target.value)" class="custom_input" />
+            <input :value="text_color_value" type="color" @change="$emit('text_color_change', $event.target.value)"
+                @input="$emit('text_color_picked', $event.target.value)" class="custom_input" />
             <!-- <div class="button_bg w-24 h-9   md:h-10 flex items-center justify-center rounded-xl md:text-base cursor-pointer" @click="$refs.file_input.click()">
                 <FontAwesomeIcon :icon="faImageUpload" class="mr-2 font-bold text-secondary-color"/>
                 <span class="font-semibold text-secondary-color">Choose</span>
@@ -61,10 +69,11 @@ export default {
 
 
 <style>
-.button_bg{
+.button_bg {
     background-color: var(--soft-blue-color);
 }
-.text-secondary-color{
+
+.text-secondary-color {
     color: var(--soft-red-color)
 }
 

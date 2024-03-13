@@ -16,6 +16,18 @@ c2: #05E1DD
 - [ ] Do password validations on register
 - [ ] Draw some errors which you will get from the api
 - [ ] Test for every use case
+- [ ] Save state inside of local storage without clicking on button save
+
+
+Bug:
+User changes the color:
+but somehow color didn't change inside of pinia store
+user tries again the same color but color didn't change so it won't trigger 
+the change event 
+Somewhy it don't work with black color
+When person loads the data the inputs they are in default state the data sets some color but 
+color inputs are already in black color so when person choose black it don't trigger 
+so the color sets to black but change event didn't trigger
 
 Use case:
 User without registration and login click on save button
