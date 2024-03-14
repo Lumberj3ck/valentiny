@@ -30,17 +30,16 @@ export default {
         return
       }
       const rearanged_data = transformData(this.sectionStore.sections)
-      if (!this.sectionStore.saved){
-        this.is_loading = true 
+      if (!this.sectionStore.has_ever_saved){
+        // this.is_loading = true 
         const response = await initial_save_sections(rearanged_data)
         if (response.ok){
           this.sectionStore.saved = true
           const user_data = await response.json()
           this.sectionStore.updateSectionState(user_data)
-          setInterval(() => { 
-            this.is_loading = false
-            
-          }, 2000);
+          // setInterval(() => { 
+          //   this.is_loading = false
+          // }, 2000);
         }
       }
       else{

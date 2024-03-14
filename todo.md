@@ -19,6 +19,8 @@ c2: #05E1DD
 - [ ] better alert box 
 - [ ] Save state inside of local storage without clicking on button save
 - [ ] Set default color picked 
+- [ ] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
+would be without id 
 
 
 
