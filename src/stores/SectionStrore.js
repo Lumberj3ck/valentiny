@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 export const useSectionStore = defineStore('section_store',
     {
         state: () => ({
-            saved: false,
+            has_ever_saved: false,
             sections: {
                 start_section: {
                     index: 1, background_color: null, text_color: null, render: true, image_inputs:
