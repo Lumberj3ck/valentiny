@@ -68,17 +68,24 @@ export default {
   async created() {
     const user_token = localStorage.getItem('access-token')
     if (user_token) {
-      const response = await get_user_sections()
-      if (response.ok) {
-        const user_data = await response.json()
-        this.components.updateSectionState(user_data)
-
-        if (Object.keys(user_data).length !== 0 && !user_data.constructor !== Object) {
-          this.components.saved = true;
-        }
-      }
+      get_user_sections()
+        .then(data => {
+          if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
+            this.components.updateSectionState(data)
+            this.components.saved = true;
+          }
+        this.loaded = true
+        })
+        .catch(error => {
+          console.log(error)
+          this.loaded = true
+          // this.error_message = error.message
+          // this.error = true
+        });
     }
-    this.loaded = true
+    else{
+      this.loaded = true
+    }
   }
 }
 </script>
