@@ -72,15 +72,12 @@ export default {
         .then(data => {
           if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
             this.components.updateSectionState(data)
-            this.components.has_ever_saved = true;
           }
         this.loaded = true
         })
         .catch(error => {
           console.log(error)
           this.loaded = true
-          // this.error_message = error.message
-          // this.error = true
         });
     }
     else{

@@ -1,6 +1,7 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { uploadImageToS3 } from '@/js/uploadToS3'
 
 export default {
     props: {
@@ -42,23 +43,41 @@ export default {
             return result;
         },
 
-        handleFileUpload(event) {
+        async handleFileUpload(event) {
             const file = event.target.files[0]
-            if (file) {
-                const reader = new FileReader()
-                reader.onload = () => {
-                    this.user_custom_img = reader.result
-                    var file_type = this.user_custom_img.match('data:image/([a-zA-Z]+);')[1]
-                    this.$refs.img.setAttribute(
-                        'data-verbose-path',
-                        `./assets/imgs/user_input_${this.generateRandomLetters(5)}.${file_type}`
-                    )
-                }
-                reader.readAsDataURL(file)
-            }
+            // try {
+            //     const response = await uploadImageToS3(file, 'YOUR_BUCKET_NAME', 'images');
+            //     console.log('Image uploaded successfully:', response.Location);
+            // } catch (error) {
+            //     console.error('Error uploading image:', error);
+            // }
+            const file_name = `user-image-file_${this.generateRandomLetters(5)}`
+            await uploadImageToS3(file, 'postcard-user-images',  file_name);
+            const fileUrl = `https://${import.meta.env.VITE_AWSBucket}.s3.${import.meta.env.VITE_AWSRegion}.amazonaws.com/${file_name}`
+            this.user_custom_img = fileUrl 
+            // if (file) {
+            //     const reader = new FileReader()
+            //     reader.onload = () => {
+            //         this.user_custom_img = reader.result
+            //         var file_type = this.user_custom_img.match('data:image/([a-zA-Z]+);')[1]
+            //         this.$refs.img.setAttribute(
+            //             'data-verbose-path',
+            //             `./assets/imgs/user_input_${this.generateRandomLetters(5)}.${file_type}`
+            //         )
+            //     }
+            //     reader.readAsDataURL(file)
+            // }
         },
-        handleImageClick(){
-            if (!this.photoMode){
+        // async uploadImage() {
+        //     try {
+        //         const response = await uploadImageToS3(this.selectedFile, 'YOUR_BUCKET_NAME', 'images');
+        //         console.log('Image uploaded successfully:', response.Location);
+        //     } catch (error) {
+        //         console.error('Error uploading image:', error);
+        //     }
+        // },
+        handleImageClick() {
+            if (!this.photoMode) {
                 this.$refs.file_input.click()
             }
         }
@@ -74,16 +93,17 @@ export default {
 <template>
     <template v-if="image_tag">
         <div class="image_cont">
-            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img"/>
-            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen"></FontAwesomeIcon>
+            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img" />
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen">
+            </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />
         </div>
     </template>
+
     <template v-else>
         <div :class="custom_class" :style="{ 'background-image': `url(${displayedImage})` }" ref="img">
             <slot name="background_overlay"></slot>
-            <!-- <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span> -->
             <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen">
             </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
@@ -110,8 +130,8 @@ export default {
     cursor: pointer;
     color: var(--soft-red-color)
 }
-.edit-icon:hover{
+
+.edit-icon:hover {
     color: var(--soft-blue-color)
 }
-
 </style>

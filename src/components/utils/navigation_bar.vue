@@ -2,8 +2,8 @@
 import download_button from '@/components/utils/button_download_html.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 import { transformData } from '@/js/transform_data'
-import { initial_save_sections, save_sections } from '@/js/api'
-// import loading_giff from '@/assets/giff/loading_giff.mp4'
+import { save_sections } from '@/js/api'
+import { get_user_sections } from '@/js/api'
 
 export default {
   setup() {
@@ -18,10 +18,9 @@ export default {
   components: {
     download_button
   },
-  data(){
+  data() {
     return {
       user_authenticated: localStorage.getItem('access-token'),
-      // giff: loading_giff
     }
   },
   methods: {
@@ -30,23 +29,21 @@ export default {
         return
       }
       const rearanged_data = transformData(this.sectionStore.sections)
-      if (!this.sectionStore.has_ever_saved){
-        // this.is_loading = true 
-        const response = await initial_save_sections(rearanged_data)
-        if (response.ok){
-          this.sectionStore.saved = true
-          const user_data = await response.json()
-          this.sectionStore.updateSectionState(user_data)
-          // setInterval(() => { 
-          //   this.is_loading = false
-          // }, 2000);
-        }
-      }
-      else{
-          await save_sections(rearanged_data)
+      await save_sections(rearanged_data)
+      if (!this.sectionStore.allSectionsSaved) {
+        get_user_sections()
+          .then(data => {
+            if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
+              alert('Geting section ids')
+              this.sectionStore.updateSectionState(data)
+            }
+          })
+          .catch(error => {
+            console.log(error)
+          });
       }
     },
-    logout(){
+    logout() {
       localStorage.removeItem('access-token')
       this.$router.go(0);
     }
@@ -74,14 +71,15 @@ export default {
       </router-link>
       <router-link v-if="!user_authenticated" to="register/" class="nav_text nav_link font-semibold text-base"
         style="text-underline-offset: 1px; text-decoration: underline;">
-        Register 
+        Register
       </router-link>
       <router-link v-if="!user_authenticated" to="login/" class="nav_text nav_link font-semibold text-base"
         style="text-underline-offset: 1px; text-decoration: underline;">
-        Login 
+        Login
       </router-link>
       <!-- <button v-if="user_authenticated" class="nav_text font-semibold" @click="save">Save</button> -->
-      <button v-if="user_authenticated" @click="save" type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button>
+      <button v-if="user_authenticated" @click="save" type="button"
+        class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button>
       <!-- <img :src="giff" alt="Loading..." /> -->
       <button v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</button>
     </div>

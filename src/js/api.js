@@ -68,22 +68,9 @@ async function register_user(username, email, password){
   });
 }
 
-async function initial_save_sections(data){
-  const authorization_token = localStorage.getItem('access-token')
-  return await fetch(`${api_url}/create_sections`, {
-    method: 'POST',
-    headers: { 
-    'Content-Type': 'application/json',
-    'accept': 'application/json',
-    'Authorization': `Bearer ${authorization_token}`
-    },
-    body: JSON.stringify(data)
-  })
-}
-
 async function save_sections(data){
   const authorization_token = localStorage.getItem('access-token')
-  return await fetch(`${api_url}/update_sections`, {
+  return await fetch(`${api_url}/save_sections`, {
     method: 'PUT',
     headers: { 
     'Content-Type': 'application/json',
@@ -98,6 +85,5 @@ export {
     register_user,
     login_user,
     get_user_sections,
-    initial_save_sections,
     save_sections
 }
