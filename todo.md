@@ -18,8 +18,9 @@ c2: #05E1DD
 - [x] Test for every use case
 - [ ] better alert box 
 - [ ] Save state inside of local storage without clicking on button save
-- [ ] Set default color picked 
-- [ ] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
+- [x] Set default color picked 
+- [ ] Images save
+- [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
 would be without id 
 
 
