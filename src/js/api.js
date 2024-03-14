@@ -34,6 +34,14 @@ async function get_user_sections(){
     'Authorization': `Bearer ${authorization_token}`
     },
   })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(errorData => {
+        throw new Error(`${errorData.detail}`);
+      });
+    }
+    return response.json();
+  });
 }
 
 async function register_user(username, email, password){
@@ -42,7 +50,7 @@ async function register_user(username, email, password){
         email: email,
         password: password
     }
-  return await fetch(`${api_url}/users/create_user`, {
+  return fetch(`${api_url}/users/create_user`, {
     method: 'POST',
     headers: { 
     'Content-Type': 'application/json',
@@ -50,6 +58,14 @@ async function register_user(username, email, password){
     },
     body: JSON.stringify(data)
   })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(errorData => {
+        throw new Error(`${errorData.detail}`);
+      });
+    }
+    return response.json();
+  });
 }
 
 async function initial_save_sections(data){

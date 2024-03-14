@@ -3,6 +3,7 @@ import download_button from '@/components/utils/button_download_html.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 import { transformData } from '@/js/transform_data'
 import { initial_save_sections, save_sections } from '@/js/api'
+// import loading_giff from '@/assets/giff/loading_giff.mp4'
 
 export default {
   setup() {
@@ -19,38 +20,31 @@ export default {
   },
   data(){
     return {
-      user_authenticated: localStorage.getItem('access-token')
+      user_authenticated: localStorage.getItem('access-token'),
+      // giff: loading_giff
     }
   },
   methods: {
     async save() {
-      if (!this.sectionStore.sections) {
+      if (!this.sectionStore.sections | !this.user_authenticated) {
         return
       }
       const rearanged_data = transformData(this.sectionStore.sections)
-      if (!this.sectionStore.saved) {
-        alert('First initial save')
+      if (!this.sectionStore.saved){
+        this.is_loading = true 
         const response = await initial_save_sections(rearanged_data)
-        if (response.ok) {
-          alert('Data saved successfuly')
+        if (response.ok){
           this.sectionStore.saved = true
           const user_data = await response.json()
           this.sectionStore.updateSectionState(user_data)
-          // const sections_data = await get_user_sections(rearanged_data)
-          // if (sections_data.ok) {
-          // }
-        }
-        else {
-          alert('Error!')
+          setInterval(() => { 
+            this.is_loading = false
+            
+          }, 2000);
         }
       }
       else{
-          console.log(rearanged_data)
-          alert('Updating data!')
-          const response = await save_sections(rearanged_data)
-          if (response.ok){
-            alert('Data updated successfuly')
-          }
+          await save_sections(rearanged_data)
       }
     },
     logout(){
@@ -87,7 +81,9 @@ export default {
         style="text-underline-offset: 1px; text-decoration: underline;">
         Login 
       </router-link>
-      <button v-if="user_authenticated" class="nav_text font-semibold" @click="save">Save</button>
+      <!-- <button v-if="user_authenticated" class="nav_text font-semibold" @click="save">Save</button> -->
+      <button v-if="user_authenticated" @click="save" type="button" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button>
+      <!-- <img :src="giff" alt="Loading..." /> -->
       <button v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</button>
     </div>
   </div>
