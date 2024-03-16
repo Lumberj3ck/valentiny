@@ -1,64 +1,78 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { uploadImageToS3 } from '@/js/uploadToS3'
+import loading_spinner from '../utils/loading_spinner.vue'
+import generateRandomLetters from '@/js/generate_letter.js'
+import { useSectionStore } from '@/stores/SectionStrore';
 
 export default {
+    setup() {
+        const sectionStore = useSectionStore()
+
+        return {
+            sectionStore
+        };
+    },
     props: {
         image_url: String,
         reset_img: Boolean,
         image_tag: Boolean,
         custom_class: String,
-        photoMode: Boolean
+        photoMode: Boolean,
+        section_name: String,
+        image_input_id: Number
     },
     data() {
         return {
             user_custom_img: null,
-            faPen: faPen
+            faPen: faPen,
+            isLoading: false
         }
     },
     components: {
-        FontAwesomeIcon
+        FontAwesomeIcon,
+        loading_spinner
     },
     watch: {
         reset_img(newValue, oldValue) {
             if (newValue && !oldValue) {
                 this.user_custom_img = null
+                this.sectionStore.setImageLink(this.section_name, this.image_input_id, null)
                 this.$emit('update:reset', false)
-                //  inside parent comp
-                //  @update:reset="reset = !reset"
             }
         }
     },
+    mounted() {
+        if (this.section_name) {
+            this.user_custom_img = this.sectionStore.getImageLink(this.section_name, this.image_input_id)
+        }
+    },
     methods: {
-        generateRandomLetters(length) {
-            let result = '';
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-            for (let i = 0; i < length; i++) {
-                const randomIndex = Math.floor(Math.random() * characters.length);
-                result += characters.charAt(randomIndex);
-            }
-
-            return result;
-        },
-
-        handleFileUpload(event) {
+        async handleFileUpload(event) {
             const file = event.target.files[0]
             if (file) {
-                const reader = new FileReader()
-                reader.onload = () => {
-                    this.user_custom_img = reader.result
-                    var file_type = this.user_custom_img.match('data:image/([a-zA-Z]+);')[1]
-                    this.$refs.img.setAttribute(
-                        'data-verbose-path',
-                        `./assets/imgs/user_input_${this.generateRandomLetters(5)}.${file_type}`
-                    )
-                }
-                reader.readAsDataURL(file)
+                await this.handleImageUpload(file);
             }
         },
-        handleImageClick(){
-            if (!this.photoMode){
+        async handleImageUpload(file) {
+            try {
+                this.isLoading = true;
+                const aws_bucket_name = import.meta.env.VITE_AWSBucket
+                const file_name = `user-image-file_${generateRandomLetters(5)}`;
+                await uploadImageToS3(file, aws_bucket_name, file_name);
+
+                const fileUrl = `https://${aws_bucket_name}.s3.${import.meta.env.VITE_AWSRegion}.amazonaws.com/${file_name}`;
+                this.user_custom_img = fileUrl;
+                this.sectionStore.setImageLink(this.section_name, this.image_input_id, fileUrl)
+                this.isLoading = false;
+            } catch (error) {
+                console.error('Error uploading image:', error);
+                this.isLoading = false;
+            }
+        },
+        handleImageClick() {
+            if (!this.photoMode) {
                 this.$refs.file_input.click()
             }
         }
@@ -74,16 +88,19 @@ export default {
 <template>
     <template v-if="image_tag">
         <div class="image_cont">
-            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img"/>
-            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen"></FontAwesomeIcon>
+            <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
+            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img" />
+            <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen">
+            </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
                 @click="$refs.file_input.value = null" accept="image/*" />
         </div>
     </template>
+
     <template v-else>
         <div :class="custom_class" :style="{ 'background-image': `url(${displayedImage})` }" ref="img">
+            <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
             <slot name="background_overlay"></slot>
-            <!-- <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span> -->
             <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen">
             </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
@@ -110,8 +127,8 @@ export default {
     cursor: pointer;
     color: var(--soft-red-color)
 }
-.edit-icon:hover{
+
+.edit-icon:hover {
     color: var(--soft-blue-color)
 }
-
 </style>

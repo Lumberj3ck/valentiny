@@ -1,6 +1,8 @@
 <script>
+import { useSectionStore } from '@/stores/SectionStrore';
+
 const focus = {
-mounted: (el) => el.focus()
+  mounted: (el) => el.focus()
 }
 
 
@@ -10,84 +12,91 @@ mounted: (el) => el.focus()
 
 function set_height(el) {
   el.style.height = `${el.scrollHeight}px`;
-//   el.style.width = `${wrapperWidth}px`;
+  //   el.style.width = `${wrapperWidth}px`;
 }
 
-const resize= {
-  mounted: function(el, binding) {
+const resize = {
+  mounted: function (el, binding) {
     const wrapperWidth = binding.value
     set_height(el, wrapperWidth);
   }
 }
 
-export default{
-    props:{
-        primary_color: Object,
-        default_input_value: String,
-        text_area: Boolean,
-        photoMode: Boolean 
-    },
-    data(){
-        return {
-            input_value: this.default_input_value,
-            edit: false,
-        }
-    },
-  directives:{
+export default {
+  props: {
+    primary_color: Object,
+    default_input_value: String,
+    text_area: Boolean,
+    photoMode: Boolean,
+    section_name: String,
+    input_id: Number
+  },
+
+  setup() {
+    const sectionStore = useSectionStore()
+
+    return {
+      sectionStore
+    };
+  },
+
+  data() {
+    return {
+      edit: false,
+    }
+  },
+  directives: {
     focus,
     resize
   },
-
-  methods: {
-    toggleEditMode(){
-        if (!this.photoMode){
-          this.edit = !this.edit
-        }
+  mounted() {
+    if (this.section_name) {
+      const text_input_store_value = this.sectionStore.getInputData(this.section_name, this.input_id)
+      if (!text_input_store_value) {
+        this.sectionStore.setInputData(this.section_name, this.input_id, this.default_input_value)
+      }
+    }
+  },
+  computed: {
+    text_input_data() {
+      return this.sectionStore.getInputData(this.section_name, this.input_id)
     },
-    resize(event){
-        var el = event.target
-        set_height(el)
-    }
-    }
+    text_value() {
+      return this.text_input_data ? this.text_input_data : 'Placeholder'
+    },
+  },
+  methods: {
+    toggleEditMode() {
+      if (!this.photoMode) {
+        this.edit = !this.edit
+      }
+    },
+    resize(event) {
+      var el = event.target
+      set_height(el)
+    },
+  }
 }
 </script>
 
 
 <template>
-    <div v-if="!edit"
-    @click="toggleEditMode"
-    class="w-full select_prevent bg_inherit"
-    :style="primary_color"
-    >{{ input_value ? input_value : 'Placeholder' }}</div>  
-    <textarea
-    v-else-if="edit && text_area"
-    v-focus
-    @input="resize"
-    @focusout="toggleEditMode"
-    @keyup.enter="$refs.textAreaRef.blur()"
-    ref="textAreaRef"
-    v-model="input_value"
+  <div v-if="!edit" @click="toggleEditMode" class="w-full select_prevent bg_inherit" :style="primary_color">{{
+    text_value }}</div>
+  <textarea v-else-if="edit && text_area" v-focus @input="resize" @focusout="toggleEditMode"
+    @keyup.enter="$refs.textAreaRef.blur()" ref="textAreaRef"
+    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
-    :style="primary_color"
-    v-resize
-    id="custom_input">
-    </textarea>
-    <input
-    v-else
-    v-focus
-    @focusout="toggleEditMode"
-    type="text"
-    @keyup.enter="$refs.textInputRef.blur()"
-    ref="textInputRef"
-    v-model="input_value"
+    :style="primary_color" v-resize id="custom_input"></textarea>
+  <input v-else v-focus @focusout="toggleEditMode" type="text" @keyup.enter="$refs.textInputRef.blur()"
+    ref="textInputRef"     
+    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10"
-    :style="primary_color"
-    id="custom_input"
-    />
+    :style="primary_color" id="custom_input" />
 </template>
 
 <style>
-.bg_inherit{
-    background-color: inherit;
+.bg_inherit {
+  background-color: inherit;
 }
 </style>
