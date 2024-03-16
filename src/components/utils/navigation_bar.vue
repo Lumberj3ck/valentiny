@@ -58,43 +58,6 @@ export default {
 </script>
 
 <template>
-  <!-- <div class="flex justify-start sm:justify-center m-3 system_ui">
-    <div class="flex gap-5 flex-col rounded-lg nav_border p-2 w-5/6 md:flex-row">
-      <div class="flex">
-        <h1 class="font-semibold mr-2 nav_text">Photo Mode:</h1>
-        <label class="toggle-switch">
-          <input type="checkbox" @change="$emit('photomode_toggle', $event.target.value)">
-          <div class="toggle-switch-background">
-            <div class="toggle-switch-handle"></div>
-          </div>
-        </label>
-      </div>
-      <download_button></download_button>
-      <router-link to="user-guide/" class="nav_text nav_link font-semibold text-base"
-        style="text-underline-offset: 1px; text-decoration: underline;">
-        Guide
-      </router-link>
-      <router-link v-if="!user_authenticated" to="register/" class="nav_text nav_link font-semibold text-base"
-        style="text-underline-offset: 1px; text-decoration: underline;">
-        Register
-      </router-link>
-      <router-link v-if="!user_authenticated" to="login/" class="nav_text nav_link font-semibold text-base"
-        style="text-underline-offset: 1px; text-decoration: underline;">
-        Login
-      </router-link>
-
-
-      <div v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</div>
-      <div class="flex flex-col">
-        <div v-if="user_authenticated" class="w-1/3 nav_text font-semibold" @click="startSaving">Save</div>
-        <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-          <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{ line: progresStart }"></div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
   <nav class="bg-white border-gray-200 mb-5">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
