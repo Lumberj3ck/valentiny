@@ -5,6 +5,9 @@ import reasons_like_you_section from './reasons_like_you_section.vue'
 import start_section from './start_section.vue'
 import favorite_artists from './favorite_artists.vue'
 import navigation_bar from '@/components/utils/navigation_bar.vue'
+import { useSectionStore } from '@/stores/SectionStrore'
+import { get_user_sections } from '@/js/api'
+import loading_spinner from '../utils/loading_spinner.vue'
 
 export default {
   components: {
@@ -13,40 +16,46 @@ export default {
     reasons_like_you_section,
     start_section,
     navigation_bar,
-    favorite_artists
+    favorite_artists,
+    loading_spinner
+  },
+  setup() {
+    const components = useSectionStore()
+
+    return {
+      components
+    }
   },
 
   data() {
     return {
-      components: [
-        { name: 'start_section', index: 1 },
-        { name: 'like_you_section', index: 2 },
-        { name: 'love_potion_section', index: 3 },
-        { name: 'reasons_like_you_section', index: 4 },
-        { name: 'favorite_artists', index: 5 },
-      ],
       moving_component: { name: null, direction: null },
-      photoMode: false
+      photoMode: false,
+      loaded: false
     }
   },
   methods: {
     move(direction, name) {
-      let comp_index = this.components.findIndex(component => component.name === name)
+      const comp_section = this.components.sections[name];
 
-      if (direction !== 1 && direction !== -1) return
+      if (!comp_section) return;
 
-      const tempIndex = this.components[comp_index].index + direction
-      const indexValues = this.components.map((comp) => comp.index)
-      const maxValue = Math.max(...indexValues)
-      const minValue = Math.min(...indexValues)
+      if (direction !== 1 && direction !== -1) return;
+
+      const tempIndex = comp_section.index + direction;
+      const indexValues = Object.values(this.components.sections).map(comp => comp.index);
+      const maxValue = Math.max(...indexValues);
+      const minValue = Math.min(...indexValues);
 
       if ((direction > 0 && tempIndex <= maxValue) || (direction < 0 && tempIndex >= minValue)) {
-        this.components.forEach((comp) => {
-          if (comp.index === tempIndex) {
-            comp.index -= direction
+        for (const sectionKey in this.components.sections) {
+          const section = this.components.sections[sectionKey];
+          if (section.index === tempIndex) {
+            section.index -= direction;
           }
-        })
-        this.components[comp_index].index += direction
+        }
+
+        comp_section.index += direction;
         this.moving_component = { name: name, direction: direction }
       }
     },
@@ -56,19 +65,39 @@ export default {
       document.querySelectorAll('.control_bar').forEach((el) => el.style.display = this.photoMode ? 'none' : null)
     }
   },
+  async created() {
+    const user_token = localStorage.getItem('access-token')
+    if (user_token) {
+      get_user_sections()
+        .then(data => {
+          if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
+            this.components.updateSectionState(data)
+          }
+        this.loaded = true
+        })
+        .catch(error => {
+          console.log(error)
+          this.loaded = true
+        });
+    }
+    else{
+      this.loaded = true
+    }
+  }
 }
 </script>
 
 <template>
-    <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
-    <div class="custom_container">
-      <div v-for="component in components" :key="component.name"
-        :class="{ 'slide-in-bck-top': (moving_component.name == component.name) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component.name) && (moving_component.direction == -1) }"
-        :style="{ 'grid-row': component.index }" @animationend="moving_component = { name: null, direction: null }">
-        <component :is="component.name" @move_up="move(-1, component.name)" @move_down="move(1, component.name)"
-          :photoMode="photoMode" />
-      </div>
+  <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
+  <div class="custom_container">
+    <loading_spinner v-if="!loaded"></loading_spinner>
+    <div v-for="[component, section] in Object.entries(components.sections)" :key="component"
+      :class="{ 'slide-in-bck-top': (moving_component.name == component) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component) && (moving_component.direction == -1) }"
+      :style="{ 'grid-row': section.index }" @animationend="moving_component = { name: null, direction: null }">
+      <component v-if="loaded" :section_name="component" :is="component" @move_up="move(-1, component)"
+        @move_down="move(1, component)" :photoMode="photoMode" />
     </div>
+  </div>
 </template>
 
 
@@ -90,6 +119,7 @@ export default {
   -webkit-animation: slide-in-bck-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: slide-in-bck-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
 .custom_container {
   display: grid;
   grid-template-rows: auto 1fr;
