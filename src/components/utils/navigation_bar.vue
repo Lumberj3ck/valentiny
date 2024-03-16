@@ -103,7 +103,7 @@ export default {
           </li>
           <li v-if="user_authenticated" @click="startSaving" class="w-11">
             <a href="#"
-              class=" font-semibold text-lg block py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Saved</a>
+              class=" font-semibold text-lg block py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Save</a>
             <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
               <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{ line: progresStart }"></div>
             </div>

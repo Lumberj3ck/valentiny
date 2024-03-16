@@ -10,7 +10,6 @@ c2: #05E1DD
 - [x] test downloading page on mobile
 - [x] Better textarea and input
 - [x] Guide pages for users how to upload how to use this website eg
-<!-- - [ ] Change font size -->
 - [ ] Fix bugs on text input small amounts of text especially check love potion section
 - [ ] On deproy donot forget about api url and cors url for fastapi
 - [ ] Do password validations on register
@@ -19,7 +18,7 @@ c2: #05E1DD
 - [ ] better alert box 
 - [ ] Save state inside of local storage without clicking on button save
 - [x] Set default color picked 
-- [ ] Images save
+- [x] Images save
 - [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
 - [ ] After reset colors resets to wrong color
 - [ ] Check aws sdk bundle
