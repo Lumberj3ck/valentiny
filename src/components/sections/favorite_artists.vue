@@ -23,10 +23,10 @@ export default {
       background_color: '',
       text_color:'',
       items: [
-        { name: 'Name of the song', image: first_image, id:3},
-        { name: 'Name of the song', image: second_image, id:4},
-        { name: 'Name of the song', image: third_image, id:5},
-        { name: 'Name of the song', image: fourth_image, id:6},
+        { name: 'Name of the song', image: first_image, id:3, image_input_id:1},
+        { name: 'Name of the song', image: second_image, id:4, image_input_id:2},
+        { name: 'Name of the song', image: third_image, id:5, image_input_id:3},
+        { name: 'Name of the song', image: fourth_image, id:6, image_input_id:4},
       ]
     }
   },
@@ -96,7 +96,7 @@ export default {
         <div class="flex flex-wrap">
           <div v-for="(item, index) in items" :key="index" class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
             <div class="px-6">
-              <image_input :photoMode="photoMode" image_tag :image_url="item.image" :reset_img="reset_img"
+              <image_input :section_name="section_name" :image_input_id="item.image_input_id" :photoMode="photoMode" image_tag :image_url="item.image" :reset_img="reset_img"
                 @update:reset="reset_img = false"
                 custom_class="square_aspect_ratio object-cover shadow-lg rounded-full max-w-[120px]"
                 class="aspect_ratio_box flex justify-center w-full">

@@ -84,7 +84,7 @@ export default {
       <div class="px-4 bg_violet" :style="primary_color">
         <div class="container mx-auto items-center flex flex-wrap">
           <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
-            <image_input :photoMode="photoMode" image_tag custom_class="rounded-full square_aspect_ratio object-cover"
+            <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" image_tag custom_class="rounded-full square_aspect_ratio object-cover"
               :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
           </div>
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">

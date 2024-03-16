@@ -106,7 +106,7 @@ export default {
           <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-600"
             style="background-color: var(--card-primary-color)">
             <!-- <img alt="..." :src="image_url" class="w-full align-middle rounded-t-lg" data-verbose-path="" ref="img"/> -->
-            <image_input :photoMode="photoMode" image_tag custom_class="w-full align-middle rounded-t-lg" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
+            <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" image_tag custom_class="w-full align-middle rounded-t-lg" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
             <blockquote class="relative p-8 mb-4">
               <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
                 class="absolute left-0 w-full block" style="height: 95px; top: -94px">

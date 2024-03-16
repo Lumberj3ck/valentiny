@@ -80,7 +80,7 @@ export default {
     <Transition>
     <section v-show="render">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh">
-        <image_input :photoMode="photoMode" custom_class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img">
+        <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" custom_class="absolute top-0 w-full h-full bg-center bg-cover md:bg-contain" :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img">
             <template v-slot:background_overlay>
                 <span id="blackOverlay" class="w-full h-full absolute bg-black opacity-[0.5]" :style="primary_color"></span>
             </template>
