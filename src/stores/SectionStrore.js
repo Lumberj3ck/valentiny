@@ -7,8 +7,7 @@ export const useSectionStore = defineStore('section_store',
                 start_section: {
                     index: 1, background_color: '#000000', text_color: '#f9d0d7', render: true, image_inputs:
                     {
-                        1: { link: null },
-                        2: { link: null },
+                        1: { link: null},
                     },
                     text_inputs:
                     {
@@ -21,7 +20,6 @@ export const useSectionStore = defineStore('section_store',
                     image_inputs:
                     {
                         1: { link: null },
-                        2: { link: null },
                     },
                     text_inputs:
                     {
@@ -40,7 +38,6 @@ export const useSectionStore = defineStore('section_store',
                     image_inputs:
                     {
                         1: { link: null },
-                        2: { link: null },
                     },
                     text_inputs:
                     {
@@ -55,7 +52,6 @@ export const useSectionStore = defineStore('section_store',
                     image_inputs:
                     {
                         1: { link: null },
-                        2: { link: null },
                     },
                     text_inputs:
                     {
@@ -75,6 +71,8 @@ export const useSectionStore = defineStore('section_store',
                     {
                         1: { link: null },
                         2: { link: null },
+                        3: { link: null },
+                        4: { link: null }
                     },
 
                     text_inputs:
@@ -98,19 +96,18 @@ export const useSectionStore = defineStore('section_store',
                 this.sections[sectionName].text_color = null
             },
             setBgColor(sectionName, background_color) {
-                // alert('Setting bg color')
                 this.sections[sectionName].background_color = background_color
             },
             setColor(sectionName, color) {
-                // alert('Setting text color')
                 this.sections[sectionName].text_color = color
             },
             setInputData(sectionName, input_id, data) {
                 this.sections[sectionName].text_inputs[input_id].content = data
             },
+            setImageLink(sectionName, image_input_id, link) {
+                this.sections[sectionName].image_inputs[image_input_id].link = link 
+            },
             updateSectionState(sections_data) {
-                // this.sections = sections_data;
-                // console.log(sections_data, this.sections)
                 for (const section_name in sections_data) {
                     this.sections[section_name] = sections_data[section_name];
                 }
@@ -128,6 +125,9 @@ export const useSectionStore = defineStore('section_store',
             },
             getTextColor: (state) => (sectionName) => {
                 return state.sections[sectionName].text_color
+            },
+            getImageLink: (state) => (sectionName, image_input_id) => {
+                return state.sections[sectionName].image_inputs[image_input_id].link
             },
             getInputData: (state) => (sectionName, input_id) => {
                 return state.sections[sectionName].text_inputs[input_id].content

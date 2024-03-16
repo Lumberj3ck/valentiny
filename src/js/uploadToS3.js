@@ -1,21 +1,13 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-// import dotenv from 'dotenv'
 
-// dotenv.config()
-
-// AWS.config.update({
-//   accessKeyId: process.env.AWSAccessKeyId,
-//   secretAccessKey: process.env.AWSSecretKey,
-//   region: process.env.AWSRegion
-// });
 
 
 const client = new S3Client({
   credentials: {
-    accessKeyId: '',
-    secretAccessKey: ''
+    accessKeyId: import.meta.env.VITE_AWSSecretKey,
+    secretAccessKey: import.meta.env.VITE_AWSAccessKeyId,
   },
-  region: 'eu-north-1' 
+  region: import.meta.env.VITE_AWSRegion 
 });
 
 export const uploadImageToS3 = async (file, bucketName, key) => {
@@ -23,32 +15,14 @@ export const uploadImageToS3 = async (file, bucketName, key) => {
     Bucket: bucketName,
     Key: key,
     Body: file,
-    ContentType: file.type // Set the content type based on the uploaded file
+    ContentType: file.type 
   });
 
   try {
     const response = await client.send(command);
-    console.log(response);
     return response;
   } catch (err) {
     console.error(err);
-    throw err; // Rethrow the error for handling in the calling code
+    throw err; 
   }
 };
-
-
-// export const main = async () => {
-//   const command = new PutObjectCommand({
-//     Bucket: "postcard-user-images",
-//     Key: "hello-s3.txt",
-//     Body: "Hello S3!",
-//   });
-
-//   try {
-//     const response = await client.send(command);
-//     console.log(response);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-// export { uploadImageToS3 };

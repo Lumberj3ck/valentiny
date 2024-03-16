@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       user_authenticated: localStorage.getItem('access-token'),
+      progresStart: false
     }
   },
   methods: {
@@ -34,7 +35,6 @@ export default {
         get_user_sections()
           .then(data => {
             if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
-              alert('Geting section ids')
               this.sectionStore.updateSectionState(data)
             }
           })
@@ -46,8 +46,12 @@ export default {
     logout() {
       localStorage.removeItem('access-token')
       this.$router.go(0);
+    },
+    startSaving() {
+      this.progresStart = true
+      this.save()
+      setTimeout(() => this.progresStart = false, 1000);
     }
-
   }
 }
 </script>
@@ -77,17 +81,38 @@ export default {
         style="text-underline-offset: 1px; text-decoration: underline;">
         Login
       </router-link>
-      <!-- <button v-if="user_authenticated" class="nav_text font-semibold" @click="save">Save</button> -->
-      <button v-if="user_authenticated" @click="save" type="button"
-        class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button>
+      <!-- <a href="" v-if="user_authenticated" class="button dark">Save</a> -->
+      <!-- <button v-if="user_authenticated" @click="save" type="button"
+        class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button> -->
       <!-- <img :src="giff" alt="Loading..." /> -->
-      <button v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</button>
+
+      
+      <div v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</div>
+      <div class="flex flex-col">
+      <div v-if="user_authenticated" class="w-1/3 nav_text font-semibold" @click="startSaving">Save</div>
+      <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+        <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{line: progresStart}"></div>
+      </div>
+      </div>
     </div>
   </div>
 </template>
 
 
 <style>
+/* ----- */
+.line{
+  animation: loading 0.8s forwards cubic-bezier(0, 0, 0, 0);
+}
+
+@keyframes loading {
+ 0%{
+  width: 0%;
+ }
+ 100%{
+  width: 100%;
+ }
+}
 .nav_link:hover {
   color: var(--soft-red-color)
 }
