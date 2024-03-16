@@ -1,6 +1,6 @@
 
 // const api_url = 'http://localhost:8000'
-const api_url = 'https://postcard-api.24-7.ro/'
+const api_url = 'https://postcard-api.24-7.ro'
 
 async function login_user(username, password){
     const data = {
