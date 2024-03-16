@@ -21,7 +21,8 @@ export default {
   data() {
     return {
       user_authenticated: localStorage.getItem('access-token'),
-      progresStart: false
+      progresStart: false,
+      mobile_menu_hide : true 
     }
   },
   methods: {
@@ -57,7 +58,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex justify-start sm:justify-center m-3 system_ui">
+  <!-- <div class="flex justify-start sm:justify-center m-3 system_ui">
     <div class="flex gap-5 flex-col rounded-lg nav_border p-2 w-5/6 md:flex-row">
       <div class="flex">
         <h1 class="font-semibold mr-2 nav_text">Photo Mode:</h1>
@@ -81,38 +82,96 @@ export default {
         style="text-underline-offset: 1px; text-decoration: underline;">
         Login
       </router-link>
-      <!-- <a href="" v-if="user_authenticated" class="button dark">Save</a> -->
-      <!-- <button v-if="user_authenticated" @click="save" type="button"
-        class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Save</button> -->
-      <!-- <img :src="giff" alt="Loading..." /> -->
 
-      
+
       <div v-if="user_authenticated" class="nav_text font-semibold" @click="logout">Logout</div>
       <div class="flex flex-col">
-      <div v-if="user_authenticated" class="w-1/3 nav_text font-semibold" @click="startSaving">Save</div>
-      <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
-        <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{line: progresStart}"></div>
-      </div>
+        <div v-if="user_authenticated" class="w-1/3 nav_text font-semibold" @click="startSaving">Save</div>
+        <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+          <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{ line: progresStart }"></div>
+        </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+  <nav class="bg-white border-gray-200 mb-5">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="@/assets/imgs/logo/logo.png" class="h-9" alt="Postcard" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap ">Postcard</span>
+      </router-link>
+      <button data-collapse-toggle="navbar-default" type="button" @click="mobile_menu_hide = !mobile_menu_hide"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        aria-controls="navbar-default" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      <div :class="{hidden: mobile_menu_hide}" class="h-[210px] md:h-[inherit] w-full md:block md:w-auto" id="navbar-default">
+        <ul
+          class="font-medium h-8 flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white  ">
+          <li>
+            <label class="inline-flex items-center cursor-pointer">
+              <span class="text-lg font-semibold text-black mr-3">Photo Mode:</span>
+              <input @change="$emit('photomode_toggle', $event.target.value)" type="checkbox" value=""
+                class="sr-only peer" checked>
+              <div
+                class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600">
+              </div>
+            </label>
+          </li>
+          <li>
+            <download_button></download_button>
+          </li>
+          <li class="ml-0">
+            <router-link to="user-guide/"
+              class="font-semibold block  text-lg py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+              Guide
+            </router-link>
+          </li>
+          <li v-if="!user_authenticated">
+            <router-link to="login/"
+              class=" font-semibold block text-lg py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+              Login
+            </router-link>
+          </li>
+          <li v-if="user_authenticated" @click="startSaving" class="w-11">
+            <a href="#"
+              class=" font-semibold text-lg block py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Saved</a>
+            <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
+              <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{ line: progresStart }"></div>
+            </div>
+          </li>
+          <li v-if="user_authenticated" @click="logout">
+            <a href="#"
+              class="font-semibold text-lg block py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>
 
 
 <style>
 /* ----- */
-.line{
+.line {
   animation: loading 0.8s forwards cubic-bezier(0, 0, 0, 0);
 }
 
 @keyframes loading {
- 0%{
-  width: 0%;
- }
- 100%{
-  width: 100%;
- }
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
+
 .nav_link:hover {
   color: var(--soft-red-color)
 }

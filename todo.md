@@ -22,6 +22,7 @@ c2: #05E1DD
 - [ ] Images save
 - [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
 - [ ] After reset colors resets to wrong color
+- [ ] Check aws sdk bundle
 would be without id 
 
 
