@@ -45,11 +45,11 @@ export default {
     </form> -->
 
 
-<form @submit.prevent="login" class="max-w-sm mx-auto mt-10">
+<form @submit.prevent="login" class="max-w-sm mx-auto mt-10 w-4/5">
   <div class="mb-5">
     <h1 class="mb-5 font-semibold text-lg">Login</h1>
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your username</label>
-    <input v-model="username" type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Example" required />
+    <input autocomplete="on" v-model="username" type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Example" required />
   </div>
   <div class="mb-5">
     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Your password</label>
