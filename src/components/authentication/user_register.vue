@@ -54,9 +54,9 @@ export default {
 </script>
 
 <template>
-  <alert_box @alert_box_close="error = !error" v-if="error || password_not_match" :error_message="error_message"></alert_box>
 
   <form @submit.prevent="submit" class="max-w-sm mx-auto mt-10 w-4/5">
+    <alert_box @alert_box_close="error = !error" v-if="error || password_not_match" :error_message="error_message"></alert_box>
     <h1 class="font-semibold text-lg mb-5">Register</h1>
     <div class="mb-5">
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>

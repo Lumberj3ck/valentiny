@@ -22,6 +22,7 @@ c2: #05E1DD
 - [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
 - [ ] After reset colors resets to wrong color
 - [ ] Check aws sdk bundle
+- [x] Forms fix erorrs 
 would be without id 
 
 
