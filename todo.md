@@ -13,9 +13,9 @@ c2: #05E1DD
 - [ ] Fix bugs on text input small amounts of text especially check love potion section
 - [ ] On deproy donot forget about api url and cors url for fastapi
 - [ ] Do password validations on register
-- [ ] Draw some errors which you will get from the api
+- [x] Draw some errors which you will get from the api
 - [x] Test for every use case
-- [ ] better alert box 
+- [x] better alert box 
 - [ ] Save state inside of local storage without clicking on button save
 - [x] Set default color picked 
 - [x] Images save
@@ -44,42 +44,6 @@ It's working because of pinia store
 
 - [x] Check how it will work when user saved and then download the page
 
-sections: {
-    'start_section': {background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-    {
-        'start_section_header_input': {content: 'some text'},
-        'start_section_paragraph_input': {content: 'some text'},
-        'start_section_paragraph_2_input': {content: 'some text'}
-    } 
-    },
-    'reasons_like_section': {background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-    {
-        'reasons_header_input': {content: 'some text'},
-        'reasons_paragraph_input': {content: 'some text'},
-        'reasons_paragraph_2_input': {content: 'some text'}
-    } 
-    }
-}
-
-
-
-data:
-{
-sections: [
-        {name: 'start_section', background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-        [
-            {name:'start_section_header_input', content: 'some text'},
-            {name:'start_section_paragraph_input', content: 'some text'}
-        ]
-        },
-        {name: 'reasons_like_you', background_color: '#somecolor', text_color: '#somecolor', image_input: 'image_path', text_inputs: 
-        [
-            {name:'reasons_header_input', content: 'some text'},
-            {name:'reasons_paragraph_input', content: 'some text'},
-        ]
-        }
-    ]
-}
 
 
 ## How to add new section 
