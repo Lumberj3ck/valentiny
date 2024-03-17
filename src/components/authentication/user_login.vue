@@ -37,15 +37,8 @@ export default {
 </script>
 
 <template>
-    <alert_box @alert_box_close="error = !error" v-if="error" :error_message="error_message"></alert_box>
-    <!-- <form @submit.prevent="login" class="flex flex-col">
-        <input type="text" placeholder="Username" v-model="username">
-        <input type="password" placeholder="password" v-model="password">
-        <button type="submit">Login</button>
-    </form> -->
-
-
 <form @submit.prevent="login" class="max-w-sm mx-auto mt-10 w-4/5">
+  <alert_box @alert_box_close="error = !error" v-if="error" :error_message="error_message"></alert_box>
   <div class="mb-5">
     <h1 class="mb-5 font-semibold text-lg">Login</h1>
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Your username</label>
