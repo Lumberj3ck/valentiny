@@ -109,7 +109,8 @@ function push_url(element, url, resources) {
         resources.push({ url: url, verbose_url: element.getAttribute('data-verbose-path') })
     }
     else if (url.startsWith('http')) {
-        resources.push({ url: url, verbose_url: url.replace(baseUrl + '/', '') })
+        // resources.push({ url: url, verbose_url: url.replace(baseUrl + '/', '') })
+        return 
     }
     else {
         const full_url = make_full_link(url, baseUrl)

@@ -4,7 +4,7 @@ import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
 const client = new S3Client({
   credentials: {
-    accessKeyId: import.meta.env.VITE_AWSSecretKey,
+    accessKeyId: import.meta.env.VITE_AWSSecretKey ? import.meta.env.VITE_AWSSecretKey : process.env.VITE_AWSSecretKey ,
     secretAccessKey: import.meta.env.VITE_AWSAccessKeyId,
   },
   region: import.meta.env.VITE_AWSRegion 
