@@ -877,6 +877,10 @@ video {
   width: 1rem;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
 .w-44 {
   width: 11rem;
 }
