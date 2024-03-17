@@ -5,10 +5,10 @@ import { saveAs } from 'file-saver';
 const baseUrl = window.location.origin;
 
 function removeElementsBySelector(dom_node, selector) {
-  const elements = dom_node.querySelectorAll(selector);
-  elements.forEach((el) => {
-    el.parentNode.removeChild(el);
-  });
+    const elements = dom_node.querySelectorAll(selector);
+    elements.forEach((el) => {
+        el.parentNode.removeChild(el);
+    });
 }
 
 function removeRedundantUI(dom_node) {
@@ -108,10 +108,10 @@ function push_url(element, url, resources) {
     if (url.startsWith('data:')) {
         resources.push({ url: url, verbose_url: element.getAttribute('data-verbose-path') })
     }
-    else if (url.startsWith('http')) {
+    // else if (url.startsWith('http')) {
         // resources.push({ url: url, verbose_url: url.replace(baseUrl + '/', '') })
-        return 
-    }
+    //     return
+    // }
     else {
         const full_url = make_full_link(url, baseUrl)
         resources.push({ url: full_url, verbose_url: url })
@@ -124,7 +124,11 @@ function get_css_url_resourses(resources) {
     elementsWithBackgroundImage.forEach(element => {
         const styleAttributeValue = element.getAttribute('style');
         const url = styleAttributeValue.match(/url\(['"]?([^'"]+)['"]?\)/)[1];
-        push_url(element, url, resources)
+        if (url) {
+            if (!url.startsWith('http')) {
+                push_url(element, url, resources);
+            }
+        }
     });
 }
 
