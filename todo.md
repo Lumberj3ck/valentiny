@@ -10,20 +10,25 @@ c2: #05E1DD
 - [x] test downloading page on mobile
 - [x] Better textarea and input
 - [x] Guide pages for users how to upload how to use this website eg
-- [ ] Fix bugs on text input small amounts of text especially check love potion section
-- [ ] On deproy donot forget about api url and cors url for fastapi
-- [ ] Do password validations on register
 - [x] Draw some errors which you will get from the api
 - [x] Test for every use case
 - [x] better alert box 
-- [ ] Save state inside of local storage without clicking on button save
 - [x] Set default color picked 
 - [x] Images save
 - [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
+- [x] Forms fix erorrs would be without id 
+- [ ] Save state inside of local storage without clicking on button save
 - [ ] After reset colors resets to wrong color
 - [ ] Check aws sdk bundle
-- [x] Forms fix erorrs 
-would be without id 
+- [ ] Fix bugs on text input small amounts of text especially check love potion section
+- [ ] On deproy donot forget about api url and cors url for fastapi
+- [ ] Do password validations on register
+- [ ] Check page insights warnings
+- [ ] Adjust landing mobile 
+- [ ] user login and save loading spinner
+- [ ] check why logout button is not working on safari desktop
+- [ ] check love potion section
+- [ ] rstrip password and username
 
 
 

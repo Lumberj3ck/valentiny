@@ -26,7 +26,7 @@ function transformData(inputData) {
       text_inputs: textInputs
     };
   });
-  return transformedData;
+  return {"sections": transformedData};
 }
 
 
