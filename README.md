@@ -1,5 +1,7 @@
 # [Valentiny](https://www.my-valentine-postcard.site/)
 
+![Valentiy Showcase](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHNqZW1nbDlkcjZoOXVwdnpjMzk0bHpucDB1M3gwM201eHR2dTRxbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Mys05BZuE3jBURdN3n/giphy.gif)
+
 ## Description
 This project is a customizable Valentine postcard created with Vue.js framework. Originally crafted as a surprise for my girlfriend on Valentine's Day, it started as a [small index.html](https://github.com/Lumberj3ck/valentine_postcard) postcard landing. 
 ## Motivation
