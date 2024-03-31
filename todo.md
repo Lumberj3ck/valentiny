@@ -20,15 +20,15 @@ c2: #05E1DD
 - [ ] Save state inside of local storage without clicking on button save
 - [ ] After reset colors resets to wrong color
 - [ ] Check aws sdk bundle
-- [ ] Fix bugs on text input small amounts of text especially check love potion section
-- [ ] On deproy donot forget about api url and cors url for fastapi
-- [ ] Do password validations on register
+- [x] Fix bugs on text input small amounts of text especially check love potion section
+- [x] On deproy donot forget about api url and cors url for fastapi
+- [x] Do password validations on register
 - [ ] Check page insights warnings
 - [ ] Adjust landing mobile 
-- [ ] user login and save loading spinner
+- [x] user login and save loading spinner
 - [ ] check why logout button is not working on safari desktop
-- [ ] check love potion section
-- [ ] rstrip password and username
+- [x] check love potion section
+- [x] rstrip password and username
 
 
 

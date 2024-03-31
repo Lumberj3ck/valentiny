@@ -79,14 +79,14 @@ export default {
     </control_bar>
   <Transition>
     <section v-show='render' class="pb-20 relative block bg-gray-900" :style="primary_color">
-      <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row">
+      <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row xl:max-w-[80%]">
         <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
           <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img"> -->
           <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" image_tag custom_class="rounded-full object-cover square_aspect_ratio"
             :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
         </div>
-        <div>
-          <div class="flex flex-wrap text-center justify-center xl:justify-normal">
+        <div class='w-full'>
+          <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4 sm:min-w-[300px]">
               <!-- <h2 class="text-4xl font-semibold text-white">Love potion recipe</h2> -->
               <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" text_area :primary_color="primary_color"

@@ -1,6 +1,7 @@
 <script>
 import { register_user } from '@/js/api'
 import alert_box from '@/components/utils/alert_box.vue'
+import loading_spinner from '../utils/loading_spinner.vue'
 
 export default {
   data() {
@@ -11,11 +12,13 @@ export default {
       password_confirm: '',
       error: false,
       password_not_match: false, 
-      error_message: ''
+      error_message: '', 
+      loading: false
     }
   },
   components: {
-    alert_box
+    alert_box, 
+    loading_spinner
   },
   methods: {
     check_passwords_match() {
@@ -31,17 +34,20 @@ export default {
     },
     async submit() {
       if (!this.password_not_match){
+      this.loading = true
       register_user(this.username, this.email, this.password)
         .then(data => {
           const token = data
           // localStorage.setItem('access-token', token.access_token)
           // const token = response.json()
+          this.loading = false 
           localStorage.setItem('access-token', token.access_token)
           if (token.access_token) {
             this.$router.push('/page-editor')
           }
         })
         .catch(error => {
+          this.loading = false 
           this.error_message = error.message
           this.error = true
         });
@@ -55,7 +61,7 @@ export default {
 
 <template>
 
-  <form @submit.prevent="submit" class="max-w-sm mx-auto mt-10 w-4/5">
+  <form v-if="!loading" @submit.prevent="submit" class="max-w-sm mx-auto mt-10 w-4/5">
     <alert_box @alert_box_close="error = !error" v-if="error || password_not_match" :error_message="error_message"></alert_box>
     <h1 class="font-semibold text-lg mb-5">Register</h1>
     <div class="mb-5">
@@ -96,5 +102,6 @@ export default {
       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register
       new account</button>
   </form>
+  <loading_spinner v-if="loading"></loading_spinner>
 
 </template>

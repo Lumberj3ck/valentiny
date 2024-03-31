@@ -1,6 +1,7 @@
 <script>
 import { login_user } from '@/js/api'
 import alert_box from '@/components/utils/alert_box.vue'
+import loading_spinner from '../utils/loading_spinner.vue'
 
 export default {
     data() {
@@ -9,17 +10,21 @@ export default {
             username: '',
             password: '',
             error: '',
-            error_message: ''
+            error_message: '',
+            loading: false
 
         }
     },
     components:{
-        alert_box
+        alert_box, 
+        loading_spinner
     },
     methods: {
         async login() {
+            this.loading = true
             login_user(this.username, this.password)
                 .then(data => {
+                    this.loading = false 
                     const token = data
                     localStorage.setItem('access-token', token.access_token)
                     if (token.access_token) {
@@ -29,6 +34,7 @@ export default {
                 .catch(error => {
                     this.error_message = error.message
                     this.error = true
+                    this.loading = false 
                 });
         }
     }
@@ -37,7 +43,7 @@ export default {
 </script>
 
 <template>
-<form @submit.prevent="login" class="max-w-sm mx-auto mt-10 w-4/5">
+<form v-if="!loading" @submit.prevent="login" class="max-w-sm mx-auto mt-10 w-4/5">
   <alert_box @alert_box_close="error = !error" v-if="error" :error_message="error_message"></alert_box>
   <div class="mb-5">
     <h1 class="mb-5 font-semibold text-lg">Login</h1>
@@ -60,5 +66,6 @@ export default {
   </div>
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 </form>
+<loading_spinner v-if="loading"></loading_spinner>
 
 </template>
