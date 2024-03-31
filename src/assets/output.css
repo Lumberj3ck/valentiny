@@ -1950,8 +1950,8 @@ video {
     width: 75%;
   }
 
-  .xl\:justify-normal {
-    justify-content: normal;
+  .xl\:max-w-\[80\%\] {
+    max-width: 80%;
   }
 }
 
