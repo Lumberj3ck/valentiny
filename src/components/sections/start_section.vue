@@ -2,7 +2,7 @@
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 // import useControlBar from '@/js/control_bar.js'
-import default_image_path from '@/assets/imgs/banner.jpg'
+import default_image_path from '@/assets/imgs/banner.webp'
 import image_input from '@/components/utils/image_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 

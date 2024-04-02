@@ -3,7 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 // import useControlBar from '@/js/control_bar.js'
 import { useSectionStore } from '@/stores/SectionStrore'
-import doner_image from '@/assets/imgs/doner.jpg'
+import doner_image from '@/assets/imgs/doner.webp'
 import image_input from '../utils/image_input.vue'
 
 export default {

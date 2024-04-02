@@ -61,7 +61,7 @@ export default {
   <nav class="bg-white border-gray-200 mb-5 system_ui">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="@/assets/imgs/logo/logo.png" class="h-9" alt="Postcard" />
+        <img src="@/assets/imgs/logo/logo.webp" class="h-9" alt="postcard-logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap ">Postcard</span>
       </router-link>
       <button data-collapse-toggle="navbar-default" type="button" @click="mobile_menu_hide = !mobile_menu_hide"
