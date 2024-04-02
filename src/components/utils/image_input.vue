@@ -89,7 +89,7 @@ export default {
     <template v-if="image_tag">
         <div class="image_cont">
             <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
-            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img" />
+            <img @click="handleImageClick" :src="displayedImage" :class="custom_class" ref="img" alt="user_img"/>
             <FontAwesomeIcon @click="$refs.file_input.click()" class="edit-icon system_ui_pen" :icon="faPen">
             </FontAwesomeIcon>
             <input type="file" ref="file_input" class="hidden" @change="handleFileUpload"
