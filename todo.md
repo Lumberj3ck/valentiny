@@ -23,7 +23,7 @@ c2: #05E1DD
 - [x] Fix bugs on text input small amounts of text especially check love potion section
 - [x] On deproy donot forget about api url and cors url for fastapi
 - [x] Do password validations on register
-- [ ] Check page insights warnings
+- [x] Check page insights warnings
 - [ ] Adjust landing mobile 
 - [x] user login and save loading spinner
 - [ ] check why logout button is not working on safari desktop
