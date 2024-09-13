@@ -144,11 +144,21 @@ function filter_foreign_and_push(url, element, resources) {
     }
 }
 
+
+function match_ignore_urls(url){
+    let ignoreUrls = ['/src/assets/imgs/logo/logo.webp']
+        
+    return ignoreUrls.includes(url);
+}
+
 function get_resource_links(node) {
     const resources = [];
     node.querySelectorAll('img, link').forEach(element => {
         const url = element.getAttribute('src') || element.getAttribute('href');
         if (url) {
+            if (match_ignore_urls(url)){
+                return
+            }
             filter_foreign_and_push(url, element, resources)
         }
     });
