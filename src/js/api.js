@@ -82,12 +82,8 @@ async function save_sections(data){
 }
 
 async function upload_image(formData){
-  // const authorization_token = localStorage.getItem('access-token')
   return fetch(`${api_url}/upload_image/`, {
     method: 'POST',
-    // headers: { 
-    // 'Authorization': `Bearer ${authorization_token}`
-    // },
     body: formData
   })
   .then(response => {
