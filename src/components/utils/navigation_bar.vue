@@ -91,19 +91,19 @@ export default {
           </li>
           <li class="ml-0">
             <router-link to="user-guide/"
-              class="font-semibold block  text-lg py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 hover:text-[#FF407D]  md:dark:hover:bg-transparent">
+              class="font-semibold block  text-lg py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 hover:text-[#FF407D]  md:dark:hover:bg-transparent">
               Guide
             </router-link>
           </li>
           <li v-if="!user_authenticated">
             <router-link to="login/"
-              class=" font-semibold block text-lg py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100  hover:text-[#FF407D]  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500  md:dark:hover:bg-transparent">
+              class=" font-semibold block text-lg py-2  text-gray-900 rounded hover:bg-gray-100  hover:text-[#FF407D]  md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500  md:dark:hover:bg-transparent">
               Login
             </router-link>
           </li>
           <li v-if="user_authenticated" @click="startSaving" class="w-full md:w-11">
             <a href="#"
-              class="font-semibold h-10 text-lg block py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500  hover:text-[#FF407D] md:dark:hover:bg-transparent">Save
+              class="font-semibold h-10 text-lg block py-2  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500  hover:text-[#FF407D] md:dark:hover:bg-transparent">Save
             <div v-show="progresStart" class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700">
               <div ref="progressBar" class="bg-blue-600 h-1.5 rounded-full w-1/5" :class="{ line: progresStart }"></div>
             </div>
@@ -111,7 +111,7 @@ export default {
           </li>
           <li v-if="user_authenticated" @click="logout">
             <a href="#"
-              class="font-semibold text-lg block py-2 md:px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500  hover:text-[#FF407D] md:dark:hover:bg-transparent">Logout</a>
+              class="font-semibold text-lg block py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500  hover:text-[#FF407D] md:dark:hover:bg-transparent">Logout</a>
           </li>
         </ul>
       </div>
