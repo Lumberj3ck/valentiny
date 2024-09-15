@@ -1,10 +1,11 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
-import { uploadImageToS3 } from '@/js/uploadToS3'
+import { upload_image } from '@/js/api'
 import loading_spinner from '../utils/loading_spinner.vue'
-import generateRandomLetters from '@/js/generate_letter.js'
+// import generateRandomLetters from '@/js/generate_letter.js'
 import { useSectionStore } from '@/stores/SectionStrore'
+import error_notification from '../utils/error_notification.vue'
 
 export default {
   setup() {
@@ -27,12 +28,14 @@ export default {
     return {
       user_custom_img: null,
       faPen: faPen,
-      isLoading: false
+      isLoading: false,
+      error_message: null
     }
   },
   components: {
     FontAwesomeIcon,
-    loading_spinner
+    loading_spinner,
+    error_notification
   },
   watch: {
     reset_img(newValue, oldValue) {
@@ -65,17 +68,14 @@ export default {
       const formData = new FormData()
       formData.append('file', file) 
 
-      const serverDomain = import.meta.env.VITE_SERVER_DOMAIN
-      fetch(`https://${serverDomain}/image-upload`, {
-        method: 'POST',
-        body: formData
-      })
-        .then((response) => response.json()) 
-        .then((result) => {
-          this.user_custom_img = result.url
-          this.sectionStore.setImageLink(this.section_name, this.image_input_id, result.url)
-        })
-        .catch((error) => console.error('Error uploading image', error))
+      try {
+        const result = await upload_image(formData);
+        this.user_custom_img = result.url;
+        this.sectionStore.setImageLink(this.section_name, this.image_input_id, result.url);
+      } catch (error) {
+        console.error('Error uploading image', error);
+        this.error_message = error.message
+      }
       this.isLoading = false
     },
     handleImageClick() {
@@ -95,6 +95,7 @@ export default {
 <template>
   <template v-if="image_tag">
     <div class="image_cont">
+      <error_notification v-if="error_message" :message="error_message" :show="Boolean(error_message)"  @update:show="error_message = null"></error_notification>
       <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
       <img
         @click="handleImageClick"
@@ -123,6 +124,7 @@ export default {
   <template v-else>
     <div :class="custom_class" :style="{ 'background-image': `url(${displayedImage})` }" ref="img">
       <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
+      <error_notification v-if="error_message" :message="error_message" :show="Boolean(error_message)"  @update:show="error_message = null"></error_notification>
       <slot name="background_overlay"></slot>
       <FontAwesomeIcon
         @click="$refs.file_input.click()"

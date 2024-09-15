@@ -1,5 +1,5 @@
-// const api_url = 'http://localhost:8000'
-const api_url = 'https://postcard-api.24-7.ro'
+const api_url = 'http://localhost'
+// const api_url = 'https://postcard-api.24-7.ro'
 
 async function login_user(username, password){
     const data = {
@@ -81,9 +81,33 @@ async function save_sections(data){
   })
 }
 
+async function upload_image(formData){
+  // const authorization_token = localStorage.getItem('access-token')
+  return fetch(`${api_url}/upload_image/`, {
+    method: 'POST',
+    // headers: { 
+    // 'Authorization': `Bearer ${authorization_token}`
+    // },
+    body: formData
+  })
+  .then(response => {
+    if (!response.ok) {
+      return response.json().then(errorData => {
+        if (response.status === 413) {
+          throw new Error('Image is too large. Please choose a smaller image.');
+        } else {
+          throw new Error(`${errorData.detail}`);
+        }
+      });
+    }
+    return response.json();
+  });
+}
+
 export {
     register_user,
     login_user,
     get_user_sections,
-    save_sections
+    save_sections,
+    upload_image
 }

@@ -49,6 +49,20 @@ It's working because of pinia store
 
 - [x] Check how it will work when user saved and then download the page
 
+- [ ] Work on error notification component
+
+- [ ] Move the host to env variables
+
+- [ ] Figure out what going on with image upload endp cors
+
+- [ ] Save pinia store in local storage
+
+- [ ] Work on ui update save button to icon
+
+- [ ] start section 75vh make resp
+
+- [ ] Fix padding on the love potion recipe
+
 
 
 ## How to add new section 
