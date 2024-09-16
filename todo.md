@@ -49,6 +49,8 @@ It's working because of pinia store
 
 - [x] Check how it will work when user saved and then download the page
 
+- [ ] Make login registration validation ui better (for the user erros use input val for the client errors use error notification
+
 - [ ] Work on error notification component
 
 - [ ] Move the host to env variables
@@ -62,6 +64,7 @@ It's working because of pinia store
 - [ ] start section 75vh make resp
 
 - [ ] Fix padding on the love potion recipe
+
 
 
 
