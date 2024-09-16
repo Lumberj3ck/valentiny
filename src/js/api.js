@@ -1,5 +1,4 @@
-const api_url = 'http://localhost'
-// const api_url = 'https://postcard-api.24-7.ro'
+const api_url = import.meta.env.VITE_SERVER_URL
 
 async function login_user(username, password){
     const data = {
