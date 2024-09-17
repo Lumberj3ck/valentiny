@@ -5,7 +5,7 @@ async function login_user(username, password){
         username: username,
         password: password
     }
-  return fetch(`${api_url}/login/`, {
+  return fetch(`${api_url}/user/login/`, {
     method: 'POST',
     headers: { 
     'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ async function register_user(username, email, password){
         email: email,
         password: password
     }
-  return fetch(`${api_url}/users/create_user/`, {
+  return fetch(`${api_url}/user/create_user/`, {
     method: 'POST',
     headers: { 
     'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ async function register_user(username, email, password){
 
 async function save_sections(data){
   const authorization_token = localStorage.getItem('access-token')
-  return await fetch(`${api_url}/save_sections/`, {
+  return await fetch(`${api_url}/user/save_sections/`, {
     method: 'PUT',
     headers: { 
     'Content-Type': 'application/json',

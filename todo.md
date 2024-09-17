@@ -65,6 +65,8 @@ It's working because of pinia store
 
 - [ ] Fix padding on the love potion recipe
 
+- [ ] Remove validation error on change of the login username
+
 
 
 
