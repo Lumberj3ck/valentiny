@@ -146,7 +146,7 @@ function filter_foreign_and_push(url, element, resources) {
 
 function match_ignore_urls(url) {
     let ignoreUrlPatterns = [
-        /\/assets\/imgs\/logo\/logo.+\.webp$/
+        /.+logo.+\.webp$/
     ];
     
     return ignoreUrlPatterns.some(pattern => pattern.test(url));
