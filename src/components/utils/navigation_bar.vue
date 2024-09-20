@@ -78,7 +78,7 @@ export default {
           class="h-[220px] md:h-[inherit] font-medium  flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white  ">
           <li>
             <label class="inline-flex items-center cursor-pointer">
-              <span class="text-lg font-semibold text-black mr-3">Photo Mode:</span>
+              <span class="text-lg font-semibold text-black mr-3">Preview:</span>
               <input @change="$emit('photomode_toggle', $event.target.value)" type="checkbox" value=""
                 class="sr-only peer" checked>
               <div
