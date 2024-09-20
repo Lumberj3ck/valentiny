@@ -65,9 +65,11 @@ It's working because of pinia store
 
 - [ ] Fix padding on the love potion recipe
 
-- [ ] Remove validation error on change of the login username
+- [ ] Remove validation error on change of the login username when it was entered once and username is already taken : regist
 
 - [ ] Some image height for users when internet is bad
+
+- [ ] Previiew mode button fix make it vise versea
 
 
 

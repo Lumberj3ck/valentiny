@@ -144,12 +144,14 @@ function filter_foreign_and_push(url, element, resources) {
     }
 }
 
-
-function match_ignore_urls(url){
-    let ignoreUrls = ['/src/assets/imgs/logo/logo.webp']
-        
-    return ignoreUrls.includes(url);
+function match_ignore_urls(url) {
+    let ignoreUrlPatterns = [
+        /\/src\/assets\/imgs\/logo\/logo.+\.webp$/
+    ];
+    
+    return ignoreUrlPatterns.some(pattern => pattern.test(url));
 }
+
 
 function get_resource_links(node) {
     const resources = [];
