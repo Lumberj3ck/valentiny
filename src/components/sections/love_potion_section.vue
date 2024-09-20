@@ -3,7 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 // import useControlBar from '@/js/control_bar.js'
 import { useSectionStore } from '@/stores/SectionStrore'
-import default_image_path from '@/assets/imgs/love_potion.webp'
+// import default_image_path from '@/assets/imgs/love_potion.webp'
 import image_input from '@/components/utils/image_input.vue'
 
 
@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      image_url: default_image_path,
+      image_url: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/love_potion.webp',
       reset_img: false,
       background_color: '',
       text_color: ''

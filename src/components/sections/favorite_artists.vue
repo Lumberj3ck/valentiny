@@ -2,10 +2,10 @@
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import image_input from '@/components/utils/image_input.vue'
-import first_image from '@/assets/imgs/hiro_album_cover.jpg'
-import second_image from '@/assets/imgs/kaspisky_gruz_album_cover.jpg'
-import third_image from '@/assets/imgs/magic_city_album_cover.jpg'
-import fourth_image from '@/assets/imgs/scryptonit_album_cover.png'
+// import first_image from '@/assets/imgs/hiro_album_cover.jpg'
+// import second_image from '@/assets/imgs/kaspisky_gruz_album_cover.jpg'
+// import third_image from '@/assets/imgs/magic_city_album_cover.jpg'
+// import fourth_image from '@/assets/imgs/scryptonit_album_cover.png'
 import { useSectionStore } from '@/stores/SectionStrore'
 
 export default {
@@ -23,10 +23,10 @@ export default {
       background_color: '',
       text_color:'',
       items: [
-        { name: 'Name of the song', image: first_image, id:3, image_input_id:1},
-        { name: 'Name of the song', image: second_image, id:4, image_input_id:2},
-        { name: 'Name of the song', image: third_image, id:5, image_input_id:3},
-        { name: 'Name of the song', image: fourth_image, id:6, image_input_id:4},
+        { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/hiro_album_cover.jpg', id:3, image_input_id:1},
+        { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/kaspisky_gruz_album_cover.jpg', id:4, image_input_id:2},
+        { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/magic_city_album_cover.jpg', id:5, image_input_id:3},
+        { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/scryptonit_album_cover.png', id:6, image_input_id:4},
       ]
     }
   },

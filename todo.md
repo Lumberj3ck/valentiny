@@ -67,6 +67,8 @@ It's working because of pinia store
 
 - [ ] Remove validation error on change of the login username
 
+- [ ] Some image height for users when internet is bad
+
 
 
 

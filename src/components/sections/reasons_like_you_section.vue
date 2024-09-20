@@ -3,7 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 // import useControlBar from '@/js/control_bar.js'
 import { useSectionStore } from '@/stores/SectionStrore'
-import doner_image from '@/assets/imgs/doner.webp'
+// import doner_image from '@/assets/imgs/doner.webp'
 import image_input from '../utils/image_input.vue'
 
 export default {
@@ -16,7 +16,7 @@ export default {
   },
   data(){
     return {
-      image_url: doner_image,
+      image_url: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/doner.webp',
       reset_img: false,
       background_color: '',
       text_color: ''

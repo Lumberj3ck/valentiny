@@ -2,7 +2,7 @@
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 // import useControlBar from '@/js/control_bar.js'
-import default_image_path from '@/assets/imgs/banner.webp'
+// import default_image_path from '@/assets/imgs/banner.webp'
 import image_input from '@/components/utils/image_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 
@@ -22,7 +22,7 @@ export default {
     emits: ['move_up', 'move_down'],    
     data(){
         return {
-            image_url: default_image_path,
+            image_url: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/banner.webp',
             reset_img: false,
             background_color: '',
             text_color: '',
