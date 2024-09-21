@@ -62,8 +62,12 @@ export default {
       return this.sectionStore.getInputData(this.section_name, this.input_id)
     },
     text_value() {
-      return this.text_input_data ? this.text_input_data : 'Placeholder'
+      // return this.text_input_data ? this.text_input_data.trim() : 'Placeholder'
+      return this.text_input_data 
     },
+    isEmpty() {
+      return !this.text_input_data || this.text_input_data.trim() === ''
+    }
   },
   methods: {
     toggleEditMode() {
@@ -80,19 +84,23 @@ export default {
 </script>
 
 
+
 <template>
-  <div v-if="!edit" @click="toggleEditMode" class="w-full select_prevent bg_inherit" :style="primary_color">{{
-    text_value }}</div>
+  <div v-if="!edit" @click="toggleEditMode" :class="{ 'border border-black rounded-md border-dotted': isEmpty && !photoMode }" class="cursor-pointer w-full select_prevent bg_inherit min-h-7" :style="primary_color">
+    <span v-if="!isEmpty">{{ text_value }}</span>
+  </div>
   <textarea v-else-if="edit && text_area" v-focus @input="resize" @focusout="toggleEditMode"
     @keyup.enter="$refs.textAreaRef.blur()" ref="textAreaRef"
     v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
-    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10 resize-none"
-    :style="primary_color" v-resize id="custom_input"></textarea>
+    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg  focus:ring-black focus:ring-1 focus:z-10 resize-none h-7"
+    :style="primary_color" v-resize id="custom_input"
+    placeholder="Enter text here"></textarea>
   <input v-else v-focus @focusout="toggleEditMode" type="text" @keyup.enter="$refs.textInputRef.blur()"
     ref="textInputRef"     
     v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
-    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg p-1 focus:ring-black focus:ring-1 focus:z-10"
-    :style="primary_color" id="custom_input" />
+    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg  focus:ring-black focus:ring-1 focus:z-10 h-7"
+    :style="primary_color" id="custom_input" 
+    placeholder="Enter text here"/>
 </template>
 
 <style>

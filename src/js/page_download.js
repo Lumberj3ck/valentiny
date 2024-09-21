@@ -14,6 +14,14 @@ function removeElementsBySelector(dom_node, selector) {
 function removeRedundantUI(dom_node) {
     const ui_selectors = ['.control_bar', '.system_ui', '.system_ui_pen', 'script']
     ui_selectors.forEach(item => removeElementsBySelector(dom_node, item))
+
+    const hide_selectors = ['.custom_input'];
+    hide_selectors.forEach(selector => {
+        const elements = dom_node.querySelectorAll(selector);
+        elements.forEach(el => {
+            el.style.display = 'none';
+        });
+    });
 }
 
 function is_url_relative(url) {

@@ -71,6 +71,11 @@ It's working because of pinia store
 
 - [ ] Previiew mode button fix make it vise versea
 
+- [ ] Reset button wrongly resets the color and doesn't reset the text
+
+- [ ] When user puts space in the input field it vanishes
+
+
 
 
 

@@ -101,7 +101,7 @@ export default {
                         <i :style="{ 'color': text_color }" class="fas fa-crown"></i>
                       </span>
                     </div>
-                    <div>
+                    <div class="w-full">
                       <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode"
                         :primary_color="primary_color" class='text-section-color text-lg '
                         default_input_value="Can show you my google history"></custom_input>
@@ -118,7 +118,7 @@ export default {
                         <i :style="{ 'color': text_color }" class="fas fa-compass"></i>
                       </span>
                     </div>
-                    <div>
+                    <div class="w-full">
                       <custom_input :section_name="section_name" :input_id="3" :photoMode="photoMode"
                         :primary_color="primary_color" class='text-section-color text-lg '
                         default_input_value="Can resist to eat last pizza slice"></custom_input>
@@ -139,7 +139,7 @@ export default {
                         </svg>
                       </span>
                     </div>
-                    <div>
+                    <div class="w-full">
                       <custom_input :section_name="section_name" :input_id="4" :photoMode="photoMode"
                         :primary_color="primary_color" class='text-section-color text-lg '
                         default_input_value="Almost started to like your movie taste"></custom_input>

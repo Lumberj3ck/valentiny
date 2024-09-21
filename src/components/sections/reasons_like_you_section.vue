@@ -86,7 +86,7 @@ export default {
           <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_color" class='text-3xl mb-2 font-semibold leading-normal text-black'
             default_input_value="What I like in you"></custom_input>
           <p class="text-lg font-light leading-relaxed mt-4 mb-4 ">
-          <ol class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
+          <ol class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700" :style="primary_color">
             <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
               default_input_value="1 Name"></custom_input>
             <custom_input :section_name="section_name" :input_id="3" :photoMode="photoMode" :primary_color="primary_color" class='font-light'
