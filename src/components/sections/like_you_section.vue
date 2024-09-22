@@ -34,7 +34,8 @@ export default {
   },
   provide() {
       return {
-          reset_text: computed(() => this.reset_text)
+          reset_text: computed(() => this.reset_text),
+          reset_img: computed(() => this.reset_img)
       }
   },
   props: {
@@ -50,6 +51,7 @@ export default {
       this.reset_text = true
       setTimeout(() => {
           this.reset_text = false
+          this.reset_img = false
       }, 500)
     },
   },
@@ -95,7 +97,7 @@ export default {
         <div class="container mx-auto items-center flex flex-wrap">
           <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
             <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" image_tag custom_class="rounded-full square_aspect_ratio object-cover"
-              :image_url="image_url" :reset_img="reset_img" @update:reset="reset_img = !reset_img"></image_input>
+              :image_url="image_url"></image_input>
           </div>
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div class="md:pr-12 mb-8">

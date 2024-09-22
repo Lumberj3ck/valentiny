@@ -32,7 +32,8 @@ export default {
   },
   provide() {
       return {
-          reset_text: computed(() => this.reset_text)
+          reset_text: computed(() => this.reset_text),
+          reset_img: computed(() => this.reset_img)
       }
   },
   props: {
@@ -54,6 +55,7 @@ export default {
       this.reset_text = true
       setTimeout(() => {
           this.reset_text = false
+          this.reset_img = false
       }, 500)
     }
   },
@@ -105,8 +107,7 @@ export default {
         <div class="flex flex-wrap">
           <div v-for="(item, index) in items" :key="index" class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
             <div class="px-6">
-              <image_input :section_name="section_name" :image_input_id="item.image_input_id" :photoMode="photoMode" image_tag :image_url="item.image" :reset_img="reset_img"
-                @update:reset="reset_img = false"
+              <image_input :section_name="section_name" :image_input_id="item.image_input_id" :photoMode="photoMode" image_tag :image_url="item.image"
                 custom_class="square_aspect_ratio object-cover shadow-lg rounded-full max-w-[120px]"
                 class="aspect_ratio_box flex justify-center w-full">
               </image_input>

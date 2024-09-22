@@ -17,7 +17,6 @@ export default {
   },
   props: {
     image_url: String,
-    reset_img: Boolean,
     image_tag: Boolean,
     custom_class: String,
     photoMode: Boolean,
@@ -37,14 +36,14 @@ export default {
     loading_spinner,
     error_notification
   },
+  inject: ['reset_img'],
   watch: {
-    reset_img(newValue, oldValue) {
-      if (newValue && !oldValue) {
-        this.user_custom_img = null
-        this.sectionStore.setImageLink(this.section_name, this.image_input_id, null)
-        this.$emit('update:reset', false)
+    reset_img(newValue) {
+      if (newValue) {
+          this.user_custom_img = null
+          this.sectionStore.setImageLink(this.section_name, this.image_input_id, null)
+        }
       }
-    }
   },
   mounted() {
     if (this.section_name) {
