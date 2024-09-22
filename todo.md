@@ -1,9 +1,6 @@
 1. Control bar download section code button 
 2. Presets eg (color picked for bg and text)
 
-c1: #540D59
-c2: #05E1DD
-
 - [x] Fix bug when deleteting all from input div is not showing 
 - [x] make control bar buetiful
 - [x] Ability for user to change images somehow xD
@@ -18,13 +15,12 @@ c2: #05E1DD
 - [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
 - [x] Forms fix erorrs would be without id 
 - [ ] Save state inside of local storage without clicking on button save
-- [ ] After reset colors resets to wrong color
+- [x] After reset colors resets to wrong color
 - [ ] Check aws sdk bundle
 - [x] Fix bugs on text input small amounts of text especially check love potion section
 - [x] On deproy donot forget about api url and cors url for fastapi
 - [x] Do password validations on register
 - [x] Check page insights warnings
-- [ ] Adjust landing mobile 
 - [x] user login and save loading spinner
 - [ ] check why logout button is not working on safari desktop
 - [x] check love potion section
@@ -71,9 +67,13 @@ It's working because of pinia store
 
 - [ ] Previiew mode button fix make it vise versea
 
-- [ ] Reset button wrongly resets the color and doesn't reset the text
+- [ ] Adjust landing mobile 
+
+- [x] Reset button wrongly resets the color and doesn't reset the text
 
 - [x] When user puts space in the input field it vanishes
+
+- [ ] Check favorite artists section when text inputs removed
 
 
 
