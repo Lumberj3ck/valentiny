@@ -15,7 +15,7 @@ function removeRedundantUI(dom_node) {
     const ui_selectors = ['.control_bar', '.system_ui', '.system_ui_pen', 'script']
     ui_selectors.forEach(item => removeElementsBySelector(dom_node, item))
 
-    const hide_selectors = ['.custom_input'];
+    const hide_selectors = ['.hide_input_on_download'];
     hide_selectors.forEach(selector => {
         const elements = dom_node.querySelectorAll(selector);
         elements.forEach(el => {
@@ -98,9 +98,8 @@ function remove_crossorigin_attribute(node) {
 function mutate_html(dom) {
     removeRedundantUI(dom)
     set_resourse_path(dom)
-    mutate_css_links(dom)
+    // mutate_css_links(dom)
     remove_crossorigin_attribute(dom)
-
     return dom
 }
 
@@ -172,7 +171,7 @@ function get_resource_links(node) {
             filter_foreign_and_push(url, element, resources)
         }
     });
-    get_css_url_resourses(resources)
+    // get_css_url_resourses(resources)
     return resources
 }
 

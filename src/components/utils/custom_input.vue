@@ -5,14 +5,8 @@ const focus = {
   mounted: (el) => el.focus()
 }
 
-
-// const resize = {
-//     mounted: (el) => set_height(el)
-// }
-
 function set_height(el) {
   el.style.height = `${el.scrollHeight}px`;
-  //   el.style.width = `${wrapperWidth}px`;
 }
 
 const resize = {
@@ -62,12 +56,38 @@ export default {
       return this.sectionStore.getInputData(this.section_name, this.input_id)
     },
     text_value() {
-      // return this.text_input_data ? this.text_input_data.trim() : 'Placeholder'
       return this.text_input_data 
     },
     isEmpty() {
       return !this.text_input_data || this.text_input_data.trim() === ''
-    }
+    },
+
+    dashedInputStyle() {
+      let border_properties
+      let rgbColor
+      if (this.primary_color) {
+        let color = this.primary_color['color'];
+        let r = parseInt(color.slice(1, 3), 16);
+        let g = parseInt(color.slice(3, 5), 16);
+        let b = parseInt(color.slice(5, 7), 16);
+        rgbColor = `rgb(${r},${g},${b})`;
+      } else {
+        rgbColor = `rgb(0,0,0)`;
+      }
+
+      if (this.isEmpty && !this.photoMode){
+        border_properties = {
+          backgroundImage: `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='${encodeURIComponent(rgbColor)}' stroke-width='0.8' stroke-dasharray='6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e")`,
+          borderRadius: '0px',
+        }
+      } else {
+        border_properties = {}
+      }
+      return {
+        ...this.primary_color,
+        ...border_properties
+      };
+    },
   },
   methods: {
     toggleEditMode() {
@@ -83,11 +103,13 @@ export default {
 }
 </script>
 
-
-
 <template>
-  <!-- <div v-if="!edit" @click="toggleEditMode" :class="{ 'border border-[#c4c2c2] rounded-md border-dashed': isEmpty && !photoMode}" class="cursor-pointer w-full select_prevent bg_inherit min-h-7" :style="primary_color"> -->
-  <div v-if="!edit" @click="toggleEditMode" :class="{'custom_dashed': isEmpty && !photoMode}" class="cursor-pointer w-full select_prevent bg_inherit min-h-7" :style="primary_color">
+  <div v-if="!edit" @click="toggleEditMode" 
+       :class="{'hide_input_on_download': isEmpty, 'min-h-12': text_area && isEmpty, 'min-h-7': !text_area && isEmpty, 'cursor-pointer': !photoMode}" 
+       class="w-full select_prevent bg_inherit" 
+       :style="dashedInputStyle"
+       :title="isEmpty ? 'Invisible on preview' : ''"
+       >
     <span v-if="!isEmpty">{{ text_value }}</span>
   </div>
   <textarea v-else-if="edit && text_area" v-focus @input="resize" @focusout="toggleEditMode"
@@ -107,10 +129,5 @@ export default {
 <style>
 .bg_inherit {
   background-color: inherit;
-}
-
-.custom_dashed{
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='black' stroke-width='0.8' stroke-dasharray='6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
-  border-radius: 31px;
 }
 </style>
