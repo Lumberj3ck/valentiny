@@ -86,7 +86,8 @@ export default {
 
 
 <template>
-  <div v-if="!edit" @click="toggleEditMode" :class="{ 'border border-black rounded-md border-dotted': isEmpty && !photoMode }" class="cursor-pointer w-full select_prevent bg_inherit min-h-7" :style="primary_color">
+  <!-- <div v-if="!edit" @click="toggleEditMode" :class="{ 'border border-[#c4c2c2] rounded-md border-dashed': isEmpty && !photoMode}" class="cursor-pointer w-full select_prevent bg_inherit min-h-7" :style="primary_color"> -->
+  <div v-if="!edit" @click="toggleEditMode" :class="{'custom_dashed': isEmpty && !photoMode}" class="cursor-pointer w-full select_prevent bg_inherit min-h-7" :style="primary_color">
     <span v-if="!isEmpty">{{ text_value }}</span>
   </div>
   <textarea v-else-if="edit && text_area" v-focus @input="resize" @focusout="toggleEditMode"
@@ -106,5 +107,10 @@ export default {
 <style>
 .bg_inherit {
   background-color: inherit;
+}
+
+.custom_dashed{
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='15' ry='15' stroke='black' stroke-width='0.8' stroke-dasharray='6' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  border-radius: 31px;
 }
 </style>

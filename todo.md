@@ -49,13 +49,13 @@ It's working because of pinia store
 
 - [x] Check how it will work when user saved and then download the page
 
-- [ ] Make login registration validation ui better (for the user erros use input val for the client errors use error notification
+- [x] Make login registration validation ui better (for the user erros use input val for the client errors use error notification
 
-- [ ] Work on error notification component
+- [x] Work on error notification component
 
-- [ ] Move the host to env variables
+- [x] Move the host to env variables
 
-- [ ] Figure out what going on with image upload endp cors
+- [x] Figure out what going on with image upload endp cors
 
 - [ ] Save pinia store in local storage
 
@@ -73,7 +73,7 @@ It's working because of pinia store
 
 - [ ] Reset button wrongly resets the color and doesn't reset the text
 
-- [ ] When user puts space in the input field it vanishes
+- [x] When user puts space in the input field it vanishes
 
 
 
