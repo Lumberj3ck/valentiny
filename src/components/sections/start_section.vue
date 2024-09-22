@@ -24,13 +24,15 @@ export default {
             reset_img: false,
             background_color: '',
             text_color: '',
+            default_text_color: '#f9d0d7',
+            default_bg_color: '#000000'
         }
     },
     methods:{
     reset_both(){
         this.sectionStore.resetColors(this.section_name)
-        this.background_color = ''
-        this.text_color = ''
+        this.background_color = this.default_bg_color
+        this.text_color = this.default_text_color
         this.reset_img = true
     },
     },
@@ -40,8 +42,10 @@ export default {
         image_input
     },
     mounted(){
-        this.text_color = this.sectionStore.getTextColor(this.section_name)
-        this.background_color = this.sectionStore.getBgColor(this.section_name)
+        // this.text_color = this.sectionStore.getTextColor(this.section_name) || this.default_text_color
+        // this.background_color = this.sectionStore.getBgColor(this.section_name) || this.default_bg_color
+        this.text_color = this.sectionStore.getTextColor(this.section_name)  || this.default_text_color
+        this.background_color = this.sectionStore.getBgColor(this.section_name) || this.default_bg_color
     },
     computed: {
         primary_text_color() {
@@ -65,10 +69,12 @@ export default {
 </script>
 
 
+        <!-- :bg_color_value="sectionStore.getBgColor(section_name)"
+        :text_color_value="sectionStore.getTextColor(section_name)" -->
 <template>
     <control_bar  
-        :bg_color_value="sectionStore.getBgColor(section_name)"
-        :text_color_value="sectionStore.getTextColor(section_name)"
+        :bg_color_value="background_color"
+        :text_color_value="text_color"
         @move_up="$emit('move_up')" @move_down="$emit('move_down')" @bg_color_reset="reset_both"
         @toggle-render="sectionStore.toggleRendering(section_name)" @bg_color_picked="(value) => background_color = value"
         @text_color_picked="(value) => text_color = value"

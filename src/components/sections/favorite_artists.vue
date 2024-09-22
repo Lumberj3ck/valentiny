@@ -23,7 +23,9 @@ export default {
         { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/kaspisky_gruz_album_cover.jpg', id:4, image_input_id:2},
         { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/magic_city_album_cover.jpg', id:5, image_input_id:3},
         { name: 'Name of the song', image: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/scryptonit_album_cover.png', id:6, image_input_id:4},
-      ]
+      ],
+      default_text_color: '#000000',
+      default_bg_color: '#ffffff'
     }
   },
   props: {
@@ -39,14 +41,14 @@ export default {
   methods: {
     reset_both() {
       this.sectionStore.resetColors(this.section_name)
-      this.background_color = ''
-      this.text_color = ''
+      this.background_color = this.default_bg_color
+      this.text_color = this.default_text_color
       this.reset_img = true
     }
   },
     mounted(){
-        this.text_color = this.sectionStore.getTextColor(this.section_name)
-        this.background_color = this.sectionStore.getBgColor(this.section_name)
+        this.text_color = this.sectionStore.getTextColor(this.section_name) || this.default_text_color
+        this.background_color = this.sectionStore.getBgColor(this.section_name) || this.default_bg_color
     },
   computed: {
     primary_color() {

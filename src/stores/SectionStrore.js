@@ -5,7 +5,7 @@ export const useSectionStore = defineStore('section_store',
         state: () => ({
             sections: {
                 start_section: {
-                    index: 1, background_color: '#000000', text_color: '#f9d0d7', render: true, image_inputs:
+                    index: 1, background_color: '', text_color: '', render: true, image_inputs:
                     {
                         1: { link: null},
                     },
@@ -16,7 +16,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 reasons_like_you_section: {
-                    index: 2, background_color: '#ffffff', text_color: '#000000', render: true,
+                    index: 2, background_color: '', text_color: '', render: true,
                     image_inputs:
                     {
                         1: { link: null },
@@ -34,7 +34,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 like_you_section: {
-                    index: 3, background_color: '#5e0dab', text_color: '#7cf278', render: true,
+                    index: 3, background_color: '', text_color: '', render: true,
                     image_inputs:
                     {
                         1: { link: null },
@@ -48,7 +48,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 love_potion_section: {
-                    index: 4, background_color: '#123681', text_color: '#D9CAE3', render: true,
+                    index: 4, background_color: '', text_color: '', render: true,
                     image_inputs:
                     {
                         1: { link: null },
@@ -66,7 +66,7 @@ export const useSectionStore = defineStore('section_store',
                     }
                 },
                 favorite_artists: {
-                    index: 5, background_color: '#ffffff', text_color: '#000000', render: true,
+                    index: 5, background_color: '', text_color: '', render: true,
                     image_inputs:
                     {
                         1: { link: null },

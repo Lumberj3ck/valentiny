@@ -18,7 +18,9 @@ export default {
       image_url: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/love_potion.webp',
       reset_img: false,
       background_color: '',
-      text_color: ''
+      text_color: '',
+      default_text_color: '#D9CAE3',
+      default_bg_color: '#123681'
     }
   },
   props: {
@@ -28,8 +30,8 @@ export default {
   methods: {
     reset_both() {
       this.sectionStore.resetColors(this.section_name)
-      this.background_color = ''
-      this.text_color = ''
+      this.background_color = this.default_bg_color
+      this.text_color = this.default_text_color
       this.reset_img = true
     },
   },
@@ -52,8 +54,8 @@ export default {
     // }
   },
     mounted(){
-        this.text_color = this.sectionStore.getTextColor(this.section_name)
-        this.background_color = this.sectionStore.getBgColor(this.section_name)
+        this.text_color = this.sectionStore.getTextColor(this.section_name) || this.default_text_color
+        this.background_color = this.sectionStore.getBgColor(this.section_name) || this.default_bg_color
     },
   components: {
     control_bar,
