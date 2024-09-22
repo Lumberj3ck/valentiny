@@ -113,9 +113,9 @@ export default {
     <span v-if="!isEmpty">{{ text_value }}</span>
   </div>
   <textarea v-else-if="edit && text_area" v-focus @input="resize" @focusout="toggleEditMode"
-    @keyup.enter="$refs.textAreaRef.blur()" ref="textAreaRef"
+    @keydown.enter.prevent="$refs.textAreaRef.blur()" ref="textAreaRef"
     v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
-    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg  focus:ring-black focus:ring-1 focus:z-10 resize-none h-7"
+    class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg focus:ring-black focus:ring-1 focus:z-10 resize-none h-7 overflow-hidden"
     :style="primary_color" v-resize id="custom_input"
     placeholder="Enter text here"></textarea>
   <input v-else v-focus @focusout="toggleEditMode" type="text" @keyup.enter="$refs.textInputRef.blur()"
