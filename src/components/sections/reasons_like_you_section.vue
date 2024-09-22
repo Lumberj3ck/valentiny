@@ -2,7 +2,8 @@
 import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
-import image_input from '../utils/image_input.vue'
+import image_input from '@/components/utils/image_input.vue'
+import { computed } from 'vue'
 
 export default {
     setup() {
@@ -19,8 +20,14 @@ export default {
       background_color: '',
       text_color: '',
       default_text_color: '#000000',
-      default_bg_color: '#ffffff'
+      default_bg_color: '#ffffff',
+      reset_text: false
     }
+  },
+  provide() {
+      return {
+          reset_text: computed(() => this.reset_text)
+      }
   },
   props:{
     photoMode: Boolean,
@@ -38,6 +45,11 @@ export default {
       this.background_color = this.default_bg_color
       this.text_color = this.default_text_color
       this.reset_img = true
+      this.reset_text = true
+      setTimeout(() => {
+        this.reset_text = false
+      }, 500)
+
     },
 
   },

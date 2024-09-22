@@ -3,6 +3,7 @@ import control_bar from '@/components/utils/control_bar.vue'
 import custom_input from '@/components/utils/custom_input.vue'
 import image_input from '@/components/utils/image_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
+import { computed } from 'vue'
 
 
 export default {
@@ -18,6 +19,11 @@ export default {
         section_name: String
     },
     emits: ['move_up', 'move_down'],    
+    provide() {
+        return {
+            reset_text: computed(() => this.reset_text)
+        }
+    },
     data(){
         return {
             image_url: 'https://valentine-postcard-images.s3.eu-central-1.amazonaws.com/sections_images/banner.webp',
@@ -25,7 +31,8 @@ export default {
             background_color: '',
             text_color: '',
             default_text_color: '#f9d0d7',
-            default_bg_color: '#000000'
+            default_bg_color: '#000000',
+            reset_text: false
         }
     },
     methods:{
@@ -34,6 +41,10 @@ export default {
         this.background_color = this.default_bg_color
         this.text_color = this.default_text_color
         this.reset_img = true
+        this.reset_text = true
+        setTimeout(() => {
+            this.reset_text = false
+        }, 500)
     },
     },
     components: {

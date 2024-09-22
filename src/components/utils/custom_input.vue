@@ -25,7 +25,14 @@ export default {
     section_name: String,
     input_id: Number
   },
-
+  inject: ['reset_text'],
+  watch: {
+    reset_text(newValue) {
+      if (newValue) {
+        this.resetTextToDefault();
+      }
+    }
+  },
   setup() {
     const sectionStore = useSectionStore()
 
@@ -90,6 +97,9 @@ export default {
     },
   },
   methods: {
+    resetTextToDefault() {
+      this.sectionStore.setInputData(this.section_name, this.input_id, this.default_input_value);
+    },
     toggleEditMode() {
       if (!this.photoMode) {
         this.edit = !this.edit
