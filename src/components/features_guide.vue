@@ -1,87 +1,64 @@
-<script>
-// export default{
-//     mounted(){
-//         document.querySelector('body').style.backgroundColor = '#242424'
-//     },
-//     unmounted(){
-//         document.querySelector('body').style.backgroundColor = 'inherit'
-//     }
-// }
-</script>
-
 <template>
-    <div class="container">
-        <h1 class="header font-bold text-secondary">Welcome to the Page Editor guide!</h1>
-        <div class="text-main-color mb-2">
-            If you have questions upon how to upload your page check <router-link class="link_color" to="/website-upload">this</router-link> article out!
-        </div>
-        <p class="mb-3 text-main-color">When you first load the page editor, you'll have several options for customizing your
-            template:</p>
-        <ol >
-            <li class="mb-4"><strong class="text-secondary">Edit Text:</strong>
-                <div class="text-main-color">Click on any text block to start editing it. Simply click on the text you want to
-                    modify, and start typing.</div>
-            </li>
+  <div class="container mx-auto px-4 py-8">
+    <div class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-lg p-6 mb-8">
+      <h1 class="text-3xl font-bold text-white mb-2">Welcome to the Page Editor Guide!</h1>
+      <p class="text-lg text-white">Learn how to create stunning postcards with our easy-to-use editor.</p>
+    </div>
 
-            <li class="mb-4"><strong class="text-secondary">Choose Template Picture:</strong>
-                <div class="text-main-color">Click on the <strong>"Choose"</strong> button to select a template picture for
-                    your postcard. Browse and choose the one that best fits your message and style.</div>
-            </li>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <FeatureCard
+        icon="fa-solid fa-edit"
+        title="Edit Text"
+        description="Click on any text block to start editing. Simply click and type to modify the content."
+      />
+      <FeatureCard
+        icon="fa-solid fa-image"
+        title="Choose Template Picture"
+        description="Click 'Choose' to select a template picture. Browse and pick the one that best fits your message and style."
+      />
+      <FeatureCard
+        icon="fa-solid fa-palette"
+        title="Color Pickers"
+        description="Use color pickers to customize background and text colors. Click the icons to open the selection panel."
+      />
+      <FeatureCard
+        icon="fa-solid fa-arrows-alt-v"
+        title="Rearrange Blocks"
+        description="Click on the arrows to rearrange blocks inside your postcard for the perfect layout."
+      />
+      <FeatureCard
+        icon="fa-solid fa-undo"
+        title="Reset Button"
+        description="Use 'Reset' to revert changes to colors and images back to their original settings."
+      />
+      <FeatureCard
+        icon="fa-solid fa-toggle-on"
+        title="Turn Off Button"
+        description="Toggle to hide or disable the current block without deleting it entirely."
+      />
+    </div>
 
-            <li class="mb-4"><strong class="text-secondary">Color Pickers:</strong>
-                <div class="text-main-color"> Use the color pickers to customize the background color and text color of your
-                    postcard. Click on the color picker icons to open the color selection panel, and choose your desired
-                    colors.</div>
-            </li>
-
-            <li class="mb-4"><strong class="text-secondary">Rearrange Blocks:</strong>
-                <div class="text-main-color">Click on the arrows to rearrange the blocks inside your postcard.</div>
-            </li>
-
-            <li class="mb-4"><strong class="text-secondary">Reset Button:</strong>
-                <div class="text-main-color">Use the <strong>"Reset"</strong> button to reset any changes you've made to the
-                    picked colors and image. Clicking this button will revert the background color, text color, and template
-                    picture back to their original settings.</div>
-            </li>
-
-            <li class="mb-4"><strong class="text-secondary">Turn Off Button:</strong>
-                <div class="text-main-color">Toggle the <strong>"Reset"</strong> button to hide or disable the current block.
-                    This allows you to temporarily remove a block from your postcard without deleting it entirely.</div>
-            </li>
-        </ol>
-     </div>   
+    <div class="mt-8 bg-blue-50 rounded-lg shadow-lg p-6">
+      <h2 class="text-xl font-semibold text-blue-800 mb-2">Need More Help?</h2>
+      <p class="text-blue-600 mb-4">
+        If you have questions about uploading your page, check out our detailed article!
+      </p>
+      <router-link to="/website-upload" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        Read Upload Guide
+      </router-link>
+    </div>
+  </div>
 </template>
 
+<script>
+import FeatureCard from '@/components/utils/feature_card.vue';
+
+export default {
+  components: {
+    FeatureCard
+  }
+};
+</script>
+
 <style scoped>
-.text-main-color{
-    color: var(--soft-blue-color)
-}
-.link_color{
-    color: var(--guide-link-color);
-}
-.link_color:hover{
-    color: var(--soft-red-color);
-}
-.text-secondary{
-    /* color: var(--warm-yellow-color);  */
-    color: var(--soft-red-color); 
-    font-weight: bold;
-}
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    /* background-color: var(--landing-background-color); */
-}
-
-.header {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-
 </style>

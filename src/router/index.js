@@ -13,7 +13,7 @@ const routes = [
         component: LandingPage, 
     },
     {
-        path: '/user-guide/', 
+        path: '/features-guide/', 
         component: FeaturesGuide, 
     },
     {

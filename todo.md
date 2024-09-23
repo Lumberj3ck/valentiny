@@ -75,6 +75,8 @@ It's working because of pinia store
 
 - [ ] Check favorite artists section when text inputs removed
 
+- [ ] Before the page reload add alert that do you want to reload you didn't save 
+
 
 
 
