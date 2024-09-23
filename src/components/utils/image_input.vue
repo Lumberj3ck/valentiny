@@ -52,30 +52,39 @@ export default {
   },
   methods: {
     async handleFileUpload(event) {
+      this.isLoading = true
+      const bucket_url = import.meta.env.VITE_S3_BUCKET_URL
       const file = event.target.files[0]
       if (file) {
-        await this.handleImageUpload(file)
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.user_custom_img = e.target.result;
+          const uniqueFilename = `${Date.now()}`;
+          const url = `${bucket_url}/${uniqueFilename}`;
+          this.sectionStore.setImageLink(this.section_name, this.image_input_id, url);
+          this.handleImageUpload(file, uniqueFilename);
+        };
+        reader.readAsDataURL(file);
+        this.isLoading = false
       }
     },
-    async handleImageUpload(file) {
-      this.isLoading = true
+    async handleImageUpload(file, uniqueFilename) {
       if (!file) {
         console.log('No file selected')
         return
       }
 
       const formData = new FormData()
-      formData.append('file', file) 
+      formData.append('file', file, uniqueFilename) 
 
       try {
         const result = await upload_image(formData);
-        this.user_custom_img = result.url;
+        // this.user_custom_img = result.url;
         this.sectionStore.setImageLink(this.section_name, this.image_input_id, result.url);
       } catch (error) {
         console.error('Error uploading image', error);
         this.error_message = error.message
       }
-      this.isLoading = false
     },
     handleImageClick() {
       if (!this.photoMode) {
