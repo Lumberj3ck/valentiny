@@ -5,14 +5,17 @@ import { upload_image } from '@/js/api'
 import loading_spinner from '../utils/loading_spinner.vue'
 // import generateRandomLetters from '@/js/generate_letter.js'
 import { useSectionStore } from '@/stores/SectionStrore'
+import { useImageUploadStore } from '@/stores/ImageUploadStore'
 import error_notification from '../utils/error_notification.vue'
 
 export default {
   setup() {
     const sectionStore = useSectionStore()
+    const imageUploadStore = useImageUploadStore()
 
     return {
-      sectionStore
+      sectionStore,
+      imageUploadStore
     }
   },
   props: {
@@ -62,6 +65,7 @@ export default {
           const uniqueFilename = `${Date.now()}`;
           const url = `${bucket_url}/${uniqueFilename}`;
           this.sectionStore.setImageLink(this.section_name, this.image_input_id, url);
+          this.imageUploadStore.addResource(this.section_name + this.image_input_id)
           this.handleImageUpload(file, uniqueFilename);
         };
         reader.readAsDataURL(file);
@@ -79,8 +83,8 @@ export default {
 
       try {
         const result = await upload_image(formData);
-        // this.user_custom_img = result.url;
         this.sectionStore.setImageLink(this.section_name, this.image_input_id, result.url);
+        this.imageUploadStore.removeResource(this.section_name + this.image_input_id)
       } catch (error) {
         console.error('Error uploading image', error);
         this.error_message = error.message

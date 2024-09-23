@@ -9,11 +9,11 @@
   >
     <div
       v-show="isVisible"
-      class="fixed w-11/12 top-4 right-4 max-w-sm bg-red-500 text-white rounded-lg shadow-lg overflow-hidden z-[9999]"
+      :class="notificationClass"
       role="alert"
     >
       <div class="p-4 pr-10">
-        <p class="font-bold">Error</p>
+        <p class="font-bold">{{ title }}</p>
         <p>{{ message }}</p>
       </div>
       <button
@@ -24,7 +24,8 @@
       <FontAwesomeIcon :icon="faXmark" class="white"></FontAwesomeIcon>
       </button>
       <div
-        class="absolute bottom-0 left-0 h-1 bg-red-600"
+        class="absolute bottom-0 left-0 h-1"
+        :class="progressBarClass"
         :style="{ width: `${progress}%` }"
       ></div>
     </div>
@@ -52,6 +53,10 @@ export default {
     show: {
       type: Boolean,
       default: true
+    },
+    type: {
+      type: String,
+      default: 'error' // 'error' or 'warning'
     }
   },
   data() {
@@ -61,6 +66,19 @@ export default {
       progress: 100,
       timer: null,
       progressTimer: null
+    }
+  },
+  computed: {
+    notificationClass() {
+      return this.type === 'error' 
+        ? 'fixed w-11/12 top-4 right-4 max-w-sm bg-red-500 text-white rounded-lg shadow-lg overflow-hidden z-[9999]'
+        : 'fixed w-11/12 top-4 right-4 max-w-sm bg-yellow-300 text-black rounded-lg shadow-lg overflow-hidden z-[9999]';
+    },
+    progressBarClass() {
+      return this.type === 'error' ? 'bg-red-600' : 'bg-yellow-600';
+    },
+    title() {
+      return this.type === 'error' ? 'Error' : 'Warning';
     }
   },
   watch: {

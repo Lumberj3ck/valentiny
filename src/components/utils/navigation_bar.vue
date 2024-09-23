@@ -4,30 +4,37 @@ import { useSectionStore } from '@/stores/SectionStrore'
 import { transformData } from '@/js/transform_data'
 import { save_sections } from '@/js/api'
 import { get_user_sections } from '@/js/api'
+import error_notification from '@/components/utils/error_notification.vue'
+import { useImageUploadStore } from '@/stores/ImageUploadStore'
 
 export default {
   setup() {
     const sectionStore = useSectionStore()
+    const imageUploadStore = useImageUploadStore()
 
     return {
-      sectionStore
+      sectionStore,
+      imageUploadStore,
     };
   },
   emits: ['photomode_toggle'],
 
   components: {
-    download_button
+    download_button,
+    error_notification
   },
   data() {
     return {
       user_authenticated: localStorage.getItem('access-token'),
       progresStart: false,
-      mobile_menu_hide : true 
+      mobile_menu_hide : true,
+      error: false,
+      error_message: null
     }
   },
   methods: {
     async save() {
-      if (!this.sectionStore.sections | !this.user_authenticated) {
+      if (!this.sectionStore.sections || !this.user_authenticated) {
         return
       }
       const rearanged_data = transformData(this.sectionStore.sections)
@@ -49,6 +56,11 @@ export default {
       this.$router.go(0);
     },
     startSaving() {
+      if (this.imageUploadStore.uploadingResources.length > 0) {
+        this.error = true
+        this.error_message = "Some resources are still uploading. Please wait until all uploads are complete."
+        return
+      }
       this.progresStart = true
       this.save()
       setTimeout(() => this.progresStart = false, 1000);
@@ -59,6 +71,14 @@ export default {
 
 <template>
   <nav class="bg-white border-gray-200 mb-5 system_ui">
+    <error_notification 
+      :duration="2000" 
+      :message="error_message ? error_message : ''" 
+      :show="error"  
+      @update:show="error = false"
+      type="warning"
+      >
+    </error_notification>
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <router-link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="@/assets/imgs/logo/logo-BKi7_f4-.webp" class="h-9" alt="postcard-logo" />
