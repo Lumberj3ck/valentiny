@@ -46,9 +46,7 @@
       </div>
 
       <div v-if="step === 1" key="step1" class="space-y-4">
-        <label for="subdomain" class="block text-sm font-medium text-gray-700"
-          >Choose your subdomain</label
-        >
+        <label for="subdomain" class="block text-sm font-medium text-gray-700">Choose your subdomain</label>
         <div class="flex items-center space-x-2">
           <input
             id="subdomain"
@@ -87,7 +85,8 @@
         <p>Your chosen domain:</p>
         <p class="font-bold">{{ subdomain }}.{{ domain }}</p>
         <p v-if="isChecking" class="flex items-center">
-          <i class="fa fa-spinner fa-spin"></i> Checking availability... Please wait a moment.
+          <i class="fa fa-spinner fa-spin"></i> 
+          Checking availability... Please wait a moment.
         </p>
         <transition name="bounce">
           <p
@@ -103,10 +102,10 @@
 
       <div v-if="step === 4" key="step4" class="space-y-4">
         <div v-if="isUploading" class="flex flex-col items-center">
-          <div
-            class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"
-          ></div>
-          <p class="text-blue-600">Uploading your postcard... This may take a few moments.</p>
+          <div class="relative h-[100px] w-full">
+            <loading_spinner v-if="isUploading" color="black"></loading_spinner>
+          </div>
+          <p class="text-black">Uploading your postcard... This may take a few moments.</p>
         </div>
         <transition name="fade">
           <div v-if="uploadComplete">
@@ -208,6 +207,7 @@ import { useSectionStateStore } from '@/stores/SectionStateStore'
 import main_section from "@/components/sections/main_section.vue"
 import { createApp } from 'vue'
 import router from '@/router/index'
+import loading_spinner from '@/components/utils/loading_spinner.vue'
 
 export default {
   name: 'UploadForm',
@@ -225,6 +225,9 @@ export default {
       uploadComplete: false,
       publishedUrl: ''
     }
+  },
+  components:{
+    loading_spinner
   },
   setup() {
     const sectionStateStore = useSectionStateStore()
@@ -279,16 +282,13 @@ export default {
       this.availabilityMessage = ''
       this.isAvailable = false
 
+      this.step = 3
       try {
         const data = await check_subdomain_availability(this.subdomain, this.domain)
 
         this.isAvailable = data.is_available
         this.availabilityMessage = data.message
 
-        this.step = 3
-        // if (this.isAvailable) {
-        //   this.step = 3
-        // }
       } catch (error) {
         this.availabilityMessage = error.message
         this.isAvailable = false
@@ -298,12 +298,19 @@ export default {
     },
     async handleUpload() {
       this.isUploading = true
+
+      this.step = 4
       try {
         const zipBlob = await generate_zip_file(this.sectionStateStore.componentRef)
         const response = await upload_website(this.subdomain, this.domain, zipBlob)
         this.uploadComplete = true
         this.publishedUrl = response.link
-        this.step = 4
+        // this.step = 4
+        // setTimeout(() => {
+        //   this.step = 4
+        //   this.uploadComplete = true
+        //   this.publishedUrl = 'https://www.google.com'
+        // }, 1000000)
       } catch (error) {
         console.error('Upload failed:', error)
         this.availabilityMessage = 'Upload failed. Please try again.'
