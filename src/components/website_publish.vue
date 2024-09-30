@@ -305,12 +305,6 @@ export default {
         const response = await upload_website(this.subdomain, this.domain, zipBlob)
         this.uploadComplete = true
         this.publishedUrl = response.link
-        // this.step = 4
-        // setTimeout(() => {
-        //   this.step = 4
-        //   this.uploadComplete = true
-        //   this.publishedUrl = 'https://www.google.com'
-        // }, 1000000)
       } catch (error) {
         console.error('Upload failed:', error)
         this.availabilityMessage = 'Upload failed. Please try again.'
