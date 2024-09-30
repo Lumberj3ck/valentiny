@@ -243,7 +243,7 @@ export default {
 
     const domains = await check_user_domains()
 
-    if (domains) {
+    if (domains && domains.length > 0) {
       this.step = 0
       this.user_published_domains = domains
     }
