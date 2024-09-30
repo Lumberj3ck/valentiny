@@ -79,6 +79,7 @@ It's working because of pinia store
 
 - [ ] Close the urls upon some conditions
 
+- [ ] if user doesn't have a domains it pushes him to empty domaisn list when back button pressed
 
 
 

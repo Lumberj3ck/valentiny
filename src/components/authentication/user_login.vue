@@ -40,7 +40,7 @@
       />
     </div>
     <div class="flex items-start mb-5">
-      <router-link to="/register/" class="nav_text nav_link font-semibold text-base"
+      <router-link :to="{ path: '/register/', query: $route.query }" class="nav_text nav_link font-semibold text-base"
         style="text-underline-offset: 1px; text-decoration: underline;">
         Register
       </router-link>
@@ -81,8 +81,14 @@ export default {
           this.loading = false 
           const token = data
           localStorage.setItem('access-token', token.access_token)
+
           if (token.access_token) {
-            this.$router.push('/page-editor')
+            const redirect = this.$route.query.redirect
+            if (redirect) {
+              this.$router.push(redirect)
+            } else {
+              this.$router.push('/page-editor')
+            }
           }
         })
         .catch(error => {

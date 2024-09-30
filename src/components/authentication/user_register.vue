@@ -153,7 +153,12 @@ export default {
           this.loading = false 
           localStorage.setItem('access-token', token.access_token)
           if (token.access_token) {
-            this.$router.push('/page-editor')
+            const redirect = this.$route.query.redirect
+            if (redirect) {
+              this.$router.push(redirect)
+            } else {
+              this.$router.push('/page-editor')
+            }
           }
         })
         .catch(error => {

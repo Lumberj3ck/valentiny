@@ -142,6 +142,7 @@
       <transition name="slide-fade">
         <div v-if="step === 1" class="flex justify-between">
           <button
+            v-if="user_published_domains"
             @click="prevStep"
             class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
@@ -150,7 +151,8 @@
           <button
             @click="nextStep"
             :disabled="!subdomain"
-            class="w-3/4 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            :class="{'w-3/4': user_published_domains, 'w-full': !user_published_domains}"
           >
             Next
           </button>
@@ -193,6 +195,9 @@
       </transition>
     </div>
   </div>
+  <div id="main_section_app" style="display:none">
+
+  </div>
 </template>
 
 <script>
@@ -200,7 +205,9 @@ import { check_subdomain_availability, upload_website, check_user_domains } from
 import { generate_zip_file } from '@/js/page_download'
 import { useSectionStateStore } from '@/stores/SectionStateStore'
 
-// import { main_section } from "@/components/sections/main_section.vue"
+import main_section from "@/components/sections/main_section.vue"
+import { createApp } from 'vue'
+import router from '@/router/index'
 
 export default {
   name: 'UploadForm',
@@ -227,9 +234,14 @@ export default {
     }
   },
   async mounted() {
-    const domains = await check_user_domains()
-    // const dynamicApp = createApp(main_section);
+    if (!this.sectionStateStore.componentRef){
+      const container = document.getElementById('main_section_app')
+      const a = createApp(main_section);
+      a.use(router)
+      a.mount(container)
+    }
 
+    const domains = await check_user_domains()
 
     if (domains) {
       this.step = 0
@@ -238,7 +250,11 @@ export default {
   },
   methods: {
     toBegining(){
-      this.step = 0
+      if (this.user_published_domains){
+        this.step = 0
+      } else {
+        this.step = 1
+      }
       this.availabilityMessage = null
       this.isAvailable = false
     },
@@ -247,7 +263,7 @@ export default {
       this.isAvailable = true
       const choosen_domain = this.user_published_domains[this.user_published_domain]
       this.subdomain = choosen_domain['name']
-      this.doamin = choosen_domain['domain_name']
+      this.domain = choosen_domain['domain_name']
     },
     createNewDomain() {
       this.step = 1
