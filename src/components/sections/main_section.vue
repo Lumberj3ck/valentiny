@@ -8,7 +8,7 @@ import navigation_bar from '@/components/utils/navigation_bar.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 import { get_user_sections } from '@/js/api'
 import loading_spinner from '../utils/loading_spinner.vue'
-
+import { useSectionStateStore } from '@/stores/SectionStateStore'
 export default {
   components: {
     like_you_section,
@@ -21,18 +21,22 @@ export default {
   },
   setup() {
     const components = useSectionStore()
+    const sectionStateStore = useSectionStateStore()
 
     return {
-      components
+      components,
+      sectionStateStore
     }
   },
-
   data() {
     return {
       moving_component: { name: null, direction: null },
       photoMode: false,
       loaded: false
     }
+  },
+  mounted() {
+    this.sectionStateStore.setComponentRef(this.$refs.main);
   },
   methods: {
     move(direction, name) {
@@ -89,7 +93,7 @@ export default {
 
 <template>
   <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
-  <div class="custom_container">
+  <div ref="main" class="custom_container">
     <loading_spinner v-if="!loaded"></loading_spinner>
     <div v-for="[component, section] in Object.entries(components.sections)" :key="component"
       :class="{ 'slide-in-bck-top': (moving_component.name == component) && (moving_component.direction == 1), 'slide-in-bck-bottom': (moving_component.name == component) && (moving_component.direction == -1) }"

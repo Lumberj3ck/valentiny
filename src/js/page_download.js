@@ -60,10 +60,17 @@ function set_resourse_path(document) {
 }
 
 
-function instantiate_dom_node() {
-    var dom_node = document.documentElement.cloneNode(true)
-    return dom_node
+function instantiate_dom_node(main_section_ref) {
+    const doc = document.cloneNode(true)
+    const main_section = main_section_ref.cloneNode(true)
+
+    doc.body.innerHTML = main_section.outerHTML
+
+    return doc
+    // var dom_node = main_section_ref.cloneNode(true)
+    // return dom_node
 }
+
 
 function make_new_url_path(css_property, element) {
     const url_regex = /url\(['"]?([^'"]+)['"]?\)/
@@ -202,14 +209,36 @@ function remove_hidden_elements(dom) {
     });
 }
 
-async function get_page() {
-    var dom = instantiate_dom_node()
+async function get_page(main_section_ref) {
+    var dom = instantiate_dom_node(main_section_ref)
     remove_hidden_elements(dom)
 
     const resourse_links = get_resource_links(dom)
     var node = mutate_html(dom)
-    var zip = await get_resourses(resourse_links, node.outerHTML)
+    let htmlContent = node.outerHTML;
+
+    if (!htmlContent) {
+        htmlContent = `<html><head>${node.head.innerHTML}</head><body>${node.body.innerHTML}</body></html>`;
+    }
+    var zip = await get_resourses(resourse_links, htmlContent)
     download_archive(zip)
 }
 
-export { get_page }
+async function generate_zip_file(main_section_ref) {
+    var dom = instantiate_dom_node(main_section_ref)
+    remove_hidden_elements(dom)
+
+    const resourse_links = get_resource_links(dom)
+    var node = mutate_html(dom)
+
+    let htmlContent = node.outerHTML;
+    if (!htmlContent) {
+        htmlContent = `<html><head>${node.head.innerHTML}</head><body>${node.body.innerHTML}</body></html>`;
+    }
+    var zip = await get_resourses(resourse_links, htmlContent)
+
+    return zip.generateAsync({ type: "blob" });
+}
+
+
+export { get_page, generate_zip_file }

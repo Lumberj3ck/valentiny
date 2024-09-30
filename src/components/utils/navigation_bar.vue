@@ -7,6 +7,7 @@ import { get_user_sections } from '@/js/api'
 import error_notification from '@/components/utils/error_notification.vue'
 import { useImageUploadStore } from '@/stores/ImageUploadStore'
 
+
 export default {
   setup() {
     const sectionStore = useSectionStore()
@@ -132,6 +133,12 @@ export default {
           <li v-if="user_authenticated" @click="logout">
             <a href="#"
               class="font-semibold text-lg block py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500  hover:text-[#FF407D] md:dark:hover:bg-transparent">Logout</a>
+          </li>
+          <li class="transition duration-300 ease-in-out transform hover:scale-105">
+            <router-link to='/publish/' className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-1 px-3 md:py-2 md:px-4 rounded-lg shadow-md">
+              <i class="fas fa-globe w-5 h-5 mr-2"></i>
+              Publish Website
+            </router-link>
           </li>
         </ul>
       </div>

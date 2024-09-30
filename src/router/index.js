@@ -5,6 +5,8 @@ import FeaturesGuide from '@/components/features_guide.vue'
 import WebsiteUploadGuide from '@/components/website_upload_guide.vue'
 import user_register from '@/components/authentication/user_register.vue'
 import user_login from '@/components/authentication/user_login.vue'
+import website_publish from '@/components/website_publish.vue'
+
 
 
 const routes = [
@@ -31,6 +33,10 @@ const routes = [
     {
         path: '/login/', 
         component: user_login, 
+    },
+    {
+        path: '/publish/', 
+        component: website_publish, 
     },
 ]
 

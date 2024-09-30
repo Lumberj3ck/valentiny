@@ -1,7 +1,15 @@
 <script>
 import { get_page } from '@/js/page_download'
+import { useSectionStateStore } from '@/stores/SectionStateStore'
 
 export default {
+    setup() {
+        const sectionStateStore = useSectionStateStore()
+
+        return {
+            sectionStateStore
+        }
+    },
     data() {
         return {
             animate: false
@@ -13,7 +21,7 @@ export default {
 
     methods: {
         get_html() {
-            get_page()
+            get_page(this.sectionStateStore.componentRef)
         }
     }
 }

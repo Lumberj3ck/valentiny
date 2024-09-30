@@ -115,7 +115,7 @@ export default {
 
 <template>
   <div v-if="!edit" @click="toggleEditMode" 
-       :class="{'hide_input_on_download': isEmpty, 'min-h-12': text_area && isEmpty, 'min-h-7': !text_area && isEmpty, 'cursor-pointer': !photoMode}" 
+       :class="{'hide_input_on_download': isEmpty, 'min-h-12': text_area && isEmpty, 'min-h-7': !text_area && isEmpty}" 
        class="w-full select_prevent bg_inherit" 
        :style="dashedInputStyle"
        :title="isEmpty ? 'Invisible on preview' : ''"

@@ -77,6 +77,8 @@ It's working because of pinia store
 
 - [ ] Before the page reload add alert that do you want to reload you didn't save 
 
+- [ ] Close the urls upon some conditions
+
 
 
 
