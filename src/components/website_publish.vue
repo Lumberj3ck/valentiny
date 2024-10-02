@@ -137,7 +137,7 @@
       </div>
     </div>
 
-    <div v-if="step != 0" class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+    <div v-if="step != 0 && step != 4" class="px-6 py-4 bg-gray-50 border-t border-gray-200">
       <transition name="slide-fade">
         <div v-if="step === 1" class="flex justify-between">
           <button
