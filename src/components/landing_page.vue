@@ -1,13 +1,13 @@
 <template>
     <div class="md:absolute md:top-1/4 lg:top-[15%] xl:top-[5%] w-full">
-        <div class=" flex flex-col md:flex-row-reverse ">
+        <div class=" flex flex-col md:flex-row-reverse gap-8 md:gap-0">
             <div class="flex justify-center md:w-5/6 lg:w-full">
                 <!-- <img src="../assets/imgs/composition.jpg" alt="composition" class="w-11/12 min-[540px]:w-3/4 lg:w-9/12"> -->
                 <img src="../assets/imgs/composition_1.png" alt="composition"
                     class="w-11/12 min-[540px]:w-3/4 lg:w-9/12">
             </div>
             <div class="flex justify-center md:w-[65%] xl:w-3/4 items-center">
-                <div class="flex flex-col w-5/6 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem]">
+                <div class="flex flex-col w-11/12 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem]">
                     <div class="header mb-4 lg:mb-10">
                         <p class="font-bold text-2xl sm:text-3xl md:text-5xl mb-1 md:tracking-wide md:mb-2">
                             Listen to yourself.
@@ -21,9 +21,9 @@
                         Express your love with heartfelt messages on Special Day! Share your feelings, memories in your
                         postcard.
                     </p>
-                    <div>
+                    <div class="mt-5">
                         <router-link to="/page-editor"
-                            class="button_bg_color w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 landing_button">
+                            class="button_bg_color w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 landing_button transition-transform duration-300 hover:scale-105">
                             Design my own!
                         </router-link>
                     </div>
@@ -41,7 +41,8 @@ export default {
         }
     },
     mounted() {
-        document.querySelector('body').style.backgroundColor = '#FFCAD4'
+        // document.querySelector('body').style.backgroundColor = '#FFCAD4'
+        document.querySelector('body').style.backgroundColor = 'white'
     },
     unmounted() {
         document.querySelector('body').style.backgroundColor = 'inherit'
@@ -63,7 +64,8 @@ export default {
 }
 
 .landing_button:hover {
-    outline: 2px solid var(--primary-attention-color);
+    /* outline: 2px solid var(--primary-attention-color); */
+    outline: 2px solid var(--landing-text-color);
 }
 
 body {
