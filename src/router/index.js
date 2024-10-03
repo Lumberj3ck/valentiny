@@ -6,7 +6,9 @@ import WebsiteUploadGuide from '@/components/website_upload_guide.vue'
 import user_register from '@/components/authentication/user_register.vue'
 import user_login from '@/components/authentication/user_login.vue'
 import website_publish from '@/components/website_publish.vue'
-
+import checkout from '@/components/stripe_checkout.vue'
+import { get_user_balance } from '@/js/api'
+import checkout_return from '@/components/checkout_return.vue'
 
 
 
@@ -41,8 +43,18 @@ const routes = [
     {
         path: '/publish/', 
         component: website_publish, 
+        meta: { requiresAuthAndBalance: true }
+    },
+    {
+        path: '/checkout/', 
+        component: checkout, 
         meta: { requiresAuth: true }
     },
+    {
+        path: '/checkout-return/', 
+        component: checkout_return, 
+        meta: { requiresAuth: true }
+    }
 ]
 
 
@@ -52,11 +64,17 @@ const router = createRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
-    if (to.matched.some(record => record.meta.requiresAuth)) {
+router.beforeEach(async (to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuthAndBalance)) {
         if (!isAuthenticated()) {
             next({ path: '/login', query: { redirect: to.fullPath } })
-        } else {
+        } 
+
+        const enough = await is_user_balance_enough()
+        if (!enough) {
+            next({ path: '/checkout', query: { redirect: to.fullPath } })
+        } 
+        else {
             next()
         }
     } else if (to.matched.some(record => record.meta.requiresNoUser)){
@@ -64,6 +82,13 @@ router.beforeEach((to, from, next) => {
             next({path: "/page-editor/"})
         } else {
             next()
+        }
+    } 
+    else if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (isAuthenticated()) {
+            next()
+        } else {
+            next({ path: '/login', query: { redirect: to.fullPath } })
         }
     } else {
         next()
@@ -73,6 +98,11 @@ router.beforeEach((to, from, next) => {
 function isAuthenticated() {
     const authorization_token = localStorage.getItem('access-token');
     return authorization_token !== null
+}
+
+async function is_user_balance_enough() {
+    const balance = await get_user_balance()
+    return balance.website_upload_amount >= 1
 }
 
 

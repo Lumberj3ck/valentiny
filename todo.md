@@ -77,10 +77,17 @@ It's working because of pinia store
 
 - [ ] Before the page reload add alert that do you want to reload you didn't save 
 
-- [ ] Close the urls upon some conditions
+- [x] Close the urls upon some conditions
 
-- [ ] if user doesn't have a domains it pushes him to empty domaisn list when back button pressed
+- [x] if user doesn't have a domains it pushes him to empty domaisn list when back button pressed
 
+- [x] if change the user account it could be that it uploads website for previous user because ref isn't updated or something (Needs research!)
+
+- [ ] Buy different domains for users 
+
+- [ ] Add different domains for users 
+
+- [ ] When user publish the website it is not changing images from data to link
 
 
 
