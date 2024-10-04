@@ -8,7 +8,8 @@ import user_login from '@/components/authentication/user_login.vue'
 import website_publish from '@/components/website_publish.vue'
 import checkout from '@/components/stripe_checkout.vue'
 import { get_user_balance } from '@/js/api'
-import checkout_return from '@/components/checkout_return.vue'
+// import checkout_return from '@/components/checkout_return.vue'
+import onboarding_checkout from '@/components/onboarding_checkout.vue'
 
 
 
@@ -50,10 +51,14 @@ const routes = [
         component: checkout, 
         meta: { requiresAuth: true }
     },
+    // {
+    //     path: '/checkout-return/', 
+    //     component: checkout_return, 
+    //     meta: { requiresAuth: true }
+    // },
     {
-        path: '/checkout-return/', 
-        component: checkout_return, 
-        meta: { requiresAuth: true }
+        path: '/onboarding-checkout/', 
+        component: onboarding_checkout, 
     }
 ]
 
