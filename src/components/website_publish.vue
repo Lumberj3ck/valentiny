@@ -46,7 +46,7 @@
         </button>
       </div>
     </div>
-    <div v-if="step != 0" class="p-4 sm:p-6">
+    <div v-if="step != 0" class="p-4 sm:p-6 w-full">
       <div v-if="step === 1">
         <h2 class="text-xl sm:text-2xl font-bold mb-2">Publish Your Valentine Postcard</h2>
         <p class="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">Choose your domain and upload your postcard</p>
@@ -145,7 +145,7 @@
         </div>
       </div>
     </div>
-    <div v-if="step != 0 && step != 4" class="px-4 sm:px-6 py-4 bg-gray-50 border-t border-gray-200">
+    <div v-if="step != 0 && step != 4" class="px-4 sm:px-6 py-4 bg-gray-50 border-t border-gray-200 w-full">
       <transition name="slide-fade">
         <div v-if="step === 1" class="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0">
           <button

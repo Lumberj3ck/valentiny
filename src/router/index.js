@@ -52,14 +52,10 @@ const routes = [
         component: checkout, 
         meta: { requiresAuth: true }
     },
-    // {
-    //     path: '/checkout-return/', 
-    //     component: checkout_return, 
-    //     meta: { requiresAuth: true }
-    // },
     {
         path: '/onboarding-checkout/', 
         component: onboarding_checkout, 
+        meta: { requiresNoUser: true }
     }
 ]
 
