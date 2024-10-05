@@ -63,6 +63,7 @@
 <script>
 // import { useRouter } from 'vue-router'
 import Confetti from "vue-confetti/src/confetti.js";
+import { checkSessionStatus } from "@/js/api";
 
 export default {
   data() {
@@ -87,19 +88,7 @@ export default {
       }
 
       try {
-        const api_url = import.meta.env.VITE_SERVER_URL
-        const response = await fetch(`${api_url}/session-status?session_id=${sessionId}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('access-token')}`
-          }
-        })
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch session status')
-        }
-
-        const data = await response.json()
+        const data = await checkSessionStatus(sessionId)
         
         this.status = data.status
         this.customerEmail = data.customer_email
@@ -112,7 +101,7 @@ export default {
           })
           setTimeout(() => this.confetti.stop(), 2500)
         } else if (this.status === 'open') {
-          this.$router.push('/checkout')
+          this.$router.push('/checkout?warning=true')
         }
       } catch (error) {
         console.error('Error checking session status:', error)

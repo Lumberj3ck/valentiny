@@ -6,7 +6,7 @@ import loading_spinner from '../utils/loading_spinner.vue'
 // import generateRandomLetters from '@/js/generate_letter.js'
 import { useSectionStore } from '@/stores/SectionStrore'
 import { useImageUploadStore } from '@/stores/ImageUploadStore'
-import error_notification from '../utils/error_notification.vue'
+import user_notification from '@/components/utils/user_notification.vue'
 
 export default {
   setup() {
@@ -37,7 +37,7 @@ export default {
   components: {
     FontAwesomeIcon,
     loading_spinner,
-    error_notification
+    user_notification
   },
   inject: ['reset_img'],
   watch: {
@@ -107,7 +107,7 @@ export default {
 <template>
   <template v-if="image_tag">
     <div class="image_cont">
-      <error_notification v-if="error_message" :message="error_message" :show="Boolean(error_message)"  @update:show="error_message = null"></error_notification>
+      <user_notification v-if="error_message" :message="error_message" :show="Boolean(error_message)"  @update:show="error_message = null"></user_notification>
       <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
       <img
         @click="handleImageClick"
@@ -136,7 +136,7 @@ export default {
   <template v-else>
     <div :class="custom_class" :style="{ 'background-image': `url(${displayedImage})` }" ref="img">
       <loading_spinner color="#000000" width="5px" :loading="isLoading"></loading_spinner>
-      <error_notification v-if="error_message" :message="error_message" :show="Boolean(error_message)"  @update:show="error_message = null"></error_notification>
+      <user_notification v-if="error_message" :message="error_message" :show="Boolean(error_message)"  @update:show="error_message = null"></user_notification>
       <slot name="background_overlay"></slot>
       <FontAwesomeIcon
         @click="$refs.file_input.click()"

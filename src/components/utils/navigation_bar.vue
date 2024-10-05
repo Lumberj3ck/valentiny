@@ -4,7 +4,7 @@ import { useSectionStore } from '@/stores/SectionStrore'
 import { transformData } from '@/js/transform_data'
 import { save_sections } from '@/js/api'
 import { get_user_sections } from '@/js/api'
-import error_notification from '@/components/utils/error_notification.vue'
+import user_notification from '@/components/utils/user_notification.vue'
 import { useImageUploadStore } from '@/stores/ImageUploadStore'
 
 export default {
@@ -21,7 +21,7 @@ export default {
 
   components: {
     download_button,
-    error_notification
+    user_notification
   },
   data() {
     return {
@@ -72,14 +72,14 @@ export default {
 
 <template>
   <nav class="bg-white border-gray-200 mb-5 system_ui">
-    <error_notification
+    <user_notification
       :duration="2000"
       :message="error_message ? error_message : ''"
       :show="error"
       @update:show="error = false"
       type="warning"
     >
-    </error_notification>
+    </user_notification>
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="@/assets/imgs/logo/logo-BKi7_f4-.webp" class="h-9" alt="postcard-logo" />
@@ -178,7 +178,7 @@ export default {
           </li>
           <li class="transition duration-300 ease-in-out transform hover:scale-105">
             <RouterLink
-              to="/publish/"
+              :to="user_authenticated ? '/publish/' : '/onboarding-checkout/'"
               class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-1 px-3 md:py-2 md:px-4 rounded-lg shadow-md"
             >
               <i class="fas fa-globe w-5 h-5 mr-2"></i>

@@ -196,12 +196,31 @@ const fetchClientSecret = async () => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('access-token')}`
+      Authorization: `Bearer ${localStorage.getItem('access-token')}`,
+      'X-Session-URL': window.location.href
     }
   })
   const { clientSecret } = await response.json()
   return clientSecret
 }
+
+
+async function checkSessionStatus(sessionId) {
+  const response = await fetch(`${api_url}/session-status?session_id=${sessionId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('access-token')}`
+    }
+  })
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch session status')
+  }
+
+  const data = await response.json()
+  return data
+}
+
 
 export {
   register_user,
@@ -213,5 +232,6 @@ export {
   upload_website,
   check_user_domains,
   get_user_balance,
-  fetchClientSecret
+  fetchClientSecret,
+  checkSessionStatus
 }

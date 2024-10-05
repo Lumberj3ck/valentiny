@@ -1,13 +1,14 @@
 <template>
   <form v-if="!loading" @submit.prevent="submit" class="max-w-sm mx-auto mt-10 w-4/5">
-    <error_notification 
+    <user_notification 
       v-if="error && !isFieldError" 
       :duration="2000" 
       :message="error_message ? error_message : ''" 
       :show="error"  
       @update:show="error_message = null"
-    ></error_notification>
+    ></user_notification>
     <h1 class="font-semibold text-lg mb-5">Register</h1>
+    <slot></slot>
     <div class="mb-5">
       <label for="email" class="block mb-2 text-sm font-medium" :class="{'text-gray-900': !uniquenessError, 'text-red-700': uniquenessError}">Email</label>
       <p v-if="uniquenessError" class="my-3 text-sm text-red-600">
@@ -87,7 +88,7 @@
 
 <script>
 import { register_user } from '@/js/api'
-import error_notification from '../utils/error_notification.vue'
+import user_notification from '@/components/utils/user_notification.vue'
 import loading_spinner from '../utils/loading_spinner.vue'
 
 export default {
@@ -105,8 +106,17 @@ export default {
       not_first_time_confirm: false
     }
   },
+  props:{
+    onboarding: {
+      type: Boolean,
+      default: false
+    }
+  },
+  emits:{
+    'register-success': null
+  },
   components: {
-    error_notification,
+    user_notification,
     loading_spinner
   },
   computed: {
@@ -152,13 +162,15 @@ export default {
           const token = data
           this.loading = false 
           localStorage.setItem('access-token', token.access_token)
-          if (token.access_token) {
+          if (token.access_token && !this.onboarding) {
             const redirect = this.$route.query.redirect
             if (redirect) {
               this.$router.push(redirect)
             } else {
               this.$router.push('/page-editor')
             }
+          } else if (token.access_token && this.onboarding) {
+            this.$emit('register-success')
           }
         })
         .catch(error => {

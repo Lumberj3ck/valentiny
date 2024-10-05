@@ -89,6 +89,9 @@ It's working because of pinia store
 
 - [ ] When user publish the website it is not changing images from data to link
 
+- [ ] Onboarding checkout login for users that already have an account
+
+- [ ] If people is already logged in skip first step or just  
 
 
 ## How to add new section 

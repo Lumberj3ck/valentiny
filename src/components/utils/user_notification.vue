@@ -56,7 +56,7 @@ export default {
     },
     type: {
       type: String,
-      default: 'error' // 'error' or 'warning'
+      default: 'error' 
     }
   },
   data() {
@@ -70,15 +70,40 @@ export default {
   },
   computed: {
     notificationClass() {
-      return this.type === 'error' 
-        ? 'fixed w-11/12 top-4 right-4 max-w-sm bg-red-500 text-white rounded-lg shadow-lg overflow-hidden z-[9999]'
-        : 'fixed w-11/12 top-4 right-4 max-w-sm bg-yellow-300 text-black rounded-lg shadow-lg overflow-hidden z-[9999]';
+      switch (this.type) {
+        case 'error':
+          return 'fixed w-11/12 top-4 right-4 max-w-sm bg-red-500 text-white rounded-lg shadow-lg overflow-hidden z-[9999]';
+        case 'warning':
+          return 'fixed w-11/12 top-4 right-4 max-w-sm bg-yellow-300 text-black rounded-lg shadow-lg overflow-hidden z-[9999]';
+        case 'success':
+          return 'fixed w-11/12 top-4 right-4 max-w-sm bg-green-500 text-white rounded-lg shadow-lg overflow-hidden z-[9999]';
+        default:
+          return 'fixed w-11/12 top-4 right-4 max-w-sm bg-blue-500 text-white rounded-lg shadow-lg overflow-hidden z-[9999]';
+      }
     },
     progressBarClass() {
-      return this.type === 'error' ? 'bg-red-600' : 'bg-yellow-600';
+      switch (this.type) {
+        case 'error':
+          return 'bg-red-600';
+        case 'warning':
+          return 'bg-yellow-600';
+        case 'success':
+          return 'bg-green-600';
+        default:
+          return 'bg-blue-600';
+      }
     },
     title() {
-      return this.type === 'error' ? 'Error' : 'Warning';
+      switch (this.type) {
+        case 'error':
+          return 'Error';
+        case 'warning':
+          return 'Warning';
+        case 'success':
+          return 'Success';
+        default:
+          return 'Notification';
+      }
     }
   },
   watch: {

@@ -7,9 +7,10 @@ import user_register from '@/components/authentication/user_register.vue'
 import user_login from '@/components/authentication/user_login.vue'
 import website_publish from '@/components/website_publish.vue'
 import checkout from '@/components/stripe_checkout.vue'
-import { get_user_balance } from '@/js/api'
+// import { get_user_balance } from '@/js/api'
 // import checkout_return from '@/components/checkout_return.vue'
 import onboarding_checkout from '@/components/onboarding_checkout.vue'
+import { is_user_balance_enough, isAuthenticated } from '@/js/utils'
 
 
 
@@ -100,15 +101,7 @@ router.beforeEach(async (to, from, next) => {
     }
 })
 
-function isAuthenticated() {
-    const authorization_token = localStorage.getItem('access-token');
-    return authorization_token !== null
-}
 
-async function is_user_balance_enough() {
-    const balance = await get_user_balance()
-    return balance.website_upload_amount >= 1
-}
 
 
 export default router

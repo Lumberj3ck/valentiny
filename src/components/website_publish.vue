@@ -1,4 +1,10 @@
 <template>
+  <user_notification 
+    :message="message" 
+    :show="notification" 
+    @update:show="notification = false"
+    :duration="2500"
+    type="warning"></user_notification>
   <div class="w-full max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
     <div v-if="step === 0" class="w-full">
       <div class="p-6 bg-gray-50 border-b border-gray-200">
@@ -124,16 +130,18 @@
                 Note: You may need to refresh your browser cache (Ctrl + R) to see the changes.
               </p>
             </div>
-            <div class="mt-8">
-              <router-link
-                to="/page-editor/"
-                class="px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-              >
-                Home
-              </router-link>
-            </div>
           </div>
         </transition>
+        <div v-if="!isUploading" class="mt-8">
+          <div class="flex flex-col items-center">
+            <p class="text-black mb-5"> {{ availabilityMessage }} </p>
+            <router-link
+              to="/page-editor/"
+              class="px-4 py-2 bg-gray-200 text-black rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+              Home
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -208,6 +216,7 @@ import main_section from "@/components/sections/main_section.vue"
 import { createApp } from 'vue'
 import router from '@/router/index'
 import loading_spinner from '@/components/utils/loading_spinner.vue'
+import user_notification from './utils/user_notification.vue'
 
 export default {
   name: 'UploadForm',
@@ -223,11 +232,14 @@ export default {
       availabilityMessage: '',
       isUploading: false,
       uploadComplete: false,
-      publishedUrl: ''
+      publishedUrl: '',
+      message:'',
+      notification: false
     }
   },
   components:{
-    loading_spinner
+    loading_spinner,
+    user_notification
   },
   setup() {
     const sectionStateStore = useSectionStateStore()
@@ -309,6 +321,8 @@ export default {
         console.error('Upload failed:', error)
         this.availabilityMessage = 'Upload failed. Please try again.'
         this.isAvailable = false
+        this.notification = true
+        this.message = error.message || 'An unknown error occurred'
       } finally {
         this.isUploading = false
       }
