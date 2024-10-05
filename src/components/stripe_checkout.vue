@@ -61,7 +61,6 @@ export default {
       window.history.replaceState({}, '', newUrl);
     }
 
-    console.log(sessionId, this.onboarding)
     if (sessionId && !this.onboarding) {
       this.checkout_return = true
       return;

@@ -78,7 +78,7 @@ router.beforeEach(async (to, from, next) => {
 
         const enough = await is_user_balance_enough()
         if (!enough) {
-            next({ path: '/checkout', query: { redirect: to.fullPath } })
+            next({ path: '/checkout'})
         } 
         else {
             next()

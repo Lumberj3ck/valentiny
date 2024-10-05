@@ -5,7 +5,8 @@
     @update:show="notification = false"
     :duration="2500"
     type="warning"></user_notification>
-  <div class="w-full max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    
+  <div class="w-full max-w-lg mx-auto bg-white rounded-lg overflow-hidden my-8 flex flex-col items-center justify-center min-h-96">
     <div v-if="step === 0" class="w-full">
       <div class="p-6 bg-gray-50 border-b border-gray-200">
         <h1 class="text-2xl font-bold text-gray-900">Your Registered Domains</h1>
@@ -45,27 +46,27 @@
         </button>
       </div>
     </div>
-    <div v-if="step != 0" class="p-6">
+    <div v-if="step != 0" class="p-4 sm:p-6">
       <div v-if="step === 1">
-        <h2 class="text-2xl font-bold mb-2">Publish Your Valentine Postcard</h2>
-        <p class="text-gray-600 mb-6">Choose your domain and upload your postcard</p>
+        <h2 class="text-xl sm:text-2xl font-bold mb-2">Publish Your Valentine Postcard</h2>
+        <p class="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">Choose your domain and upload your postcard</p>
       </div>
 
-      <div v-if="step === 1" key="step1" class="space-y-4">
+      <div v-if="step === 1" key="step1" class="space-y-3 sm:space-y-4">
         <label for="subdomain" class="block text-sm font-medium text-gray-700">Choose your subdomain</label>
-        <div class="flex items-center space-x-2">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
           <input
             id="subdomain"
             v-model="subdomain"
             type="text"
             placeholder="your-subdomain"
-            class="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            class="w-full sm:w-auto flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black text-sm"
           />
-          <span>.{{ domain }}</span>
+          <span class="text-sm">.{{ domain }}</span>
         </div>
       </div>
 
-      <div v-if="step === 2" key="step2" class="space-y-4">
+      <div v-if="step === 2" key="step2" class="space-y-3 sm:space-y-4">
         <div class="flex items-center space-x-2">
           <input
             type="radio"
@@ -74,7 +75,7 @@
             v-model="domain"
             class="form-radio"
           />
-          <label for="domain1">my-valentine-postcard.site</label>
+          <label for="domain1" class="text-sm sm:text-base">my-valentine-postcard.site</label>
         </div>
         <div class="flex items-center space-x-2">
           <input
@@ -84,23 +85,23 @@
             v-model="domain"
             class="form-radio"
           />
-          <label for="domain2">postcard.site</label>
+          <label for="domain2" class="text-sm sm:text-base">postcard.site</label>
         </div>
       </div>
-      <div v-if="step === 3" key="step3" class="space-y-4">
-        <p>Your chosen domain:</p>
-        <p class="font-bold">{{ subdomain }}.{{ domain }}</p>
-        <p v-if="isChecking" class="flex items-center">
-          <i class="fa fa-spinner fa-spin"></i> 
+      <div v-if="step === 3" key="step3" class="space-y-3 sm:space-y-4">
+        <p class="text-sm sm:text-base">Your chosen domain:</p>
+        <p class="font-bold text-sm sm:text-base">{{ subdomain }}.{{ domain }}</p>
+        <p v-if="isChecking" class="flex items-center text-sm sm:text-base">
+          <i class="fa fa-spinner fa-spin mr-2"></i> 
           Checking availability... Please wait a moment.
         </p>
         <transition name="bounce">
           <p
             v-if="availabilityMessage"
             :class="{ 'text-green-600': isAvailable, 'text-red-600': !isAvailable }"
-            class="flex items-center"
+            class="flex items-center text-sm sm:text-base"
           >
-            <i :class="isAvailable ? 'fa fa-check-circle' : 'fa fa-times-circle'"></i>
+            <i :class="isAvailable ? 'fa fa-check-circle' : 'fa fa-times-circle'" class="mr-2"></i>
             {{ availabilityMessage }}
           </p>
         </transition>
@@ -144,22 +145,20 @@
         </div>
       </div>
     </div>
-
-    <div v-if="step != 0 && step != 4" class="px-6 py-4 bg-gray-50 border-t border-gray-200">
+    <div v-if="step != 0 && step != 4" class="px-4 sm:px-6 py-4 bg-gray-50 border-t border-gray-200">
       <transition name="slide-fade">
-        <div v-if="step === 1" class="flex justify-between">
+        <div v-if="step === 1" class="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0">
           <button
             v-if="user_published_domains"
             @click="prevStep"
-            class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+            class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
             Back
           </button>
           <button
             @click="nextStep"
             :disabled="!subdomain"
-            class="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            :class="{'w-3/4': user_published_domains, 'w-full': !user_published_domains}"
+            class="w-full sm:w-auto px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Next
           </button>
@@ -167,16 +166,16 @@
       </transition>
 
       <transition name="slide-fade">
-        <div v-if="step === 2" class="flex justify-between">
+        <div v-if="step === 2" class="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0">
           <button
             @click="prevStep"
-            class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+            class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
             Back
           </button>
           <button
             @click="handleDomainCheck"
-            class="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            class="w-full sm:w-auto px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
           >
             Check Availability
           </button>
@@ -184,17 +183,17 @@
       </transition>
 
       <transition name="slide-fade">
-        <div v-if="step === 3" class="flex justify-between">
+        <div v-if="step === 3" class="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0">
           <button
             @click="toBegining"
-            class="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2  "
+            class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
           >
             Back
           </button>
           <button
             v-if="step === 3 && isAvailable"
             @click="handleUpload"
-            class="w-3/4 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            class="w-full sm:w-3/4 px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
           >
             Upload Postcard
           </button>

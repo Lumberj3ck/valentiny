@@ -1,67 +1,7 @@
 <template>
-  <div class="max-w-screen-lg mx-auto mt-5">
-    <!-- <ol
-      class="justify-center items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse"
-    >
-      <li
-        class="flex items-center"
-        :class="{ 'text-green-600': currentStep >= 1, 'text-gray-500': currentStep < 1 }"
-      >
-        <span
-          class="flex items-center justify-center w-8 h-8 rounded-full shrink-0"
-          :class="{
-            'border border-green-600': currentStep >= 1,
-            'border border-gray-500': currentStep < 1
-          }"
-        >
-          1
-        </span>
-        <span class="ml-2.5 rtl:mr-2.5">
-          <h3 class="font-medium leading-tight">User info</h3>
-          <p class="text-sm">Register your account</p>
-        </span>
-      </li>
-      <li
-        class="flex items-center"
-        :class="{ 'text-green-600': currentStep >= 2, 'text-gray-500': currentStep < 2 }"
-      >
-        <span
-          class="flex items-center justify-center w-8 h-8 rounded-full shrink-0"
-          :class="{
-            'border border-green-600': currentStep >= 2,
-            'border border-gray-500': currentStep < 2
-          }"
-        >
-          2
-        </span>
-        <span class="ml-2.5 rtl:mr-2.5">
-          <h3 class="font-medium leading-tight">Payment Info</h3>
-          <p class="text-sm">Pay for website publishing</p>
-        </span>
-      </li>
-      <li
-        class="flex items-center"
-        :class="{ 'text-green-600': currentStep >= 3, 'text-gray-500': currentStep < 3 }"
-      >
-        <span
-          class="flex items-center justify-center w-8 h-8 rounded-full shrink-0"
-          :class="{
-            'border border-green-600': currentStep >= 3,
-            'border border-gray-500': currentStep < 3
-          }"
-        >
-          3
-        </span>
-        <span class="ml-2.5 rtl:mr-2.5">
-          <h3 class="font-medium leading-tight">Publish website</h3>
-          <p class="text-sm">Choose domain name and publish</p>
-        </span>
-      </li>
-    </ol> -->
-
-
-  <ol class="flex items-center w-full">
-      <li v-for="(step, index) in steps" :key="index" class="flex items-center w-full">
+  <div class="max-w-screen-lg mx-auto mt-5 px-4">
+    <ol class="flex flex-col md:flex-row items-center w-full">
+      <li v-for="(step, index) in steps" :key="index" class="flex flex-col md:flex-row items-center w-full mb-4 md:mb-0">
         <div
           class="flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300 ease-in-out"
           :class="index + 1 <= currentStep ? 'bg-pink-500' : 'bg-gray-300'"
@@ -74,7 +14,7 @@
             ]"
           ></i>
         </div>
-        <div class="flex-1 ml-4">
+        <div class="flex-1 ml-4 text-center md:text-left mt-2 md:mt-0">
           <h3
             class="font-medium"
             :class="index + 1 <= currentStep ? 'text-pink-500' : 'text-gray-500'"
@@ -83,7 +23,7 @@
           </h3>
           <p class="text-sm text-gray-500">{{ step.description }}</p>
         </div>
-        <div v-if="index < steps.length - 1" class="flex-1 h-0.5 bg-gray-300 mx-2">
+        <div v-if="index < steps.length - 1" class="hidden md:block flex-1 h-0.5 bg-gray-300 mx-2">
           <div
             class="h-full bg-pink-500 transition-all duration-500"
             :style="{ width: index + 1 < currentStep ? '100%' : '0%' }"
@@ -126,7 +66,7 @@
         :onboarding="true"
       />
     </div>
-    <div v-if="currentStep === 3" id="3">
+    <div v-if="currentStep === 3">
       <website_publish />
     </div>
   </div>
