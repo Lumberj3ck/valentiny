@@ -97,6 +97,8 @@ It's working because of pinia store
 
 - [ ] add section where you can see all uploaded websites links
 
+- [x] Handle session expire 
+
 ## How to add new section 
 
 1. Create new section file

@@ -36,8 +36,8 @@ export default {
       moving_component: { name: null, direction: null },
       photoMode: false,
       loaded: false,
-      notification: true,
-      message:'TEst' 
+      notification: false,
+      message:'' 
     }
   },
   mounted() {
