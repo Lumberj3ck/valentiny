@@ -988,6 +988,14 @@ video {
   width: 90vw;
 }
 
+.w-\[90wv\] {
+  width: 90wv;
+}
+
+.w-\[80vw\] {
+  width: 80vw;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -2378,6 +2386,18 @@ video {
 
   .md\:w-auto {
     width: auto;
+  }
+
+  .md\:w-\[\] {
+    width: ;
+  }
+
+  .md\:w-\[70vw\] {
+    width: 70vw;
+  }
+
+  .md\:w-\[60vw\] {
+    width: 60vw;
   }
 
   .md\:min-w-\[480px\] {
