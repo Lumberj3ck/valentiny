@@ -71,7 +71,7 @@ export default {
 </script>
 
 <template>
-  <nav class="bg-white border-gray-200 mb-5 system_ui">
+  <nav class="bg-white border-gray-200 mb-5 system_ui max-w-[80%] mx-auto 2xl:max-w-screen-xl">
     <user_notification
       :duration="2000"
       :message="error_message ? error_message : ''"
@@ -80,7 +80,7 @@ export default {
       type="warning"
     >
     </user_notification>
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between md:justify-around md:gap-5 lg:justify-between mx-auto p-4">
+    <div class="flex flex-wrap items-center justify-between md:justify-around md:gap-5 lg:justify-between mx-auto py-4">
       <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="@/assets/imgs/logo/logo-BKi7_f4-.webp" class="h-9" alt="postcard-logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap">Postcardy</span>

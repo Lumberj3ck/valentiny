@@ -1044,6 +1044,10 @@ video {
   max-width: 80vw;
 }
 
+.max-w-\[80\%\] {
+  max-width: 80%;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -2635,6 +2639,12 @@ video {
 
   .xl\:max-w-\[80\%\] {
     max-width: 80%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:max-w-screen-xl {
+    max-width: 1280px;
   }
 }
 

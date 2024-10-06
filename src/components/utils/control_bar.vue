@@ -37,7 +37,7 @@ export default {
 
 <template>
     <div
-        class="flex text_black control_bar justify-start sm:gap-5 my-1 sm:justify-center md:justify-around max-w-[95%] mx-auto md:max-w-[80%]">
+        class="flex text_black control_bar justify-start sm:gap-5 my-1 sm:justify-center md:justify-around max-w-[95%] mx-auto md:max-w-[80%] 2xl:max-w-screen-xl">
         <div class="flex items-center  sm:gap-5 mx-1 gap-2 grow">
             <!-- <button @click="$emit('toggle-render')" class="button_simple">Toggle Render</button> -->
             <!-- <i @click="$emit('toggle-render')" class="fas fa-power-off control_item"></i> -->
