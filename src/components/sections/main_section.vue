@@ -107,7 +107,7 @@ export default {
     :message="message"
     :show="notification"
     @update:show="notification = false"
-    :duration="5000000"
+    :duration="5000"
     type="warning"
     ></user_notification>
   <div ref="main" class="custom_container">
