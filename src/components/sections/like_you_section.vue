@@ -102,7 +102,7 @@ export default {
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
             <div class="md:pr-12 mb-8">
               <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" text_area
-                :primary_color="primary_color" class='text-section-color text-3xl font-semibold'
+                :primary_color="primary_color" class='text-section-color text-3xl font-semibold max-w-[80vw] mx-auto'
                 default_input_value="I love you so much that:"></custom_input>
               <ul class="list-none mt-6">
                 <li class="py-2">
@@ -117,7 +117,7 @@ export default {
                     </div>
                     <div class="w-full">
                       <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode"
-                        :primary_color="primary_color" class='text-section-color text-lg '
+                        :primary_color="primary_color" class='text-section-color text-lg max-w-[60vw] mx-auto'
                         default_input_value="Can show you my google history"></custom_input>
                     </div>
                   </div>
@@ -134,7 +134,7 @@ export default {
                     </div>
                     <div class="w-full">
                       <custom_input :section_name="section_name" :input_id="3" :photoMode="photoMode"
-                        :primary_color="primary_color" class='text-section-color text-lg '
+                        :primary_color="primary_color" class='text-section-color text-lg max-w-[60vw] mx-auto'
                         default_input_value="Can resist to eat last pizza slice"></custom_input>
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default {
                     </div>
                     <div class="w-full">
                       <custom_input :section_name="section_name" :input_id="4" :photoMode="photoMode"
-                        :primary_color="primary_color" class='text-section-color text-lg '
+                        :primary_color="primary_color" class='text-section-color text-lg max-w-[60vw] mx-auto'
                         default_input_value="Almost started to like your movie taste"></custom_input>
                     </div>
                   </div>
