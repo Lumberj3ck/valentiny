@@ -105,9 +105,8 @@ export default {
             <div class="container relative mx-auto">
                 <div class="items-center flex flex-wrap">
                     <div class="w-full px-4 ml-auto mr-auto text-center">
- <!-- md:max-w-[56%]  min-[540px]:max-w-[75%]"> -->
                         <div class="md:pr-12 text-[#f9d0d7] md:min-w-[480px]">
-                            <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl w-[80vw] md:w-[60vw] mx-auto break-words'
+                            <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_text_color" class='font-semibold text-3xl md:text-5xl w-[82vw] md:w-[60vw] mx-auto break-words'
                                 default_input_value="Congratulations!" text_area></custom_input>
                             <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode" text_area :primary_color="primary_text_color" class='mt-4 text-lg break-words w-[90vw] md:w-[70vw] mx-auto'
                                 default_input_value="Today is Valentine's Day, and I don't want to pressure you, but you should already plan how you confess your love to me ">

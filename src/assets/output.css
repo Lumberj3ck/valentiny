@@ -996,6 +996,10 @@ video {
   width: 80vw;
 }
 
+.w-\[82vw\] {
+  width: 82vw;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -1030,6 +1034,10 @@ video {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-\[80vw\] {
+  max-width: 80vw;
 }
 
 .flex-1 {
