@@ -81,6 +81,7 @@ import { checkSessionStatus } from '@/js/api'
 import Confetti from 'vue-confetti/src/confetti.js'
 import { is_user_balance_enough, isAuthenticated } from '@/js/utils'
 import user_notification from '@/components/utils/user_notification.vue'
+import { useSectionStore } from '@/stores/SectionStrore'
 
 export default {
   components: {
@@ -89,6 +90,13 @@ export default {
     stripe_checkout,
     user_login,
     user_notification
+  },
+  setup() {
+    const sectionStore = useSectionStore()
+
+    return {
+      sectionStore
+    }
   },
   data() {
     return {
@@ -121,11 +129,13 @@ export default {
       this.nextStep()
       this.message = 'Logged in successfully'
       this.notification = true
+      this.sectionStore.debouncedSave()
     },
     register_success() {
       this.nextStep()
       this.message = 'Registered successfully'
       this.notification = true
+      this.sectionStore.debouncedSave()
     },
     async nextStep() {
       if (this.currentStep === 1) {

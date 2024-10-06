@@ -81,11 +81,11 @@
           <input
             type="radio"
             id="domain2"
-            value="postcard.site"
+            value="postcard-gift.site"
             v-model="domain"
             class="form-radio"
           />
-          <label for="domain2" class="text-sm sm:text-base">postcard.site</label>
+          <label for="domain2" class="text-sm sm:text-base">postcard-gift.site</label>
         </div>
       </div>
       <div v-if="step === 3" key="step3" class="space-y-3 sm:space-y-4">
@@ -309,6 +309,7 @@ export default {
     },
     async handleUpload() {
       this.isUploading = true
+      this.availabilityMessage = null
 
       this.step = 4
       try {

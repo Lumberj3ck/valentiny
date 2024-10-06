@@ -109,6 +109,9 @@ export default {
       var el = event.target
       set_height(el)
     },
+    updateInputData(value) {
+      this.sectionStore.setInputData(this.section_name, this.input_id, value);
+    },
   }
 }
 </script>
@@ -122,15 +125,21 @@ export default {
        >
     <span v-if="!isEmpty">{{ text_value }}</span>
   </div>
-  <textarea v-else-if="edit && text_area" v-focus @input="resize" @focusout="toggleEditMode"
-    @keydown.enter.prevent="$refs.textAreaRef.blur()" ref="textAreaRef"
-    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
+  <textarea v-else-if="edit && text_area" v-focus 
+    @input="(e) => { resize(e); updateInputData(e.target.value); }"
+    @focusout="toggleEditMode"
+    @keydown.enter.prevent="$refs.textAreaRef.blur()" 
+    ref="textAreaRef"
+    :value="text_value"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg focus:ring-black focus:ring-1 focus:z-10 resize-none h-7 overflow-hidden"
-    :style="primary_color" v-resize id="custom_input"
+    :style="primary_color" 
+    v-resize 
+    id="custom_input"
     placeholder="Enter text here"></textarea>
   <input v-else v-focus @focusout="toggleEditMode" type="text" @keyup.enter="$refs.textInputRef.blur()"
     ref="textInputRef"     
-    v-model="sectionStore.sections[section_name].text_inputs[input_id].content"
+    :value="text_value"
+    @input="updateInputData($event.target.value)"
     class="w-full bg_inherit focus:outline-none focus:outline-offset-0 rounded-lg  focus:ring-black focus:ring-1 focus:z-10 h-7"
     :style="primary_color" id="custom_input" 
     placeholder="Enter text here"/>

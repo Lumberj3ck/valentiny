@@ -83,16 +83,19 @@ It's working because of pinia store
 
 - [x] if change the user account it could be that it uploads website for previous user because ref isn't updated or something (Needs research!)
 
-- [ ] Buy different domains for users 
+- [x] Buy different domains for users 
 
-- [ ] Add different domains for users 
+- [x] Add different domains for users 
 
 - [ ] When user publish the website it is not changing images from data to link
 
-- [ ] Onboarding checkout login for users that already have an account
+- [x] Onboarding checkout login for users that already have an account
 
-- [ ] If people is already logged in skip first step or just  
+- [x] If people is already logged in skip first step or just  
 
+- [ ] congratul section first text input overflow on mobile
+
+- [ ] add section where you can see all uploaded websites links
 
 ## How to add new section 
 

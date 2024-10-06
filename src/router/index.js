@@ -55,7 +55,7 @@ const routes = [
     {
         path: '/onboarding-checkout/', 
         component: onboarding_checkout, 
-        meta: { requiresNoUser: true }
+        // meta: { requiresNoUser: true }
     }
 ]
 
