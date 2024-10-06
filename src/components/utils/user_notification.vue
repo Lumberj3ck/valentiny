@@ -18,7 +18,7 @@
       </div>
       <button
         @click="close"
-        class="absolute top-3 right-3 text-white hover:text-red-100"
+        class="absolute top-3 right-3 text-black hover:scale-110 text-xl"
         aria-label="Close"
       >
       <FontAwesomeIcon :icon="faXmark" class="white"></FontAwesomeIcon>

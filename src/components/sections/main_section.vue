@@ -9,6 +9,8 @@ import { useSectionStore } from '@/stores/SectionStrore'
 import { get_user_sections } from '@/js/api'
 import loading_spinner from '../utils/loading_spinner.vue'
 import { useSectionStateStore } from '@/stores/SectionStateStore'
+import user_notification from '../utils/user_notification.vue'
+
 export default {
   components: {
     like_you_section,
@@ -17,7 +19,8 @@ export default {
     start_section,
     navigation_bar,
     favorite_artists,
-    loading_spinner
+    loading_spinner,
+    user_notification
   },
   setup() {
     const components = useSectionStore()
@@ -32,7 +35,9 @@ export default {
     return {
       moving_component: { name: null, direction: null },
       photoMode: false,
-      loaded: false
+      loaded: false,
+      notification: true,
+      message:'TEst' 
     }
   },
   mounted() {
@@ -82,6 +87,11 @@ export default {
         .catch(error => {
           console.log(error)
           this.loaded = true
+          if (error.message === 'Token has expired') {
+            this.notification = true
+            this.message = 'Your session has expired. Please login again.'
+            localStorage.removeItem('access-token')
+          }
         });
     }
     else{
@@ -93,6 +103,13 @@ export default {
 
 <template>
   <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
+  <user_notification
+    :message="message"
+    :show="notification"
+    @update:show="notification = false"
+    :duration="5000000"
+    type="warning"
+    ></user_notification>
   <div ref="main" class="custom_container">
     <loading_spinner v-if="!loaded"></loading_spinner>
     <div v-for="[component, section] in Object.entries(components.sections)" :key="component"

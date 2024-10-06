@@ -121,7 +121,6 @@ export const useSectionStore = defineStore('section_store', {
             this.autoSave()
         },
         autoSave() {
-            console.log('auto save called')
             if (!this.saveTimeout && isAuthenticated()) {
                 this.saveTimeout = setTimeout(() => {
                     this.debouncedSave();
@@ -133,7 +132,6 @@ export const useSectionStore = defineStore('section_store', {
             const rearanged_data = transformData(this.sections)
             save_sections(rearanged_data)
                 .then(() => {
-                    console.log('Auto-saved successfully')
                 })
                 .catch((error) => {
                     console.error('Error during auto-save:', error)
