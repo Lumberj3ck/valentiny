@@ -91,7 +91,7 @@ export default {
     </control_bar>
   <Transition>
     <section v-show='render' class="pb-20 relative block bg-gray-900" :style="primary_color">
-      <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row xl:max-w-[80%]">
+      <div class="container pt-3 mx-auto px-4 lg:pt-24  lg:pl-10 flex flex-col lg:flex-row xl:max-w-[80%] gap-5 sm:gap-8">
         <div class="w-8/12 md:w-6/12 lg:w-6/12 lg:max-w-96 mx-auto lg:min-w-80">
           <!-- <img :src="image_url" class='rounded-full aspect-square object-cover' alt="" ref="img"> -->
           <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" image_tag custom_class="rounded-full object-cover square_aspect_ratio"
@@ -102,9 +102,9 @@ export default {
             <div class="w-full lg:w-6/12 px-4 sm:min-w-[300px]">
               <!-- <h2 class="text-4xl font-semibold text-white">Love potion recipe</h2> -->
               <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" text_area :primary_color="primary_color"
-                class='text-4xl font-semibold text-white' default_input_value="Love potion recipe"></custom_input>
+                class='text-4xl font-semibold text-white max-w-[80vw] mx-auto' default_input_value="Love potion recipe"></custom_input>
               <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode" text_area :primary_color="primary_color"
-                class='text-lg leading-relaxed mt-4 mb-4 text-gray-500'
+                class='text-lg leading-relaxed mt-4 mb-4 text-gray-500 max-w-[80vw] mx-auto'
                 default_input_value="You never know when it will come in handy, so I’ll leave it here for you, just in case.">
               </custom_input>
               <!-- <p class="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
@@ -125,9 +125,9 @@ export default {
           Step 1
         </h6> -->
           <custom_input :section_name="section_name" :input_id="3" :photoMode="photoMode" :primary_color="primary_color"
-            class='text-xl mt-5 font-semibold text-white' default_input_value="Step 1"></custom_input>
+            class='text-xl mt-5 font-semibold text-white max-w-[80vw] mx-auto' default_input_value="Step 1"></custom_input>
           <custom_input :section_name="section_name" :input_id="4" :photoMode="photoMode" text_area :primary_color="primary_color"
-            class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl'
+            class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl max-w-[80vw] mx-auto'
             default_input_value="Place the house ants on a plate and generously drizzle them with the flavorful sauerkraut syrup.">
           </custom_input>
           <!-- <p class="mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl">
@@ -144,9 +144,9 @@ export default {
           Step 2
         </h5> -->
           <custom_input :section_name="section_name" :input_id="5" :photoMode="photoMode" :primary_color="primary_color"
-            class='text-xl mt-5 text_area font-semibold text-white' default_input_value="Step 2"></custom_input>
+            class='text-xl mt-5 text_area font-semibold text-white max-w-[80vw] mx-auto' default_input_value="Step 2"></custom_input>
           <custom_input :section_name="section_name" :input_id="6" :photoMode="photoMode" text_area :primary_color="primary_color"
-            class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl'
+            class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl max-w-[80vw] mx-auto'
             default_input_value="Add some crushed sour berry candy and a pinch of kissed sugar."></custom_input>
           <!-- <p class="mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl">
           Add some crushed sour berry candy and a pinch of kissed sugar.
@@ -160,9 +160,9 @@ export default {
           </div>
           <!-- <h5 class="text-xl mt-5 font-semibold text-white">Шаг 3</h5> -->
           <custom_input :section_name="section_name" :input_id="7" :photoMode="photoMode" :primary_color="primary_color"
-            class='text-xl mt-5 font-semibold text-white' default_input_value="Step 3"></custom_input>
+            class='text-xl mt-5 font-semibold text-white max-w-[80vw] mx-auto' default_input_value="Step 3"></custom_input>
           <custom_input :section_name="section_name" :input_id="8"   :photoMode="photoMode" text_area :primary_color="primary_color"
-            class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl'
+            class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl max-w-[80vw] mx-auto'
             default_input_value="Whip until fluffy and serve in bee traps to keep the flavor fresh. Go for it and enjoy the result!">
           </custom_input>
           <!-- <p class="mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl">
