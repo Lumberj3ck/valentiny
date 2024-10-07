@@ -112,7 +112,7 @@ export default {
                 class="aspect_ratio_box flex justify-center w-full">
               </image_input>
               <div class="pt-6 text-center">
-                <custom_input :section_name="section_name" :input_id="item.id" :photoMode="photoMode" :primary_color="primary_color" class="text-xl font-bold max-w-[80vw] mx-auto"
+                <custom_input :section_name="section_name" :input_id="item.id" :photoMode="photoMode" :primary_color="primary_color" class="text-xl font-bold max-w-[70vw] mx-auto"
                   :default_input_value="item.name">
                 </custom_input>
               </div>

@@ -126,9 +126,9 @@ export default {
                 <polygon points="-30,95 583,95 583,65" class="text-pink-600 fill-current"
                   style="color: var(--card-primary-color)"></polygon>
               </svg>
-            <custom_input  :section_name="section_name" :input_id="7"  :photoMode="photoMode" style="color: var(--card-secondary-color)" class='text-xl font-bold text-white max-w-[80vw]'
+            <custom_input  :section_name="section_name" :input_id="7"  :photoMode="photoMode" style="color: var(--card-secondary-color)" class='text-xl font-bold text-white max-w-[60vw]'
               default_input_value="Buys doner for me"></custom_input>
-            <custom_input :section_name="section_name" :input_id="8"  :photoMode="photoMode" text_area style="color: var(--card-secondary-color)" class='text-md font-light mt-2 text-white max-w-[80vw]'
+            <custom_input :section_name="section_name" :input_id="8"  :photoMode="photoMode" text_area style="color: var(--card-secondary-color)" class='text-md font-light mt-2 text-white max-w-[60vw]'
               default_input_value="Did you know that in a recent study, scientists proved that guys whose girls buy doners are 50% happier?"></custom_input>
             </blockquote>
           </div>

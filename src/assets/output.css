@@ -1001,8 +1001,16 @@ video {
   max-width: 120px;
 }
 
+.max-w-\[600px\] {
+  max-width: 600px;
+}
+
 .max-w-\[60vw\] {
   max-width: 60vw;
+}
+
+.max-w-\[70vw\] {
+  max-width: 70vw;
 }
 
 .max-w-\[80vw\] {
