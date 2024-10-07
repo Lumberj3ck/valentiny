@@ -71,7 +71,7 @@ export default {
 </script>
 
 <template>
-  <nav class="bg-white border-gray-200 mb-5 system_ui max-w-[80%] mx-auto 2xl:max-w-screen-xl">
+  <nav class="bg-white border-gray-200 mb-5 system_ui max-w-[95%] lg:max-w-[80%] mx-auto 2xl:max-w-screen-xl">
     <user_notification
       :duration="2000"
       :message="error_message ? error_message : ''"
@@ -116,7 +116,7 @@ export default {
         id="navbar-default"
       >
         <ul
-          class="h-[220px] md:h-[inherit] font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
+          class="md:h-[inherit] font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row  rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white max-h-max gap-3 md:gap-5"
         >
           <li>
             <label class="inline-flex items-center cursor-pointer">
@@ -138,7 +138,7 @@ export default {
           <li class="ml-0">
             <RouterLink
               to="/features-guide/"
-              class="font-semibold block text-lg py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
+              class="font-semibold block text-lg  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
             >
               Guide
             </RouterLink>
@@ -146,19 +146,19 @@ export default {
           <li v-if="!user_authenticated">
             <RouterLink
               to="/login/"
-              class="font-semibold block text-lg py-2 text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF407D] md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent"
+              class="font-semibold block text-lg text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF407D] md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent"
             >
               Login
             </RouterLink>
           </li>
-          <li v-if="user_authenticated" @click="startSaving" class="w-full md:w-11">
+          <li v-if="user_authenticated" @click="startSaving" class="w-full md:w-11 relative">
             <a
               href="#"
-              class="font-semibold h-10 text-lg block py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
+              class="font-semibold text-lg block text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
               >Save
               <div
                 v-show="progresStart"
-                class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700"
+                class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 absolute bottom-[-10px] right-50"
               >
                 <div
                   ref="progressBar"
@@ -171,7 +171,7 @@ export default {
           <li v-if="user_authenticated" @click="logout">
             <a
               href="#"
-              class="font-semibold text-lg block py-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
+              class="font-semibold text-lg block  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
               >Logout</a
             >
           </li>
