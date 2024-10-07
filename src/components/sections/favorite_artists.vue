@@ -93,13 +93,13 @@ export default {
     </control_bar>
   <Transition>
     <section v-show="render" class="pt-20 pb-48" :style="primary_color">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto">
         <div class="flex flex-wrap justify-center text-center mb-24">
           <div class="w-full lg:w-6/12 px-4">
-            <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_color" class='text-4xl font-semibold m-2' 
+            <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_color" class='text-4xl font-semibold m-2 max-w-[80vw] mx-auto' 
               default_input_value="Music associated with you"></custom_input>
             <custom_input :section_name="section_name" :input_id="2" :photoMode="photoMode" text_area :primary_color="primary_color"
-              class='text-lg leading-relaxed m-2 text-gray-600'
+              class='text-lg leading-relaxed m-2 text-gray-600 max-w-[80vw] mx-auto'
               default_input_value="Melodies that I can listen to and remember you, they are filled with a special mood">
             </custom_input>
           </div>
@@ -112,7 +112,7 @@ export default {
                 class="aspect_ratio_box flex justify-center w-full">
               </image_input>
               <div class="pt-6 text-center">
-                <custom_input :section_name="section_name" :input_id="item.id" :photoMode="photoMode" :primary_color="primary_color" class="text-xl font-bold"
+                <custom_input :section_name="section_name" :input_id="item.id" :photoMode="photoMode" :primary_color="primary_color" class="text-xl font-bold max-w-[80vw] mx-auto"
                   :default_input_value="item.name">
                 </custom_input>
               </div>
