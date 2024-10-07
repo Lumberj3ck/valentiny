@@ -1,103 +1,22 @@
-1. Control bar download section code button 
-2. Presets eg (color picked for bg and text)
-
-- [x] Fix bug when deleteting all from input div is not showing 
-- [x] make control bar buetiful
-- [x] Ability for user to change images somehow xD
-- [x] test downloading page on mobile
-- [x] Better textarea and input
-- [x] Guide pages for users how to upload how to use this website eg
-- [x] Draw some errors which you will get from the api
-- [x] Test for every use case
-- [x] better alert box 
-- [x] Set default color picked 
-- [x] Images save
-- [x] Maintance problem when user saved 5 sections but we added one additional and when he tries to save it this section
-- [x] Forms fix erorrs would be without id 
-- [ ] Save state inside of local storage without clicking on button save
-- [x] After reset colors resets to wrong color
-- [ ] Check aws sdk bundle
-- [x] Fix bugs on text input small amounts of text especially check love potion section
-- [x] On deproy donot forget about api url and cors url for fastapi
-- [x] Do password validations on register
-- [x] Check page insights warnings
-- [x] user login and save loading spinner
 - [ ] check why logout button is not working on safari desktop
-- [x] check love potion section
-- [x] rstrip password and username
 
+- [ ] Adjust landing mobile 
 
+- [ ] Before the page reload add alert that do you want to reload you didn't save 
 
-User save different cases:
-- [x] User without registration and login click on save butto
+- [ ] When user publish the website it is not changing images from data to link
 
-- [x] User made some changes to the template and wants register and then save
-It's working because of pinia store 
-<----->
+- [ ] add section where you can see all uploaded websites links
 
-- [x] User register and then push some changes
+- [ ] Remove validation error on change of the login username when it was entered once and username is already taken : regist
 
-- [x] User logged in and want to retrieve some state 
-
-- [x] User made changes to template and tries to login 
-
-- [x] User registered saved and logins in 
-
-- [x] Check how it will work when user saved and then download the page
-
-- [x] Make login registration validation ui better (for the user erros use input val for the client errors use error notification
-
-- [x] Work on error notification component
-
-- [x] Move the host to env variables
-
-- [x] Figure out what going on with image upload endp cors
+- [ ] Some image height for users when internet is bad
 
 - [ ] Save pinia store in local storage
 
 - [ ] Work on ui update save button to icon
 
 - [ ] start section 75vh make resp
-
-- [ ] Fix padding on the love potion recipe
-
-- [ ] Remove validation error on change of the login username when it was entered once and username is already taken : regist
-
-- [ ] Some image height for users when internet is bad
-
-- [ ] Previiew mode button fix make it vise versea
-
-- [ ] Adjust landing mobile 
-
-- [x] Reset button wrongly resets the color and doesn't reset the text
-
-- [x] When user puts space in the input field it vanishes
-
-- [ ] Check favorite artists section when text inputs removed
-
-- [ ] Before the page reload add alert that do you want to reload you didn't save 
-
-- [x] Close the urls upon some conditions
-
-- [x] if user doesn't have a domains it pushes him to empty domaisn list when back button pressed
-
-- [x] if change the user account it could be that it uploads website for previous user because ref isn't updated or something (Needs research!)
-
-- [x] Buy different domains for users 
-
-- [x] Add different domains for users 
-
-- [ ] When user publish the website it is not changing images from data to link
-
-- [x] Onboarding checkout login for users that already have an account
-
-- [x] If people is already logged in skip first step or just  
-
-- [ ] congratul section first text input overflow on mobile
-
-- [ ] add section where you can see all uploaded websites links
-
-- [x] Handle session expire 
 
 ## How to add new section 
 
