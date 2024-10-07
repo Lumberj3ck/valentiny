@@ -7,8 +7,8 @@
                     class="w-11/12 min-[540px]:w-3/4 lg:w-9/12">
             </div>
             <div class="flex justify-center md:w-[65%] xl:w-3/4 items-center">
-                <div class="flex flex-col w-11/12 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem]">
-                    <div class="header mb-4 lg:mb-10">
+                <div class="flex flex-col w-11/12 max-w-sm min-[540px]:ml-[-50px] md:ml-0 md:max-w-md lg:max-w-[30rem] gap-1">
+                    <div class="header mb-2 lg:mb-6">
                         <p class="font-bold text-2xl sm:text-3xl md:text-5xl mb-1 md:tracking-wide md:mb-2">
                             Listen to yourself.
                         </p>
@@ -21,7 +21,7 @@
                         Express your love with heartfelt messages on Special Day! Share your feelings, memories in your
                         postcard.
                     </p>
-                    <div class="mt-5">
+                    <div class="mt-4">
                         <router-link to="/page-editor"
                             class="button_bg_color w-44 h-12 bg-yellow-300 rounded-3xl flex justify-center items-center mt-2 md:mt-7 py-4 text-lg md:text-lg lg:text-xl lg:w-2/3 lg:h-1/6 lg:p-3 max-w-60 landing_button transition-transform duration-300 hover:scale-105">
                             Design my own!
