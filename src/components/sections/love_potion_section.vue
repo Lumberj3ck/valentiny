@@ -97,7 +97,7 @@ export default {
           <image_input :section_name="section_name" :image_input_id="1" :photoMode="photoMode" image_tag custom_class="rounded-full object-cover square_aspect_ratio"
             :image_url="image_url"></image_input>
         </div>
-        <div class='w-full max-w-[600px]'>
+        <div class='w-full max-w-[600px] mx-auto lg:w-3/4'>
           <div class="flex flex-wrap text-center justify-center">
             <div class="w-full lg:w-6/12 px-4 sm:min-w-[300px]">
               <!-- <h2 class="text-4xl font-semibold text-white">Love potion recipe</h2> -->
