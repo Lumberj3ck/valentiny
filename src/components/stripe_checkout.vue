@@ -17,7 +17,7 @@
       Back to Editor
       </router-link>
     </div> -->
-    <div id="checkout"></div>
+    <div class="mt-5" id="checkout"></div>
 </template>
 
 <script>
