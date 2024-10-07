@@ -59,7 +59,7 @@
         </user_login>
       </div>
     </div>
-    <div v-if="currentStep === 2">
+    <div v-if="currentStep === 2" class="mt-8">
       <stripe_checkout
         ref="stripe_checkout"
         @checkout-return="checkSessionStatus"

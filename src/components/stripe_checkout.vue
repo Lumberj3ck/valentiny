@@ -71,7 +71,7 @@ export default {
 
     if (!this.stripe) {
       this.stripe = await loadStripe(
-        'pk_test_51Ncm9BGG1bSL8LD4bWHztaALnFRI8weo3ahRLHnGOTOZk8KjzjJt1AVNVRpAIpp8crliJYI8KZZOHK8CclP1qv4T00oGmPV5Gv'
+        import.meta.env.VITE_STRIPE_KEY
       )
     }
 
