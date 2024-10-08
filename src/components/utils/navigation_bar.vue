@@ -17,8 +17,21 @@ export default {
       imageUploadStore
     }
   },
-  emits: ['photomode_toggle'],
-
+  emits: ['photomode_toggle', 'user_logged_out'],
+  props: {
+    user_log_out: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch:{
+    user_log_out(newValue) {
+      if (newValue === true) {
+        this.user_authenticated = null;
+        this.$emit('user_logged_out')
+      }
+    }
+  },
   components: {
     download_button,
     user_notification

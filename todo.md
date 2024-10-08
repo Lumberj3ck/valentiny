@@ -18,6 +18,8 @@
 
 - [ ] start section 75vh make resp
 
+- [ ] logout button on the navigation bar make computed 
+
 ## How to add new section 
 
 1. Create new section file

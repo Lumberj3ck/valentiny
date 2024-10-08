@@ -37,7 +37,8 @@ export default {
       photoMode: false,
       loaded: false,
       notification: false,
-      message:'' 
+      message:'' ,
+      user_log_out: false
     }
   },
   mounted() {
@@ -91,6 +92,7 @@ export default {
             this.notification = true
             this.message = 'Your session has expired. Please login again.'
             localStorage.removeItem('access-token')
+            this.user_log_out = true
           }
         });
     }
@@ -102,7 +104,7 @@ export default {
 </script>
 
 <template>
-  <navigation_bar @photomode_toggle="togglePhotoMode"></navigation_bar>
+  <navigation_bar @user_logged_out="user_log_out = false" :user_log_out="user_log_out" @photomode_toggle="togglePhotoMode"></navigation_bar>
   <user_notification
     :message="message"
     :show="notification"
