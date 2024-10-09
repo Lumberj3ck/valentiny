@@ -82,6 +82,7 @@ export default {
         .then(data => {
           if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
             this.components.updateSectionState(data)
+            this.components.retrived = true
           }
         this.loaded = true
         })

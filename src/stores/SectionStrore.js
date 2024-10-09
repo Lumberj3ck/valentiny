@@ -5,6 +5,7 @@ import { isAuthenticated } from '@/js/utils'
 
 export const useSectionStore = defineStore('section_store', {
     state: () => ({
+        retrived: false,
         sections: {
             start_section: {
                 index: 1, background_color: '', text_color: '', render: true, image_inputs:
