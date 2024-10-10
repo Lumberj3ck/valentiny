@@ -95,14 +95,14 @@ export default {
     </user_notification>
     <div class="flex flex-wrap items-center justify-between md:justify-around md:gap-5 lg:justify-between mx-auto py-4">
       <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="@/assets/imgs/logo/logo-BKi7_f4-.webp" class="h-9" alt="postcard-logo" />
+        <img src="@/assets/imgs/logo/rose_icon-purple.png" class="h-9" alt="postcard-logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap">Postcardy</span>
       </RouterLink>
       <button
         data-collapse-toggle="navbar-default"
         type="button"
         @click="mobile_menu_hide = !mobile_menu_hide"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
         aria-controls="navbar-default"
         aria-expanded="false"
       >
@@ -141,7 +141,7 @@ export default {
                 class="sr-only peer"
               />
               <div
-                class="relative w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-purple-600"
+                class="relative w-11 h-6 bg-gray-700 rounded-full peer peer-focus:ring-4 peer-focus:ring-purple-300 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"
               ></div>
             </label>
           </li>
@@ -151,7 +151,7 @@ export default {
           <li class="ml-0">
             <RouterLink
               to="/features-guide/"
-              class="font-semibold block text-lg  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
+              class="font-semibold block text-lg text-black rounded  md:border-0 hover:text-purple-500 md:p-0"
             >
               Guide
             </RouterLink>
@@ -159,7 +159,7 @@ export default {
           <li v-if="!user_authenticated">
             <RouterLink
               to="/login/"
-              class="font-semibold block text-lg text-gray-900 rounded hover:bg-gray-100 hover:text-[#FF407D] md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent"
+              class="font-semibold block text-lg text-black rounded  md:hover:bg-transparent hover:text-purple-500 md:p-0"
             >
               Login
             </RouterLink>
@@ -167,11 +167,11 @@ export default {
           <li v-if="user_authenticated" @click="startSaving" class="w-full md:w-11 relative">
             <a
               href="#"
-              class="font-semibold text-lg block text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
+              class="font-semibold text-lg block text-black rounded  md:hover:bg-transparent hover:text-purple-500 md:p-0"
               >Save
               <div
                 v-show="progresStart"
-                class="w-16 bg-gray-200 rounded-full h-1.5 dark:bg-gray-700 absolute bottom-[-10px] right-50"
+                class="w-16 bg-gray-200 rounded-full h-1.5 absolute bottom-[-10px] right-50"
               >
                 <div
                   ref="progressBar"
@@ -184,14 +184,14 @@ export default {
           <li v-if="user_authenticated" @click="logout">
             <a
               href="#"
-              class="font-semibold text-lg block  text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 hover:text-[#FF407D] md:dark:hover:bg-transparent"
+              class="font-semibold text-lg block text-black rounded  md:hover:bg-transparent md:border-0 md:hover:text-purple-500 md:p-0"
               >Logout</a
             >
           </li>
           <li class="transition duration-300 ease-in-out transform hover:scale-105">
             <RouterLink
               :to="user_authenticated ? '/publish/' : '/onboarding-checkout/'"
-              class="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-1 px-3 md:py-2 md:px-4 rounded-lg shadow-md"
+              class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-1 px-3 md:py-2 md:px-4 rounded-lg shadow-md"
             >
               <i class="fas fa-globe w-5 h-5 mr-2"></i>
               Publish Website
