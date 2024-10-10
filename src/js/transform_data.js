@@ -15,6 +15,16 @@ function transformData(inputData) {
         id: section.image_inputs[inputKey].id
       };
     });
+    let iconInputs = []
+    if (section.icon_inputs) {
+      iconInputs = Object.keys(section.icon_inputs).map(inputKey => {
+        return {
+          index: parseInt(inputKey),
+          content: section.icon_inputs[inputKey].content,
+          id: section.icon_inputs[inputKey].id
+        };
+      });
+    }
     return {
       index: section.index,
       id: section.id,
@@ -23,7 +33,8 @@ function transformData(inputData) {
       background_color: section.background_color,
       text_color: section.text_color,
       image_inputs: imageInputs,
-      text_inputs: textInputs
+      text_inputs: textInputs,
+      icon_inputs: iconInputs
     };
   });
   return {"sections": transformedData};

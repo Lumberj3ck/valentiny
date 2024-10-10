@@ -4,6 +4,7 @@ import custom_input from '@/components/utils/custom_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 import image_input from '@/components/utils/image_input.vue'
 import { computed } from 'vue'
+import icon_picker from '@/components/utils/icon_picker.vue'
 
 export default {
   setup() {
@@ -72,7 +73,8 @@ export default {
   components: {
     control_bar,
     custom_input,
-    image_input
+    image_input,
+    icon_picker
   },
   emits: ['move_up', 'move_down'],
 }
@@ -119,7 +121,8 @@ export default {
           <div :style="{ 'background-color': background_color }"
             style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
             class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-            <i :style="{ 'color': text_color }" class="fas fa-flask"></i>
+            <!-- <i :style="{ 'color': text_color }" class="fas fa-flask"></i> -->
+            <icon_picker :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="flask"></icon_picker>
           </div>
           <!-- <h6 class="text-xl mt-5 font-semibold text-white">
           Step 1
@@ -138,7 +141,8 @@ export default {
           <div :style="{ 'background-color': background_color }"
             style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
             class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-            <i :style="{ 'color': text_color }" class="fas fa-candy-cane"></i>
+            <!-- <i :style="{ 'color': text_color }" class="fas fa-candy-cane"></i> -->
+            <icon_picker :section_name="section_name" :picker_id="2" :style="{'color': text_color}" defaultIcon="candy-cane"></icon_picker>
           </div>
           <!-- <h5 class="text-xl mt-5 font-semibold text-white">
           Step 2
@@ -156,12 +160,13 @@ export default {
           <div :style="{ 'background-color': background_color }"
             style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
             class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
-            <i :style="{ 'color': text_color }" class="fas fa-thumbs-up"></i>
+            <!-- <i :style="{ 'color': text_color }" class="fas fa-thumbs-up"></i> -->
+            <icon_picker :section_name="section_name" :picker_id="3" :style="{'color': text_color}" defaultIcon="thumbs-up"></icon_picker>
           </div>
           <!-- <h5 class="text-xl mt-5 font-semibold text-white">Шаг 3</h5> -->
           <custom_input :section_name="section_name" :input_id="7" :photoMode="photoMode" :primary_color="primary_color"
             class='text-xl mt-5 font-semibold text-white max-w-[80vw] mx-auto' default_input_value="Step 3"></custom_input>
-          <custom_input :section_name="section_name" :input_id="8"   :photoMode="photoMode" text_area :primary_color="primary_color"
+          <custom_input :section_name="section_name" :input_id="8" :photoMode="photoMode" text_area :primary_color="primary_color"
             class='mt-2 mb-4 text-gray-500 sm:text-lg md:text-xl max-w-[80vw] mx-auto'
             default_input_value="Whip until fluffy and serve in bee traps to keep the flavor fresh. Go for it and enjoy the result!">
           </custom_input>

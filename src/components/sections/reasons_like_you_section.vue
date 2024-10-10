@@ -4,6 +4,7 @@ import custom_input from '@/components/utils/custom_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 import image_input from '@/components/utils/image_input.vue'
 import { computed } from 'vue'
+import icon_picker from '../utils/icon_picker.vue'
 
 export default {
     setup() {
@@ -38,7 +39,8 @@ export default {
   components: {
     control_bar,
     custom_input,
-    image_input
+    image_input,
+    icon_picker
   },
   methods:{
     reset_both(){
@@ -92,11 +94,12 @@ export default {
       <div class="flex flex-wrap items-center">
         <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
           <div
-            class="text-red-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300" :style="primary_color">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            class="text-red-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300 text-2xl" :style="primary_color">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
               <path
                 d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-            </svg>
+            </svg> -->
+            <icon_picker :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="heart"></icon_picker>
           </div>
           <custom_input :section_name="section_name" :input_id="1" :photoMode="photoMode" :primary_color="primary_color" class='text-3xl mb-2 font-semibold leading-normal text-black max-w-[80vw]'
             default_input_value="What I like in you"></custom_input>

@@ -4,6 +4,7 @@ import custom_input from '@/components/utils/custom_input.vue'
 import image_input from '../utils/image_input.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
 import { computed } from 'vue'
+import icon_picker from '@/components/utils/icon_picker.vue'
 
 export default {
   setup() {
@@ -19,7 +20,8 @@ export default {
   components: {
     control_bar,
     custom_input,
-    image_input
+    image_input,
+    icon_picker
   },
   data() {
     return {
@@ -93,6 +95,7 @@ export default {
     </control_bar>
   <Transition>
     <section v-show="render" class="relative">
+
       <div class="px-4 bg_violet" :style="primary_color">
         <div class="container mx-auto items-center flex flex-wrap">
           <div class="w-full md:w-4/12 ml-auto mr-auto px-4" style="margin-top: 50px; margin-bottom: 50px">
@@ -112,7 +115,7 @@ export default {
                         class="text-xs font-semibold shadow-lg inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
                         :style="{ 'background-color': background_color }"
                         style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;">
-                        <i :style="{ 'color': text_color }" class="fas fa-crown"></i>
+                        <icon_picker :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="crown"></icon_picker>
                       </span>
                     </div>
                     <div class="w-full">
@@ -129,7 +132,7 @@ export default {
                         class="text-xs font-semibold shadow-xl inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
                         :style="{ 'background-color': background_color }"
                         style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;">
-                        <i :style="{ 'color': text_color }" class="fas fa-compass"></i>
+                        <icon_picker :section_name="section_name" :picker_id="2" :style="{'color': text_color}" defaultIcon="compass"></icon_picker>
                       </span>
                     </div>
                     <div class="w-full">
@@ -146,11 +149,12 @@ export default {
                         class="shadow-lg text-xs font-semibold inline-block py-1 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
                         :style="{ 'background-color': background_color }"
                         style="padding-right: 0.4rem; padding-left: 0.4rem; box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                           stroke="currentColor" class="w-4 h-4 text-pink-600" :style="{ 'color': text_color }">
                           <path stroke-linecap="round" stroke-linejoin="round"
                             d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                        </svg>
+                        </svg> -->
+                        <icon_picker :section_name="section_name" :picker_id="3" :style="{'color': text_color}" defaultIcon="ellipsis"></icon_picker>
                       </span>
                     </div>
                     <div class="w-full">

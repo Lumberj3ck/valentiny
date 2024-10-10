@@ -34,6 +34,9 @@ export const useSectionStore = defineStore('section_store', {
                     6: { content: null },
                     7: { content: null },
                     8: { content: null },
+                },
+                icon_inputs: {
+                    1: { content: null }
                 }
             },
             like_you_section: {
@@ -48,6 +51,11 @@ export const useSectionStore = defineStore('section_store', {
                     2: { content: null },
                     3: { content: null },
                     4: { content: null }
+                },
+                icon_inputs: {
+                    1: { content: null },
+                    2: { content: null },
+                    3: { content: null }
                 }
             },
             love_potion_section: {
@@ -66,6 +74,11 @@ export const useSectionStore = defineStore('section_store', {
                     6: { content: null },
                     7: { content: null },
                     8: { content: null }
+                },
+                icon_inputs: {
+                    1: { content: null },
+                    2: { content: null },
+                    3: { content: null }
                 }
             },
             favorite_artists: {
