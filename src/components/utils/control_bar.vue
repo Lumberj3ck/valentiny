@@ -79,12 +79,12 @@ export default {
     font-size: 25px;
     cursor: pointer;
     font-weight: 900;
-    color: var(--soft-blue-color)
+    color: black
 }
 
 .control_item:hover {
     /* color: #ffde81; */
-    color: var(--soft-red-color);
+    color: #a855f7
 }
 
 @media (min-width: 640px) {

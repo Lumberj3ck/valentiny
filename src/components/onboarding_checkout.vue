@@ -4,7 +4,7 @@
       <li v-for="(step, index) in steps" :key="index" class="flex flex-col md:flex-row items-center w-full mb-4 md:mb-0">
         <div
           class="flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300 ease-in-out"
-          :class="index + 1 <= currentStep ? 'bg-pink-500' : 'bg-gray-300'"
+          :class="index + 1 <= currentStep ? 'bg-purple-500' : 'bg-gray-300'"
         >
           <i
             :class="[
@@ -17,7 +17,7 @@
         <div class="flex-1 ml-4 text-center md:text-left mt-2 md:mt-0">
           <h3
             class="font-medium"
-            :class="index + 1 <= currentStep ? 'text-pink-500' : 'text-gray-500'"
+            :class="index + 1 <= currentStep ? 'text-purple-500' : 'text-gray-500'"
           >
             {{ step.title }}
           </h3>
@@ -25,7 +25,7 @@
         </div>
         <div v-if="index < steps.length - 1" class="hidden md:block flex-1 h-0.5 bg-gray-300 mx-2">
           <div
-            class="h-full bg-pink-500 transition-all duration-500"
+            class="h-full bg-purple-500 transition-all duration-500"
             :style="{ width: index + 1 < currentStep ? '100%' : '0%' }"
           ></div>
         </div>
@@ -47,14 +47,14 @@
       <user_register v-if="!login" :onboarding="true" @register-success="register_success">
         <div class="my-3">
           If you already have an account,
-          <span @click="login = true" class="text-pink-500 cursor-pointer">login</span>
+          <span @click="login = true" class="text-purple-500 cursor-pointer">login</span>
         </div>
       </user_register>
       <div v-if="login">
         <user_login :onboarding="true" @login-success="login_success">
           <div class="my-3">
             If you don't have an account,
-            <span @click="login = false" class="text-pink-500 cursor-pointer">register</span>
+            <span @click="login = false" class="text-purple-500 cursor-pointer">register</span>
           </div>
         </user_login>
       </div>

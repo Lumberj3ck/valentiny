@@ -118,7 +118,7 @@ export default {
       />
       <FontAwesomeIcon
         @click="$refs.file_input.click()"
-        class="edit-icon system_ui_pen"
+        class="edit-icon system_ui_pen text-purple-500 hover:text-purple-800"
         :icon="faPen"
       >
       </FontAwesomeIcon>
@@ -140,7 +140,7 @@ export default {
       <slot name="background_overlay"></slot>
       <FontAwesomeIcon
         @click="$refs.file_input.click()"
-        class="edit-icon system_ui_pen"
+        class="edit-icon system_ui_pen text-purple-500 hover:text-purple-800"
         :icon="faPen"
       >
       </FontAwesomeIcon>
@@ -171,10 +171,10 @@ export default {
   height: 20px;
   /* Adjust size as needed */
   cursor: pointer;
-  color: var(--soft-red-color);
+  /* color: var(--soft-red-color); */
 }
 
-.edit-icon:hover {
-  color: var(--soft-blue-color);
-}
+/* .edit-icon:hover { */
+  /* color: var(--soft-blue-color); */
+/* } */
 </style>
