@@ -113,7 +113,7 @@ export default {
     }
   },
   mounted() {
-    this.selectedIcon = this.sectionStore.sections[this.section_name].icon_inputs[this.picker_id].content
+    this.selectedIcon = this.sectionStore.getIcon(this.section_name, this.picker_id)
     if (!this.selectedIcon) {
       this.selectedIcon = this.defaultIcon
     }
@@ -145,7 +145,7 @@ export default {
     selectIcon(icon) {
       this.selectedIcon = icon
       this.isPopoverOpen = false
-      this.sectionStore.sections[this.section_name].icon_inputs[this.picker_id].content = icon
+      this.sectionStore.setIcon(this.section_name, this.picker_id, icon)
     },
     prevPage() {
       if (this.currentPage > 1) {

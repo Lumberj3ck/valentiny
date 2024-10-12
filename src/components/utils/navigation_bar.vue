@@ -50,19 +50,7 @@ export default {
       if (!this.sectionStore.sections || !this.user_authenticated) {
         return
       }
-      const rearanged_data = transformData(this.sectionStore.sections)
-      await save_sections(rearanged_data)
-      if (!this.sectionStore.allSectionsSaved) {
-        get_user_sections()
-          .then((data) => {
-            if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
-              this.sectionStore.updateSectionState(data)
-            }
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-      }
+      this.sectionStore.debouncedSave()
     },
     logout() {
       localStorage.removeItem('access-token')

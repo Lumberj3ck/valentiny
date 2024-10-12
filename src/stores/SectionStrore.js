@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { transformData } from '@/js/transform_data'
-import { save_sections } from '@/js/api'
+import { save_sections, get_user_sections } from '@/js/api'
 import { isAuthenticated } from '@/js/utils'
 
 export const useSectionStore = defineStore('section_store', {
@@ -154,6 +154,17 @@ export const useSectionStore = defineStore('section_store', {
                 .catch((error) => {
                     console.error('Error during auto-save:', error)
                 })
+            if (!this.allSectionsSaved) {
+                get_user_sections()
+                    .then((data) => {
+                        if (Object.keys(data).length !== 0 && !data.constructor !== Object) {
+                            this.updateSectionState(data)
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+            }
         },
     },
     getters: {
