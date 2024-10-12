@@ -31,7 +31,7 @@
           >
             <i class="fas fa-chevron-left text-xl"></i>
           </button>
-          <span>{{ currentPage }} / {{ totalPages }}</span>
+          <span class="text-base">{{ currentPage }} / {{ totalPages }}</span>
           <button
             @click="nextPage"
             :disabled="currentPage === totalPages"
