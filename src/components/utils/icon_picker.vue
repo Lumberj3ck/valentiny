@@ -2,12 +2,14 @@
     <div class="relative">
       <div
         @click="togglePopover"
-        class="rounded-md shadow-sm hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        ref="popOverTrigger"
+        class="rounded-md shadow-sm  hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         <i :class="['fas', `fa-${selectedIcon}`]"></i>
     </div>
       <div
         v-if="isPopoverOpen"
-        class="absolute right-[-200px] transform -translate-x-1/2 mt-2 rounded-md z-10 w-28 md:w-64"
+        ref="popOver"
+        class="bg-white absolute right-[-200px] lg:right-[-300px] transform -translate-x-1/2 mt-2 rounded-md z-10 w-28 md:w-64"
       >
         <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-black p-2">
           <button
@@ -21,7 +23,7 @@
             <i :class="['fas', `fa-${icon}`, 'text-xl']"></i>
           </button>
         </div>
-        <div class="flex justify-between mt-2 px-2 text-black">
+        <div class="flex justify-between mt-2 px-2 text-purple-600 mb-2 text-lg">
           <button
             @click="prevPage"
             :disabled="currentPage === 1"
@@ -116,6 +118,9 @@ export default {
       this.selectedIcon = this.defaultIcon
     }
   },
+  unmounted() {
+    document.removeEventListener('click', this.closePopover)
+  },
   computed: {
     totalPages() {
       return Math.ceil(this.icons.length / this.itemsPerPage)
@@ -128,17 +133,14 @@ export default {
   },
   methods: {
     togglePopover() {
-      console.log("asdf")
       this.isPopoverOpen = !this.isPopoverOpen
-      // if (this.isPopoverOpen) {
-      //   document.addEventListener('sroll', this.closePopover)
-      // } else {
-      //   document.removeEventListener('click', this.closePopover)
-      // }
+      document.addEventListener('click', this.closePopover)
     },
-    closePopover(){
-      this.isPopoverOpen = false
-      document.removeEventListener('click', this.closePopover)
+    closePopover(event){
+      if (this.isPopoverOpen && !this.$refs.popOver.contains(event.target) && !this.$refs.popOverTrigger.contains(event.target)){
+        this.isPopoverOpen = false
+        document.removeEventListener('click', this.closePopover)
+      }
     },
     selectIcon(icon) {
       this.selectedIcon = icon

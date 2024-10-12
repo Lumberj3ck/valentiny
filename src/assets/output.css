@@ -2541,8 +2541,16 @@ video {
 }
 
 @media (min-width: 1024px) {
+  .lg\:right-\[-400px\] {
+    right: -400px;
+  }
+
   .lg\:top-\[15\%\] {
     top: 15%;
+  }
+
+  .lg\:right-\[-300px\] {
+    right: -300px;
   }
 
   .lg\:mb-0 {
