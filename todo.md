@@ -1,6 +1,6 @@
 - [ ] check why logout button is not working on safari desktop
 
-- [ ] Adjust landing mobile 
+- [x] Adjust landing mobile 
 
 - [ ] Before the page reload add alert that do you want to reload you didn't save 
 
@@ -18,7 +18,7 @@
 
 - [ ] start section 75vh make resp
 
-- [ ] logout button on the navigation bar make computed 
+- [x] logout button on the navigation bar make computed 
 
 ## How to add new section 
 

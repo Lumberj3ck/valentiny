@@ -1,9 +1,6 @@
 <script>
 import download_button from '@/components/utils/button_download_html.vue'
 import { useSectionStore } from '@/stores/SectionStrore'
-import { transformData } from '@/js/transform_data'
-import { save_sections } from '@/js/api'
-import { get_user_sections } from '@/js/api'
 import user_notification from '@/components/utils/user_notification.vue'
 import { useImageUploadStore } from '@/stores/ImageUploadStore'
 
