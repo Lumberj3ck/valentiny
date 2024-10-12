@@ -115,7 +115,7 @@ export default {
                         class="text-xs font-semibold shadow-lg inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
                         :style="{ 'background-color': background_color }"
                         style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;">
-                        <icon_picker :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="crown"></icon_picker>
+                        <icon_picker :photoMode="photoMode" :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="crown"></icon_picker>
                       </span>
                     </div>
                     <div class="w-full">
@@ -132,7 +132,7 @@ export default {
                         class="text-xs font-semibold shadow-xl inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"
                         :style="{ 'background-color': background_color }"
                         style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;">
-                        <icon_picker :section_name="section_name" :picker_id="2" :style="{'color': text_color}" defaultIcon="compass"></icon_picker>
+                        <icon_picker :photoMode="photoMode" :section_name="section_name" :picker_id="2" :style="{'color': text_color}" defaultIcon="compass"></icon_picker>
                       </span>
                     </div>
                     <div class="w-full">
@@ -154,7 +154,7 @@ export default {
                           <path stroke-linecap="round" stroke-linejoin="round"
                             d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                         </svg> -->
-                        <icon_picker :section_name="section_name" :picker_id="3" :style="{'color': text_color}" defaultIcon="ellipsis"></icon_picker>
+                        <icon_picker :photoMode="photoMode" :section_name="section_name" :picker_id="3" :style="{'color': text_color}" defaultIcon="ellipsis"></icon_picker>
                       </span>
                     </div>
                     <div class="w-full">

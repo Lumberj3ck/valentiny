@@ -63,6 +63,10 @@ export default {
     },
     section_name: String,
     picker_id: Number,
+    photoMode: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -133,8 +137,10 @@ export default {
   },
   methods: {
     togglePopover() {
-      this.isPopoverOpen = !this.isPopoverOpen
-      document.addEventListener('click', this.closePopover)
+      if (!this.photoMode) {
+        this.isPopoverOpen = !this.isPopoverOpen
+        document.addEventListener('click', this.closePopover)
+      }
     },
     closePopover(event){
       if (this.isPopoverOpen && !this.$refs.popOver.contains(event.target) && !this.$refs.popOverTrigger.contains(event.target)){

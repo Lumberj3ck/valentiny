@@ -122,7 +122,7 @@ export default {
             style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
             class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
             <!-- <i :style="{ 'color': text_color }" class="fas fa-flask"></i> -->
-            <icon_picker :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="flask"></icon_picker>
+            <icon_picker :photoMode="photoMode" :section_name="section_name" :picker_id="1" :style="{'color': text_color}" defaultIcon="flask"></icon_picker>
           </div>
           <!-- <h6 class="text-xl mt-5 font-semibold text-white">
           Step 1
@@ -142,7 +142,7 @@ export default {
             style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
             class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
             <!-- <i :style="{ 'color': text_color }" class="fas fa-candy-cane"></i> -->
-            <icon_picker :section_name="section_name" :picker_id="2" :style="{'color': text_color}" defaultIcon="candy-cane"></icon_picker>
+            <icon_picker :photoMode="photoMode" :section_name="section_name" :picker_id="2" :style="{'color': text_color}" defaultIcon="candy-cane"></icon_picker>
           </div>
           <!-- <h5 class="text-xl mt-5 font-semibold text-white">
           Step 2
@@ -161,7 +161,7 @@ export default {
             style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(117, 114, 114, 0) 0px 3px 6px;"
             class="text-gray-900 p-3 w-12 h-12 shadow-lg rounded-full bg-white inline-flex items-center justify-center">
             <!-- <i :style="{ 'color': text_color }" class="fas fa-thumbs-up"></i> -->
-            <icon_picker :section_name="section_name" :picker_id="3" :style="{'color': text_color}" defaultIcon="thumbs-up"></icon_picker>
+            <icon_picker :photoMode="photoMode" :section_name="section_name" :picker_id="3" :style="{'color': text_color}" defaultIcon="thumbs-up"></icon_picker>
           </div>
           <!-- <h5 class="text-xl mt-5 font-semibold text-white">Шаг 3</h5> -->
           <custom_input :section_name="section_name" :input_id="7" :photoMode="photoMode" :primary_color="primary_color"
