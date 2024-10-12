@@ -128,6 +128,10 @@ export const useSectionStore = defineStore('section_store', {
             this.sections[sectionName].image_inputs[image_input_id].link = link 
             this.autoSave()
         },
+        setIcon(sectionName, icon_input_id, icon) {
+            this.sections[sectionName].icon_inputs[icon_input_id].content = icon
+            this.autoSave()
+        },
         updateSectionState(sections_data) {
             for (const section_name in sections_data) {
                 this.sections[section_name] = sections_data[section_name];
@@ -170,6 +174,9 @@ export const useSectionStore = defineStore('section_store', {
         },
         getInputData: (state) => (sectionName, input_id) => {
             return state.sections[sectionName].text_inputs[input_id].content
+        },
+        getIcon: (state) => (sectionName, icon_input_id) => {
+            return state.sections[sectionName].icon_inputs[icon_input_id].content
         },
         allSectionsSaved() {
             for (const key in this.sections) {
